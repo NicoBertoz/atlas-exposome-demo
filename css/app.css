@@ -249,13 +249,32 @@ input[type=range] { width: 100%; accent-color: var(--accent); }
    bas, on regarde déjà la carte, il ne reste qu'à l'ouvrir. */
 #section1 {
   position: fixed; inset: var(--bar-h) 0 0 0; z-index: 40;
-  overflow-y: auto; -webkit-overflow-scrolling: touch; display: none;
+  overflow-y: auto; -webkit-overflow-scrolling: touch;
   background: rgba(244, 241, 232, var(--voile, .42));
-  transition: background .2s linear;
+  transition: background .2s linear, opacity .5s ease, transform .5s ease;
 }
-body.vue-intro #section1 { display: block; }
-body.vue-intro #panel { display: none; }
-body.vue-intro #map-stage { left: 0; }
+/* On ne fait PAS disparaître le déroulé avec un display:none — un changement
+   de display ne s'anime pas, et c'était exactement ce qui rendait le passage
+   abrupt. Il s'efface et remonte pendant que le panneau arrive. */
+body.vue-carte #section1 {
+  opacity: 0; transform: translateY(-5vh); pointer-events: none; overflow: hidden;
+}
+
+/* La carte occupe toute la largeur dans les deux modes, le panneau se pose
+   par-dessus. Sans ça, le cadre de la carte sautait de 392 px au moment du
+   basculement. Le recentrage se fait en douceur, côté caméra (voir app.js). */
+#map-stage { left: 0; }
+body.vue-intro #panel { pointer-events: none; }
+
+/* Le glissement latéral ne vaut que pour le panneau de bureau : en mobile,
+   le panneau est une feuille qui monte, et il porte déjà son propre
+   transform. Ces règles doivent donc passer APRÈS la requête mobile sans
+   jamais l'écraser. */
+@media (min-width: 860px) {
+  #panel { transform: translateX(-101%); transition: transform .5s cubic-bezier(.32,.72,0,1); }
+  body.vue-carte #panel { transform: none; }
+  body.vue-carte #playbar { left: calc(var(--panel-w) + 12px); }
+}
 /* Sélecteurs par id : les règles d'origine en portent aussi, et l'emportent
    sinon sur une simple classe. */
 body.vue-intro #playbar,
@@ -276,13 +295,17 @@ body.vue-intro .map-canvas {
 .s1-hero {
   max-width: 940px; margin: 0 auto; padding: 8vh 24px 44px;
 }
-/* La carte se voit derrière : le titre a besoin d'un fond à lui pour rester
-   lisible sans qu'on remette un aplat sur toute la page. */
-.s1-hero h1, .s1-chapo, .s1-chiffres, .s1-kicker { position: relative; }
-.s1-hero h1 { text-shadow: 0 0 18px var(--papier), 0 0 8px var(--papier); }
-.s1-chapo, .s1-chiffres b, .s1-chiffres span, .s1-kicker, .s1-ou {
-  text-shadow: 0 0 12px var(--papier), 0 0 6px var(--papier);
+/* La carte se voit derrière : aucun texte ne repose sur elle en direct.
+   Chaque bloc de lecture porte son propre aplat de papier, opaque, avec le
+   trait d'encre du reste de l'interface. Un ombrage de texte ne suffit pas :
+   dès que la carte se dévoile, il devient illisible. */
+.s1-bloc {
+  background: var(--papier); border: 1.5px solid var(--trait); border-radius: 10px;
+  padding: 26px 28px; box-shadow: 4px 4px 0 var(--trait);
+  max-width: 100%;
 }
+.s1-bloc > :last-child { margin-bottom: 0; }
+.s1-hero-cta { margin-top: 22px; }
 .s1-kicker {
   display: block; font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase;
   color: var(--txt-faint); margin-bottom: 16px;
@@ -832,16 +855,6 @@ a:hover { border-bottom-color: var(--encre); }
  *
  *  Un carré a des angles : il affirme. Une tache n'en a pas : elle situe.
  * ================================================================== */
-.nk-hotspot { background: none; border: 0; padding: 0; cursor: pointer; line-height: 0; }
-.nk-hotspot span {
-  display: grid; place-items: center; width: 26px; height: 26px;
-  border: 2px solid var(--trait); border-radius: 3px;
-  font-family: var(--mono); font-size: 12px; font-weight: 700;
-  color: var(--papier); line-height: 1;
-  box-shadow: 2px 2px 0 rgba(20,18,13,.35);
-  transition: transform .1s ease, box-shadow .1s ease;
-}
-.nk-hotspot:hover span { transform: translate(-1px, -1px); box-shadow: 3px 3px 0 var(--trait); }
 
 /* Les deux familles, rappelées dans le panneau */
 .famille { border: 1.5px solid var(--trait); border-radius: 8px; padding: 12px 14px; margin-bottom: 10px; }
@@ -850,13 +863,14 @@ a:hover { border-bottom-color: var(--encre); }
 .fam-tete b { font-size: 13px; }
 .fam-ico { flex: none; display: grid; place-items: center; }
 .ico-hotspot {
-  width: 20px; height: 20px; border: 2px solid var(--trait); border-radius: 3px;
-  background: var(--rouge); color: var(--papier);
-  font-family: var(--mono); font-size: 10px; font-weight: 700;
+  width: 22px; height: 22px; border-radius: 50%;
+  border: 2.5px solid var(--rouge); background: rgba(226,45,34,.28);
+  box-shadow: 0 0 0 2px rgba(226,45,34,.2);
 }
 .ico-temoin {
   width: 22px; height: 22px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(192,27,92,.65) 0%, rgba(192,27,92,.28) 45%, rgba(192,27,92,0) 72%);
+  background: radial-gradient(circle, var(--magenta) 0%, var(--magenta) 16%,
+              rgba(192,27,92,.35) 34%, rgba(192,27,92,0) 70%);
 }
 .fam-txt { margin: 0 0 8px; font-size: 11.5px; line-height: 1.5; color: var(--txt-dim); }
 .fam-txt b { color: var(--encre); }
@@ -868,21 +882,19 @@ a:hover { border-bottom-color: var(--encre); }
   color: var(--txt-faint); margin: 0 0 6px;
 }
 #legend hr + .leg-titre { margin-top: 0; }
-.leg-carre {
-  width: 14px; height: 14px; border: 1.5px solid var(--trait); border-radius: 2px; flex: none;
-  display: grid; place-items: center; font-family: var(--mono); font-size: 8px;
-  font-weight: 700; color: var(--papier); line-height: 1;
-}
-.leg-carre.confirme { background: var(--rouge); }
-.leg-carre.enquete  { background: var(--orange); }
-.leg-carre.anon     { background: var(--encre-3); }
+/* Surface : un cercle plein cerné. Point : un cœur net et un halo qui fuit. */
+.leg-surface { width: 15px; height: 15px; border-radius: 50%; border: 2px solid; flex: none; }
+.leg-surface.confirme { border-color: var(--rouge); background: rgba(226,45,34,.28); }
+.leg-surface.enquete  { border-color: var(--orange); background: rgba(239,132,16,.28); }
+.leg-surface.anon     { border-color: var(--encre-3); background: rgba(139,133,122,.22); }
 #legend .sq {
   width: 11px; height: 11px; border-radius: 50%; background: var(--papier);
   border: 1.8px solid var(--encre-2); flex: none;
 }
-.leg-tache {
-  width: 16px; height: 16px; border-radius: 50%; flex: none;
-  background: radial-gradient(circle, rgba(192,27,92,.6) 0%, rgba(192,27,92,.25) 45%, rgba(192,27,92,0) 72%);
+.leg-point {
+  width: 15px; height: 15px; border-radius: 50%; flex: none;
+  background: radial-gradient(circle, var(--magenta) 0%, var(--magenta) 17%,
+              rgba(192,27,92,.32) 36%, rgba(192,27,92,0) 70%);
 }
 #legend-patho { margin-top: 4px; }
 #legend-patho .li { font-size: 11px; }

@@ -44,36 +44,6 @@ window.NK_ENGINES.deck = (function () {
   }
   const hideTip = () => { tip().style.display = 'none'; };
 
-  /* Les clusters sont posés en marqueurs DOM plutôt qu'en couche GL : on veut
-     un CARRÉ à bord d'encre, numéroté — une forme qui dit « périmètre publié,
-     dossier instruit ». deck.gl ne dessine que des ronds, et c'est justement
-     la forme réservée aux cas déclarés. */
-  let badges = [];
-  function creerBadges() {
-    badges.forEach(m => m.remove());
-    badges = S().marqueurs.features.map(f => {
-      const el = document.createElement('button');
-      el.className = 'nk-hotspot';
-      el.innerHTML = `<span style="background:${f.properties.marker_color}">${f.properties.num}</span>`;
-      el.title = f.properties.nom;
-      const h = S().hotspotParId(f.properties.id);
-      el.addEventListener('click', ev => { ev.stopPropagation(); ctx.onZone(h); });
-      el.addEventListener('mouseenter', ev => {
-        const r = document.getElementById('map-stage').getBoundingClientRect();
-        showTip(S().zoneHTML(h, true), ev.clientX - r.left, ev.clientY - r.top);
-      });
-      el.addEventListener('mouseleave', hideTip);
-      return new maplibregl.Marker({ element: el })
-        .setLngLat(f.geometry.coordinates).addTo(map);
-    });
-    map.on('zoomend', () => syncBadges(last && last.zones));
-  }
-
-  function syncBadges(on) {
-    const visible = on !== false && zoom() < 9;
-    badges.forEach(m => { m.getElement().style.display = visible ? '' : 'none'; });
-  }
-
   function layers(state) {
     const L = [];
     // dessinées en dernier : les pastilles de cluster et les signalements
@@ -81,18 +51,46 @@ window.NK_ENGINES.deck = (function () {
     const dessus = [];
 
     if (state.zones) {
-      L.push(new deck.GeoJsonLayer({
-        id: 'zones', data: window.NK_DATA.hotspots,
-        filled: true, stroked: true, pickable: true, autoHighlight: true,
-        highlightColor: [245, 212, 0, 120],
-        /* Contour net et continu : un cluster a un périmètre publié, et la
-           carte doit le dire. C'est l'inverse exact des taches déclaratives. */
+      /* UN AGRÉGAT EST UNE SURFACE.
+         Son périmètre est publié, il couvre un territoire, et la carte doit le
+         montrer comme tel : un aplat plein, cerné d'un trait continu, à
+         l'échelle réelle. Le plancher en pixels n'existe que pour qu'un
+         cluster de 2 km reste visible à l'échelle de la France — il agrandit
+         la surface, il ne la déplace pas.
+         C'est l'exact opposé du cas déclaré, qui est un point sans contour. */
+      const rayonZone = f => f.properties.rayon_km * 1000;
+
+      L.push(new deck.ScatterplotLayer({
+        id: 'zone-surface', data: window.NK_DATA.hotspots.features,
+        getPosition: f => f.properties.centre,
+        getRadius: rayonZone, radiusMinPixels: 19,
+        filled: true, stroked: true,
         getFillColor: f => [...S().rgb(S().zoneColor(f.properties)),
-                            f.properties.anonyme ? 14 : 34],
+                            f.properties.anonyme ? 30 : 62],
         getLineColor: f => [...S().rgb(S().zoneColor(f.properties)), 255],
-        lineWidthMinPixels: 2, lineWidthMaxPixels: 3,
+        lineWidthMinPixels: 2.5, lineWidthMaxPixels: 4,
+        pickable: true, autoHighlight: true, highlightColor: [245, 212, 0, 150],
         onHover: i => i.object ? showTip(S().zoneHTML(i.object.properties, true), i.x, i.y) : hideTip(),
         onClick: i => i.object && ctx.onZone(i.object.properties),
+      }));
+
+      // Second cerne, plus fin et détaché : ça dit « périmètre », pas « point »
+      L.push(new deck.ScatterplotLayer({
+        id: 'zone-cerne', data: window.NK_DATA.hotspots.features,
+        getPosition: f => f.properties.centre,
+        getRadius: f => rayonZone(f) * 1.22, radiusMinPixels: 24,
+        filled: false, stroked: true, lineWidthMinPixels: 1,
+        getLineColor: f => [...S().rgb(S().zoneColor(f.properties)), 110],
+        pickable: false,
+      }));
+
+      L.push(new deck.TextLayer({
+        id: 'zone-num', data: S().marqueurs.features,
+        getPosition: f => f.geometry.coordinates,
+        getText: f => f.properties.num,
+        getSize: 12, getColor: [20, 18, 13], fontWeight: 700,
+        outlineWidth: 3, outlineColor: [244, 241, 232, 230], fontSettings: { sdf: true },
+        pickable: false,
       }));
     }
 
@@ -139,26 +137,34 @@ window.NK_ENGINES.deck = (function () {
            <div class="cta">Agrégation calculée à la volée sur GPU</div></div>`, i.x, i.y) : hideTip(),
       }));
     } else if (state.temoins) {
-      /* Grammaire visuelle des cas déclarés : une TACHE, ronde, dégradée,
-         SANS CONTOUR. Rien qui ressemble à un périmètre : le flou est le
-         message. Six passes concentriques donnent le dégradé que deck.gl ne
-         sait pas produire, et l'absence de bord net dit qu'aucune limite
-         n'est revendiquée — à l'exact opposé du carré des clusters. */
-      [[1, 14], [0.82, 20], [0.64, 28], [0.48, 36], [0.34, 46], [0.2, 60]]
-        .forEach(([k, alpha], idx) =>
-          L.push(new deck.ScatterplotLayer({
-            id: 'cell-' + idx, data: state.cellules,
-            getPosition: c => c.centre,
-            getFillColor: c => [...S().rgb(c.color), alpha],
-            getRadius: c => c.rayon_km * 1000 * k,
-            radiusMinPixels: 17 * k, pickable: false,
-          })));
+      /* UN CAS DÉCLARÉ EST UN POINT, PAS UNE SURFACE.
+         Il ne couvre aucun territoire : on ne sait pas où il est, à 25 km
+         près. On le dessine donc petit, avec un cœur net et un halo qui se
+         dissout — le halo dit l'incertitude de position, il ne prétend pas
+         délimiter quoi que ce soit. Aucun contour, jamais. */
+      const HALO = [[1, 10], [0.74, 18], [0.5, 30], [0.3, 48]];
+      HALO.forEach(([k, alpha], idx) =>
+        L.push(new deck.ScatterplotLayer({
+          id: 'cell-' + idx, data: state.cellules,
+          getPosition: c => c.centre,
+          getFillColor: c => [...S().rgb(c.color), alpha],
+          getRadius: c => c.rayon_km * 1000 * 0.55 * k,
+          radiusMinPixels: 15 * k, radiusMaxPixels: 34 * k, pickable: false,
+        })));
+      // le cœur : un point franc, petit, qui reste un point à tous les zooms
+      L.push(new deck.ScatterplotLayer({
+        id: 'cell-coeur', data: state.cellules,
+        getPosition: c => c.centre,
+        getFillColor: c => [...S().rgb(c.color), 235],
+        getRadius: c => c.rayon_km * 1000 * 0.07,
+        radiusMinPixels: 3.5, radiusMaxPixels: 6, pickable: false,
+      }));
       // cible de clic invisible, un peu plus large que le cœur de la tache
       L.push(new deck.ScatterplotLayer({
         id: 'cells', data: state.cellules,
         getPosition: c => c.centre,
         getFillColor: [0, 0, 0, 0], stroked: false,
-        getRadius: c => c.rayon_km * 1000 * 0.7, radiusMinPixels: 12,
+        getRadius: c => c.rayon_km * 1000 * 0.45, radiusMinPixels: 13,
         pickable: true, autoHighlight: true, highlightColor: [20, 18, 13, 40],
         onHover: i => i.object ? showTip(S().celluleHTML(i.object), i.x, i.y) : hideTip(),
         onClick: i => {
@@ -167,10 +173,15 @@ window.NK_ENGINES.deck = (function () {
           map.flyTo({ center: i.object.centre, zoom: Math.max(map.getZoom(), 8), speed: 0.9 });
         },
       }));
+      /* Le compte se lit à côté du point, pas dedans : dedans, il ferait du
+         point une pastille, donc un objet du même genre qu'un agrégat. */
       L.push(new deck.TextLayer({
         id: 'cell-n', data: state.cellules,
         getPosition: c => c.centre, getText: c => String(c.n),
-        getSize: 11, getColor: [20, 18, 13, 190], fontWeight: 700, pickable: false,
+        getSize: 10.5, getColor: [20, 18, 13, 210], fontWeight: 700,
+        getPixelOffset: [0, -14],
+        outlineWidth: 3, outlineColor: [244, 241, 232, 220], fontSettings: { sdf: true },
+        pickable: false,
       }));
     }
     return L.concat(dessus);
@@ -203,7 +214,6 @@ window.NK_ENGINES.deck = (function () {
         whenReady(() => {
           if (!auto) S().libellesEnFrancais(map);
           map.addControl(overlay);
-          creerBadges();
           if (last) this.render(last);
           map.fitBounds(S().FRANCE.bounds, { padding: S().FRANCE.padding(), duration: 0 });
           c.onReady('deck'); resolve();
@@ -223,7 +233,6 @@ window.NK_ENGINES.deck = (function () {
       if (!overlay) return;
       hideTip();
       overlay.setProps({ layers: layers(state) });
-      syncBadges(state.zones);
       if (map) map.easeTo({ pitch: state.agg ? 46 : 0, duration: 700 });
     },
 
@@ -232,6 +241,15 @@ window.NK_ENGINES.deck = (function () {
     fitZone(p) { map && map.fitBounds(S().bounds(p), { padding: S().FRANCE.zonePadding(), duration: 1200 }); },
 
     fitFrance() { map && map.fitBounds(S().FRANCE.bounds, { padding: S().FRANCE.padding(), duration: 1400 }); },
+
+    /* Le panneau se pose PAR-DESSUS la carte : sans marge de caméra, la France
+       se retrouve à moitié cachée. On la recentre par une animation de padding
+       plutôt qu'en redimensionnant le conteneur, qui produirait un à-coup. */
+    setPadding(marges, duree) {
+      if (!map) return;
+      map.easeTo({ padding: Object.assign({ top: 0, right: 0, bottom: 0, left: 0 }, marges),
+                   duration: duree === undefined ? 650 : duree });
+    },
 
     resize() { map && map.resize(); },
 

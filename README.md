@@ -56,16 +56,23 @@ client. Ce sont deux raisons de ne pas y revenir.
 C'est la décision de lisibilité la plus importante de la carte, et elle est volontairement
 grossière.
 
-| | **Carré** numéroté, bord d'encre | **Tache** ronde, dégradée, sans bord |
+| | **Surface** cernée, numérotée | **Point** flou, halo dégradé |
 |---|---|---|
-| Ce que c'est | un cluster ou un signalement instruit | des cas déclarés par des familles |
+| Ce que c'est | un agrégat ou un signalement instruit | des cas déclarés par des familles |
 | Origine | Santé publique France, registres, presse | le questionnaire du site |
-| Localisation | périmètre publié, tracé | secteur d'environ 25 km, jamais une adresse |
+| Localisation | périmètre publié, à l'échelle de la carte | secteur d'environ 25 km, jamais une adresse |
 | Ce qu'on peut en dire | une mesure officielle, un rapport source | un signal, rien de plus |
 
-Un carré a des angles : il affirme un périmètre. Une tache n'en a pas : elle situe sans
-délimiter. Aucun contour n'est jamais dessiné autour des cas déclarés — le flou **est** le
-message, pas un effet graphique.
+Une **surface** couvre un territoire : elle est dessinée à son rayon réel, remplie, et fermée par
+un cerne d'encre doublé d'un second cerne détaché. Elle grandit quand on zoome — c'est une
+emprise, pas une épingle. Un **point** ne couvre rien : un cœur net de quelques pixels, entouré
+d'un halo qui se dissipe et que `radiusMaxPixels` empêche de devenir une surface. Le halo dit
+l'incertitude, il ne délimite pas.
+
+Aucun contour n'est jamais dessiné autour des cas déclarés — le flou **est** le message, pas un
+effet graphique. C'est aussi pourquoi les agrégats ne sont plus des pastilles carrées comme dans
+les premières versions : un badge posé sur la carte se lit comme un marqueur, donc comme un lieu
+précis, exactement ce que les deux objets ne doivent surtout pas partager.
 
 ### Le fond de carte est le nôtre
 
@@ -256,9 +263,10 @@ donc changer de moteur ne change rien au comportement mobile.
 2. **Seuil.** Une maille n'apparaît qu'à partir de **3 cas** (`K_ANONYMAT` dans `js/shared.js`).
    En dessous, ses cas basculent dans une maille de **75 km**. S'ils n'y atteignent toujours pas le
    seuil, ils ne sont **pas placés du tout** — ils restent comptés, et le panneau affiche combien.
-3. **Rendu.** La tache est floue par construction (`circle-blur` en MapLibre, cercles concentriques
-   ailleurs) et son rayon vaut la demi-maille. Un plancher en pixels la garde lisible de loin :
-   il l'agrandit, ne la rétrécit jamais, donc il n'entame pas le flou.
+3. **Rendu.** Le point est flou par construction : quatre cercles concentriques de plus en plus
+   transparents autour d'un cœur net de quelques pixels. Un plancher en pixels le garde lisible de
+   loin — il l'agrandit, ne le rétrécit jamais, donc il n'entame pas le flou — et un plafond
+   (`radiusMaxPixels`) l'empêche de s'étendre en surface, ce qui le confondrait avec un agrégat.
 
 La conséquence produit : **on n'atteint plus un témoignage par sa position, mais par son groupe.**
 Cliquer un secteur ouvre la liste des témoignages qu'il contient ; de là on lit un récit, on écoute

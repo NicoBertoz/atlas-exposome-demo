@@ -38,7 +38,7 @@ window.NK_SECTION1 = (function () {
      sur le dernier tiers : on lit d'abord, on découvre la carte ensuite. */
   const DEBUT_LEVEE = 0.42;   // avant : rien ne bouge
   const FIN_LEVEE = 0.90;     // après : carte nette et sans voile
-  const BASCULE = 0.985;      // plein écran
+  const BASCULE = 0.94;       // plein écran, pendant qu'il reste de la course
 
   function monter(root, onCarte) {
     const D = window.NK_DATA;
@@ -46,19 +46,21 @@ window.NK_SECTION1 = (function () {
 
     root.innerHTML = `
       <section class="s1-hero">
-        <span class="s1-kicker">Atlas de l'exposome</span>
-        <h1>La cartographie écocitoyenne des maladies rares de l'enfant.</h1>
-        <p class="s1-chapo">Des cancers et des malformations se concentrent à certains endroits.
-          La donnée qui permettrait de le démontrer n'est pas publique. Alors nous la
-          construisons.</p>
-        <div class="s1-chiffres">
-          <div><b>${nHot}</b><span>agrégats documentés</span></div>
-          <div><b>${D.signalements.features.length}</b><span>autres investigations instruites</span></div>
-          <div><b>${D.temoignages.features.length}</b><span>cas déclarés par des familles</span></div>
-        </div>
-        <div class="s1-hero-cta">
-          <button class="btn btn-accent" data-carte>Ouvrir la carte →</button>
-          <span class="s1-ou">ou suivez le raisonnement, sept points, deux minutes</span>
+        <div class="s1-bloc">
+          <span class="s1-kicker">Atlas de l'exposome</span>
+          <h1>La cartographie écocitoyenne des maladies rares de l'enfant.</h1>
+          <p class="s1-chapo">Des cancers et des malformations se concentrent à certains
+            endroits. La donnée qui permettrait de le démontrer n'est pas publique. Alors nous
+            la construisons.</p>
+          <div class="s1-chiffres">
+            <div><b>${nHot}</b><span>agrégats documentés</span></div>
+            <div><b>${D.signalements.features.length}</b><span>autres investigations instruites</span></div>
+            <div><b>${D.temoignages.features.length}</b><span>cas déclarés par des familles</span></div>
+          </div>
+          <div class="s1-hero-cta">
+            <button class="btn btn-accent" data-carte>Ouvrir la carte →</button>
+            <span class="s1-ou">ou suivez le raisonnement, sept points, deux minutes</span>
+          </div>
         </div>
       </section>
 
@@ -82,14 +84,14 @@ window.NK_SECTION1 = (function () {
 
       <!-- Zone de révélation : rien à lire, la carte prend la place -->
       <section class="s1-reveal">
-        <div class="s1-reveal-txt">
+        <div class="s1-reveal-txt s1-bloc">
           <h2>Notre cartographie</h2>
           <p>Ce que l'État a instruit, et ce que les familles déclarent. Collecté à l'IRIS,
             publié par secteurs d'environ 25 km, à partir de trois cas. Jamais à l'adresse.</p>
         </div>
-        <div class="s1-reveal-fin">
+        <div class="s1-reveal-fin s1-bloc">
           <span class="s1-fleche">↓</span>
-          <span class="s1-fin-txt">Continuez à défiler pour ouvrir la carte</span>
+          <span class="s1-fin-txt">Continuez à défiler, la carte prend la place</span>
           <button class="btn btn-accent" data-carte>Ouvrir maintenant</button>
         </div>
       </section>`;
@@ -119,6 +121,7 @@ window.NK_SECTION1 = (function () {
          être reconnaissable comme carte dès le premier écran — donc un flou
          léger et un voile modéré, pas un aplat qui la fait disparaître. */
       stage.style.setProperty('--tease', (2.5 - 2.5 * l).toFixed(1) + 'px');
+      stage.style.setProperty('--monte', (7 - 7 * l).toFixed(2) + 'vh');
       root.style.setProperty('--voile', (0.42 - 0.42 * l).toFixed(3));
       reveal.style.setProperty('--net', l.toFixed(3));
 

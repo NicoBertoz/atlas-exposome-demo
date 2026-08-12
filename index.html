@@ -12,8 +12,8 @@
 <title>Atlas de l'exposome — cartographie écocitoyenne des maladies rares de l'enfant</title>
 
 <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
-<link rel="stylesheet" href="css/page.css?v=6c63f4f6">
-<link rel="stylesheet" href="css/app.css?v=6c63f4f6">
+<link rel="stylesheet" href="css/page.css?v=ee410ecb">
+<link rel="stylesheet" href="css/app.css?v=ee410ecb">
 </head>
 <body>
 
@@ -56,8 +56,9 @@
         Les cas déclarés sont <b>fictifs</b>, générés pour tester le rendu.
       </p>
       <p class="fine">
-        Cliquez un <b>carré</b> pour la fiche d'un agrégat instruit, une <b>tache</b> pour lire
-        les cas déclarés d'un secteur. Deux formes, deux natures de donnée.
+        Une <b>surface cernée</b> est un agrégat instruit : elle couvre un territoire connu.
+        Un <b>point flou</b> est un groupe de cas déclarés : il ne couvre rien, sa position est
+        approchée. Cliquez l'un ou l'autre pour sa fiche.
       </p>
     </section>
 
@@ -70,10 +71,11 @@
       <h2>Deux couches, deux natures</h2>
 
       <div class="famille famille-officiel">
-        <div class="fam-tete"><span class="fam-ico ico-hotspot">1</span>
+        <div class="fam-tete"><span class="fam-ico ico-hotspot"></span>
           <b>Instruit par l'État</b></div>
         <p class="fam-txt">Agrégats spatio-temporels investigués par Santé publique France.
-          Périmètre publié, SIR, rapport source. <b>Carré numéroté.</b></p>
+          Périmètre publié, SIR, rapport source. <b>Une surface cernée</b> : elle couvre un
+          territoire, et on sait lequel.</p>
         <label class="toggle-row"><input type="checkbox" id="tg-zones" checked>
           <span>Agrégats documentés <em id="c-zones"></em></span></label>
         <label class="toggle-row"><input type="checkbox" id="tg-sig" checked>
@@ -84,8 +86,8 @@
         <div class="fam-tete"><span class="fam-ico ico-temoin"></span>
           <b>Cas déclarés par les familles</b></div>
         <p class="fam-txt">Recensement participatif. <b>Jamais de position exacte</b> : collecté
-          à l'IRIS, publié par secteur d'environ 25 km, à partir de 3 cas.
-          <b>Tache ronde, sans contour.</b></p>
+          à l'IRIS, publié par secteur d'environ 25 km, à partir de 3 cas. <b>Un point flou</b> :
+          il ne couvre aucun territoire, le halo dit l'incertitude.</p>
         <label class="toggle-row"><input type="checkbox" id="tg-temoins" checked>
           <span>Secteurs de cas déclarés <em id="c-tem"></em></span></label>
         <label class="toggle-row" id="row-agg"><input type="checkbox" id="tg-agg">
@@ -150,14 +152,14 @@
   <div class="hud" id="legend">
     <button id="legend-toggle" aria-label="Légende">Légende</button>
     <div id="legend-body">
-      <div class="leg-titre">Instruit par l'État</div>
-      <div class="li"><span class="leg-carre confirme">1</span> Agrégat, excès confirmé</div>
-      <div class="li"><span class="leg-carre enquete">1</span> Excès non retenu, ou enquête en cours</div>
-      <div class="li"><span class="leg-carre anon">?</span> Périmètre non publié (RGPD)</div>
+      <div class="leg-titre">Surfaces · instruit par l'État</div>
+      <div class="li"><span class="leg-surface confirme"></span> Agrégat, excès confirmé</div>
+      <div class="li"><span class="leg-surface enquete"></span> Excès non retenu, ou enquête en cours</div>
+      <div class="li"><span class="leg-surface anon"></span> Périmètre non publié (RGPD)</div>
       <div class="li"><span class="sq"></span> Autre investigation instruite</div>
       <hr>
-      <div class="leg-titre">Déclaré par les familles</div>
-      <div class="li"><span class="leg-tache"></span> Secteur, 3 cas déclarés ou plus</div>
+      <div class="leg-titre">Points flous · déclaré par les familles</div>
+      <div class="li"><span class="leg-point"></span> Point flou, 3 cas déclarés ou plus</div>
       <div id="legend-patho"></div>
     </div>
   </div>
@@ -170,12 +172,12 @@
 <script src="https://unpkg.com/deck.gl@9.0.35/dist.min.js"></script>
 <script src="https://unpkg.com/pmtiles@3.2.0/dist/pmtiles.js"></script>
 
-<script src="js/data.js?v=6c63f4f6"></script>
-<script src="js/concepts.js?v=6c63f4f6"></script>
-<script src="js/section1.js?v=6c63f4f6"></script>
-<script src="js/style-nk.js?v=6c63f4f6"></script>
-<script src="js/shared.js?v=6c63f4f6"></script>
-<script src="js/engine-deck.js?v=6c63f4f6"></script>
-<script src="js/app.js?v=6c63f4f6"></script>
+<script src="js/data.js?v=ee410ecb"></script>
+<script src="js/concepts.js?v=ee410ecb"></script>
+<script src="js/section1.js?v=ee410ecb"></script>
+<script src="js/style-nk.js?v=ee410ecb"></script>
+<script src="js/shared.js?v=ee410ecb"></script>
+<script src="js/engine-deck.js?v=ee410ecb"></script>
+<script src="js/app.js?v=ee410ecb"></script>
 </body>
 </html>

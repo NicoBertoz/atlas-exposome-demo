@@ -573,6 +573,16 @@
       });
       refresh();
     },
+    /* Marge de caméra correspondant au panneau, pour que la France reste
+       centrée dans la partie visible de la carte. */
+    marge() {
+      if (!ready[state.engine]) return;
+      const e = engines[state.engine];
+      if (!e.setPadding) return;
+      if (state.mode !== 'carte') return e.setPadding({}, 400);
+      e.setPadding(isMobile() ? { bottom: window.innerHeight * 0.18 }
+                              : { left: $('#panel').offsetWidth }, 650);
+    },
     fit: p => ready[state.engine] && engines[state.engine].fitZone(p),
     fitFrance: () => ready[state.engine] && engines[state.engine].fitFrance(),
     flyTo: (lng, lat, z) => ready[state.engine] && engines[state.engine].flyTo(lng, lat, z),
@@ -591,14 +601,17 @@
       $('#tg-exact').checked = false; state.exact = false; $('#exact-warn').hidden = true;
       if (!s1) s1 = NK_SECTION1.monter($('#section1'), () => setMode('carte'));
       else s1.reset();
+      api.marge();
       /* La carte tourne derrière le déroulé, floutée : elle doit être prête
          au moment où on la révèle, pas se charger à ce moment-là. */
       api.setLayers({ zones: true, sig: true, temoins: true });
     } else {
-      /* Sortir du déroulé remet la carte à plat : couches allumées, France entière. */
+      /* Sortir du déroulé n'impose PAS un recadrage : la carte est déjà là,
+         à la bonne échelle. On lui laisse seulement la marge du panneau, en
+         animant le padding de caméra — recadrer d'un coup, c'est ce qui
+         donnait l'impression d'un saut. */
       api.setLayers({ zones: true, sig: true, temoins: true });
-      if (ready[state.engine]) engines[state.engine].fitFrance();
-      $('#section1').scrollTop = 0;
+      api.marge();
     }
     history.replaceState(null, '', m === 'carte' ? '#carte' : location.pathname);
     setTimeout(() => ready[state.engine] && engines[state.engine].resize(), 340);

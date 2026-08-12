@@ -425,6 +425,80 @@ HOTSPOTS = [
                      "Villars-les-Dombes"],
         "n_temoins": 4,
     },
+    {
+        "id": "h19", "geo": "chiers", "rayon_km": 16,
+        "nom": "Vallée de la Chiers — papeterie de Stenay",
+        "lieu": "Ardennes et Meuse (08 / 55)", "categorie": "A",
+        "pathologie": "Imprégnation aux PFAS. Cancers et insuffisances rénales allégués, "
+                      "jamais investigués.",
+        "periode": "1994 – 2022 (épandages)",
+        "cas": "Aucun décompte sanitaire. 3 500 habitants privés d'eau du robinet, "
+               "16 à 17 communes au-dessus de la norme, 44 communes ayant reçu les boues.",
+        "mesure": "Sang", "valeur": 59.0, "mesure_txt": "jusqu'à 59 × la moyenne française",
+        "conclusion": "Aucune investigation d'agrégat sanitaire n'a été ouverte. Une note "
+                      "préfectorale du 7 août 2025 désigne la papeterie comme l'un des "
+                      "contributeurs principaux à la contamination.",
+        "statut": "Très vivant. Information judiciaire ouverte. 163 foyers plaignants.",
+        "collectif": "Mouvement citoyen non constitué en association. Maires référents et "
+                     "avocate coordinatrice.",
+        "cause": "Épandage agricole, pendant environ trente ans, des boues d'épuration de la "
+                 "papeterie, sur au moins 2 700 hectares.",
+        "interet": "La maquette grandeur nature de l'Atlas : source industrielle nommée, "
+                   "vecteur spatial superposable au parcellaire agricole, mesures dans les "
+                   "sols, l'eau et le sang. Il ne manque que la donnée sanitaire.",
+        "source": "https://disclose.ngo/fr/article/pfas-des-analyses-exclusives-devoilent-une-contamination-omnipresente-dans-les-ardennes-et-la-meuse",
+        "communes": ["Haraucourt", "Villy", "Malandry", "Blagny", "Linay",
+                     "La Ferté-sur-Chiers", "Carignan", "Mouzon"],
+        "n_temoins": 5,
+    },
+    {
+        "id": "h20", "geo": "bourg-fidele", "rayon_km": 6,
+        "nom": "Bourg-Fidèle — usine Métal Blanc",
+        "lieu": "Ardennes (08)", "categorie": "A",
+        "pathologie": "Saturnisme infantile. Imprégnation cadmium, arsenic, mercure.",
+        "periode": "1996 – 2024",
+        "cas": "Sur une centaine d'enfants dépistés en 1998, 41 % au-dessus du seuil "
+               "d'alerte de 70 µg/L et 22 % au-dessus de 100 µg/L.",
+        "mesure": "Dépistage", "valeur": 41.0, "mesure_txt": "41 % au-dessus du seuil",
+        "conclusion": "La cour d'appel de Paris a jugé le 15 septembre 2009 que la pollution "
+                      "de l'usine avait été au moins l'un des facteurs de l'intoxication au "
+                      "plomb des enfants de la commune.",
+        "statut": "Pénal clos, condamnation définitive. Dépistage rouvert en 2024.",
+        "collectif": "Association de protection et de défense de l'environnement de "
+                     "Bourg-Fidèle, AFVS, France Nature Environnement",
+        "cause": "Rejets atmosphériques et aqueux de l'usine de recyclage de batteries au "
+                 "plomb : plomb, cadmium, arsenic, mercure, zinc, dioxines.",
+        "interet": "Le seul cas du corpus où un juge a écrit qu'un industriel nommé était à "
+                   "l'origine de l'atteinte sanitaire d'enfants.",
+        "source": "https://www.actu-environnement.com/ae/news/cassation-metaux-lourds-pollution-plomb-cadmium-mise-en-danger-autrui-dommage-21098.php4",
+        "communes": ["Bourg-Fidèle", "Rocroi", "Sévigny-la-Forêt", "Laval-Morency"],
+        "n_temoins": 3,
+    },
+    {
+        "id": "h21", "geo": "noyelles-godault", "rayon_km": 9,
+        "nom": "Metaleurop — les cinq communes du bassin",
+        "lieu": "Pas-de-Calais (62)", "categorie": "B",
+        "pathologie": "Saturnisme infantile",
+        "periode": "1894 – 2003 (usine), dépistage 2022",
+        "cas": "7 752 enfants invités, soit 91 % des mineurs des cinq communes. "
+               "1 892 plombémies réalisées, soit 24 % de participation. "
+               "8 cas de saturnisme et 83 enfants au-dessus du seuil de vigilance.",
+        "mesure": "Participation", "valeur": 24.0, "mesure_txt": "24 % de participation",
+        "conclusion": "Santé publique France conclut que la prévalence chez les 0-6 ans est "
+                      "comparable à celle de la population générale métropolitaine.",
+        "statut": "Vivant. Cour d'appel de Douai, mai 2024 : environ 1,2 million d'euros "
+                  "à 51 riverains.",
+        "collectif": "AFVS au national, collectifs locaux Pige et APRÈS!",
+        "cause": "Retombées historiques de la fonderie Metaleurop, sols pollués au plomb "
+                 "et au cadmium.",
+        "interet": "La leçon de participation, directement transposable au questionnaire : "
+                   "91 % des enfants invités, 24 % venus. L'invitation institutionnelle "
+                   "ne suffit pas.",
+        "source": "https://www.actu-environnement.com/media/pdf/news-41945-synthese-sante-publique-france-analyse-epidemiologique-saturnisme-plombemie.pdf",
+        "communes": ["Noyelles-Godault", "Courcelles-lès-Lens", "Evin-Malmaison",
+                     "Dourges", "Leforest"],
+        "n_temoins": 4,
+    },
 ]
 
 # Zone au périmètre volontairement non publié — traitée à part dans l'interface
@@ -660,6 +734,19 @@ SOUPCONS = {
     "h18": ["Deux mères entourées de champs de maïs. Des veaux nés avec les mêmes malformations.",
             "Sept cas pour zéro virgule douze attendus. Le comité a invalidé le cluster.",
             "Le registre qui a tiré la sonnette n'a plus de financement."],
+    "h19": ["On a bu cette eau pendant trente ans. On l'a appris par un journal.",
+            "Ma prise de sang montre cinquante-neuf fois la moyenne française. Personne "
+            "n'est venu me revoir depuis.",
+            "Les boues ont été épandues sur les champs autour du village. C'était autorisé."],
+    "h20": ["Quarante et un pour cent des enfants dépistés étaient au-dessus du seuil. "
+            "En 1998.",
+            "Il a fallu treize ans de procédure pour qu'un juge écrive que l'usine y était "
+            "pour quelque chose.",
+            "On a rouvert un dépistage en 2024. Vingt-six ans après le premier."],
+    "h21": ["On a reçu l'invitation au dépistage. Beaucoup ne sont pas allés, ils n'y "
+            "croyaient plus.",
+            "La fonderie a fermé en 2003. Le plomb, lui, est resté dans les jardins.",
+            "On nous répond que la prévalence est comparable à la moyenne nationale."],
 }
 
 SOUPCONS_DIFFUS = [
