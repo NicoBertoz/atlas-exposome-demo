@@ -99,6 +99,8 @@
     const places = state.features.length - state.horsMaille;
     $('#year-count').textContent = `${places} sur ${state.features.length} placés`;
     $('#c-zones').textContent = HOTSPOTS.length + ' + 1 anonymisée';
+    $('#hs-count').textContent = HOTSPOTS.length;
+    $('#lede-chiffres').innerHTML = `<b>${HOTSPOTS.length} clusters</b> de cancers pédiatriques documentés en France, <b>${state.signalements.length} autres signalements</b> instruits par les autorités, et <b>${D.temoignages.features.length} témoignages</b> posés par les familles.`;
     $('#c-sig').textContent = state.signalements.length;
     $('#c-tem').textContent = `${state.cellules.length} secteurs`;
     $('#k-note').textContent = state.horsMaille

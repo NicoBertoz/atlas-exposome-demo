@@ -73,8 +73,8 @@ window.NK_ENGINES.deck = (function () {
         getRadius: 24, radiusUnits: 'pixels',
         stroked: true, lineWidthMinPixels: 2, getLineColor: [11, 13, 16, 230],
         pickable: true, autoHighlight: true, highlightColor: [232, 255, 59, 255],
-        onHover: i => i.object ? showTip(S().zoneHTML(i.object.properties, true), i.x, i.y) : hideTip(),
-        onClick: i => i.object && ctx.onZone(i.object.properties),
+        onHover: i => i.object ? showTip(S().zoneHTML(S().hotspotParId(i.object.properties.id), true), i.x, i.y) : hideTip(),
+        onClick: i => i.object && ctx.onZone(S().hotspotParId(i.object.properties.id)),
       }));
       dessus.push(new deck.TextLayer({
         id: 'marq-num', data: S().marqueurs.features,

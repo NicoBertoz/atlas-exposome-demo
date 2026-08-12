@@ -69,7 +69,7 @@ HOTSPOTS = [
         "communes": ["Sainte-Pazanne", "Machecoul-Saint-Même", "Port-Saint-Père",
                      "Saint-Hilaire-de-Chaléons", "Chaumes-en-Retz", "Rouans", "Vue",
                      "Saint-Mars-de-Coutais"],
-        "n_temoins": 17,
+        "n_temoins": 9,
     },
     {
         "id": "h2", "geo": "saint-rogatien", "rayon_km": 11,
@@ -90,7 +90,7 @@ HOTSPOTS = [
         "source": "https://www.ici.fr/emissions/l-info-d-ici-ici-la-rochelle/trois-nouveaux-foyers-de-cancers-pediatriques-ont-ete-identifies-en-charente-maritime-4617726",
         "communes": ["Saint-Rogatien", "Périgny", "Saint-Vivien", "L'Houmeau", "La Jarne",
                      "Angoulins", "Dompierre-sur-Mer", "Croix-Chapeau"],
-        "n_temoins": 15,
+        "n_temoins": 7,
     },
     {
         "id": "h3", "geo": "les-rousses", "rayon_km": 10,
@@ -112,7 +112,7 @@ HOTSPOTS = [
         "source": "https://www.santepubliquefrance.fr/regions-et-territoires/bourgogne-franche-comte/enquetesetudes/investigation-dun-agregat-spatio-temporel-de-cancers-pediatriques-dans-le-haut-jura",
         "communes": ["Les Rousses", "Morez", "Prémanon", "Longchaumois", "Morbier",
                      "Bois-d'Amont", "Saint-Pierre"],
-        "n_temoins": 14,
+        "n_temoins": 6,
     },
     {
         "id": "h4", "geo": "franconville", "rayon_km": 3.4,
@@ -135,7 +135,7 @@ HOTSPOTS = [
         "source": "https://environnementsantepolitique.fr/2026/07/02/lagence-regionale-de-sante-enquete-sur-des-tumeurs-signalees-chez-des-eleves-dun-etablissement-du-val-doise-construit-pres-dun-ancien-site-industriel-pollue/",
         "communes": ["Franconville", "Ermont", "Le Plessis-Bouchard", "Sannois",
                      "Saint-Leu-la-Forêt"],
-        "n_temoins": 9,
+        "n_temoins": 4,
     },
     {
         "id": "h5", "geo": "croix-rousse", "rayon_km": 2.6,
@@ -178,7 +178,252 @@ HOTSPOTS = [
         "source": "https://www.santepubliquefrance.fr/regions-et-territoires/normandie/enquetesetudes/bilan-de-surveillance-post-investigation-du-cluster-de-leucemies-pediatriques-dans-le-secteur-de",
         "communes": ["Pont-de-l'Arche", "Igoville", "Alizay", "Val-de-Reuil", "Léry",
                      "Les Damps", "Criquebeuf-sur-Seine"],
-        "n_temoins": 11,
+        "n_temoins": 5,
+    },
+    {
+        "id": "h7", "geo": "amneville", "rayon_km": 3.2,
+        "nom": "Amnéville — un même établissement scolaire",
+        "lieu": "Moselle (57)", "categorie": "A",
+        "pathologie": "Leucémies aiguës lymphoblastiques",
+        "periode": "2008 – 2010",
+        "cas": "3 cas chez des enfants de moins de 15 ans scolarisés dans le même établissement.",
+        "mesure": "Excès", "valeur": None, "mesure_txt": "Excès confirmé par SpF",
+        "conclusion": "Excès confirmé. Le benzène atmosphérique n'a pas pu être caractérisé, "
+                      "faute de données antérieures à 2008.",
+        "statut": "Surveillance prospective sur 3 ans recommandée.",
+        "collectif": "Aucun collectif identifié",
+        "cause": "Benzène atmosphérique, commune à forte pression industrielle.",
+        "interet": "Jamais médiatisé, absent de toutes les listes militantes. Une des meilleures "
+                   "prises institutionnelles du corpus, et un cas où c'est l'absence de mesure "
+                   "antérieure qui a bloqué.",
+        "source": "https://www.santepubliquefrance.fr/regions-et-territoires/grand-est/rapportsynthese/analyse-dun-agregat-de-leucemies-a-amneville-moselle-de-2008-a-2010-rapport-dinvestigation-decembre",
+        "communes": ["Amnéville", "Rombas", "Marange-Silvange", "Hagondange"],
+        "n_temoins": 4,
+    },
+    {
+        "id": "h8", "geo": "aniche", "rayon_km": 4.2,
+        "nom": "Aniche — sols de l'ancien bassin verrier",
+        "lieu": "Nord (59)", "categorie": "A",
+        "pathologie": "Leucémies aiguës de l'enfant",
+        "periode": "1984 – 2006, analyse 1996 – 2006",
+        "cas": "SIR 5,61 [1,81 – 13,11] chez l'enfant.",
+        "mesure": "SIR", "valeur": 5.61, "mesure_txt": "SIR 5,61 [1,81 – 13,11]",
+        "conclusion": "Excès confirmé chez l'enfant. Sols pollués par le passé verrier. "
+                      "Évaluation d'impact sanitaire lancée dans la foulée.",
+        "statut": "Clos, avec suite en évaluation d'impact sanitaire.",
+        "collectif": "Aucun collectif identifié",
+        "cause": "Pollution des sols liée aux anciennes verreries.",
+        "interet": "Le SIR le plus élevé de tout le corpus français, et pourtant jamais médiatisé.",
+        "source": "https://www.santepubliquefrance.fr/regions-et-territoires/hauts-de-france/rapportsynthese/investigation-dune-suspicion-dagregat-dhemopathies-malignes-et-de-lymphomes-a-aniche-nord-1984-2006",
+        "communes": ["Aniche", "Auberchicourt", "Somain", "Masny"],
+        "n_temoins": 4,
+    },
+    {
+        "id": "h9", "geo": "vincennes", "rayon_km": 2.2,
+        "nom": "Vincennes — école Franklin-Roosevelt",
+        "lieu": "Val-de-Marne (94)", "categorie": "B",
+        "pathologie": "2 leucémies, 1 rhabdomyosarcome",
+        "periode": "1995 – 1999, suivi jusqu'en 2015",
+        "cas": "4 cas signalés, 3 validés.",
+        "mesure": "Hasard", "valeur": None, "mesure_txt": "Regroupement attribué au hasard",
+        "conclusion": "Regroupement probablement lié au hasard, selon un comité de 16 experts. "
+                      "L'école a pourtant été fermée en 2001, dépolluée, rouverte en 2004.",
+        "statut": "Clos. Surveillance maintenue jusqu'en 2015.",
+        "collectif": "Collectif Vigilance Franklin",
+        "cause": "Nappe polluée au trichloréthylène et au perchloréthylène par l'ancienne "
+                 "usine Kodak-Pathé.",
+        "interet": "La matrice historique de tous les clusters français. A obtenu fermeture, "
+                   "dépollution et quatorze ans de surveillance malgré une conclusion négative : "
+                   "la preuve qu'un dossier peut aboutir sans être « confirmé ».",
+        "source": "https://www.santepubliquefrance.fr/regions-et-territoires/ile-de-france/rapportsynthese/comite-scientifique-concernant-les-cancers-pediatriques-survenus-dans-le-quartier-sud-de-vincennes",
+        "communes": ["Vincennes", "Saint-Mandé", "Fontenay-sous-Bois"],
+        "n_temoins": 4,
+    },
+    {
+        "id": "h10", "geo": "preignac", "rayon_km": 5.5,
+        "nom": "Preignac — commune viticole du Sauternais",
+        "lieu": "Gironde (33)", "categorie": "B",
+        "pathologie": "Tumeurs cérébrales et hémopathies",
+        "periode": "cas depuis 2000, investigation en 2013",
+        "cas": "9 cas d'enfants, dont 8 depuis 2000, pour 5,7 attendus.",
+        "mesure": "O/A", "valeur": 1.58, "mesure_txt": "9 observés / 5,7 attendus",
+        "conclusion": "L'absence de mesures de pesticides dans l'air a empêché de conclure à "
+                      "une exposition. L'enquête n'a pas échoué sur le signal sanitaire.",
+        "statut": "Clos.",
+        "collectif": "Pas de collectif formel. Mobilisation portée par une institutrice et "
+                     "des parents.",
+        "cause": "Pesticides viticoles, école entourée de vignes.",
+        "interet": "L'argument le plus direct en faveur d'un atlas de l'exposome : ce qui a "
+                   "manqué n'était pas la donnée de santé, c'était la donnée d'exposition.",
+        "source": "https://www.santepubliquefrance.fr/determinants-de-sante/exposition-a-des-substances-chimiques/pesticides/documents/rapport-synthese/investigation-d-une-suspicion-d-agregat-de-cancers-pediatriques-dans-une-commune-viticole-de-gironde.-juin-2013",
+        "communes": ["Preignac", "Barsac", "Sauternes", "Bommes", "Fargues"],
+        "n_temoins": 4,
+    },
+    {
+        "id": "h11", "geo": "saint-cyr-lecole", "rayon_km": 2.6,
+        "nom": "Saint-Cyr-l'École — quartier de l'Épi d'Or",
+        "lieu": "Yvelines (78)", "categorie": "B",
+        "pathologie": "5 tumeurs du SNC, 3 leucémies, 3 autres localisations",
+        "periode": "1990 – 2002",
+        "cas": "11 cas. 5 tumeurs du SNC observées pour 1,2 attendues.",
+        "mesure": "O/A", "valeur": 4.17, "mesure_txt": "5 tumeurs du SNC / 1,2 attendues",
+        "conclusion": "Incidence doublée, mais ni regroupement spatio-temporel ni exposition "
+                      "commune retrouvés.",
+        "statut": "Clos.",
+        "collectif": "Associations de quartier, avec PRIARTEM et Robin des Toits",
+        "cause": "Antennes relais installées sur le toit de l'école en 1992, démontées en 2003. "
+                 "Le lien n'a pas été étudié.",
+        "interet": "L'InVS a refusé d'étudier l'hypothèse des antennes mais a bien mené "
+                   "l'investigation d'agrégat : il existe donc un rapport officiel, contrairement "
+                   "à ce que laissent entendre les sources associatives.",
+        "source": "https://www.santepubliquefrance.fr/regions-et-territoires/ile-de-france/article/investigation-dun-signalement-dagregat-de-cancers-de-lenfant-a-saint-cyr-lecole-octobre-2004",
+        "communes": ["Saint-Cyr-l'École", "Bois-d'Arcy", "Fontenay-le-Fleury"],
+        "n_temoins": 4,
+    },
+    {
+        "id": "h12", "geo": "romainville", "rayon_km": 2.4,
+        "nom": "Romainville — riverains de l'usine Wipelec",
+        "lieu": "Seine-Saint-Denis (93)", "categorie": "B",
+        "pathologie": "Cancers, malformations et pathologies chroniques, tous âges",
+        "periode": "signalé en 2015, investigation 2016 – 2018",
+        "cas": "36 pathologies déclarées chez 32 riverains.",
+        "mesure": "Enquête", "valeur": None, "mesure_txt": "Investigation Cire Île-de-France",
+        "conclusion": "Investigation menée, sans conclusion d'agrégat caractérisé.",
+        "statut": "Clos.",
+        "collectif": "Association Romainville Sud",
+        "cause": "Trichloréthylène rejeté par l'usine Wipelec.",
+        "interet": "Un des rares cas où un collectif de riverains a produit son propre "
+                   "recensement de pathologies, tous âges confondus. Méthode transposable au "
+                   "questionnaire du projet.",
+        "source": "https://www.santepubliquefrance.fr/docs/rapportsynthese/investigation-dune-suspicion-de-cluster-de-pathologies-a-romainville-93-0",
+        "communes": ["Romainville", "Noisy-le-Sec", "Bagnolet", "Montreuil"],
+        "n_temoins": 4,
+    },
+    {
+        "id": "h13", "geo": "ruitz", "rayon_km": 2.6,
+        "nom": "Ruitz — école maternelle Jacques-Prévert",
+        "lieu": "Pas-de-Calais (62)", "categorie": "C",
+        "pathologie": "1 leucémie, 1 astrocytome, 1 oligoastrocytome anaplasique",
+        "periode": "2003 – 2005",
+        "cas": "3 cas, 2 décès. Deux des trois enfants étaient dans la même classe.",
+        "mesure": "Agrégat", "valeur": None, "mesure_txt": "Agrégat non expliqué",
+        "conclusion": "Rapport d'agrégat spatio-temporel de l'InVS. Agrégat constaté, non expliqué.",
+        "statut": "Clos.",
+        "collectif": "Pas de collectif structuré. Relais PRIARTEM.",
+        "cause": "Antenne relais à une vingtaine de mètres, désactivée puis démontée.",
+        "interet": "Attention au décompte : PRIARTEM avance 4 cas, le décompte officiel est de 3. "
+                   "Ne retenir que l'officiel.",
+        "source": "https://www.priartem.fr/Antennes-relais-et-clusters-de.html",
+        "communes": ["Ruitz", "Barlin", "Houdain", "Maisnil-lès-Ruitz"],
+        "n_temoins": 4,
+    },
+    {
+        "id": "h14", "geo": "rexpoede", "rayon_km": 3.0,
+        "nom": "Rexpoëde — école primaire Victor-Hugo",
+        "lieu": "Nord (59)", "categorie": "C",
+        "pathologie": "Cancers du cerveau",
+        "periode": "2009",
+        "cas": "2 cas, 1 décès.",
+        "mesure": "Refus", "valeur": None, "mesure_txt": "Enquête refusée",
+        "conclusion": "Demande d'enquête sanitaire refusée en décembre 2011 par l'InVS et "
+                      "l'ANSES, au motif de l'absence d'outils d'investigation efficaces.",
+        "statut": "Clos. Quatre agences se sont finalement déplacées le 21 mai 2013.",
+        "collectif": "Rexpoëde Environnement, appuyé par PRIARTEM",
+        "cause": "Antennes de quatre opérateurs sur une ancienne cheminée d'usine, proximité "
+                 "d'un ancien site industriel.",
+        "interet": "Le cas du refus d'investiguer. L'hypothèse des antennes n'est pas étayée, "
+                   "mais le refus documenté est un matériau central sur l'accès à l'enquête.",
+        "source": "https://www.priartem.fr/Antennes-relais-et-clusters-de.html",
+        "communes": ["Rexpoëde", "Hondschoote", "Bergues", "Wormhout"],
+        "n_temoins": 4,
+    },
+    {
+        "id": "h15", "geo": "lunel-viel", "rayon_km": 12,
+        "nom": "Lunel-Viel et les communes sous les vents",
+        "lieu": "Hérault (34)", "categorie": "C",
+        "pathologie": "Sur-incidence de certains cancers signalée par le registre",
+        "periode": "depuis 1999",
+        "cas": "Effectifs non chiffrés publiquement.",
+        "mesure": "Registre", "valeur": None, "mesure_txt": "Sur-incidence documentée",
+        "conclusion": "Sur-incidence documentée par le registre des cancers, lien causal non "
+                      "démontré. Demandes d'études approfondies en cours.",
+        "statut": "Vivant.",
+        "collectif": "Lunel-Viel veut vivre, AMIES, appuyés par Stop aux Cancers de nos Enfants",
+        "cause": "Rejets de l'incinérateur, 120 000 tonnes par an.",
+        "interet": "Mobilisation vivante depuis 1999, déjà en lien avec le collectif de "
+                   "Sainte-Pazanne : l'introduction est facile.",
+        "source": "https://www.ici.fr/infos/sante-sciences/les-riverains-de-l-incinerateur-de-lunel-viel-demandent-des-etudes-approfondies-sur-les-risques-sanitaires-1493139609",
+        "communes": ["Lunel-Viel", "Lansargues", "Candillargues", "Saint-Just",
+                     "Saint-Nazaire-de-Pézan", "Mauguio", "Mudaison", "La Grande-Motte"],
+        "n_temoins": 5,
+    },
+    {
+        "id": "h16", "geo": "lens", "rayon_km": 25,
+        "nom": "Lens et 101 communes — cryptorchidie",
+        "lieu": "Pas-de-Calais (62)", "categorie": "D",
+        "pathologie": "Cryptorchidie opérée avant 7 ans",
+        "periode": "2002 – 2014",
+        "cas": "1 244 cas à Lens, pour un excès de 453. 91 400 cas au niveau national, "
+               "9 024 dans les 24 clusters identifiés.",
+        "mesure": "RR", "valeur": 1.58, "mesure_txt": "RR 1,58",
+        "conclusion": "Étude officielle de Santé publique France, méthodes SaTScan et FlexScan "
+                      "à l'échelle du code postal. Principal des 24 clusters de métropole.",
+        "statut": "Publié en 2021.",
+        "collectif": "Aucun collectif",
+        "cause": "Activités minières, métallurgiques et mécaniques. Perturbateurs endocriniens : "
+                 "métaux, dioxines, PCB.",
+        "interet": "Le jeu de données le plus riche du corpus, directement cartographiable, et "
+                   "il complète l'angle dysgénésie testiculaire de l'hypospadias.",
+        "source": "http://www.santepubliquefrance.fr/exposition-a-des-substances-chimiques/perturbateurs-endocriniens/enquetesetudes/variations-spatiotemporelles-du-risque-de-cryptorchidies-operees-en-france-et-hypotheses",
+        "communes": ["Lens", "Liévin", "Hénin-Beaumont", "Carvin", "Bully-les-Mines",
+                     "Avion", "Loos-en-Gohelle"],
+        "n_temoins": 6,
+    },
+    {
+        "id": "h17", "geo": "orbiel", "rayon_km": 9,
+        "nom": "Vallée de l'Orbiel — arsenic",
+        "lieu": "Aude (11)", "categorie": "D",
+        "pathologie": "Surexposition à l'arsenic chez l'enfant",
+        "periode": "2019 – 2020",
+        "cas": "Jusqu'à 46 enfants surexposés sur 143 testés en août 2019. Sur 293 enfants "
+               "testés jusqu'en décembre 2020, 8 surexposés selon les seuils révisés.",
+        "mesure": "Justice", "valeur": None, "mesure_txt": "État condamné en 2025",
+        "conclusion": "Dispositif de dépistage ARS. Tribunal administratif de Montpellier : "
+                      "État condamné en juillet 2025, appel en septembre 2025 tout en "
+                      "reconnaissant le préjudice écologique.",
+        "statut": "Très vivant.",
+        "collectif": "ECCLA, Terres d'Orbiel, Pour que vive la vallée de l'Orbiel, "
+                     "Association Henri Pezerat, LDH, UFC-Que Choisir",
+        "cause": "Déchets arséniés de l'ancienne mine d'or de Salsigne, lessivés par les "
+                 "inondations d'octobre 2018.",
+        "interet": "Les parents ont payé eux-mêmes les premières analyses, l'État a été "
+                   "condamné, et les chiffres ont bougé avec la révision des seuils. "
+                   "Attention : ce n'est PAS un cluster de cancers.",
+        "source": "https://fne.asso.fr/actualites/salsigne-la-vallee-de-l-arsenic-un-scandale-d-etat",
+        "communes": ["Conques-sur-Orbiel", "Lastours", "Salsigne", "Villalier", "Villardonnel"],
+        "n_temoins": 4,
+    },
+    {
+        "id": "h18", "geo": "druillat", "rayon_km": 17.7,
+        "nom": "Druillat et 67 communes — agénésies de membre",
+        "lieu": "Ain (01)", "categorie": "D",
+        "pathologie": "Agénésie transverse du membre supérieur",
+        "periode": "2009 – 2014",
+        "cas": "7 cas observés pour 0,12 attendus selon REMERA (p = 0,000022). "
+               "18 enfants recensés sur 2000 – 2014, toutes formes confondues.",
+        "mesure": "O/A", "valeur": 56.9, "mesure_txt": "7 observés / 0,12 attendus",
+        "conclusion": "Cluster invalidé par le comité d'experts du 11 juillet 2019 pour "
+                      "hétérogénéité diagnostique. Contesté par REMERA.",
+        "statut": "Clos côté État. REMERA en grande difficulté de financement.",
+        "collectif": "REMERA, registre des malformations en Rhône-Alpes",
+        "cause": "Tératogène agricole ou vétérinaire suspecté. Deux mères entourées de champs "
+                 "de maïs et de tournesol, veaux nés avec agénésies dans le même périmètre.",
+        "interet": "C'est le registre source du pilote hypospadias. Dossier contentieux, à "
+                   "présenter avec les deux versions.",
+        "source": "https://www.remera.fr/wp-content/uploads/2017/07/agr%C3%A9gat-ag%C3%A9n%C3%A9sie-membres.pdf",
+        "communes": ["Druillat", "Pont-d'Ain", "Ambérieu-en-Bugey", "Bourg-en-Bresse",
+                     "Villars-les-Dombes"],
+        "n_temoins": 4,
     },
 ]
 
@@ -207,56 +452,6 @@ ZONE_ANONYME = {
 # 3. Autres signalements documentés (couche secondaire, points)
 # --------------------------------------------------------------------------
 SIGNALEMENTS = [
-    ("amneville", "Amnéville", "Moselle (57)", "A", "Leucémies aiguës lymphoblastiques",
-     "2008-2010", "3 cas", "Excès confirmé chez les moins de 15 ans scolarisés. Le benzène "
-     "atmosphérique n'a pas pu être caractérisé faute de données antérieures à 2008.",
-     "Benzène atmosphérique, commune à forte pression industrielle",
-     "https://www.santepubliquefrance.fr/regions-et-territoires/grand-est/rapportsynthese/analyse-dun-agregat-de-leucemies-a-amneville-moselle-de-2008-a-2010-rapport-dinvestigation-decembre"),
-    ("aniche", "Aniche", "Nord (59)", "A", "Leucémies aiguës de l'enfant",
-     "1984-2006", "SIR 5,61 [1,81 – 13,11]", "Excès confirmé chez l'enfant. Sols pollués par "
-     "le passé verrier. Le SIR le plus élevé de tout le corpus français.",
-     "Pollution des sols liée aux anciennes verreries",
-     "https://www.santepubliquefrance.fr/regions-et-territoires/hauts-de-france/rapportsynthese/investigation-dune-suspicion-dagregat-dhemopathies-malignes-et-de-lymphomes-a-aniche-nord-1984-2006"),
-    ("saint-cyr-lecole", "Saint-Cyr-l'École, quartier de l'Épi d'Or", "Yvelines (78)", "B",
-     "5 tumeurs du SNC, 3 leucémies, 3 autres", "1990-2002", "11 cas",
-     "Incidence doublée, 5 tumeurs du SNC pour 1,2 attendues, mais pas de regroupement "
-     "spatio-temporel ni d'exposition commune.", "Antennes relais sur le toit de l'école, "
-     "démontées en 2003 ; lien non étudié",
-     "https://www.santepubliquefrance.fr/regions-et-territoires/ile-de-france/article/investigation-dun-signalement-dagregat-de-cancers-de-lenfant-a-saint-cyr-lecole-octobre-2004"),
-    ("vincennes", "Vincennes, école Franklin-Roosevelt", "Val-de-Marne (94)", "B",
-     "2 leucémies, 1 rhabdomyosarcome", "1995-1999", "4 signalés, 3 validés",
-     "Regroupement probablement lié au hasard, selon un comité de 16 experts. École fermée "
-     "en 2001, dépolluée, rouverte en 2004, surveillée jusqu'en 2015.",
-     "Nappe polluée au trichloréthylène par l'ancienne usine Kodak-Pathé",
-     "https://www.santepubliquefrance.fr/regions-et-territoires/ile-de-france/rapportsynthese/comite-scientifique-concernant-les-cancers-pediatriques-survenus-dans-le-quartier-sud-de-vincennes"),
-    ("preignac", "Preignac, Sauternais", "Gironde (33)", "B",
-     "Tumeurs cérébrales et hémopathies", "cas depuis 2000", "9 cas pour 5,7 attendus",
-     "L'absence de mesures de pesticides dans l'air a empêché de conclure à une exposition. "
-     "L'enquête n'a pas échoué sur le signal sanitaire, mais sur l'absence de donnée.",
-     "Pesticides viticoles, école entourée de vignes",
-     "https://www.santepubliquefrance.fr/determinants-de-sante/exposition-a-des-substances-chimiques/pesticides/documents/rapport-synthese/investigation-d-une-suspicion-d-agregat-de-cancers-pediatriques-dans-une-commune-viticole-de-gironde.-juin-2013"),
-    ("romainville", "Romainville, riverains de l'usine Wipelec", "Seine-Saint-Denis (93)", "B",
-     "Cancers, malformations, pathologies chroniques", "signalé en 2015",
-     "36 pathologies chez 32 riverains",
-     "Investigation de la Cire Île-de-France 2016-2018. Un des rares cas où un collectif de "
-     "riverains a produit son propre recensement.", "Trichloréthylène rejeté par l'usine Wipelec",
-     "https://www.santepubliquefrance.fr/docs/rapportsynthese/investigation-dune-suspicion-de-cluster-de-pathologies-a-romainville-93-0"),
-    ("ruitz", "Ruitz, école maternelle Jacques-Prévert", "Pas-de-Calais (62)", "C",
-     "1 leucémie, 1 astrocytome, 1 oligoastrocytome", "2003-2005", "3 cas, 2 décès",
-     "Rapport d'agrégat spatio-temporel de l'InVS, agrégat non expliqué. Deux des trois "
-     "enfants étaient dans la même classe.", "Antenne relais à environ 20 m, démontée",
-     "https://www.priartem.fr/Antennes-relais-et-clusters-de.html"),
-    ("rexpoede", "Rexpoëde, école Victor-Hugo", "Nord (59)", "C", "Cancers du cerveau",
-     "2009", "2 cas, 1 décès",
-     "Demande d'enquête sanitaire refusée en décembre 2011 par l'InVS et l'ANSES, au motif de "
-     "l'absence d'outils d'investigation efficaces. Le cas du refus d'investiguer.",
-     "Antennes de 4 opérateurs sur une ancienne cheminée d'usine",
-     "https://www.priartem.fr/Antennes-relais-et-clusters-de.html"),
-    ("lunel-viel", "Lunel-Viel et communes sous les vents", "Hérault (34)", "C",
-     "Sur-incidence de certains cancers", "depuis 1999", "Non chiffré publiquement",
-     "Sur-incidence documentée par le registre des cancers, lien causal non démontré. "
-     "Mobilisation vivante depuis 1999.", "Rejets de l'incinérateur, 120 000 tonnes par an",
-     "https://www.ici.fr/infos/sante-sciences/les-riverains-de-l-incinerateur-de-lunel-viel-demandent-des-etudes-approfondies-sur-les-risques-sanitaires-1493139609"),
     ("pouilley", "Pouilley-les-Vignes", "Doubs (25)", "B", "Tumeurs cérébrales cancéreuses",
      "2012", "3 cas", "Regroupement probablement dû au hasard. Cas d'école du signalement "
      "citoyen : une habitante appelle l'ARS, la Cire est saisie le jour même.",
@@ -287,13 +482,6 @@ SIGNALEMENTS = [
      "risque national.", "Non précisée",
      "https://www.santepubliquefrance.fr/regions-et-territoires/provence-alpes-cote-dazur-et-corse/rapportsynthese/investigation-dune-suspicion-dagregat-de-cancers-sur-les-communes-de-pierrefeu-du-var-et"),
     # Catégorie D — autres pathologies sentinelles
-    ("druillat", "Druillat et 67 communes", "Ain (01)", "D",
-     "Agénésie transverse du membre supérieur", "2009-2014",
-     "7 cas observés pour 0,12 attendus (p = 0,000022)",
-     "Cluster invalidé par le comité d'experts de 2019 pour hétérogénéité diagnostique, "
-     "contesté par REMERA. C'est le registre source du pilote.",
-     "Tératogène agricole ou vétérinaire suspecté",
-     "https://www.remera.fr/wp-content/uploads/2017/07/agr%C3%A9gat-ag%C3%A9n%C3%A9sie-membres.pdf"),
     ("guidel", "Guidel", "Morbihan (56)", "D", "Agénésie transverse du membre supérieur",
      "2011-2013", "4 cas, 3 retenus",
      "Excès confirmé par SpF, aucun facteur de risque commun identifié. Le contre-recensement "
@@ -317,12 +505,6 @@ SIGNALEMENTS = [
      "91 % des enfants invités, seulement 24 % de participation.",
      "Retombées historiques de la fonderie Metaleurop",
      "https://www.actu-environnement.com/media/pdf/news-41945-synthese-sante-publique-france-analyse-epidemiologique-saturnisme-plombemie.pdf"),
-    ("orbiel", "Vallée de l'Orbiel", "Aude (11)", "D", "Surexposition à l'arsenic chez l'enfant",
-     "2019-2020", "Jusqu'à 46 enfants surexposés sur 143 testés",
-     "État condamné par le tribunal administratif de Montpellier en juillet 2025. Les parents "
-     "ont payé eux-mêmes les premières analyses.",
-     "Déchets arséniés de l'ancienne mine d'or de Salsigne",
-     "https://fne.asso.fr/actualites/salsigne-la-vallee-de-l-arsenic-un-scandale-d-etat"),
     ("pallieres", "Saint-Félix-de-Pallières et 4 communes", "Gard (30)", "D",
      "Imprégnation plomb, arsenic, cadmium", "2015-2017", "651 volontaires dont 87 enfants",
      "45 plaintes pénales toutes classées en 2020, au motif qu'on ne pouvait distinguer "
@@ -339,12 +521,6 @@ SIGNALEMENTS = [
      "Croisement exposition et précarité, directement utile pour la section inégalités.",
      "Habitat indigne et récupération informelle de métaux",
      "https://www.paca.ars.sante.fr/prevention-et-depistage-des-cas-de-saturnisme-chez-les-enfants-en-situation-de-vulnerabilite"),
-    ("lens", "Lens et 101 communes", "Pas-de-Calais (62)", "D", "Cryptorchidie opérée",
-     "2002-2014", "1 244 cas à Lens, excès de 453, RR 1,58",
-     "Principal des 24 clusters de cryptorchidie identifiés par SpF en métropole (SaTScan et "
-     "FlexScan au code postal). Le jeu de données le plus riche du corpus.",
-     "Activités minières et métallurgiques, perturbateurs endocriniens",
-     "http://www.santepubliquefrance.fr/exposition-a-des-substances-chimiques/perturbateurs-endocriniens/enquetesetudes/variations-spatiotemporelles-du-risque-de-cryptorchidies-operees-en-france-et-hypotheses"),
 ]
 
 CAT_LABEL = {
@@ -448,7 +624,44 @@ SOUPCONS = {
            "Le collectif a fait doser les enfants. Plomb et terres rares. Le suivi a été "
            "arrêté quand même.",
            "Le bilan de 2025 a clos le dossier. Nous, on habite toujours là."],
+    "h7": ["L'école est à deux pas de la zone industrielle. On respire ça tous les jours.",
+           "On nous a dit qu'il n'y avait pas de mesure de benzène avant 2008. Donc rien à comparer.",
+           "Trois enfants du même établissement. On a appris pour les deux autres par le bouche-à-oreille."],
+    "h8": ["Le quartier est bâti sur d'anciennes verreries. Les sols, personne n'en parlait avant.",
+           "Cinq fois plus de cas qu'attendu, et pas une ligne dans la presse.",
+           "On a un rapport officiel. Il dort quelque part."],
+    "h9": ["L'ancienne usine avait laissé du trichloréthylène dans la nappe. Sous l'école.",
+           "L'école a fermé, on l'a dépolluée, on l'a rouverte. Et la conclusion reste « le hasard ».",
+           "Quatorze ans de surveillance pour un agrégat qu'on nous dit inexistant."],
+    "h10": ["L'école est entourée de vignes. Les traitements passaient pendant la récréation.",
+            "Neuf enfants. On nous a répondu qu'il n'existait aucune mesure dans l'air.",
+            "Ce n'est pas la maladie qu'on n'a pas su voir, c'est ce qu'on respirait."],
+    "h11": ["Il y avait des antennes sur le toit de l'école. Elles ont été démontées, sans explication.",
+            "Cinq tumeurs du cerveau pour une attendue. On nous a dit que ce n'était pas un agrégat.",
+            "Le quartier s'est mobilisé, puis s'est épuisé."],
+    "h12": ["L'usine rejetait du trichloréthylène à cent mètres des immeubles.",
+            "C'est l'association qui a fait le recensement, immeuble par immeuble.",
+            "Trente-deux riverains malades. L'enquête a eu lieu, et puis plus rien."],
+    "h13": ["Deux des trois enfants étaient dans la même classe de maternelle.",
+            "Une antenne à vingt mètres de la cour. Elle a été démontée après.",
+            "On nous parle de trois cas, l'association en compte quatre. Personne ne tranche."],
+    "h14": ["On a demandé une enquête sanitaire. On nous l'a refusée par courrier.",
+            "Les antennes de quatre opérateurs sur une cheminée d'usine, en face de l'école.",
+            "Il a fallu quatre ans pour que des agences se déplacent."],
+    "h15": ["L'incinérateur brûle cent vingt mille tonnes par an. On est sous les vents.",
+            "Le registre des cancers a documenté la sur-incidence. Depuis 1999.",
+            "On demande des études approfondies depuis vingt-cinq ans."],
+    "h16": ["Le bassin minier, la métallurgie, tout ça a laissé quelque chose dans les sols.",
+            "On nous a opérés sans jamais nous dire que c'était plus fréquent ici qu'ailleurs.",
+            "Mille deux cents cas sur la seule agglomération. Le chiffre existe, il est publié."],
+    "h17": ["Après les inondations de 2018, les déchets de la mine sont descendus dans la vallée.",
+            "Les premières analyses, ce sont les parents qui les ont payées.",
+            "L'État a été condamné en 2025. Il a fait appel."],
+    "h18": ["Deux mères entourées de champs de maïs. Des veaux nés avec les mêmes malformations.",
+            "Sept cas pour zéro virgule douze attendus. Le comité a invalidé le cluster.",
+            "Le registre qui a tiré la sonnette n'a plus de financement."],
 }
+
 SOUPCONS_DIFFUS = [
     "On habite à quatre cents mètres des champs. Les traitements passaient au petit matin.",
     "Il y a une usine à trois kilomètres. Personne n'a jamais voulu faire le lien.",

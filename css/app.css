@@ -215,14 +215,14 @@ input[type=range] { width: 100%; accent-color: var(--accent); }
 }
 
 /* ============================================ SECTION 1 : LE DÉROULÉ
-   Le déroulé occupe tout l'écran, la carte tourne derrière, floutée. Elle
-   n'est pas une image d'illustration : c'est la vraie carte, déjà chargée,
-   qui se révèle quand on passe en section 2. */
+   Le déroulé tient en deux écrans et laisse voir la carte derrière lui.
+   Le voile s'éclaircit et le flou tombe à mesure qu'on descend : arrivé en
+   bas, on regarde déjà la carte, il ne reste qu'à l'ouvrir. */
 #section1 {
   position: fixed; inset: var(--bar-h) 0 0 0; z-index: 40;
-  overflow-y: auto; -webkit-overflow-scrolling: touch;
-  display: none;
-  background: linear-gradient(180deg, rgba(11,13,16,.94) 0%, rgba(11,13,16,.86) 40%, rgba(11,13,16,.92) 100%);
+  overflow-y: auto; -webkit-overflow-scrolling: touch; display: none;
+  background: rgba(11, 13, 16, var(--voile, .94));
+  transition: background .2s linear;
 }
 body.vue-intro #section1 { display: block; }
 body.vue-intro #panel { display: none; }
@@ -237,76 +237,100 @@ body.vue-intro #loading,
 body.vue-intro #engine-switch,
 body.vue-intro #btn-basemap { display: none; }
 body.vue-intro .map-canvas {
-  filter: blur(var(--tease, 10px)) saturate(.45);
-  opacity: var(--tease-op, .3);
-  transition: opacity .4s linear;
+  filter: blur(var(--tease, 12px)) saturate(.5);
+  opacity: var(--tease-op, .22);
   pointer-events: none;
 }
 
+/* ------------------------------------------------------------ HÉRO */
 .s1-hero {
-  min-height: calc(100vh - var(--bar-h) - 40px);
-  max-width: 720px; margin: 0 auto; padding: 12vh 22px 60px;
-  display: flex; flex-direction: column; justify-content: center;
+  max-width: 940px; margin: 0 auto; padding: 8vh 24px 44px;
 }
 .s1-kicker {
-  font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase;
-  color: var(--txt-faint); margin-bottom: 20px;
+  display: block; font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--txt-faint); margin-bottom: 16px;
 }
 .s1-hero h1 {
-  margin: 0 0 18px; font-size: clamp(30px, 6vw, 54px); line-height: 1.08;
-  letter-spacing: -.035em; font-weight: 700;
+  margin: 0 0 14px; font-size: clamp(29px, 5.2vw, 50px); line-height: 1.08;
+  letter-spacing: -.035em; font-weight: 700; max-width: 15ch;
 }
 .s1-chapo {
-  margin: 0 0 26px; font-size: clamp(16px, 2.4vw, 21px); line-height: 1.45;
-  color: var(--accent);
+  margin: 0 0 30px; font-size: clamp(15px, 2vw, 19px); line-height: 1.45;
+  color: var(--accent); max-width: 46ch;
 }
-.s1-intro { margin: 0; font-size: 15.5px; line-height: 1.7; color: var(--txt-dim); max-width: 560px; }
-.s1-scroll-hint {
-  margin-top: 48px; font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase;
-  color: var(--txt-faint);
+.s1-chiffres { display: flex; gap: 34px; flex-wrap: wrap; margin-bottom: 30px; }
+.s1-chiffres b {
+  display: block; font-family: var(--mono); font-size: 26px; font-weight: 700;
+  line-height: 1.1; letter-spacing: -.02em;
 }
-.s1-scroll-hint::after { content: ' ↓'; }
+.s1-chiffres span { font-size: 11.5px; color: var(--txt-faint); }
+.s1-hero-cta { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.s1-hero-cta .btn { padding: 12px 20px; font-size: 14px; }
+.s1-ou { font-size: 12.5px; color: var(--txt-faint); }
 
-.s1-concepts { max-width: 720px; margin: 0 auto; padding: 0 22px; }
-
-/* Une carte-concept = un résumé de 200 mots maximum, et un lien pour creuser */
+/* -------------------------------------------------------- LES HUIT POINTS
+   Une grille, pas une colonne : les huit points se balaient d'un regard. */
+.s1-grille {
+  max-width: 940px; margin: 0 auto; padding: 0 24px;
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;
+}
 .concept {
-  padding: 52px 0; border-top: 1px solid var(--line-soft);
-  opacity: .35; transform: translateY(10px);
-  transition: opacity .45s ease, transform .45s ease;
+  display: block; border: 1px solid var(--line-soft); border-radius: 12px;
+  padding: 18px 20px 16px; background: rgba(18,21,26,.7); backdrop-filter: blur(6px);
+  opacity: 0; transform: translateY(8px);
+  transition: opacity .4s ease, transform .4s ease, border-color .15s, background .15s;
 }
 .concept.vu { opacity: 1; transform: none; }
+.concept:hover { border-color: var(--txt-faint); background: rgba(25,29,36,.85); }
 .concept-num {
-  font-family: var(--mono); font-size: 10.5px; color: var(--txt-faint);
-  letter-spacing: .1em; margin-bottom: 14px;
+  font-family: var(--mono); font-size: 10px; color: var(--txt-faint);
+  letter-spacing: .1em; float: right;
 }
 .concept-kicker {
-  display: block; font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
-  color: var(--accent); margin-bottom: 8px;
+  display: block; font-size: 10px; letter-spacing: .13em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 7px;
 }
 .concept h2 {
-  margin: 0 0 16px; font-size: clamp(22px, 3.4vw, 30px); line-height: 1.18;
-  letter-spacing: -.025em; font-weight: 700;
+  margin: 0 0 8px; font-size: 17.5px; line-height: 1.22;
+  letter-spacing: -.02em; font-weight: 700;
 }
-.concept-resume p { margin: 0 0 13px; font-size: 15.5px; line-height: 1.72; color: #CDD2D9; }
-.concept-resume p:last-child { margin-bottom: 0; }
-.concept-resume b { color: var(--txt); }
-.concept-lien {
-  display: inline-block; margin-top: 18px; font-size: 13.5px; font-weight: 600;
-  border: 1px solid rgba(232,255,59,.3); border-radius: 8px; padding: 9px 15px;
-  transition: .12s;
-}
-.concept-lien:hover { border-color: var(--accent); background: rgba(232,255,59,.07); }
+.concept p { margin: 0 0 12px; font-size: 13.5px; line-height: 1.55; color: var(--txt-dim); }
+.concept-lien { font-size: 12.5px; font-weight: 600; color: var(--accent); }
 
-.s1-fin {
-  max-width: 720px; margin: 0 auto;
-  padding: 60px 22px calc(90px + var(--safe-b));
-  border-top: 1px solid var(--line);
+/* ------------------------------------------------- LA FENÊTRE SUR LA CARTE */
+.s1-carte { max-width: 940px; margin: 0 auto; padding: 40px 24px calc(60px + var(--safe-b)); }
+.s1-carte-cadre {
+  border: 1px solid var(--line); border-radius: 16px; padding: 30px 28px;
+  background: rgba(11,13,16,.55); backdrop-filter: blur(3px);
+  opacity: 0; transform: translateY(10px); transition: opacity .5s ease, transform .5s ease;
 }
-.s1-fin h2 { margin: 0 0 12px; font-size: 26px; letter-spacing: -.025em; }
-.s1-fin p { margin: 0 0 24px; font-size: 15.5px; line-height: 1.7; color: var(--txt-dim); }
+.s1-carte.vu .s1-carte-cadre { opacity: 1; transform: none; }
+.s1-carte-txt h2 { margin: 0 0 10px; font-size: 26px; letter-spacing: -.025em; }
+.s1-carte-txt p { margin: 0 0 22px; font-size: 15px; line-height: 1.65; color: var(--txt-dim); max-width: 52ch; }
 .s1-cta { display: flex; gap: 10px; flex-wrap: wrap; }
-.s1-cta .btn { padding: 13px 22px; font-size: 14px; }
+.s1-cta .btn { padding: 12px 20px; font-size: 14px; }
+
+/* ------------------------------------------- RACCOURCI FLOTTANT VERS LA CARTE */
+#s1-pilule {
+  position: fixed; right: 20px; bottom: 22px; z-index: 45;
+  display: flex; align-items: center; gap: 9px;
+  background: var(--accent); color: #0B0D10; border: 0;
+  border-radius: 999px; padding: 12px 20px; font-size: 13.5px; font-weight: 600;
+  box-shadow: 0 8px 28px rgba(0,0,0,.5);
+  opacity: 0; transform: translateY(14px); pointer-events: none;
+  transition: opacity .25s ease, transform .25s ease;
+}
+#s1-pilule.on { opacity: 1; transform: none; pointer-events: auto; }
+#s1-pilule:hover { filter: brightness(1.08); }
+#s1-pilule .pt {
+  width: 7px; height: 7px; border-radius: 50%; background: #0B0D10;
+  box-shadow: 0 0 0 4px rgba(11,13,16,.22);
+  animation: pouls 2s ease-in-out infinite;
+}
+@keyframes pouls {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(11,13,16,.2); }
+  50%      { box-shadow: 0 0 0 6px rgba(11,13,16,.08); }
+}
 
 /* Appel au témoignage, en pied de chaque fiche */
 .fiche-cta {
@@ -317,10 +341,15 @@ body.vue-intro .map-canvas {
 .fiche-cta .btn { display: block; width: 100%; text-align: center; }
 
 @media (max-width: 859px) {
-  .s1-hero { min-height: auto; padding: 8vh 18px 48px; }
-  .s1-concepts, .s1-fin { padding-left: 18px; padding-right: 18px; }
-  .concept { padding: 38px 0; }
-  .s1-cta .btn { width: 100%; text-align: center; }
+  .s1-hero { padding: 6vh 18px 34px; }
+  .s1-chiffres { gap: 22px; }
+  .s1-chiffres b { font-size: 21px; }
+  .s1-grille { grid-template-columns: 1fr; padding: 0 18px; }
+  .s1-carte { padding: 30px 18px calc(50px + var(--safe-b)); }
+  .s1-carte-cadre { padding: 22px 18px; }
+  .s1-cta .btn, .s1-hero-cta .btn { width: 100%; text-align: center; }
+  .s1-ou { display: none; }
+  #s1-pilule { right: 14px; left: 14px; bottom: 16px; justify-content: center; }
 }
 
 /* -------------------------------------------------------------- FICHES */
@@ -453,7 +482,9 @@ body.vue-intro .map-canvas {
 .tem-list .nm { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .tem-list .yr { font-family: var(--mono); font-size: 11px; color: var(--txt-faint); flex: none; }
 
-/* Pastille numérotée d'un cluster, version Leaflet (divIcon) */
+/* Pastille numérotée d'un cluster : divIcon côté Leaflet, marqueur DOM
+   côté MapLibre et deck.gl. Même rendu dans les trois moteurs. */
+.nk-marq.gl { background: none; border: 0; padding: 0; cursor: pointer; }
 .nk-marq span {
   display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%;
   font-family: var(--mono); font-size: 12px; font-weight: 700; color: #0B0D10;

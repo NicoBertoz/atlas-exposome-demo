@@ -34,7 +34,17 @@ window.NK_ENGINES.maplibre = (function () {
   }
 
 
+  const NOS_SOURCES = ['zones', 'sig', 'pts', 'exact'];
+  const NOS_COUCHES = ['zone-fill', 'zone-line', 'zone-line-anon', 'zone-label',
+                       'sig', 'pt-halo', 'pt', 'pt-n', 'exact'];
+
+  /* Idempotente : addLayers peut être rejouée après un setStyle, et une
+     seconde pose sur une source déjà déclarée laisserait la pile à moitié
+     construite, sans lever d'erreur visible. */
   function addLayers() {
+    NOS_COUCHES.forEach(l => map.getLayer(l) && map.removeLayer(l));
+    NOS_SOURCES.forEach(s => map.getSource(s) && map.removeSource(s));
+
     // notre style lit déjà name:fr ; la réécriture ne sert qu'au repli CARTO
     if (!auto) S().libellesEnFrancais(map);
 
@@ -43,9 +53,13 @@ window.NK_ENGINES.maplibre = (function () {
       ['==', ['get', 'categorie'], 'A'], S().C.confirme,
       S().C.enquete];
 
+    /* Toutes les sources d'abord, les couches ensuite. Déclarer une source au
+       milieu de la pile de couches marche en théorie, mais laisse des tuiles
+       non générées si une couche antérieure a été rejetée. */
     map.addSource('zones', { type: 'geojson', data: window.NK_DATA.hotspots });
     map.addSource('sig', { type: 'geojson', data: window.NK_DATA.signalements });
     map.addSource('pts', { type: 'geojson', data: EMPTY });
+    map.addSource('exact', { type: 'geojson', data: EMPTY });
 
     map.addLayer({
       id: 'zone-fill', type: 'fill', source: 'zones',
@@ -56,50 +70,29 @@ window.NK_ENGINES.maplibre = (function () {
           ['get', 'anonyme'], 0.07, 0.17],
       },
     });
+    /* line-dasharray n'accepte pas d'expression dépendant de la donnée : une
+       couche qui en contient une est rejetée en silence, sans erreur visible.
+       D'où deux couches filtrées, chacune avec un tireté constant. */
+    const largeur = ['case', ['boolean', ['feature-state', 'hover'], false], 2.6, 1.3];
     map.addLayer({
       id: 'zone-line', type: 'line', source: 'zones',
-      paint: {
-        'line-color': col,
-        'line-width': ['case', ['boolean', ['feature-state', 'hover'], false], 2.6, 1.3],
-        'line-dasharray': ['case', ['get', 'anonyme'], ['literal', [1, 2]], ['literal', [2.5, 1.5]]],
-      },
+      filter: ['!', ['get', 'anonyme']],
+      paint: { 'line-color': col, 'line-width': largeur, 'line-dasharray': [2.5, 1.5] },
+    });
+    map.addLayer({
+      id: 'zone-line-anon', type: 'line', source: 'zones',
+      filter: ['get', 'anonyme'],
+      paint: { 'line-color': col, 'line-width': largeur, 'line-dasharray': [1, 2] },
     });
     // Pastilles numérotées : la seule lecture possible à l'échelle nationale
-    map.addSource('marq', { type: 'geojson', data: S().marqueurs });
-
-    /* Le libellé est posé sur le centre (source ponctuelle) et non sur le
-       polygone : sur une surface, MapLibre répète le texte à chaque tuile. */
     map.addLayer({
-      id: 'zone-label', type: 'symbol', source: 'marq',
+      id: 'zone-label', type: 'symbol', source: 'zones',
       minzoom: 8.5,
       layout: {
         'text-field': ['get', 'nom'], 'text-size': 12,
         'text-font': ['Open Sans Semibold'], 'text-max-width': 9,
       },
       paint: { 'text-color': '#E8EAED', 'text-halo-color': 'rgba(11,13,16,.92)', 'text-halo-width': 1.8 },
-    });
-    map.addLayer({
-      id: 'marq-halo', type: 'circle', source: 'marq', maxzoom: 9,
-      paint: {
-        'circle-color': ['get', 'marker_color'], 'circle-opacity': 0.2,
-        'circle-radius': ['interpolate', ['linear'], ['zoom'], 5, 16, 9, 30],
-      },
-    });
-    map.addLayer({
-      id: 'marq', type: 'circle', source: 'marq', maxzoom: 9,
-      paint: {
-        'circle-color': ['get', 'marker_color'],
-        'circle-radius': ['interpolate', ['linear'], ['zoom'], 5, 10, 9, 14],
-        'circle-stroke-width': 2, 'circle-stroke-color': 'rgba(11,13,16,.9)',
-      },
-    });
-    map.addLayer({
-      id: 'marq-num', type: 'symbol', source: 'marq', maxzoom: 9,
-      layout: {
-        'text-field': ['get', 'num'], 'text-size': 12,
-        'text-font': ['Open Sans Bold'], 'text-allow-overlap': true,
-      },
-      paint: { 'text-color': '#0B0D10' },
     });
 
     // Signalements : carrés creux, volontairement discrets face aux clusters
@@ -146,7 +139,6 @@ window.NK_ENGINES.maplibre = (function () {
 
     /* Comparateur d'atelier : les positions exactes, par-dessus les secteurs.
        Vide en temps normal (cf. app.js). */
-    map.addSource('exact', { type: 'geojson', data: EMPTY });
     map.addLayer({
       id: 'exact', type: 'circle', source: 'exact',
       paint: {
@@ -158,7 +150,34 @@ window.NK_ENGINES.maplibre = (function () {
 
     /* Les taches floues sont larges : sans ce réordonnancement elles passent
        devant les pastilles de cluster, qui portent le propos principal. */
-    ['exact', 'sig', 'marq-halo', 'marq', 'marq-num', 'zone-label'].forEach(l => map.moveLayer(l));
+    ['exact', 'sig', 'zone-label'].forEach(l => map.moveLayer(l));
+  }
+
+  /* Pastilles numérotées en marqueurs DOM plutôt qu'en couche GL.
+     Dix-neuf éléments ne coûtent rien, et cela évite le pipeline de tuiles
+     d'une source ponctuelle secondaire — le même choix que côté Leaflet,
+     ce qui rend les deux moteurs directement comparables. */
+  let pastilles = [];
+  function creerPastilles() {
+    pastilles.forEach(m => m.remove());
+    pastilles = S().marqueurs.features.map(f => {
+      const el = document.createElement('button');
+      el.className = 'nk-marq gl';
+      el.innerHTML = `<span style="background:${f.properties.marker_color}">${f.properties.num}</span>`;
+      const h = S().hotspotParId(f.properties.id);
+      el.addEventListener('click', ev => { ev.stopPropagation(); ctx.onZone(h); });
+      el.addEventListener('mouseenter', () =>
+        popup.setLngLat(f.geometry.coordinates).setHTML(S().zoneHTML(h, true)).addTo(map));
+      el.addEventListener('mouseleave', () => popup.remove());
+      return new maplibregl.Marker({ element: el })
+        .setLngLat(f.geometry.coordinates).addTo(map);
+    });
+    map.on('zoomend', () => syncPastilles(last && last.zones));
+  }
+
+  function syncPastilles(on) {
+    const visible = on !== false && map.getZoom() < 9;
+    pastilles.forEach(m => { m.getElement().style.display = visible ? '' : 'none'; });
   }
 
   /* Un seul gestionnaire de survol par source, pour éviter que trois
@@ -183,10 +202,7 @@ window.NK_ENGINES.maplibre = (function () {
   function bindEvents() {
     bindHover('pt', 'pts', c => S().celluleHTML(JSON.parse(c.data)));
     bindHover('sig', 'sig', p => S().sigHTML(p));
-    bindHover('marq', 'marq', p => S().zoneHTML(p, true));
     bindHover('zone-fill', 'zones', p => S().zoneHTML(p, true));
-
-    map.on('click', 'marq', e => ctx.onZone(e.features[0].properties));
 
     map.on('click', 'pt', e => {
       ctx.onCell(JSON.parse(e.features[0].properties.data));
@@ -223,7 +239,7 @@ window.NK_ENGINES.maplibre = (function () {
         popup = new maplibregl.Popup({ closeButton: false, closeOnClick: false, maxWidth: '290px', offset: 12 });
         map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'bottom-right');
         whenReady(() => {
-          addLayers(); bindEvents();
+          addLayers(); bindEvents(); creerPastilles();
           if (last) this.render(last);
           map.fitBounds(S().FRANCE.bounds, { padding: S().FRANCE.padding(), duration: 0 });
           c.onReady('maplibre'); resolve();
@@ -246,8 +262,8 @@ window.NK_ENGINES.maplibre = (function () {
       map.getSource('exact').setData(
         { type: 'FeatureCollection', features: state.pointsExacts || [] });
       const vis = (l, on) => map.getLayer(l) && map.setLayoutProperty(l, 'visibility', on ? 'visible' : 'none');
-      ['zone-fill', 'zone-line', 'zone-label', 'marq-halo', 'marq', 'marq-num']
-        .forEach(l => vis(l, state.zones));
+      ['zone-fill', 'zone-line', 'zone-line-anon', 'zone-label'].forEach(l => vis(l, state.zones));
+      syncPastilles(state.zones);
       vis('sig', state.sig);
       ['pt-halo', 'pt', 'pt-n'].forEach(l => vis(l, state.temoins));
     },

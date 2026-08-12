@@ -13,8 +13,8 @@
 
 <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-<link rel="stylesheet" href="css/page.css?v=5829b01f">
-<link rel="stylesheet" href="css/app.css?v=5829b01f">
+<link rel="stylesheet" href="css/page.css?v=65070950">
+<link rel="stylesheet" href="css/app.css?v=65070950">
 </head>
 <body>
 
@@ -56,15 +56,11 @@
 
     <section class="sec explore" id="intro">
       <h2>Ce que montre cette carte</h2>
-      <p class="lede">
-        <b>6 clusters</b> de cancers pédiatriques documentés en France, <b>25 autres
-        signalements</b> instruits par les autorités, et <b>100 témoignages</b> individuels
-        posés par les familles.
-      </p>
+      <p class="lede" id="lede-chiffres"></p>
       <p class="fine">
         Les clusters et les signalements sont des <b>données publiques réelles</b> : rapports
         de Santé publique France, registres, presse. Chaque fiche porte son lien source.
-        Les 100 témoignages individuels sont <b>fictifs</b>, générés pour tester le rendu.
+        Les témoignages individuels sont <b>fictifs</b>, générés pour tester le rendu.
       </p>
       <p class="fine">
         Cliquez un secteur pour lire les témoignages qu'il contient, un cluster pour sa fiche
@@ -105,7 +101,7 @@
     </section>
 
     <section class="sec explore">
-      <h2>Les 6 clusters</h2>
+      <h2>Les clusters documentés <span class="h2-sub" id="hs-count"></span></h2>
       <div class="hs" id="hs-list"></div>
     </section>
 
@@ -169,14 +165,14 @@
 <script src="https://unpkg.com/deck.gl@9.0.35/dist.min.js"></script>
 <script src="https://unpkg.com/pmtiles@3.2.0/dist/pmtiles.js"></script>
 
-<script src="js/data.js?v=5829b01f"></script>
-<script src="js/concepts.js?v=5829b01f"></script>
-<script src="js/section1.js?v=5829b01f"></script>
-<script src="js/style-nk.js?v=5829b01f"></script>
-<script src="js/shared.js?v=5829b01f"></script>
-<script src="js/engine-maplibre.js?v=5829b01f"></script>
-<script src="js/engine-leaflet.js?v=5829b01f"></script>
-<script src="js/engine-deck.js?v=5829b01f"></script>
-<script src="js/app.js?v=5829b01f"></script>
+<script src="js/data.js?v=65070950"></script>
+<script src="js/concepts.js?v=65070950"></script>
+<script src="js/section1.js?v=65070950"></script>
+<script src="js/style-nk.js?v=65070950"></script>
+<script src="js/shared.js?v=65070950"></script>
+<script src="js/engine-maplibre.js?v=65070950"></script>
+<script src="js/engine-leaflet.js?v=65070950"></script>
+<script src="js/engine-deck.js?v=65070950"></script>
+<script src="js/app.js?v=65070950"></script>
 </body>
 </html>

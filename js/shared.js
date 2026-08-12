@@ -101,14 +101,25 @@ window.NK_SHARED = (function () {
   const marqueurs = {
     type: 'FeatureCollection',
     features: window.NK_DATA.hotspots.features.map((f, i) => ({
-      type: 'Feature', id: 'm' + i,
+      type: 'Feature', id: i,
       geometry: { type: 'Point', coordinates: f.properties.centre },
-      properties: Object.assign({}, f.properties, {
+      /* Propriétés réduites au strict nécessaire à l'affichage. Recopier tout
+         le hotspot ici gonfle les tuiles pour rien : le clic et le survol
+         retrouvent la fiche complète avec hotspotParId(). */
+      properties: {
+        id: f.properties.id,
+        nom: f.properties.nom,          // le libellé de zone se pose sur ce point
         num: f.properties.anonyme ? '?' : String(i + 1),
         marker_color: zoneColor(f.properties),
-      }),
+      },
     })),
   };
+
+  /* Retrouve le hotspot complet à partir de l'identifiant porté par un marqueur. */
+  function hotspotParId(id) {
+    const f = window.NK_DATA.hotspots.features.find(x => x.properties.id === id);
+    return f && f.properties;
+  }
 
   /* ---------------------------------------------------------------- FLOU
      Un cas individuel n'est jamais publié à sa position. On le range dans une
@@ -243,7 +254,7 @@ window.NK_SHARED = (function () {
   }
 
   return { C, zoneColor, zoneHTML, sigHTML, temHTML, hex2rgba, rgb, bounds, nb,
-           FRANCE, marqueurs, libellesEnFrancais,
+           FRANCE, marqueurs, hotspotParId, libellesEnFrancais,
            flouter, celluleHTML, cellulesGeoJSON, rayonExpression, rayonParNiveau,
            K_ANONYMAT, MAILLE };
 })();

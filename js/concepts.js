@@ -16,6 +16,7 @@
 window.NK_CONCEPTS = [
   {
     id: 'enfants-sentinelles',
+    teaser: `Un enfant n'a pas fumé, pas travaillé en usine, pas accumulé quarante ans d'habitudes. Quand il tombe malade, la liste des causes est courte.`,
     kicker: 'Le point de départ',
     titre: 'Les enfants sont des sentinelles',
     resume: `<p>Environ 2 500 enfants apprennent chaque année en France qu'ils ont un cancer.
@@ -53,6 +54,7 @@ window.NK_CONCEPTS = [
 
   {
     id: 'effet-cocktail',
+    teaser: `Chaque substance est évaluée seule. Personne ne vit exposé à une seule substance. Un territoire peut être conforme et rester un mauvais endroit où grandir.`,
     kicker: 'Ce que la toxicologie ne sait pas faire',
     titre: 'L\'effet cocktail',
     resume: `<p>Une substance est évaluée seule. On lui cherche une dose sans effet, on en tire
@@ -92,6 +94,7 @@ window.NK_CONCEPTS = [
 
   {
     id: 'pollution-chimique',
+    teaser: `Les PFAS ne se dégradent pas, les pesticides reviennent chaque saison. Mais une exposition n'est pas un agrégat, et les confondre coûterait cher.`,
     kicker: 'Le décor',
     titre: 'PFAS et pesticides, une contamination de fond',
     resume: `<p>Les composés perfluorés ne se dégradent pas. Conçus pour résister à l'eau, à la
@@ -130,6 +133,7 @@ window.NK_CONCEPTS = [
 
   {
     id: 'difficulte-preuve',
+    teaser: `À Preignac, l'enquête n'a pas échoué sur le signal sanitaire : il n'existait aucune mesure de pesticides dans l'air à lui opposer.`,
     kicker: 'Le nœud',
     titre: 'Prouver est presque impossible, et ce n\'est pas un hasard',
     resume: `<p>À Preignac, en Gironde, neuf enfants malades pour 5,7 attendus, une école entourée
@@ -173,6 +177,7 @@ window.NK_CONCEPTS = [
 
   {
     id: 'maille',
+    teaser: `Onze leucémies. SIR 6,4 à la commune, 2,3 au canton, sur les mêmes enfants. Rien n'a changé sauf le contour du calcul.`,
     kicker: 'Le détail qui change tout',
     titre: 'La maille décide du résultat',
     resume: `<p>Pont-de-l'Arche et Igoville, dans l'Eure. Onze leucémies chez des moins de 15 ans
@@ -207,6 +212,7 @@ window.NK_CONCEPTS = [
 
   {
     id: 'donnee-verrouillee',
+    teaser: `Sur-incidence confirmée en mars 2026 dans six communes. Lesquelles ? Le rapport ne le dit pas, le secteur a été anonymisé.`,
     kicker: 'Ce qu\'on ne vous montre pas',
     titre: 'La donnée existe, et elle est fermée',
     resume: `<p>Mars 2026, rapport le plus récent du corpus : cinq enfants, une sur-incidence
@@ -242,6 +248,7 @@ window.NK_CONCEPTS = [
 
   {
     id: 'collecte-citoyenne',
+    teaser: `À Noyelles-Godault, 91 % des enfants invités, 24 % de participation. La confiance ne se décrète pas, et les collectifs l'ont prouvé.`,
     kicker: 'Pourquoi vous',
     titre: 'Ce qu\'une collecte citoyenne peut faire',
     resume: `<p>Un recensement déclaratif ne prouve rien. Il ne remplace ni un registre, ni une
@@ -283,6 +290,7 @@ window.NK_CONCEPTS = [
 
   {
     id: 'temoignages',
+    teaser: `Un SIR de 2,27 ne dit rien du trajet de cent kilomètres, ni de la phrase « c'est le hasard » entendue en réunion publique.`,
     kicker: 'Ce que les chiffres ne portent pas',
     titre: 'Les témoignages de parents',
     resume: `<p>Un SIR de 2,27 ne dit rien du trajet de cent kilomètres jusqu'au CHU, des dix-huit

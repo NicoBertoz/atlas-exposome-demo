@@ -134,7 +134,7 @@ différences que le comparatif est là pour montrer.
 | Bouton questionnaire / « en savoir plus » | **fait** | « Je participe » ouvre le questionnaire, « Récit » rejoue le déroulé |
 | **Zone floue au lieu du point individuel** | **fait** | voir §3, c'est le changement structurant |
 | **Questionnaire de démonstration** | **fait** | `questionnaire.html`, 5 étapes, géocodage réel, e-mail haché |
-| **Section 1 = déroulé narratif** | **fait** | 8 concepts de ~200 mots, carte teasée floutée derrière |
+| **Section 1 = déroulé narratif** | **fait** | 8 points en grille, deux écrans, carte teasée derrière |
 | **Chaque concept mène à sa page** | **fait** | `concept.html?id=…`, un gabarit, contenu dans `js/concepts.js` |
 | **Page de transition avant le formulaire** | **fait** | `participer.html` : ce qu'on demande, ce qu'on en fait, espace d'échange |
 | **Formulaire atteignable depuis les fiches** | **fait** | bloc « Ajouter mon cas » sur cluster, secteur, cas particulier, signalement |
@@ -145,15 +145,23 @@ différences que le comparatif est là pour montrer.
 
 Une page principale, deux sections, dans cet ordre.
 
-**Section 1, le déroulé.** Huit concepts, chacun en 200 mots maximum, qui se lisent au
-défilement : les enfants sentinelles, l'effet cocktail, PFAS et pesticides, la difficulté de
-prouver, la maille qui décide, la donnée verrouillée, la collecte citoyenne, les témoignages.
-Chacun porte un bouton « Creuser ce point », qui ouvre sa **page dédiée** — exactement le
-« click sur un des concepts à creuser » du flow.
+**Section 1, le déroulé.** Huit points présentés en **grille**, pas en colonne : deux lignes de
+teaser chacun, l'ensemble tient en deux écrans. Les 200 mots et les sources sont sur la **page
+dédiée** qu'ouvre « Creuser ce point » — le « click sur un des concepts à creuser » du flow.
 
-Pendant toute la section 1, **la vraie carte tourne derrière, floutée**, et son flou se lève à
-mesure qu'on descend. Ce n'est pas une image : c'est la carte déjà chargée, qui s'affiche en
-grand dès qu'on passe en section 2. Le bouton « Explorer la carte » clôt le déroulé.
+**Trois chemins vers la carte**, du plus rapide au plus lent, parce que tout le monde ne vient
+pas lire :
+
+1. **« Carte » dans la barre du haut**, disponible dès la première seconde ;
+2. **une pastille flottante** « Voir la carte », qui apparaît dès qu'on commence à défiler et
+   reste accessible au pouce jusqu'à la fin ;
+3. **la carte elle-même**, qui se dévoile au défilement : le flou passe de 12 px à zéro et le
+   voile sombre s'éclaircit, si bien qu'arrivé en bas on regarde déjà la carte, et le dernier
+   bloc ne fait que proposer de l'ouvrir en grand.
+
+Ce n'est pas une image d'illustration : c'est la vraie carte, déjà chargée, qui prend l'écran
+sans rechargement. Le déroulé s'affiche immédiatement sans attendre le fond de carte, puisque
+c'est du texte.
 
 **Section 2, la carte.** Deux niveaux comme demandé : la couche participative (témoignages
 regroupés en secteurs) et les gros hotspots (clusters documentés + signalements instruits),

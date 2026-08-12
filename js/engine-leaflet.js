@@ -96,10 +96,11 @@ window.NK_ENGINES.leaflet = (function () {
           }),
         }),
         onEachFeature: (f, layer) => {
-          layer.bindPopup(S().zoneHTML(f.properties, true), { maxWidth: 290, autoPan: false });
+          const h = S().hotspotParId(f.properties.id);
+          layer.bindPopup(S().zoneHTML(h, true), { maxWidth: 290, autoPan: false });
           layer.on('mouseover', () => layer.openPopup());
           layer.on('mouseout', () => layer.closePopup());
-          layer.on('click', () => { layer.closePopup(); ctx.onZone(f.properties); });
+          layer.on('click', () => { layer.closePopup(); ctx.onZone(h); });
         },
       }).addTo(map);
       map.on('zoomend', () => syncMarq(map.getZoom()));
