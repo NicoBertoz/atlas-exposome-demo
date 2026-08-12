@@ -34,11 +34,11 @@ GEO = json.loads((HERE / "geo-cache.json").read_text(encoding="utf-8"))
 # 1. Pathologies (3 cancers pédiatriques les plus fréquents)
 # --------------------------------------------------------------------------
 PATHOS = [
-    {"id": "leucemie", "label": "Leucémie aiguë", "color": "#FF3B5C", "part": 0.42,
+    {"id": "leucemie", "label": "Leucémie aiguë", "color": "#C01B5C", "part": 0.42,
      "sous_types": ["Leucémie aiguë lymphoblastique", "Leucémie aiguë myéloblastique"]},
-    {"id": "snc", "label": "Tumeur du système nerveux central", "color": "#3BE8FF", "part": 0.31,
+    {"id": "snc", "label": "Tumeur du système nerveux central", "color": "#1F3ACC", "part": 0.31,
      "sous_types": ["Médulloblastome", "Gliome de bas grade", "Épendymome", "Astrocytome"]},
-    {"id": "lymphome", "label": "Lymphome", "color": "#FFD23B", "part": 0.27,
+    {"id": "lymphome", "label": "Lymphome", "color": "#0B8A4E", "part": 0.27,
      "sous_types": ["Lymphome de Hodgkin", "Lymphome non hodgkinien", "Lymphome de Burkitt"]},
 ]
 TRANCHES = ["0-1 an", "2-5 ans", "6-11 ans", "12-17 ans"]

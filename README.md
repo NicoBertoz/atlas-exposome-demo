@@ -149,19 +149,22 @@ Une page principale, deux sections, dans cet ordre.
 teaser chacun, l'ensemble tient en deux écrans. Les 200 mots et les sources sont sur la **page
 dédiée** qu'ouvre « Creuser ce point » — le « click sur un des concepts à creuser » du flow.
 
-**Trois chemins vers la carte**, du plus rapide au plus lent, parce que tout le monde ne vient
-pas lire :
+**Trois chemins vers la carte**, du plus rapide au plus lent :
 
-1. **« Carte » dans la barre du haut**, disponible dès la première seconde ;
-2. **une pastille flottante** « Voir la carte », qui apparaît dès qu'on commence à défiler et
-   reste accessible au pouce jusqu'à la fin ;
-3. **la carte elle-même**, qui se dévoile au défilement : le flou passe de 12 px à zéro et le
-   voile sombre s'éclaircit, si bien qu'arrivé en bas on regarde déjà la carte, et le dernier
-   bloc ne fait que proposer de l'ouvrir en grand.
+1. **« Carte » dans la barre du haut**, et un bouton dans le premier écran ;
+2. **une pastille flottante** « Voir la carte », qui apparaît dès qu'on commence à défiler ;
+3. **la carte elle-même**, qui se dévoile au défilement et **passe en plein écran toute seule**
+   en fin de course. Pas de clic, pas de changement de page.
 
-Ce n'est pas une image d'illustration : c'est la vraie carte, déjà chargée, qui prend l'écran
-sans rechargement. Le déroulé s'affiche immédiatement sans attendre le fond de carte, puisque
-c'est du texte.
+Le point à ne pas refaire : la carte **garde son opacité**, c'est un voile posé par-dessus qui
+l'assombrit et se lève au défilement. Une carte affichée à 20 % d'opacité ne se voit pas, quel
+que soit le fond — c'était le premier essai, et il ne marchait pas. Le voile tient pendant la
+lecture (les huit points), puis tombe sur le dernier tiers : on lit d'abord, on découvre la
+carte ensuite, et la bascule en plein écran ne se remarque presque pas puisque la carte est
+déjà nette à ce moment-là.
+
+Ce n'est pas une image d'illustration : c'est la vraie carte, déjà chargée. Le déroulé s'affiche
+immédiatement sans attendre le fond de carte, puisque c'est du texte.
 
 **Section 2, la carte.** Deux niveaux comme demandé : la couche participative (témoignages
 regroupés en secteurs) et les gros hotspots (clusters documentés + signalements instruits),
@@ -425,7 +428,11 @@ cd demo-cartes && ./deploy.sh check     # vérifie avant d'envoyer
 - **Fixer K et la maille** avec la juriste RGPD (§3), en incluant le risque de ré-identification
   par croisement pathologie × année × tranche d'âge.
 - **Appliquer la charte NK** de septembre : le bloc `PALETTES` de `js/style-nk.js` et le bloc
-  `:root` de `css/app.css`.
+  `:root` de `css/app.css`. La direction actuelle est **papier et encres franches**, esprit
+  fanzine militant : fond papier chaud, noir d'encre, cinq couleurs saturées (rouge pour les
+  excès confirmés, orange pour les dossiers contestés, magenta/bleu/vert pour les trois
+  pathologies) et un jaune réservé à l'action. Pas de dégradé, pas d'ombre douce : des traits
+  d'encre et des ombres portées franches.
 - **Monter le fichier de tuiles au zoom 12** et le poser sur du stockage objet, pour un rendu net
   au plus près des clusters.
 - **Brancher le questionnaire** sur une vraie base, et décider du géocodage IRIS réel (l'API

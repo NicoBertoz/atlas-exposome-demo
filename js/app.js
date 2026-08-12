@@ -27,7 +27,7 @@
     pathos: new Set(PATHOS.map(p => p.id)),
     yearMax: null,
     zones: true, sig: true, temoins: true, agg: false, exact: false,
-    basemap: 'dark',
+    basemap: 'light',
     features: D.temoignages.features,   // interne, jamais envoyé tel quel aux moteurs
     cellules: [], horsMaille: 0, parCellule: {},
     hotspots: D.hotspots.features,
@@ -157,8 +157,8 @@
   });
 
   $('#btn-basemap').addEventListener('click', () => {
-    state.basemap = state.basemap === 'dark' ? 'light' : 'dark';
-    $('#btn-basemap').textContent = state.basemap === 'dark' ? 'Fond clair' : 'Fond sombre';
+    state.basemap = state.basemap === 'light' ? 'dark' : 'light';
+    $('#btn-basemap').textContent = state.basemap === 'light' ? 'Fond sombre' : 'Fond clair';
     Object.keys(ready).forEach(k => ready[k] && engines[k].setBasemap(state.basemap));
     setTimeout(() => engines[state.engine].render(state), 400);
   });
@@ -621,7 +621,7 @@
       closeDetail(); stopPlayback();
       $('#tg-exact').checked = false; state.exact = false; $('#exact-warn').hidden = true;
       if (!s1) s1 = NK_SECTION1.monter($('#section1'), () => setMode('carte'));
-      else s1.auDefilement();
+      else s1.reset();
       /* La carte tourne derrière le déroulé, floutée : elle doit être prête
          au moment où on la révèle, pas se charger à ce moment-là. */
       api.setLayers({ zones: true, sig: true, temoins: true });

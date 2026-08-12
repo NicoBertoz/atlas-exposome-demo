@@ -39,19 +39,21 @@ window.NK_STYLE = (function () {
       texteFort: '#C6CDD6',
       halo:      'rgba(11,13,16,.92)',
     },
+    /* Papier : le fond de carte doit s'effacer derrière les encres des
+       clusters. Aucun aplat ne dépasse le contraste d'un tramé léger. */
     light: {
-      fond:      '#F2F1EC',
-      terre:     '#F7F6F1',
-      eau:       '#D9E4EA',
-      vert:      '#E7EBE0',
-      urbain:    '#EDECE6',
-      frontiere: '#C0BFB6',
-      pays:      '#A3A299',
-      route:     '#E2E0D8',
-      routeMaj:  '#D5D2C7',
-      texte:     '#6B6A62',
-      texteFort: '#33322D',
-      halo:      'rgba(247,246,241,.92)',
+      fond:      '#F4F1E8',
+      terre:     '#FAF8F1',
+      eau:       '#DFE6E0',
+      vert:      '#EFEDE0',
+      urbain:    '#EAE5D6',
+      frontiere: '#C9C2AE',
+      pays:      '#ADA694',
+      route:     '#E4DFCE',
+      routeMaj:  '#D8D2BD',
+      texte:     '#8B857A',
+      texteFort: '#3A362E',
+      halo:      'rgba(244,241,232,.92)',
     },
   };
 
@@ -59,7 +61,7 @@ window.NK_STYLE = (function () {
   const NOM = ['coalesce', ['get', 'name:fr'], ['get', 'name']];
 
   function style(theme) {
-    const c = PALETTES[theme] || PALETTES.dark;
+    const c = PALETTES[theme] || PALETTES.light;
 
     return {
       version: 8,

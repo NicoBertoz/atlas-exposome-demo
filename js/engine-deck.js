@@ -17,7 +17,7 @@ window.NK_ENGINES.deck = (function () {
   let auto = false;   // vrai si on sert nos propres tuiles
   const styleDe = key => (auto ? window.NK_STYLE.style(key) : CARTO[key]);
 
-  let map, overlay, ctx, last, current = 'dark', marqOn = true;
+  let map, overlay, ctx, last, current = 'light', marqOn = true;
   const tip = () => document.getElementById('deck-tip');
   const zoom = () => (map ? map.getZoom() : 0);
 
@@ -54,7 +54,7 @@ window.NK_ENGINES.deck = (function () {
       L.push(new deck.GeoJsonLayer({
         id: 'zones', data: window.NK_DATA.hotspots,
         filled: true, stroked: true, pickable: true, autoHighlight: true,
-        highlightColor: [232, 255, 59, 55],
+        highlightColor: [245, 212, 0, 120],
         getFillColor: f => [...S().rgb(S().zoneColor(f.properties)),
                             f.properties.anonyme ? 18 : 44],
         getLineColor: f => [...S().rgb(S().zoneColor(f.properties)), 210],
@@ -71,8 +71,8 @@ window.NK_ENGINES.deck = (function () {
         getPosition: f => f.geometry.coordinates,
         getFillColor: f => S().rgb(f.properties.marker_color),
         getRadius: 24, radiusUnits: 'pixels',
-        stroked: true, lineWidthMinPixels: 2, getLineColor: [11, 13, 16, 230],
-        pickable: true, autoHighlight: true, highlightColor: [232, 255, 59, 255],
+        stroked: true, lineWidthMinPixels: 2, getLineColor: [20, 18, 13, 235],
+        pickable: true, autoHighlight: true, highlightColor: [20, 18, 13, 255],
         onHover: i => i.object ? showTip(S().zoneHTML(S().hotspotParId(i.object.properties.id), true), i.x, i.y) : hideTip(),
         onClick: i => i.object && ctx.onZone(S().hotspotParId(i.object.properties.id)),
       }));
@@ -80,7 +80,7 @@ window.NK_ENGINES.deck = (function () {
         id: 'marq-num', data: S().marqueurs.features,
         getPosition: f => f.geometry.coordinates,
         getText: f => f.properties.num,
-        getSize: 13, getColor: [11, 13, 16], fontWeight: 700, pickable: false,
+        getSize: 13, getColor: [20, 18, 13], fontWeight: 700, pickable: false,
       }));
     }
 
@@ -91,7 +91,7 @@ window.NK_ENGINES.deck = (function () {
         getPosition: f => f.geometry.coordinates,
         getFillColor: f => S().rgb(f.properties.color),
         getRadius: 1200, radiusMinPixels: 2.4, radiusMaxPixels: 6,
-        stroked: true, lineWidthMinPixels: 1, getLineColor: [11, 13, 16, 255],
+        stroked: true, lineWidthMinPixels: 1, getLineColor: [20, 18, 13, 255],
         pickable: false,
       }));
     }
@@ -100,10 +100,10 @@ window.NK_ENGINES.deck = (function () {
       dessus.push(new deck.ScatterplotLayer({
         id: 'sig', data: window.NK_DATA.signalements,
         getPosition: f => f.geometry.coordinates,
-        filled: false, stroked: true, getLineColor: [154, 163, 175, 230],
+        filled: false, stroked: true, getLineColor: [139, 133, 122, 235],
         lineWidthMinPixels: 1.5,
         getRadius: 2200, radiusMinPixels: 4, radiusMaxPixels: 9,
-        pickable: true, autoHighlight: true, highlightColor: [232, 255, 59, 255],
+        pickable: true, autoHighlight: true, highlightColor: [20, 18, 13, 255],
         onHover: i => i.object ? showTip(S().sigHTML(i.object.properties), i.x, i.y) : hideTip(),
         onClick: i => i.object && ctx.onSignal(i.object.properties),
       }));
@@ -129,7 +129,7 @@ window.NK_ENGINES.deck = (function () {
     } else if (state.temoins) {
       // Rayon en mètres : la tache vaut exactement la demi-maille. Trois
       // passes concentriques pour un dégradé, deck n'ayant pas de flou.
-      [[1, 26], [0.72, 34], [0.44, 52]].forEach(([k, alpha], idx) =>
+      [[1, 36], [0.72, 46], [0.44, 68]].forEach(([k, alpha], idx) =>
         L.push(new deck.ScatterplotLayer({
           id: 'cell-' + idx, data: state.cellules,
           getPosition: c => c.centre,
@@ -143,7 +143,7 @@ window.NK_ENGINES.deck = (function () {
         filled: false, stroked: true, lineWidthMinPixels: 1,
         getLineColor: c => [...S().rgb(c.color), 100],
         getRadius: c => c.rayon_km * 1000 * 0.72, radiusMinPixels: 11,
-        pickable: true, autoHighlight: true, highlightColor: [232, 255, 59, 60],
+        pickable: true, autoHighlight: true, highlightColor: [20, 18, 13, 60],
         onHover: i => i.object ? showTip(S().celluleHTML(i.object), i.x, i.y) : hideTip(),
         onClick: i => {
           if (!i.object) return;
@@ -154,7 +154,7 @@ window.NK_ENGINES.deck = (function () {
       L.push(new deck.TextLayer({
         id: 'cell-n', data: state.cellules,
         getPosition: c => c.centre, getText: c => String(c.n),
-        getSize: 13, getColor: [232, 234, 237], fontWeight: 700, pickable: false,
+        getSize: 13, getColor: [20, 18, 13], fontWeight: 700, pickable: false,
       }));
     }
     return L.concat(dessus);
@@ -172,7 +172,7 @@ window.NK_ENGINES.deck = (function () {
       return new Promise(async resolve => {
         auto = window.NK_STYLE.enregistrerProtocole() && await window.NK_STYLE.disponible();
         map = new maplibregl.Map({
-          container, style: styleDe('dark'),
+          container, style: styleDe('light'),
           center: S().FRANCE.center, zoom: S().FRANCE.zoom, pitch: 0,
           attributionControl: { compact: true },
         });

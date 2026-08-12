@@ -6,7 +6,7 @@
 window.NK_SHARED = (function () {
   'use strict';
 
-  const C = { confirme: '#FF3B5C', enquete: '#FF9A3C', anonyme: '#9AA3AF' };
+  const C = { confirme: '#E22D22', enquete: '#EF8410', anonyme: '#8B857A' };
 
   /* Un cluster est rouge si l'excès est confirmé (catégorie A du corpus),
      orange s'il est contesté ou en cours d'instruction (B et C),

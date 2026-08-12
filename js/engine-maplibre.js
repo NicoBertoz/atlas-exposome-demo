@@ -18,7 +18,7 @@ window.NK_ENGINES.maplibre = (function () {
   const styleDe = key => (auto ? window.NK_STYLE.style(key) : CARTO[key]);
   const EMPTY = { type: 'FeatureCollection', features: [] };
 
-  let map, ctx, last, popup, hover = null, current = 'dark';
+  let map, ctx, last, popup, hover = null, current = 'light';
 
   /* On n'attend PAS l'événement 'load' : il dépend d'une première frame de
      rendu, qui n'arrive jamais dans un onglet non peint (aperçus, tests
@@ -92,7 +92,7 @@ window.NK_ENGINES.maplibre = (function () {
         'text-field': ['get', 'nom'], 'text-size': 12,
         'text-font': ['Open Sans Semibold'], 'text-max-width': 9,
       },
-      paint: { 'text-color': '#E8EAED', 'text-halo-color': 'rgba(11,13,16,.92)', 'text-halo-width': 1.8 },
+      paint: { 'text-color': '#14120D', 'text-halo-color': 'rgba(244,241,232,.92)', 'text-halo-width': 1.8 },
     });
 
     // Signalements : carrés creux, volontairement discrets face aux clusters
@@ -102,7 +102,7 @@ window.NK_ENGINES.maplibre = (function () {
         'circle-color': 'rgba(0,0,0,0)',
         'circle-radius': ['interpolate', ['linear'], ['zoom'], 5, 4, 10, 7],
         'circle-stroke-width': 1.5,
-        'circle-stroke-color': ['case', ['boolean', ['feature-state', 'hover'], false], '#E8FF3B', '#9AA3AF'],
+        'circle-stroke-color': ['case', ['boolean', ['feature-state', 'hover'], false], '#14120D', '#9AA3AF'],
       },
     });
 
@@ -114,7 +114,7 @@ window.NK_ENGINES.maplibre = (function () {
     map.addLayer({
       id: 'pt-halo', type: 'circle', source: 'pts',
       paint: {
-        'circle-color': ['get', 'color'], 'circle-opacity': 0.20,
+        'circle-color': ['get', 'color'], 'circle-opacity': 0.28,
         'circle-blur': 0.85,
         'circle-radius': S().rayonParNiveau(15, 1),
       },
@@ -122,10 +122,10 @@ window.NK_ENGINES.maplibre = (function () {
     map.addLayer({
       id: 'pt', type: 'circle', source: 'pts',
       paint: {
-        'circle-color': ['get', 'color'], 'circle-opacity': 0.38,
+        'circle-color': ['get', 'color'], 'circle-opacity': 0.5,
         'circle-blur': 0.5,
         'circle-radius': S().rayonParNiveau(9, 0.6),
-        'circle-stroke-width': 1, 'circle-stroke-color': 'rgba(11,13,16,.45)',
+        'circle-stroke-width': 1, 'circle-stroke-color': 'rgba(20,18,13,.35)',
       },
     });
     map.addLayer({
@@ -134,7 +134,7 @@ window.NK_ENGINES.maplibre = (function () {
         'text-field': ['to-string', ['get', 'n']], 'text-size': 12,
         'text-font': ['Open Sans Bold'], 'text-allow-overlap': true,
       },
-      paint: { 'text-color': '#E8EAED', 'text-halo-color': 'rgba(11,13,16,.85)', 'text-halo-width': 1.4 },
+      paint: { 'text-color': '#14120D', 'text-halo-color': 'rgba(244,241,232,.9)', 'text-halo-width': 1.4 },
     });
 
     /* Comparateur d'atelier : les positions exactes, par-dessus les secteurs.
@@ -144,7 +144,7 @@ window.NK_ENGINES.maplibre = (function () {
       paint: {
         'circle-color': ['get', 'color'],
         'circle-radius': ['interpolate', ['linear'], ['zoom'], 5, 2.4, 10, 4, 14, 6],
-        'circle-stroke-width': 1, 'circle-stroke-color': '#0B0D10',
+        'circle-stroke-width': 1, 'circle-stroke-color': '#F4F1E8',
       },
     });
 
@@ -232,7 +232,7 @@ window.NK_ENGINES.maplibre = (function () {
       return new Promise(async resolve => {
         auto = window.NK_STYLE.enregistrerProtocole() && await window.NK_STYLE.disponible();
         map = new maplibregl.Map({
-          container, style: styleDe('dark'),
+          container, style: styleDe('light'),
           center: S().FRANCE.center, zoom: S().FRANCE.zoom,
           attributionControl: { compact: true },
         });

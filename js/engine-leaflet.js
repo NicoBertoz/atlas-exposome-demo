@@ -61,7 +61,7 @@ window.NK_ENGINES.leaflet = (function () {
         zoomSnap: 0.25, zoomDelta: 0.5,
       });
       L.control.zoom({ position: 'bottomright' }).addTo(map);
-      tiles = L.tileLayer(TILES.dark.url, TILES.dark.opts).addTo(map);
+      tiles = L.tileLayer(TILES.light.url, TILES.light.opts).addTo(map);
 
       zoneLayer = L.geoJSON(window.NK_DATA.hotspots, {
         style: f => zoneStyle(f),
@@ -75,13 +75,13 @@ window.NK_ENGINES.leaflet = (function () {
 
       sigLayer = L.geoJSON(window.NK_DATA.signalements, {
         pointToLayer: (f, ll) => L.circleMarker(ll, {
-          radius: 5, color: '#9AA3AF', weight: 1.5, fill: true,
-          fillColor: '#0B0D10', fillOpacity: 0.55,
+          radius: 5, color: '#8B857A', weight: 1.5, fill: true,
+          fillColor: '#F4F1E8', fillOpacity: 0.55,
         }),
         onEachFeature: (f, layer) => {
           layer.bindPopup(S().sigHTML(f.properties), { maxWidth: 290, autoPan: false });
-          layer.on('mouseover', () => { layer.setStyle({ color: '#E8FF3B' }); layer.openPopup(); });
-          layer.on('mouseout', () => { layer.setStyle({ color: '#9AA3AF' }); layer.closePopup(); });
+          layer.on('mouseover', () => { layer.setStyle({ color: '#14120D' }); layer.openPopup(); });
+          layer.on('mouseout', () => { layer.setStyle({ color: '#8B857A' }); layer.closePopup(); });
           layer.on('click', () => { layer.closePopup(); ctx.onSignal(f.properties); });
         },
       }).addTo(map);
@@ -130,7 +130,7 @@ window.NK_ENGINES.leaflet = (function () {
          Leaflet ne sait pas produire nativement. */
       if (state.temoins) state.cellules.forEach(c => {
         const g = L.layerGroup();
-        [[1, 0.10, 15], [0.72, 0.13, 11], [0.44, 0.20, 7]].forEach(([k, op, minPx]) => {
+        [[1, 0.14, 15], [0.72, 0.18, 11], [0.44, 0.26, 7]].forEach(([k, op, minPx]) => {
           L.circle([c.centre[1], c.centre[0]], {
             radius: c.rayon_km * 1000 * k, stroke: false,
             fillColor: c.color, fillOpacity: op, interactive: false,

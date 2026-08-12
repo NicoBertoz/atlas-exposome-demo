@@ -5,19 +5,28 @@
  *  vers une page dédiée, et la carte teasée en arrière-plan avant
  *  d'apparaître en section 2.
  *
- *  Parti pris : le déroulé tient en deux écrans. Chaque concept se lit en
- *  deux lignes ; les 200 mots sont sur sa page. Personne ne doit avoir à
- *  lire huit paragraphes avant d'atteindre la carte.
+ *  Deux partis pris.
  *
- *  Trois chemins vers la carte, du plus rapide au plus lent :
- *    1. « Carte » dans la barre du haut, disponible dès la première seconde
- *    2. une pastille flottante qui apparaît dès qu'on commence à défiler
- *    3. la fenêtre de carte en fin de déroulé, qui se dévoile au défilement
+ *  1. Le déroulé tient en deux écrans. Chaque point se lit en deux lignes ;
+ *     les 200 mots sont sur sa page.
+ *
+ *  2. La carte n'est jamais masquée par de la transparence. Un fond de carte
+ *     sombre à 20 % d'opacité sur un fond noir, ça ne donne rien de visible.
+ *     Elle reste donc à pleine opacité, et c'est un VOILE posé par-dessus qui
+ *     l'assombrit. Le voile se lève au défilement, la carte apparaît en entier,
+ *     et le passage en plein écran se fait tout seul en fin de course — sans
+ *     clic, sans changement de page.
  * ------------------------------------------------------------------ */
 window.NK_SECTION1 = (function () {
   'use strict';
 
   const C = window.NK_CONCEPTS;
+
+  /* Le voile et le flou tiennent pendant la lecture, puis tombent d'un coup
+     sur le dernier tiers : on lit d'abord, on découvre la carte ensuite. */
+  const DEBUT_LEVEE = 0.42;   // avant : rien ne bouge
+  const FIN_LEVEE = 0.90;     // après : carte nette et sans voile
+  const BASCULE = 0.985;      // plein écran
 
   function monter(root, onCarte) {
     const D = window.NK_DATA;
@@ -51,23 +60,21 @@ window.NK_SECTION1 = (function () {
           </a>`).join('')}
       </div>
 
-      <section class="s1-carte">
-        <div class="s1-carte-cadre">
-          <div class="s1-carte-txt">
-            <h2>La carte</h2>
-            <p>Les clusters documentés, les signalements instruits, et les témoignages reçus,
-              regroupés par secteur pour qu'aucune famille ne soit localisable.</p>
-            <div class="s1-cta">
-              <button class="btn btn-accent" data-carte>Ouvrir la carte en grand →</button>
-              <a class="btn" href="participer.html">Signaler un cas</a>
-            </div>
-          </div>
+      <!-- Zone de révélation : rien à lire, la carte prend la place -->
+      <section class="s1-reveal">
+        <div class="s1-reveal-txt">
+          <h2>La carte</h2>
+          <p>Les clusters documentés, les signalements instruits, et les témoignages reçus,
+            regroupés par secteur pour qu'aucune famille ne soit localisable.</p>
+        </div>
+        <div class="s1-reveal-fin">
+          <span class="s1-fleche">↓</span>
+          <span class="s1-fin-txt">Continuez à défiler pour ouvrir la carte</span>
+          <button class="btn btn-accent" data-carte>Ouvrir maintenant</button>
         </div>
       </section>`;
 
-    /* Pastille flottante : le raccourci permanent vers la carte. Elle
-       n'apparaît qu'une fois le défilement engagé, pour ne pas encombrer
-       le premier écran qui porte déjà son propre bouton. */
+    /* Raccourci permanent, pour qui ne veut pas défiler du tout. */
     const pilule = document.createElement('button');
     pilule.id = 's1-pilule';
     pilule.innerHTML = '<span class="pt"></span>Voir la carte';
@@ -78,30 +85,36 @@ window.NK_SECTION1 = (function () {
 
     const stage = document.getElementById('map-stage');
     const cartes = [...root.querySelectorAll('.concept')];
-    const fin = root.querySelector('.s1-carte');
+    const reveal = root.querySelector('.s1-reveal');
+    let bascule = false;
+
+    const entre = (v, a, b) => Math.max(0, Math.min(1, (v - a) / (b - a)));
 
     function auDefilement() {
       const h = root.scrollHeight - root.clientHeight;
       const t = h > 0 ? Math.min(1, root.scrollTop / h) : 0;
+      const l = entre(t, DEBUT_LEVEE, FIN_LEVEE);   // 0 pendant la lecture, 1 à la fin
 
-      /* La carte se dévoile progressivement : 12 px de flou au départ, net à
-         l'arrivée, et le voile sombre s'efface en même temps. Arrivé en bas,
-         on regarde déjà la carte, il ne reste qu'à l'ouvrir. */
-      stage.style.setProperty('--tease', (12 - 12 * t).toFixed(1) + 'px');
-      stage.style.setProperty('--tease-op', (0.22 + 0.78 * t).toFixed(2));
-      root.style.setProperty('--voile', (0.94 - 0.55 * t).toFixed(2));
+      /* La carte garde son opacité : c'est le voile qui s'efface. */
+      stage.style.setProperty('--tease', (9 - 9 * l).toFixed(1) + 'px');
+      root.style.setProperty('--voile', (0.82 - 0.82 * l).toFixed(3));
+      reveal.style.setProperty('--net', l.toFixed(3));
 
-      pilule.classList.toggle('on', root.scrollTop > 120 && t < 0.94);
+      pilule.classList.toggle('on', root.scrollTop > 140 && l < 0.75);
 
       const ligne = root.clientHeight * 0.97;
       cartes.forEach(el => el.classList.toggle('vu', el.getBoundingClientRect().top < ligne));
-      fin.classList.toggle('vu', fin.getBoundingClientRect().top < root.clientHeight * 0.9);
+
+      /* Fin de course : la carte est déjà nette et sans voile, il ne reste
+         qu'à retirer le déroulé. La bascule ne se voit donc presque pas. */
+      if (t >= BASCULE && !bascule) { bascule = true; onCarte(); }
+      if (t < BASCULE - 0.05) bascule = false;
     }
 
     root.addEventListener('scroll', auDefilement, { passive: true });
     window.addEventListener('resize', auDefilement);
     auDefilement();
-    return { auDefilement };
+    return { auDefilement, reset: () => { bascule = false; root.scrollTop = 0; auDefilement(); } };
   }
 
   return { monter };
