@@ -1,0 +1,605 @@
+/* ------------------------------------------------------------------ *
+ *  app.js — état partagé, interface, orchestration des 3 moteurs.
+ *
+ *  Contrat d'un moteur (voir engine-*.js) :
+ *    { id, label, note, caps,
+ *      init(container, ctx) -> Promise,
+ *      render(state), setBasemap(key),
+ *      flyTo(lng, lat, zoom), fitZone(props), resize() }
+ *
+ *  ctx = { onPoint(props), onSignal(props), onZone(props), onReady(id) }
+ * ------------------------------------------------------------------ */
+(function () {
+  'use strict';
+
+  const D = window.NK_DATA;
+  const S = window.NK_SHARED;
+  const PATHOS = D.meta.pathologies;
+  const BY_ID = Object.fromEntries(PATHOS.map(p => [p.id, p]));
+  const $ = s => document.querySelector(s);
+  const HOTSPOTS = D.hotspots.features.filter(f => !f.properties.anonyme);
+  const isMobile = () => window.matchMedia('(max-width: 859px)').matches;
+
+  /* ----------------------------------------------------------- ÉTAT */
+  const state = {
+    engine: 'maplibre',
+    mode: 'recit',
+    pathos: new Set(PATHOS.map(p => p.id)),
+    yearMax: null,
+    zones: true, sig: true, temoins: true, agg: false,
+    basemap: 'dark',
+    features: D.temoignages.features,   // interne, jamais envoyé tel quel aux moteurs
+    cellules: [], horsMaille: 0, parCellule: {},
+    hotspots: D.hotspots.features,
+    signalements: D.signalements.features,
+  };
+
+  function applyFilters() {
+    state.features = !state.temoins ? [] : D.temoignages.features.filter(f => {
+      const p = f.properties;
+      if (!state.pathos.has(p.patho_id)) return false;
+      if (state.yearMax && p.annee > state.yearMax) return false;
+      return true;
+    });
+    /* Les moteurs ne reçoivent que le résultat flouté : aucune position
+       individuelle ne quitte cette fonction. */
+    const f = S.flouter(state.features);
+    state.cellules = f.cellules;
+    state.horsMaille = f.horsMaille;
+    state.parCellule = Object.fromEntries(f.cellules.map(c => [c.id, c]));
+  }
+
+  /* -------------------------------------------------------- MOTEURS */
+  const engines = window.NK_ENGINES;
+  const ready = {};
+
+  const ctx = {
+    onCell: c => showCellule(c),
+    onSignal: p => showSignalement(p),
+    onZone: p => { showHotspot(p); engines[state.engine].fitZone(p); },
+    onReady: id => { ready[id] = true; if (id === state.engine) $('#loading').classList.add('off'); },
+  };
+
+  async function switchEngine(id) {
+    if (id === state.engine && ready[id]) return;
+    stopPlayback();
+    state.engine = id;
+    document.querySelectorAll('#engine-switch button')
+      .forEach(b => b.classList.toggle('on', b.dataset.engine === id));
+    document.querySelectorAll('.map-canvas')
+      .forEach(c => c.classList.toggle('on', c.id === 'map-' + id));
+
+    const e = engines[id];
+    $('#engine-note').innerHTML =
+      `<b>${e.label}</b>${e.note}<div class="caps">${
+        e.caps.map(c => `<span class="cap ${c[1] ? '' : 'no'}">${c[0]}</span>`).join('')}</div>`;
+
+    const aggOk = e.caps.some(c => c[0] === 'agrégation GPU' && c[1]);
+    $('#tg-agg').disabled = !aggOk;
+    $('#row-agg').classList.toggle('dim', !aggOk);
+
+    if (!ready[id]) {
+      $('#loading').classList.remove('off');
+      await e.init(document.getElementById('map-' + id), ctx);
+    }
+    e.setBasemap(state.basemap);
+    e.render(state);
+    e.resize();
+    $('#loading').classList.add('off');
+  }
+
+  function refresh() {
+    applyFilters();
+    if (ready[state.engine]) engines[state.engine].render(state);
+    const places = state.features.length - state.horsMaille;
+    $('#year-count').textContent = `${places} sur ${state.features.length} placés`;
+    $('#c-zones').textContent = HOTSPOTS.length + ' + 1 anonymisée';
+    $('#c-sig').textContent = state.signalements.length;
+    $('#c-tem').textContent = `${state.cellules.length} secteurs`;
+    $('#k-note').textContent = state.horsMaille
+      ? `${state.horsMaille} témoignages non placés : leur secteur compte moins de ${S.K_ANONYMAT} cas.`
+      : 'Tous les secteurs atteignent le seuil.';
+    renderFilters();
+  }
+
+  /* --------------------------------------------------------- FILTRES */
+  function renderFilters() {
+    const n = {};
+    D.temoignages.features.forEach(f => {
+      const p = f.properties;
+      if (state.yearMax && p.annee > state.yearMax) return;
+      n[p.patho_id] = (n[p.patho_id] || 0) + 1;
+    });
+    $('#filters').innerHTML = PATHOS.map(p => `
+      <div class="filter ${state.pathos.has(p.id) ? '' : 'off'}" data-patho="${p.id}">
+        <span class="swatch" style="background:${p.color}"></span>
+        <span class="lbl">${p.label}</span>
+        <span class="n">${n[p.id] || 0}</span>
+      </div>`).join('');
+    $('#legend-patho').innerHTML = PATHOS.map(p =>
+      `<div class="li"><span class="sw" style="background:${p.color}"></span>${p.label}</div>`).join('');
+  }
+
+  $('#filters').addEventListener('click', ev => {
+    const el = ev.target.closest('[data-patho]'); if (!el) return;
+    const id = el.dataset.patho;
+    state.pathos.has(id) ? state.pathos.delete(id) : state.pathos.add(id);
+    if (!state.pathos.size) state.pathos = new Set(PATHOS.map(p => p.id));
+    refresh();
+  });
+
+  $('#year').addEventListener('input', ev => {
+    const v = +ev.target.value;
+    state.yearMax = v <= 2011 ? null : v;
+    $('#year-val').textContent = state.yearMax ? `2012 – ${v}` : '2012 – 2025';
+    refresh();
+  });
+
+  [['tg-zones', 'zones'], ['tg-sig', 'sig'], ['tg-temoins', 'temoins'], ['tg-agg', 'agg']]
+    .forEach(([id, key]) => $('#' + id).addEventListener('change', ev => {
+      state[key] = ev.target.checked; refresh();
+    }));
+
+  $('#btn-basemap').addEventListener('click', () => {
+    state.basemap = state.basemap === 'dark' ? 'light' : 'dark';
+    $('#btn-basemap').textContent = state.basemap === 'dark' ? 'Fond clair' : 'Fond sombre';
+    Object.keys(ready).forEach(k => ready[k] && engines[k].setBasemap(state.basemap));
+    setTimeout(() => engines[state.engine].render(state), 400);
+  });
+
+  document.querySelectorAll('#engine-switch button')
+    .forEach(b => b.addEventListener('click', () => switchEngine(b.dataset.engine)));
+
+  /* -------------------------------------------- FEUILLE MOBILE (sheet) */
+  function openSheet(open) {
+    if (!isMobile()) return;
+    $('#panel').classList.toggle('open', open);
+    // le conteneur de carte ne bouge pas, mais on laisse le moteur se recaler
+    setTimeout(() => ready[state.engine] && engines[state.engine].resize(), 320);
+  }
+  $('#sheet-grip').addEventListener('click', () => openSheet(!$('#panel').classList.contains('open')));
+  $('#legend-toggle').addEventListener('click', () => $('#legend').classList.toggle('open'));
+
+  /* Sur téléphone, la barre du haut ne peut pas porter à la fois la marque,
+     le choix du moteur, le mode et l'appel à l'action. Le sélecteur de moteur
+     descend donc dans le pied du panneau : c'est un réglage de démonstration,
+     pas une commande de lecture. */
+  const mq = window.matchMedia('(max-width: 560px)');
+  function placerSelecteurMoteur() {
+    const sw = $('#engine-switch');
+    const cible = mq.matches ? $('.panel-foot') : $('#topbar');
+    if (sw.parentElement === cible) return;
+    if (mq.matches) cible.prepend(sw); else cible.insertBefore(sw, $('#mode-switch'));
+    sw.classList.toggle('in-panel', mq.matches);
+  }
+  mq.addEventListener('change', placerSelecteurMoteur);
+  placerSelecteurMoteur();
+
+  /* ------------------------------------------------------- LES FICHES */
+  function openDetail() {
+    $('#detail').classList.add('on');
+    $('#intro').style.display = 'none';
+    $('#panel-scroll').scrollTop = 0;
+    openSheet(true);
+  }
+  function closeDetail() {
+    $('#detail').classList.remove('on');
+    $('#intro').style.display = '';
+    stopAudio();
+  }
+
+  /* Fiche d'une maille : la seule porte d'entrée vers les témoignages.
+     On n'atteint jamais un témoignage par sa position, toujours par son groupe. */
+  function showCellule(c) {
+    const det = Object.entries(c.repartition).map(([id, n]) => {
+      const p = BY_ID[id];
+      return `<span class="tag" style="background:${S.hex2rgba(p.color, .14)};color:${p.color}">
+        <span class="swatch" style="background:${p.color}"></span>${n} × ${p.label}</span>`;
+    }).join('');
+    $('#detail').innerHTML = `
+      <div class="detail-top">
+        <span class="id">SECTEUR AGRÉGÉ · ${c.maille}</span>
+        <button class="detail-close" data-close aria-label="Fermer">×</button>
+      </div>
+      <h3>${c.n} témoignages</h3>
+      <div class="sub">${c.deps.join(', ')}</div>
+      <div style="margin-top:8px">${det}</div>
+      <p class="caution" style="border-top:0;padding-top:10px;margin-top:10px">
+        Position approximative, volontairement. Le point affiché est le centre de la maille,
+        pas la position des familles.
+      </p>
+      <div class="block"><h4>Les témoignages de ce secteur</h4></div>
+      <div class="tem-list">${c.temoins.map(t => `
+        <button data-tem="${t.id}">
+          <span class="pin" style="background:${t.color}"></span>
+          <span class="nm">${t.patho_label}</span>
+          <span class="yr">${t.annee}${t.audio ? ' ♪' : ''}</span>
+        </button>`).join('')}</div>`;
+    openDetail();
+  }
+
+  function showTestimony(p) {
+    const c = BY_ID[p.patho_id].color;
+    const cell = state.cellules.find(x => x.temoins.some(t => t.id === p.id));
+    $('#detail').innerHTML = `
+      <div class="detail-top">
+        <span class="id">TÉMOIGNAGE ${p.id} · reçu le ${p.recu_le}</span>
+        <button class="detail-close" data-close aria-label="Fermer">×</button>
+      </div>
+      <span class="tag" style="background:${S.hex2rgba(c, .14)};color:${c}">
+        <span class="swatch" style="background:${c}"></span>${p.patho_label}</span>
+      <span class="badge fic">donnée fictive</span>
+      <h3>${p.dep}</h3>
+      <div class="sub">${p.sous_type} · diagnostic en ${p.annee}</div>
+      ${audioBlock(p)}
+      <blockquote class="quote">${p.temoignage}</blockquote>
+      <dl class="kv">
+        <dt>Âge au dg.</dt><dd>${p.tranche_age}</dd>
+        <dt>Sexe</dt><dd>${p.sexe}</dd>
+        <dt>Exposition</dt><dd>${p.exposition}</dd>
+        <dt>Profession</dt><dd>${p.profession_parent}</dd>
+        <dt>Issue</dt><dd>${p.issue}</dd>
+        <dt>Localisation</dt><dd>${cell ? cell.maille : 'secteur agrégé'}
+          <span class="badge">IRIS collecté, non publié</span></dd>
+        <dt>Cluster</dt><dd>${p.hotspot
+          ? `<a href="#" data-zone="${p.hotspot}">${p.hotspot_nom}</a>` : 'hors zone identifiée'}</dd>
+        <dt>Statut</dt><dd><span class="badge ${p.verifie ? 'ok' : ''}">${
+          p.verifie ? 'vérifié' : 'en attente de revue'}</span></dd>
+      </dl>
+      ${cell ? `<div class="src"><a href="#" data-cell="${cell.id}">← les ${cell.n} témoignages du secteur</a></div>` : ''}
+      <p class="caution">
+        Témoignage généré pour la démonstration. Ni commune ni adresse ne sont affichées :
+        la collecte descend à l'IRIS, la publication remonte à la maille.
+      </p>`;
+    openDetail();
+    bindAudio(p);
+  }
+
+  function showHotspot(p) {
+    const col = S.zoneColor(p);
+    const num = HOTSPOTS.findIndex(f => f.properties.id === p.id) + 1;
+    $('#detail').innerHTML = `
+      <div class="detail-top">
+        <span class="id">${p.anonyme ? 'ZONE ANONYMISÉE' : 'CLUSTER ' + num + '/6'} · ${p.periode}</span>
+        <button class="detail-close" data-close aria-label="Fermer">×</button>
+      </div>
+      <span class="tag" style="background:${S.hex2rgba(col, .14)};color:${col}">
+        <span class="swatch" style="background:${col}"></span>${p.cat_label}</span>
+      <span class="badge ok">donnée publique</span>
+      <h3>${p.nom}</h3>
+      <div class="sub">${p.lieu}</div>
+      <div class="stat">
+        <div><span class="n" style="color:${col}">${p.mesure_txt.split(' [')[0]}</span>
+             <span class="l">${p.anonyme ? 'Constat' : 'Mesure officielle'}</span></div>
+        <div><span class="n">${p.n_temoins || '—'}</span><span class="l">Témoignages reçus</span></div>
+      </div>
+      <div class="block"><h4>Pathologies concernées</h4><p>${p.pathologie}</p></div>
+      <div class="block"><h4>Cas recensés</h4><p>${p.cas}</p></div>
+      <div class="block"><h4>Conclusion officielle</h4><p>${p.conclusion}</p></div>
+      <div class="block"><h4>Cause suspectée</h4><p>${p.cause}</p></div>
+      <div class="block"><h4>Où en est le dossier</h4><p>${p.statut}</p></div>
+      <div class="block"><h4>Collectif</h4><p>${p.collectif}</p></div>
+      <div class="block"><h4>Pourquoi ce cluster compte</h4><p>${p.interet}</p></div>
+      <div class="src"><a href="${p.source}" target="_blank" rel="noopener">Rapport source ↗</a></div>
+      <p class="caution">
+        Association spatiale ou constat d'excès, <b>pas</b> une relation de cause à effet.
+        Un cluster signale une zone où compter davantage, pas une responsabilité établie.
+      </p>`;
+    openDetail();
+  }
+
+  function showSignalement(p) {
+    $('#detail').innerHTML = `
+      <div class="detail-top">
+        <span class="id">SIGNALEMENT INSTRUIT · ${p.periode}</span>
+        <button class="detail-close" data-close aria-label="Fermer">×</button>
+      </div>
+      <span class="tag" style="background:rgba(154,163,175,.14);color:#9AA3AF">
+        <span class="swatch" style="background:#9AA3AF"></span>${p.cat_label}</span>
+      <span class="badge ok">donnée publique</span>
+      <h3>${p.nom}</h3>
+      <div class="sub">${p.lieu}</div>
+      <div class="block"><h4>Pathologies</h4><p>${p.pathologie}</p></div>
+      <div class="block"><h4>Cas</h4><p>${p.cas}</p></div>
+      <div class="block"><h4>Ce qu'en dit l'instruction</h4><p>${p.conclusion}</p></div>
+      <div class="block"><h4>Cause suspectée</h4><p>${p.cause}</p></div>
+      <div class="src"><a href="${p.source}" target="_blank" rel="noopener">Source ↗</a></div>`;
+    openDetail();
+  }
+
+  $('#detail').addEventListener('click', ev => {
+    if (ev.target.closest('[data-close]')) return closeDetail();
+    const z = ev.target.closest('[data-zone]');
+    if (z) {
+      ev.preventDefault();
+      const h = state.hotspots.find(f => f.properties.id === z.dataset.zone);
+      return void (showHotspot(h.properties), engines[state.engine].fitZone(h.properties));
+    }
+    const t = ev.target.closest('[data-tem]');
+    if (t) {
+      const cell = state.cellules.find(c => c.temoins.some(x => x.id === t.dataset.tem));
+      return void showTestimony(cell.temoins.find(x => x.id === t.dataset.tem));
+    }
+    const c = ev.target.closest('[data-cell]');
+    if (c) { ev.preventDefault(); const cell = state.parCellule[c.dataset.cell]; if (cell) showCellule(cell); }
+  });
+
+  /* ------------------------------------------------------------ AUDIO */
+  let audioEl = null, utter = null;
+
+  function audioBlock(p) {
+    const f = !!p.audio;
+    const dur = f ? fmt(p.duree_audio) : '~1:10';
+    return `<div class="audio">
+      <div class="audio-head">
+        <button class="play" id="a-play" aria-label="Lire le témoignage">▶</button>
+        <div class="audio-meta">
+          <div class="t1">${f ? 'Témoignage audio' : 'Lecture du témoignage'}</div>
+          <div class="t2"><span id="a-cur">0:00</span> / ${dur}</div>
+        </div>
+      </div>
+      <div class="wave" id="a-wave">${Array.from({ length: 44 }, (_, i) =>
+        `<i style="height:${18 + 78 * Math.abs(Math.sin(i * 1.7 + p.annee))}%"></i>`).join('')}</div>
+      <div class="tts-note">${f
+        ? 'Voix de synthèse — emplacement de l\'enregistrement réel du parent.'
+        : 'Pas d\'enregistrement fourni : lecture par la synthèse vocale du navigateur.'}</div>
+    </div>`;
+  }
+
+  function bindAudio(p) {
+    const b = $('#a-play'); if (!b) return;
+    b.onclick = () => (playing() ? stopAudio() : playTestimony(p));
+  }
+  const playing = () => (audioEl && !audioEl.paused) || speechSynthesis.speaking;
+
+  function playTestimony(p, onEnd) {
+    stopAudio();
+    const bars = document.querySelectorAll('#a-wave i');
+    const btn = $('#a-play'); if (btn) btn.textContent = '❚❚';
+    const prog = r => {
+      const k = Math.round(r * bars.length);
+      bars.forEach((b, i) => b.classList.toggle('played', i < k));
+    };
+    const done = () => { if (btn) btn.textContent = '▶'; prog(1); if (onEnd) onEnd(); };
+
+    if (p.audio) {
+      /* On garde une référence locale : un dernier timeupdate peut arriver
+         après que stopAudio() a remis audioEl à null. */
+      const el = new Audio(p.audio);
+      audioEl = el;
+      el.ontimeupdate = () => {
+        if (audioEl !== el || !el.duration) return;
+        prog(el.currentTime / el.duration);
+        const c = $('#a-cur'); if (c) c.textContent = fmt(el.currentTime);
+      };
+      el.onended = () => { if (audioEl === el) done(); };
+      el.play().catch(() => tts(p, prog, done));
+    } else {
+      tts(p, prog, done);
+    }
+  }
+
+  function tts(p, prog, done) {
+    audioEl = null;
+    const u = new SpeechSynthesisUtterance(p.temoignage);
+    u.lang = 'fr-FR'; u.rate = 1.02;
+    const v = speechSynthesis.getVoices().filter(x => x.lang.startsWith('fr'));
+    if (v.length) u.voice = v[p.sexe === 'Féminin' ? 0 : v.length - 1];
+    const total = p.temoignage.length;
+    u.onboundary = e => prog(Math.min(1, e.charIndex / total));
+    u.onend = done;
+    utter = u;
+    speechSynthesis.speak(u);
+  }
+
+  function stopAudio() {
+    if (audioEl) {
+      const el = audioEl;
+      audioEl = null;                       // avant pause() : coupe les handlers en vol
+      el.pause(); el.ontimeupdate = null; el.onended = null;
+    }
+    if (speechSynthesis.speaking) { if (utter) utter.onend = null; speechSynthesis.cancel(); }
+    const b = $('#a-play'); if (b) b.textContent = '▶';
+  }
+
+  /* -------------------------------------------------- RÉCIT / LECTURE
+     Deux parcours guidés qui pilotent la carte :
+       « Récit »       enchaîne les 6 clusters, façon frames.
+       « Témoignages » enchaîne les témoignages audio et les lit.        */
+  let pbOn = false, pbMode = 'recit', pbIdx = -1, pbTimer = null;
+
+  /* En mode témoignages on parcourt les mailles, pas les cas : on ne connaît
+     jamais que le centre du secteur. */
+  const queue = () => {
+    if (pbMode === 'recit') return HOTSPOTS;
+    const avecAudio = [];
+    state.cellules.forEach(c => c.temoins.forEach(t => {
+      if (t.audio) avecAudio.push({ cell: c, tem: t });
+    }));
+    if (avecAudio.length) return avecAudio;
+    return state.cellules.flatMap(c => c.temoins.slice(0, 2).map(t => ({ cell: c, tem: t }))).slice(0, 12);
+  };
+
+  function step() {
+    const q = queue();
+    if (!q.length) return stopPlayback();
+    pbIdx = (pbIdx + 1) % q.length;
+
+    if (pbMode === 'recit') {
+      const p = q[pbIdx].properties;
+      $('#pb-now').textContent = `${pbIdx + 1}/${q.length} · ${p.nom}`;
+      engines[state.engine].fitZone(p);
+      showHotspot(p);
+      pbTimer = setTimeout(() => { if (pbOn) step(); }, 8000);
+    } else {
+      const { cell, tem } = q[pbIdx];
+      $('#pb-now').textContent = `${pbIdx + 1}/${q.length} · ${tem.dep}`;
+      engines[state.engine].flyTo(cell.centre[0], cell.centre[1], 8.5);
+      showTestimony(tem);
+      pbTimer = setTimeout(() => {
+        playTestimony(tem, () => { if (pbOn) pbTimer = setTimeout(step, 900); });
+      }, 800);
+    }
+  }
+
+  function stopPlayback() {
+    pbOn = false; clearTimeout(pbTimer); stopAudio();
+    $('#pb-toggle').textContent = '▶';
+    $('#pb-now').textContent = 'en pause';
+  }
+
+  $('#pb-toggle').addEventListener('click', () => {
+    if (pbOn) return stopPlayback();
+    pbOn = true; $('#pb-toggle').textContent = '❚❚'; step();
+  });
+  $('#pb-next').addEventListener('click', () => {
+    clearTimeout(pbTimer); stopAudio();
+    if (pbOn) step(); else { pbOn = true; $('#pb-toggle').textContent = '❚❚'; step(); }
+  });
+  document.querySelectorAll('.pb-mode').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.pb-mode').forEach(x => x.classList.toggle('on', x === b));
+    pbMode = b.dataset.mode; pbIdx = -1;
+    if (pbOn) { clearTimeout(pbTimer); stopAudio(); step(); }
+  }));
+
+  /* --------------------------------------------------- LISTE CLUSTERS */
+  $('#hs-list').innerHTML = HOTSPOTS.map((f, i) => {
+    const p = f.properties, col = S.zoneColor(p);
+    return `<button data-hs="${p.id}">
+      <span class="num" style="background:${col}">${i + 1}</span>
+      <span class="nm">${p.nom}</span>
+      <span class="rr">${p.mesure_txt.split(' [')[0]}</span>
+    </button>`;
+  }).join('') + `
+    <button data-hs="anon">
+      <span class="num" style="background:#9AA3AF">?</span>
+      <span class="nm">Secteur anonymisé (49/53/72)</span>
+      <span class="rr">RGPD</span>
+    </button>`;
+  $('#hs-list').addEventListener('click', ev => {
+    const b = ev.target.closest('[data-hs]'); if (!b) return;
+    const h = state.hotspots.find(f => f.properties.id === b.dataset.hs);
+    showHotspot(h.properties);
+    engines[state.engine].fitZone(h.properties);
+  });
+
+  /* ----------------------------------------------------- MODALES CTA */
+  const MODALS = {
+    questionnaire: `
+      <h3>Signaler un cas</h3>
+      <div class="sub">Maquette du point d'entrée du questionnaire participatif (phase 1 : collecte).</div>
+      <h4>Ce que le bouton déclenche</h4>
+      <ol>
+        <li>Écran d'aiguillage : « un cas de maladie » ou « une pollution près de chez moi ».</li>
+        <li>Formulaire A — cas de santé : pathologie, année de diagnostic, tranche d'âge, sexe,
+            adresse géocodée en code IRIS côté client, exposition suspectée, témoignage libre.</li>
+        <li>Blocs de consentement granulaires, dont la future visualisation géolocalisée agrégée.</li>
+        <li>Anti-abus : honeypot, limite de débit, confirmation par e-mail, revue manuelle des
+            cas atypiques plutôt que rejet automatique.</li>
+      </ol>
+      <h4>La règle d'affichage à ne pas perdre</h4>
+      <p>Collecte fine (IRIS), publication grossière (maille agrégée avec seuil de k-anonymat).
+         Les points individuels de cette démo sont un artefact de démonstration : en production,
+         un cas isolé ne doit jamais être localisable à l'adresse.</p>
+      <h4>Ce que les collectifs ont déjà résolu</h4>
+      <p>Stop aux Cancers de nos Enfants (Sainte-Pazanne) a monté son propre recensement, son
+         authentification et son traitement, et fait analyser 700 pesticides dans l'eau. À
+         Noyelles-Godault, l'invitation institutionnelle a touché 91 % des enfants pour
+         seulement 24 % de participation : la confiance ne se décrète pas.</p>`,
+    deroule: `
+      <h3>Le déroulé, en texte</h3>
+      <div class="sub">Alternative statique au récit cartographique, pour relire sans la carte.</div>
+      <h4>Pourquoi cette porte de sortie</h4>
+      <p>Le récit guidé impose son rythme. Une version texte continue sert trois publics : les
+         lecteurs pressés, les journalistes qui veulent citer, et l'accessibilité (lecteurs
+         d'écran, connexions lentes, navigation au clavier).</p>
+      <h4>Structure</h4>
+      <ol>
+        <li>Le signal : ce que disent les familles.</li>
+        <li>Six clusters, six façons de ne pas conclure.</li>
+        <li>La maille change tout : Pont-de-l'Arche, SIR 6,4 à la commune, 2,3 au canton.</li>
+        <li>Ce qu'on ne mesure pas : Preignac, une enquête bloquée faute de données d'exposition.</li>
+        <li>La donnée verrouillée : un secteur entier anonymisé au titre du RGPD.</li>
+        <li>Participer : donner son cas.</li>
+      </ol>
+      <h4>Sur les données affichées</h4>
+      <p>Clusters et signalements proviennent de rapports publics (Santé publique France,
+         registres, presse) ; chaque fiche porte son lien. Les 100 témoignages individuels sont
+         fictifs et servent uniquement à tester le rendu.</p>`,
+  };
+  document.querySelectorAll('[data-modal]').forEach(b => b.addEventListener('click', () => {
+    $('#modal-box').innerHTML = MODALS[b.dataset.modal] +
+      `<div style="margin-top:22px"><button class="btn" data-mclose>Fermer</button></div>`;
+    $('#modal').classList.add('on');
+  }));
+  $('#modal').addEventListener('click', ev => {
+    if (ev.target.id === 'modal' || ev.target.closest('[data-mclose]')) $('#modal').classList.remove('on');
+  });
+  document.addEventListener('keydown', ev => {
+    if (ev.key === 'Escape') { $('#modal').classList.remove('on'); closeDetail(); stopPlayback(); }
+  });
+
+  /* ------------------------------------------------- MODE RÉCIT / EXPLORER
+     Le récit et l'exploration partagent la même carte et le même panneau.
+     Passer de l'un à l'autre ne recharge rien : on masque les réglages,
+     on affiche les chapitres, et le défilement prend la main sur la caméra. */
+  const api = {
+    setLayers(l) {
+      Object.assign(state, l);
+      ['tg-zones', 'tg-sig', 'tg-temoins'].forEach((id, k) => {
+        const key = ['zones', 'sig', 'temoins'][k];
+        $('#' + id).checked = state[key];
+      });
+      refresh();
+    },
+    fit: p => engines[state.engine].fitZone(p),
+    fitFrance: () => engines[state.engine].fitFrance(),
+    flyTo: (lng, lat, z) => engines[state.engine].flyTo(lng, lat, z),
+  };
+
+  let recitMonte = null;
+  function setMode(m) {
+    state.mode = m;
+    document.body.classList.toggle('mode-recit', m === 'recit');
+    document.querySelectorAll('#mode-switch button')
+      .forEach(b => b.classList.toggle('on', b.dataset.mode === m));
+    if (m === 'recit') {
+      closeDetail(); stopPlayback();
+      if (!recitMonte) recitMonte = NK_RECIT.monter($('#recit'), api);
+      else recitMonte.rejouer();
+      $('#panel-scroll').scrollTop = 0;
+      // sur mobile, le récit n'a de sens que la feuille ouverte
+      if (isMobile()) $('#panel').classList.add('open');
+      setTimeout(() => {
+        $('#panel-scroll').dispatchEvent(new Event('scroll'));
+        NK_RECIT.CHAPITRES[0].scene(api);
+      }, 60);
+    } else {
+      /* Les chapitres éteignent des couches au fil du récit. Quitter au
+         chapitre 1 laisserait une carte vide : on remet tout en marche. */
+      api.setLayers({ zones: true, sig: true, temoins: true });
+      engines[state.engine].fitFrance();
+    }
+    setTimeout(() => ready[state.engine] && engines[state.engine].resize(), 320);
+  }
+  document.querySelectorAll('#mode-switch button')
+    .forEach(b => b.addEventListener('click', () => setMode(b.dataset.mode)));
+  document.addEventListener('click', ev => {
+    if (ev.target.closest('[data-goto-explore]')) setMode('explore');
+  });
+
+  /* ----------------------------------------------------------- UTILS */
+  function fmt(s) {
+    s = Math.round(s || 0);
+    return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
+  }
+
+  /* ------------------------------------------------------------ BOOT */
+  let rz;
+  window.addEventListener('resize', () => {
+    clearTimeout(rz);
+    rz = setTimeout(() => ready[state.engine] && engines[state.engine].resize(), 120);
+  });
+  refresh();
+  switchEngine('maplibre').then(() => setMode('recit'));
+})();

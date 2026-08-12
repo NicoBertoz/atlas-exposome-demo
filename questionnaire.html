@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0B0D10">
+<!-- Démo de travail, pas encore validée par l'équipe éditoriale : on ne
+     veut pas qu'elle remonte dans les moteurs de recherche avec des
+     témoignages fictifs. À retirer au moment de la publication réelle. -->
+<meta name="robots" content="noindex, nofollow">
+
+<title>Signaler un cas — Atlas de l'exposome</title>
+<link rel="stylesheet" href="css/app.css">
+<link rel="stylesheet" href="css/form.css">
+</head>
+<body class="page-form">
+
+<header id="topbar">
+  <div class="brand">Atlas<span class="brand-long"> de l'exposome</span>
+    <small>Signaler un cas</small></div>
+  <div class="spacer"></div>
+  <span class="fake-badge">MAQUETTE · rien n'est enregistré</span>
+  <a class="btn" href="index.html">← La carte</a>
+</header>
+
+<main id="form-wrap">
+
+  <!-- Fil d'étapes -->
+  <ol id="steps">
+    <li data-step="0" class="on"><span>1</span>Ce que vous signalez</li>
+    <li data-step="1"><span>2</span>Le cas</li>
+    <li data-step="2"><span>3</span>Le lieu</li>
+    <li data-step="3"><span>4</span>Votre témoignage</li>
+    <li data-step="4"><span>5</span>Consentements</li>
+  </ol>
+
+  <form id="form" novalidate>
+
+    <!-- ------------------------------------------------ 0. AIGUILLAGE -->
+    <section class="step on" data-step="0">
+      <h1>Que souhaitez-vous signaler ?</h1>
+      <p class="intro">Deux objets différents, deux formulaires différents. Vous pouvez revenir
+        faire l'autre ensuite.</p>
+
+      <div class="choice-grid">
+        <label class="choice">
+          <input type="radio" name="objet" value="sante" checked>
+          <b>Un cas de maladie</b>
+          <span>Un cancer pédiatrique, une malformation congénitale, chez vous ou chez un proche.</span>
+        </label>
+        <label class="choice disabled">
+          <input type="radio" name="objet" value="pollution" disabled>
+          <b>Une pollution près de chez moi</b>
+          <span>Usine, épandage, décharge, eau, odeurs. <em>Ouvert dans un second temps.</em></span>
+        </label>
+      </div>
+
+      <fieldset class="fs">
+        <legend>Vous remplissez ce formulaire</legend>
+        <div class="radios">
+          <label><input type="radio" name="qui" value="parent" checked> Pour mon enfant</label>
+          <label><input type="radio" name="qui" value="moi"> Pour moi-même</label>
+          <label><input type="radio" name="qui" value="proche"> Pour un proche</label>
+        </div>
+      </fieldset>
+
+      <p class="note">
+        Ce formulaire ne remplace <b>aucune démarche médicale ni aucun signalement à l'ARS</b>.
+        Il alimente un recensement citoyen, dont les résultats sont publiés agrégés.
+      </p>
+    </section>
+
+    <!-- ----------------------------------------------------- 1. LE CAS -->
+    <section class="step" data-step="1">
+      <h1>Le cas</h1>
+      <p class="intro">Nous ne demandons ni nom, ni date de naissance, ni dossier médical.
+        Seulement ce qui rend une comparaison géographique possible.</p>
+
+      <label class="field">
+        <span class="lab">Pathologie <em>obligatoire</em></span>
+        <select name="patho" required>
+          <option value="">Choisir…</option>
+          <optgroup label="Cancers pédiatriques">
+            <option>Leucémie aiguë lymphoblastique</option>
+            <option>Leucémie aiguë myéloblastique</option>
+            <option>Tumeur du système nerveux central</option>
+            <option>Lymphome de Hodgkin</option>
+            <option>Lymphome non hodgkinien</option>
+            <option>Neuroblastome</option>
+            <option>Sarcome (os ou tissus mous)</option>
+          </optgroup>
+          <optgroup label="Malformations congénitales">
+            <option>Hypospadias</option>
+            <option>Agénésie transverse d'un membre</option>
+            <option>Cryptorchidie opérée</option>
+          </optgroup>
+          <option value="autre">Autre (préciser ci-dessous)</option>
+        </select>
+        <small>Liste volontairement courte : les pathologies dont le lien avec l'environnement
+          est confirmé ou fortement suspecté.</small>
+      </label>
+
+      <label class="field" id="autre-wrap" hidden>
+        <span class="lab">Préciser la pathologie</span>
+        <input type="text" name="patho_autre" maxlength="120">
+        <small>Champ libre, relu manuellement avant toute intégration.</small>
+      </label>
+
+      <div class="row2">
+        <label class="field">
+          <span class="lab">Année du diagnostic <em>obligatoire</em></span>
+          <input type="number" name="annee" min="1990" max="2026" placeholder="2019" required>
+          <small>L'année seule, jamais la date.</small>
+        </label>
+        <label class="field">
+          <span class="lab">Âge au diagnostic <em>obligatoire</em></span>
+          <select name="age" required>
+            <option value="">Choisir…</option>
+            <option>0-1 an</option><option>2-5 ans</option>
+            <option>6-11 ans</option><option>12-17 ans</option><option>18 ans et plus</option>
+          </select>
+          <small>Une tranche, pas un âge exact.</small>
+        </label>
+      </div>
+
+      <fieldset class="fs">
+        <legend>Sexe</legend>
+        <div class="radios">
+          <label><input type="radio" name="sexe" value="M"> Masculin</label>
+          <label><input type="radio" name="sexe" value="F"> Féminin</label>
+          <label><input type="radio" name="sexe" value="NSP" checked> Ne souhaite pas répondre</label>
+        </div>
+        <small>Demandé parce qu'il est pertinent : l'hypospadias ne concerne que les garçons,
+          et plusieurs cancers ont un sex-ratio marqué.</small>
+      </fieldset>
+    </section>
+
+    <!-- ---------------------------------------------------- 2. LE LIEU -->
+    <section class="step" data-step="2">
+      <h1>Le lieu</h1>
+      <p class="intro">C'est le champ le plus sensible, et le plus utile. Lisez le encadré
+        avant de répondre.</p>
+
+      <div class="rgpd">
+        <b>Ce qui se passe exactement</b>
+        <p>Votre adresse est envoyée à l'<a href="https://adresse.data.gouv.fr" target="_blank"
+          rel="noopener">API Adresse de l'État</a> pour en déduire un <b>code IRIS</b>, une maille
+          statistique d'environ 2 000 habitants. <b>Seul ce code est conservé</b> : l'adresse n'est
+          jamais écrite en base.</p>
+        <p>Et sur la carte publique, l'IRIS lui-même n'est pas affiché. Les cas sont regroupés dans
+          des <b>secteurs d'environ 25 km</b>, et un secteur n'apparaît qu'à partir de
+          <b>3 cas</b>. En dessous, il est fondu dans un secteur plus large, ou pas affiché du tout.</p>
+      </div>
+
+      <label class="field">
+        <span class="lab">Commune de résidence au moment du diagnostic <em>obligatoire</em></span>
+        <input type="text" name="commune" id="commune" autocomplete="off"
+               placeholder="Commencez à taper : Sainte-Pazanne…" required>
+        <div id="suggest"></div>
+        <small id="commune-out">La saisie interroge l'API Adresse en direct.</small>
+      </label>
+
+      <label class="field">
+        <span class="lab">Commune de la mère pendant la grossesse <em>facultatif</em></span>
+        <input type="text" name="commune_grossesse" id="commune2" autocomplete="off"
+               placeholder="Si elle était différente">
+        <small>Déterminant pour les malformations : la fenêtre d'exposition est celle de la
+          grossesse, pas celle du diagnostic.</small>
+      </label>
+
+      <label class="field">
+        <span class="lab">Exposition que vous suspectez <em>facultatif</em></span>
+        <select name="exposition">
+          <option value="">Aucune idée / je ne préfère pas dire</option>
+          <option>Usine ou site industriel à proximité</option>
+          <option>Épandages agricoles réguliers</option>
+          <option>Eau du robinet ou puits</option>
+          <option>Ancien site pollué (école, terrain)</option>
+          <option>Incinérateur ou décharge</option>
+          <option>Activité professionnelle d'un parent</option>
+          <option>Autre</option>
+        </select>
+        <small>Une hypothèse de votre part, enregistrée comme telle. Elle n'établit rien.</small>
+      </label>
+
+      <label class="field">
+        <span class="lab">Profession des parents à l'époque <em>facultatif</em></span>
+        <input type="text" name="profession" maxlength="120" placeholder="Ex. : viticulteur, aide-soignante">
+        <small>Sert à construire un indice socio-économique, jamais à identifier quelqu'un.</small>
+      </label>
+    </section>
+
+    <!-- --------------------------------------------- 3. LE TÉMOIGNAGE -->
+    <section class="step" data-step="3">
+      <h1>Votre témoignage</h1>
+      <p class="intro">La partie que les chiffres ne portent pas. Elle est facultative, et c'est
+        souvent elle qu'on lira.</p>
+
+      <label class="field">
+        <span class="lab">Votre récit <em>facultatif, environ 200 mots</em></span>
+        <textarea name="temoignage" rows="9" maxlength="1800"
+          placeholder="Le diagnostic, le parcours, ce que vous avez observé autour de vous, ce que vous avez demandé et ce qu'on vous a répondu."></textarea>
+        <small><span id="wc">0</span> mots. Relu avant publication. Ne citez pas d'entreprise ni de
+          personne nommément : la modération retirerait le passage.</small>
+      </label>
+
+      <div class="rgpd soft">
+        <b>Un enregistrement audio ?</b>
+        <p>Nous préparons la possibilité de déposer une voix, la vôtre ou celle de votre enfant.
+          Elle serait diffusée sur la page des témoignages, jamais rattachée à un point précis
+          de la carte. Cochez ci-dessous si vous souhaitez être recontacté pour cela.</p>
+        <label class="check"><input type="checkbox" name="audio_ok">
+          Je serais prêt·e à enregistrer un témoignage audio</label>
+      </div>
+    </section>
+
+    <!-- ------------------------------------------- 4. CONSENTEMENTS -->
+    <section class="step" data-step="4">
+      <h1>Consentements</h1>
+      <p class="intro">Séparés, parce qu'ils n'engagent pas la même chose. Vous pouvez accepter
+        l'un et refuser l'autre.</p>
+
+      <label class="check big"><input type="checkbox" name="c_base" required>
+        <span><b>J'accepte que ce signalement soit enregistré</b> et comptabilisé dans le
+        recensement citoyen. <em>Obligatoire.</em></span></label>
+
+      <label class="check big"><input type="checkbox" name="c_carte">
+        <span><b>J'accepte qu'il apparaisse sur la carte publique</b>, sous forme agrégée dans un
+        secteur d'au moins 3 cas, sans mention de ma commune.</span></label>
+
+      <label class="check big"><input type="checkbox" name="c_temoignage">
+        <span><b>J'accepte que mon témoignage écrit soit publié</b>, après relecture, sans mon
+        nom ni ma commune.</span></label>
+
+      <label class="check big"><input type="checkbox" name="c_recontact">
+        <span><b>J'accepte d'être recontacté·e</b> par l'équipe scientifique du projet, si mon cas
+        s'inscrit dans une étude en cours.</span></label>
+
+      <label class="field">
+        <span class="lab">E-mail <em>pour confirmer, dédoublonner et vous permettre d'effacer</em></span>
+        <input type="email" name="email" placeholder="vous@exemple.fr">
+        <small>Stocké haché. Il sert à vous envoyer un lien de confirmation et un lien de
+          suppression. Sans lui, vous ne pourrez pas exercer votre droit à l'effacement.</small>
+      </label>
+
+      <!-- Piège anti-robot : invisible pour un humain, rempli par les scripts -->
+      <div class="hp" aria-hidden="true">
+        <label>Ne pas remplir <input type="text" name="site" tabindex="-1" autocomplete="off"></label>
+      </div>
+
+      <div class="rgpd">
+        <b>Ce que nous ne saurons jamais faire seuls</b>
+        <p>Un recensement déclaratif ne prouve rien. Il sert à repérer où regarder, et à obliger
+          les institutions à regarder. Les analyses sérieuses passent par les registres.</p>
+      </div>
+    </section>
+
+    <!-- ---------------------------------------------------- BOUTONS -->
+    <nav id="nav">
+      <button type="button" class="btn" id="prev" hidden>← Précédent</button>
+      <div class="spacer"></div>
+      <button type="button" class="btn btn-accent" id="next">Continuer →</button>
+      <button type="submit" class="btn btn-accent" id="send" hidden>Envoyer mon signalement</button>
+    </nav>
+  </form>
+
+  <!-- ------------------------------------------------------ RÉCAP -->
+  <section id="done" hidden>
+    <h1>Merci.</h1>
+    <p class="intro">Rien n'a été envoyé : cette page est une maquette. Voici ce qu'un vrai envoi
+      aurait transmis, et sous quelle forme.</p>
+    <pre id="payload"></pre>
+    <div class="rgpd">
+      <b>Ce qui n'est pas dans cet objet, volontairement</b>
+      <p>Ni nom, ni date de naissance, ni adresse en clair, ni date exacte de diagnostic.
+        L'e-mail est haché. La commune est déjà transformée en code IRIS côté navigateur.</p>
+    </div>
+    <p><a class="btn" href="index.html">← Retour à la carte</a></p>
+  </section>
+</main>
+
+<script src="js/form.js"></script>
+</body>
+</html>
