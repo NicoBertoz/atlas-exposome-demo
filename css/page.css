@@ -96,3 +96,149 @@
   .art-nav { grid-template-columns: 1fr; }
   .art-nav a.suiv { text-align: left; }
 }
+
+/* ================================================================== *
+ *  Pages hotspot — dix dossiers, huit blocs, la même grille partout.
+ *  Le dispositif signature est le bloc 4 : la phrase de clôture.
+ * ================================================================== */
+.page-hotspot #article { max-width: 760px; }
+
+/* --- bloc 0 : carte d'identité ---------------------------------- */
+.hs-id {
+  border: 1.5px solid var(--trait); border-top: 5px solid var(--cat, var(--rouge));
+  padding: 18px 20px 4px; margin: 0 0 34px;
+}
+.hs-id-tete {
+  display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: baseline;
+  padding-bottom: 14px; border-bottom: 1px solid var(--line-soft);
+}
+.hs-cat {
+  font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase;
+  font-weight: 700; color: var(--cat, var(--rouge));
+}
+.hs-lieu { font-size: 12.5px; color: var(--txt-dim); }
+
+.hs-strip {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0; margin: 0; padding: 0;
+}
+.hs-strip > div { padding: 14px 16px 14px 0; }
+.hs-strip dt {
+  font-family: var(--mono); font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--txt-faint); margin-bottom: 5px;
+}
+.hs-strip dd { margin: 0; font-size: 13.5px; line-height: 1.42; color: var(--txt); }
+.hs-strip .hs-mes { font-weight: 700; color: var(--cat, var(--rouge)); }
+.hs-fic {
+  font-size: 9px; letter-spacing: .08em; text-transform: uppercase; margin-left: 6px;
+  background: var(--papier-3); color: var(--txt-faint); padding: 1px 5px;
+}
+.hs-cas {
+  font-size: 14px !important; line-height: 1.62; color: var(--encre-2);
+  border-top: 1px solid var(--line-soft); padding: 13px 0 16px; margin: 0 !important;
+}
+
+/* --- les sept repères ------------------------------------------- */
+.hs-vars { background: var(--papier-2); padding: 20px 22px 8px; margin-bottom: 40px; }
+.hs-vars h2 { color: var(--txt) !important; }
+.hs-vars-intro {
+  font-size: 13.5px !important; color: var(--txt-dim) !important; margin: 0 0 16px !important;
+}
+.hs-vars dl { margin: 0; display: grid; gap: 0; }
+.hs-vars dl > div {
+  display: grid; grid-template-columns: 190px 1fr; gap: 16px;
+  padding: 11px 0; border-top: 1px solid var(--papier-3); align-items: baseline;
+}
+.hs-vars dt {
+  font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--txt-faint);
+}
+.hs-vars dd { margin: 0; font-size: 14px; line-height: 1.5; color: var(--txt); }
+
+/* --- blocs numérotés -------------------------------------------- */
+.hs-bloc h2 { display: flex; align-items: center; gap: 10px; }
+.hs-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 19px; height: 19px; flex: none;
+  background: var(--trait); color: var(--papier);
+  font-family: var(--mono); font-size: 10.5px; font-weight: 700; letter-spacing: 0;
+}
+
+/* --- bloc 4 : la phrase de clôture, le dispositif signature ------ */
+.hs-phrase {
+  border-left: 5px solid var(--rouge); background: var(--papier-2);
+  padding: 20px 24px 22px; margin: 6px 0 40px;
+}
+.hs-phrase.gagnee { border-left-color: var(--vert); }
+.hs-phrase.ouverte { border-left-color: var(--txt-faint); }
+.hs-phrase-lab {
+  display: block; font-size: 10px; letter-spacing: .14em; text-transform: uppercase;
+  font-weight: 700; color: var(--rouge); margin-bottom: 12px;
+}
+.hs-phrase.gagnee .hs-phrase-lab { color: var(--vert); }
+.hs-phrase.ouverte .hs-phrase-lab { color: var(--txt-faint); }
+.hs-phrase blockquote {
+  margin: 0; font-size: 18.5px; line-height: 1.5; color: var(--txt); font-weight: 500;
+  text-wrap: pretty;
+}
+.hs-phrase.ouverte blockquote { font-weight: 400; color: var(--txt-dim); font-size: 16px; }
+.hs-phrase cite {
+  display: block; margin-top: 13px; font-style: normal;
+  font-family: var(--mono); font-size: 11px; line-height: 1.5; color: var(--txt-dim);
+}
+
+/* --- bloc 6 : les acteurs --------------------------------------- */
+.hs-acteurs { display: grid; gap: 0; margin-bottom: 14px; }
+.hs-act { padding: 15px 0; border-top: 1px solid var(--line-soft); }
+.hs-act:first-child { border-top: 1px solid var(--line); }
+.hs-act b { display: block; font-size: 14.5px; margin-bottom: 4px; }
+.hs-act p {
+  font-size: 13.5px !important; line-height: 1.55; color: var(--txt-dim) !important;
+  margin: 0 0 8px !important;
+}
+.hs-act-c {
+  display: flex; flex-wrap: wrap; gap: 6px 16px;
+  font-family: var(--mono); font-size: 11.5px;
+}
+.hs-act-c a { color: var(--bleu); text-decoration: underline; text-underline-offset: 2px; }
+.hs-act-c span { color: var(--txt-dim); }
+.hs-act-c .hs-nf { color: var(--txt-faint); font-style: italic; }
+
+/* --- bloc 7 : la frise ------------------------------------------ */
+.hs-frise { list-style: none; padding: 0 0 0 4px; margin: 0; }
+.hs-frise li {
+  display: grid; grid-template-columns: 62px 1fr; gap: 16px;
+  padding: 12px 0 12px 20px; border-left: 2px solid var(--trait-doux); position: relative;
+}
+.hs-frise li::before {
+  content: ''; position: absolute; left: -6px; top: 18px;
+  width: 10px; height: 10px; background: var(--papier); border: 2px solid var(--trait);
+}
+.hs-frise li:last-child::before { background: var(--jaune); }
+.hs-frise b { font-family: var(--mono); font-size: 13px; color: var(--txt); }
+.hs-frise span { font-size: 14px; line-height: 1.55; color: var(--encre-2); }
+
+/* --- sommaire des dix dossiers ---------------------------------- */
+.hs-index { display: grid; gap: 0; }
+.hs-index a {
+  display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: baseline;
+  padding: 15px 0; border-top: 1px solid var(--line-soft); color: var(--txt);
+}
+.hs-index a:first-child { border-top: 1px solid var(--line); }
+.hs-index a:last-child { border-bottom: 1px solid var(--line-soft); }
+.hs-index a:hover { background: var(--papier-2); }
+.hs-index .hsi-n { font-family: var(--mono); font-size: 12px; color: var(--txt-faint); }
+.hs-index b { display: block; font-size: 15px; line-height: 1.35; }
+.hs-index em {
+  display: block; font-style: normal; font-size: 12.5px; color: var(--txt-dim); margin-top: 3px;
+}
+
+.hs-tous { margin-top: 26px; font-size: 13.5px; }
+.hs-tous a { color: var(--txt-dim); }
+
+@media (max-width: 640px) {
+  .hs-vars dl > div { grid-template-columns: 1fr; gap: 3px; }
+  .hs-frise li { grid-template-columns: 1fr; gap: 2px; }
+  .hs-phrase blockquote { font-size: 16.5px; }
+  .hs-strip > div { padding-right: 10px; }
+}

@@ -196,6 +196,25 @@ input[type=range] { width: 100%; accent-color: var(--accent); }
 .hs .nm { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .hs .rr { font-family: var(--mono); font-size: 10.5px; color: var(--txt-dim); flex: none; }
 
+/* Les dix agrégats qui ont une page dossier : liseré jaune, mention discrète. */
+.hs button.a-dossier { border-left: 3px solid var(--jaune); }
+.hs .nm em {
+  display: block; font-style: normal; font-family: var(--mono);
+  font-size: 9px; letter-spacing: .07em; text-transform: uppercase;
+  color: var(--txt-faint); margin-top: 2px;
+}
+
+/* Renvoi de la fiche carte vers la page dossier. */
+.fiche-dossier {
+  display: block; margin: 14px 0 4px; padding: 12px 14px;
+  background: var(--jaune); color: var(--encre); border: 1px solid var(--trait);
+}
+.fiche-dossier b { display: block; font-size: 13px; margin-bottom: 3px; }
+.fiche-dossier b::after { content: ' →'; }
+.fiche-dossier span { font-size: 11.5px; line-height: 1.45; color: var(--encre); opacity: .78; }
+.fiche-dossier:hover { background: var(--encre); color: var(--papier); }
+.fiche-dossier:hover span { color: var(--papier); }
+
 .panel-foot {
   padding: 12px 18px calc(12px + var(--safe-b)); border-top: 1px solid var(--line);
   display: flex; flex-direction: column; gap: 8px; background: var(--bg-panel);

@@ -177,6 +177,11 @@
      hotspot ET sur la page cas particulier. Le formulaire doit être atteignable
      depuis l'endroit qui donne envie de le remplir, pas seulement depuis la
      barre du haut. */
+  /* Dix des vingt et un agrégats ont une page dédiée (hotspots-pages.js).
+     La fiche de la carte y renvoie, la liste les signale d'une pastille. */
+  const PAGES_IDS = new Set((window.NK_PAGES || []).map(p => p.id));
+  const aPage = id => PAGES_IDS.has(id);
+
   function blocParticiper(contexte) {
     return `<div class="fiche-cta">
       <p>${contexte}</p>
@@ -274,7 +279,7 @@
     const num = HOTSPOTS.findIndex(f => f.properties.id === p.id) + 1;
     $('#detail').innerHTML = `
       <div class="detail-top">
-        <span class="id">${p.anonyme ? 'ZONE ANONYMISÉE' : 'CLUSTER ' + num + '/6'} · ${p.periode}</span>
+        <span class="id">${p.anonyme ? 'ZONE ANONYMISÉE' : 'AGRÉGAT ' + num + '/' + HOTSPOTS.length} · ${p.periode}</span>
         <button class="detail-close" data-close aria-label="Fermer">×</button>
       </div>
       <span class="tag" style="background:${S.hex2rgba(col, .14)};color:${col}">
@@ -294,6 +299,10 @@
       <div class="block"><h4>Où en est le dossier</h4><p>${p.statut}</p></div>
       <div class="block"><h4>Collectif</h4><p>${p.collectif}</p></div>
       <div class="block"><h4>Pourquoi ce cluster compte</h4><p>${p.interet}</p></div>
+      ${aPage(p.id) ? `<a class="fiche-dossier" href="hotspot.html?id=${p.id}">
+        <b>Lire le dossier complet</b>
+        <span>Exposition, décompte citoyen, phrase de clôture, acteurs à contacter, frise</span>
+      </a>` : ''}
       <div class="src"><a href="${p.source}" target="_blank" rel="noopener">Rapport source ↗</a></div>
 
       <div class="block"><h4>Cas déclarés dans cette zone</h4></div>
@@ -486,9 +495,9 @@
   /* --------------------------------------------------- LISTE CLUSTERS */
   $('#hs-list').innerHTML = HOTSPOTS.map((f, i) => {
     const p = f.properties, col = S.zoneColor(p);
-    return `<button data-hs="${p.id}">
+    return `<button data-hs="${p.id}"${aPage(p.id) ? ' class="a-dossier"' : ''}>
       <span class="num" style="background:${col}">${i + 1}</span>
-      <span class="nm">${p.nom}</span>
+      <span class="nm">${p.nom}${aPage(p.id) ? '<em>dossier complet</em>' : ''}</span>
       <span class="rr">${p.mesure_txt.split(' [')[0]}</span>
     </button>`;
   }).join('') + `
@@ -639,6 +648,15 @@
   /* Le déroulé s'affiche tout de suite : c'est du texte, il n'a aucune raison
      d'attendre le fond de carte. La carte se charge derrière, floutée.
      #carte permet de pointer directement sur la section 2 depuis une page concept. */
-  setMode(location.hash === '#carte' ? 'carte' : 'intro');
+  /* ?zone=h1 : retour depuis une page dossier, la carte s'ouvre sur le secteur. */
+  const zoneVoulue = new URLSearchParams(location.search).get('zone');
+  setMode(location.hash === '#carte' || zoneVoulue ? 'carte' : 'intro');
   switchEngine('deck');
+  if (zoneVoulue) {
+    const z = state.hotspots.find(f => f.properties.id === zoneVoulue);
+    if (z) setTimeout(() => {
+      showHotspot(z.properties);
+      engines[state.engine].fitZone(z.properties);
+    }, 600);
+  }
 })();

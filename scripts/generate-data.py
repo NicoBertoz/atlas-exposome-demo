@@ -434,7 +434,7 @@ HOTSPOTS = [
         "periode": "1994 – 2022 (épandages)",
         "cas": "Aucun décompte sanitaire. 3 500 habitants privés d'eau du robinet, "
                "16 à 17 communes au-dessus de la norme, 44 communes ayant reçu les boues.",
-        "mesure": "Sang", "valeur": 59.0, "mesure_txt": "jusqu'à 59 × la moyenne française",
+        "mesure": "Sang", "valeur": 59.0, "mesure_txt": "59 × la moyenne",
         "conclusion": "Aucune investigation d'agrégat sanitaire n'a été ouverte. Une note "
                       "préfectorale du 7 août 2025 désigne la papeterie comme l'un des "
                       "contributeurs principaux à la contamination.",
@@ -459,7 +459,7 @@ HOTSPOTS = [
         "periode": "1996 – 2024",
         "cas": "Sur une centaine d'enfants dépistés en 1998, 41 % au-dessus du seuil "
                "d'alerte de 70 µg/L et 22 % au-dessus de 100 µg/L.",
-        "mesure": "Dépistage", "valeur": 41.0, "mesure_txt": "41 % au-dessus du seuil",
+        "mesure": "Dépistage", "valeur": 41.0, "mesure_txt": "41 % des enfants",
         "conclusion": "La cour d'appel de Paris a jugé le 15 septembre 2009 que la pollution "
                       "de l'usine avait été au moins l'un des facteurs de l'intoxication au "
                       "plomb des enfants de la commune.",
