@@ -202,8 +202,20 @@ window.NK_ENGINES.deck = (function () {
           container, style: styleDe('light'),
           center: S().FRANCE.center, zoom: S().FRANCE.zoom, pitch: 0,
           attributionControl: { compact: true },
+          /* Caméra enfermée sur la France — voir FRANCE.maxBounds dans shared.js */
+          maxBounds: S().FRANCE.maxBounds(container),
+          maxZoom: S().FRANCE.maxZoom,
+          /* Sans ça MapLibre répète le planisphère à l'infini vers l'est et
+             l'ouest : on verrait des copies fantômes de la France au bord. */
+          renderWorldCopies: false,
+          /* La rotation à la souris n'apporte rien ici et fait perdre le nord,
+             au sens propre : un agrégat se lit par rapport à sa région. Le
+             pitch programmatique de la vue hexagones, lui, reste possible. */
+          dragRotate: false, pitchWithRotate: false,
         });
-        map.addControl(new maplibregl.NavigationControl({ visualizePitch: true }), 'bottom-right');
+        map.touchZoomRotate.disableRotation();
+        // plus de boussole à afficher puisqu'on ne peut plus tourner
+        map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'bottom-right');
         overlay = new deck.MapboxOverlay({ interleaved: false, layers: [] });
         // les pastilles n'existent qu'en dessous du zoom 9 : on ne recalcule
         // les couches qu'au franchissement du seuil, pas à chaque frame
@@ -251,7 +263,15 @@ window.NK_ENGINES.deck = (function () {
                    duration: duree === undefined ? 650 : duree });
     },
 
-    resize() { map && map.resize(); },
+    /* Le cadre de la caméra dépend du rapport du viewport : une rotation de
+       téléphone le change complètement. On le refait avant le resize, sinon
+       MapLibre contraint la nouvelle taille avec l'ancienne emprise et rogne
+       la France le temps d'un cadrage. */
+    resize() {
+      if (!map) return;
+      map.setMaxBounds(S().FRANCE.maxBounds(map.getContainer()));
+      map.resize();
+    },
 
     get map() { return map; },   // exposé pour le débogage en console
   };

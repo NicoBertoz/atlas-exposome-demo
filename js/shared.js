@@ -93,6 +93,47 @@ window.NK_SHARED = (function () {
     padding: () => (window.innerWidth < 860 ? 16 : 40),
     // un cluster cadré au plus juste perd son contexte : on laisse respirer
     zonePadding: () => (window.innerWidth < 860 ? 60 : 170),
+
+    /* La carte est une carte DE FRANCE, pas un planisphère sur lequel la France
+       se trouve. Dézoomer jusqu'au monde entier écrase les 21 agrégats en une
+       bouillie de cercles au large du Portugal, et déplacer la vue au Groenland
+       ne montre rien. On enferme donc la caméra.
+
+       Ce cadre est plus large que `bounds` : il faut de la marge pour que la
+       France entière tienne à l'écran malgré le panneau latéral qui mange la
+       moitié gauche, et pour qu'on puisse suivre un agrégat frontalier
+       (Alsace, Pays basque, Menton) sans buter sur le bord.
+
+       MapLibre contraint le centre ET le zoom à partir de ce seul réglage :
+       dès que la vue déborde, il ramène le cadrage à l'intérieur. Pas besoin
+       d'un minZoom, qui entrerait de toute façon en conflit avec le fitBounds
+       en portrait mobile, lequel demande un zoom bien plus faible qu'en bureau.
+
+       Le cadre ne peut pas être une constante. MapLibre exige que l'emprise
+       couvre tout le viewport : en paysage c'est donc la largeur qui commande,
+       en portrait mobile c'est la hauteur. Une boîte fixe assez haute pour que
+       la France tienne sur un téléphone laisse, sur un grand écran, dériver
+       jusqu'au Danemark. On la recalcule donc au format de l'écran : on part de
+       la France, on lui ajoute une marge, et on n'étire que la dimension qui
+       manque pour atteindre le rapport du viewport. Serré dans les deux sens,
+       sur tous les appareils.
+
+       Le facteur `k` convertit des degrés de latitude en degrés de longitude à
+       la hauteur de la France : en Mercator un degré de latitude y est ~1,45
+       fois plus « large », et sans cette conversion le rapport est faux. */
+    maxBounds(el) {
+      const MARGE = 1.18;                       // ~18 % de rab autour du pays
+      const [[o, s], [e, n]] = FRANCE.bounds;
+      const cx = (o + e) / 2, cy = (s + n) / 2;
+      let dx = (e - o) / 2 * MARGE, dy = (n - s) / 2 * MARGE;
+      const k = 1 / Math.cos(cy * Math.PI / 180);
+      const rapport = Math.max(0.2, (el.clientWidth || 1) / (el.clientHeight || 1));
+      if (dx < dy * k * rapport) dx = dy * k * rapport; else dy = dx / (k * rapport);
+      return [[cx - dx, cy - dy], [cx + dx, cy + dy]];
+    },
+    /* Les tuiles s'arrêtent au niveau 9 : au-delà, MapLibre étire le z9 et la
+       géométrie s'épaissit. On coupe juste après, assez pour lire une commune. */
+    maxZoom: 10.5,
   };
 
   /* À l'échelle de la France, un cluster de 3 km ne se voit pas. On double
