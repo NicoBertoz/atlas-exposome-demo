@@ -21,11 +21,19 @@ window.NK_ENGINES.deck = (function () {
   const tip = () => document.getElementById('deck-tip');
   const zoom = () => (map ? map.getZoom() : 0);
 
-  /* cf. engine-maplibre.js : on ne dépend pas de l'événement 'load' */
+  /* On n'attend PAS l'événement 'load' : il dépend d'une première frame de
+     rendu, qui n'arrive jamais dans un onglet non peint (aperçus, tests
+     headless, arrière-plan). 'styledata' a le même défaut. On écoute donc
+     l'événement ET on surveille l'état, le premier arrivé l'emporte. */
   function whenReady(cb) {
     if (map.isStyleLoaded()) return cb();
-    map.once('styledata', () => setTimeout(cb, 0));
+    let fait = false;
+    const go = () => { if (!fait) { fait = true; clearInterval(t); cb(); } };
+    map.once('styledata', () => setTimeout(go, 0));
+    const t = setInterval(() => map.isStyleLoaded() && go(), 120);
+    setTimeout(() => clearInterval(t), 30000);
   }
+
 
   function showTip(html, x, y) {
     const t = tip(), stage = document.getElementById('map-stage');
@@ -190,7 +198,7 @@ window.NK_ENGINES.deck = (function () {
       if (!map || key === current) return;
       current = key;
       map.setStyle(styleDe(key));   // la surcouche deck.gl survit au changement de fond
-      if (!auto) map.once('styledata', () => setTimeout(() => S().libellesEnFrancais(map), 0));
+      if (!auto) whenReady(() => S().libellesEnFrancais(map));
     },
 
     render(state) {

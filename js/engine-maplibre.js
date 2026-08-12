@@ -22,11 +22,17 @@ window.NK_ENGINES.maplibre = (function () {
 
   /* On n'attend PAS l'événement 'load' : il dépend d'une première frame de
      rendu, qui n'arrive jamais dans un onglet non peint (aperçus, tests
-     headless, arrière-plan). 'styledata' suffit pour poser des couches. */
+     headless, arrière-plan). 'styledata' a le même défaut. On écoute donc
+     l'événement ET on surveille l'état, le premier arrivé l'emporte. */
   function whenReady(cb) {
     if (map.isStyleLoaded()) return cb();
-    map.once('styledata', () => setTimeout(cb, 0));
+    let fait = false;
+    const go = () => { if (!fait) { fait = true; clearInterval(t); cb(); } };
+    map.once('styledata', () => setTimeout(go, 0));
+    const t = setInterval(() => map.isStyleLoaded() && go(), 120);
+    setTimeout(() => clearInterval(t), 30000);
   }
+
 
   function addLayers() {
     // notre style lit déjà name:fr ; la réécriture ne sert qu'au repli CARTO
@@ -230,9 +236,7 @@ window.NK_ENGINES.maplibre = (function () {
       current = key;
       map.setStyle(styleDe(key));
       // setStyle repart d'une feuille vierge : il faut reposer sources et couches
-      map.once('styledata', () => setTimeout(() => {
-        addLayers(); bindEvents(); if (last) this.render(last);
-      }, 0));
+      whenReady(() => { addLayers(); bindEvents(); if (last) this.render(last); });
     },
 
     render(state) {
