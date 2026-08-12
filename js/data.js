@@ -7,7 +7,7 @@ window.NK_DATA = {
   "clusters_reels": "Clusters et signalements : données publiques réelles, reprises du classeur « Projet NK - Document central », sourcées sur Santé publique France, les registres et la presse. Chaque fiche porte son lien source.",
   "temoignages_fictifs": "Les 100 témoignages individuels sont ENTIÈREMENT FICTIFS, générés pour tester le rendu. Aucun ne correspond à une personne réelle.",
   "genere_le": "2026-08-11",
-  "n_temoignages": 100,
+  "n_temoignages": 420,
   "n_hotspots": 18,
   "n_signalements": 13,
   "pathologies": [
@@ -6745,1310 +6745,62 @@ window.NK_DATA = {
   "features": [
    {
     "type": "Feature",
-    "id": "T001",
+    "id": "T0001",
     "geometry": {
      "type": "Point",
      "coordinates": [
-      6.14973,
-      46.44103
+      2.84159,
+      50.44636
      ]
     },
     "properties": {
-     "id": "T001",
-     "patho_id": "snc",
-     "patho_label": "Tumeur du système nerveux central",
-     "sous_type": "Médulloblastome",
-     "color": "#1F3ACC",
-     "annee": 2020,
-     "tranche_age": "2-5 ans",
-     "sexe": "Masculin",
-     "dep": "Jura (39)",
-     "hotspot": "h3",
-     "hotspot_nom": "Haut-Jura — Les Rousses, Morez, Prémanon",
-     "exposition": "Usine ou site industriel à proximité",
-     "profession_parent": "Chauffeur routier",
-     "issue": "En rémission / suivi",
-     "temoignage": "En 2020, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait mon fils. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Le radon, les lignes haute tension, tout a été examiné et écarté. Il ne reste rien, et pourtant les cas sont là. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
-     "audio": "audio/T001.m4a",
-     "duree_audio": 29,
-     "verifie": true,
-     "recu_le": "16/01/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T002",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      2.44699,
-      48.88964
-     ]
-    },
-    "properties": {
-     "id": "T002",
-     "patho_id": "lymphome",
-     "patho_label": "Lymphome",
-     "sous_type": "Lymphome de Burkitt",
-     "color": "#0B8A4E",
-     "annee": 2022,
-     "tranche_age": "6-11 ans",
-     "sexe": "Féminin",
-     "dep": "Seine-Saint-Denis (93)",
-     "hotspot": "h12",
-     "hotspot_nom": "Romainville — riverains de l'usine Wipelec",
-     "exposition": "Ancien site pollué",
-     "profession_parent": "Ouvrier·ère de l'industrie",
-     "issue": "En rémission / suivi",
-     "temoignage": "C'est en 2022 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir huit ans. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. L'usine rejetait du trichloréthylène à cent mètres des immeubles. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
-     "audio": "audio/T002.m4a",
-     "duree_audio": 23,
-     "verifie": false,
-     "recu_le": "16/07/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T003",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      3.12925,
-      50.44215
-     ]
-    },
-    "properties": {
-     "id": "T003",
+     "id": "T0001",
      "patho_id": "leucemie",
      "patho_label": "Leucémie aiguë",
      "sous_type": "Leucémie aiguë lymphoblastique",
-     "color": "#C01B5C",
-     "annee": 2020,
-     "tranche_age": "12-17 ans",
-     "sexe": "Masculin",
-     "dep": "Pas-de-Calais (62)",
-     "hotspot": "h16",
-     "hotspot_nom": "Lens et 101 communes — cryptorchidie",
-     "exposition": "Eau du robinet ou puits suspectés",
-     "profession_parent": "Artisan",
-     "issue": "En rémission / suivi",
-     "temoignage": "En 2020, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait mon fils. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Le bassin minier, la métallurgie, tout ça a laissé quelque chose dans les sols. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
-     "audio": "audio/T003.m4a",
-     "duree_audio": 25,
-     "verifie": true,
-     "recu_le": "06/07/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T004",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      2.5396,
-      50.93714
-     ]
-    },
-    "properties": {
-     "id": "T004",
-     "patho_id": "snc",
-     "patho_label": "Tumeur du système nerveux central",
-     "sous_type": "Astrocytome",
-     "color": "#1F3ACC",
-     "annee": 2025,
-     "tranche_age": "2-5 ans",
-     "sexe": "Masculin",
-     "dep": "Nord (59)",
-     "hotspot": "h14",
-     "hotspot_nom": "Rexpoëde — école primaire Victor-Hugo",
-     "exposition": "Activité professionnelle d'un parent",
-     "profession_parent": "Chauffeur routier",
-     "issue": "Décès",
-     "temoignage": "On a appris la maladie de mon fils en 2025, presque par hasard, lors d'une prise de sang de routine. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Elle est partie deux ans après le diagnostic. On continue pour les autres. Les antennes de quatre opérateurs sur une cheminée d'usine, en face de l'école. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
-     "audio": "audio/T004.m4a",
-     "duree_audio": 25,
-     "verifie": false,
-     "recu_le": "12/03/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T005",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      6.03963,
-      46.48779
-     ]
-    },
-    "properties": {
-     "id": "T005",
-     "patho_id": "lymphome",
-     "patho_label": "Lymphome",
-     "sous_type": "Lymphome non hodgkinien",
-     "color": "#0B8A4E",
-     "annee": 2019,
-     "tranche_age": "6-11 ans",
-     "sexe": "Masculin",
-     "dep": "Jura (39)",
-     "hotspot": "h3",
-     "hotspot_nom": "Haut-Jura — Les Rousses, Morez, Prémanon",
-     "exposition": "Usine ou site industriel à proximité",
-     "profession_parent": "Sans emploi au moment du diagnostic",
-     "issue": "En rémission / suivi",
-     "temoignage": "En 2019, mon fils a fait une chute bête à l'école. La radio a montré autre chose. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Ici tout le monde connaît les familles concernées. Personne ne sait quoi en faire. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
-     "audio": "audio/T005.m4a",
-     "duree_audio": 25,
-     "verifie": false,
-     "recu_le": "25/02/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T006",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      2.5776,
-      50.45224
-     ]
-    },
-    "properties": {
-     "id": "T006",
-     "patho_id": "leucemie",
-     "patho_label": "Leucémie aiguë",
-     "sous_type": "Leucémie aiguë myéloblastique",
-     "color": "#C01B5C",
-     "annee": 2015,
-     "tranche_age": "2-5 ans",
-     "sexe": "Féminin",
-     "dep": "Pas-de-Calais (62)",
-     "hotspot": "h13",
-     "hotspot_nom": "Ruitz — école maternelle Jacques-Prévert",
-     "exposition": "Eau du robinet ou puits suspectés",
-     "profession_parent": "Employé·e de commerce",
-     "issue": "En rémission / suivi",
-     "temoignage": "Tout a commencé à l'automne 2015 : ma fille se plaignait d'une fatigue que rien n'expliquait. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. On nous parle de trois cas, l'association en compte quatre. Personne ne tranche. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
-     "audio": "audio/T006.m4a",
-     "duree_audio": 24,
-     "verifie": false,
-     "recu_le": "06/02/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T007",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      2.2981,
-      43.28067
-     ]
-    },
-    "properties": {
-     "id": "T007",
-     "patho_id": "leucemie",
-     "patho_label": "Leucémie aiguë",
-     "sous_type": "Leucémie aiguë lymphoblastique",
-     "color": "#C01B5C",
-     "annee": 2020,
-     "tranche_age": "6-11 ans",
-     "sexe": "Masculin",
-     "dep": "Aude (11)",
-     "hotspot": "h17",
-     "hotspot_nom": "Vallée de l'Orbiel — arsenic",
-     "exposition": "Usine ou site industriel à proximité",
-     "profession_parent": "Cadre du tertiaire",
-     "issue": "En rémission / suivi",
-     "temoignage": "C'est en 2020 qu'on nous a annoncé le diagnostic. Mon fils venait d'avoir huit ans. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Après les inondations de 2018, les déchets de la mine sont descendus dans la vallée. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
-     "audio": "audio/T007.m4a",
-     "duree_audio": 25,
-     "verifie": false,
-     "recu_le": "15/08/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T008",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      -1.01776,
-      46.21292
-     ]
-    },
-    "properties": {
-     "id": "T008",
-     "patho_id": "snc",
-     "patho_label": "Tumeur du système nerveux central",
-     "sous_type": "Médulloblastome",
-     "color": "#1F3ACC",
-     "annee": 2022,
-     "tranche_age": "2-5 ans",
-     "sexe": "Féminin",
-     "dep": "Charente-Maritime (17)",
-     "hotspot": "h2",
-     "hotspot_nom": "Plaine d'Aunis — Saint-Rogatien",
-     "exposition": "Activité professionnelle d'un parent",
-     "profession_parent": "Personnel soignant",
-     "issue": "En rémission / suivi",
-     "temoignage": "Tout a commencé à l'automne 2022 : ma fille se plaignait d'une fatigue que rien n'expliquait. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Quatre cas d'hémopathie dans le village. On nous a dit que c'était moins d'un cas attendu. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
-     "audio": "audio/T008.m4a",
-     "duree_audio": 23,
-     "verifie": true,
-     "recu_le": "19/04/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T009",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      6.13982,
-      49.25273
-     ]
-    },
-    "properties": {
-     "id": "T009",
-     "patho_id": "lymphome",
-     "patho_label": "Lymphome",
-     "sous_type": "Lymphome non hodgkinien",
-     "color": "#0B8A4E",
-     "annee": 2024,
-     "tranche_age": "0-1 an",
-     "sexe": "Masculin",
-     "dep": "Moselle (57)",
-     "hotspot": "h7",
-     "hotspot_nom": "Amnéville — un même établissement scolaire",
-     "exposition": "Eau du robinet ou puits suspectés",
-     "profession_parent": "Personnel soignant",
-     "issue": "En rémission / suivi",
-     "temoignage": "C'est en 2024 qu'on nous a annoncé le diagnostic. Mon fils venait d'avoir quelques mois. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. On nous a dit qu'il n'y avait pas de mesure de benzène avant 2008. Donc rien à comparer. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": false,
-     "recu_le": "14/02/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T010",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      4.83859,
-      45.75031
-     ]
-    },
-    "properties": {
-     "id": "T010",
-     "patho_id": "leucemie",
-     "patho_label": "Leucémie aiguë",
-     "sous_type": "Leucémie aiguë myéloblastique",
-     "color": "#C01B5C",
-     "annee": 2024,
-     "tranche_age": "2-5 ans",
-     "sexe": "Féminin",
-     "dep": "Rhône (69)",
-     "hotspot": "h5",
-     "hotspot_nom": "Lyon 1er et 4e — secteur Croix-Rousse",
-     "exposition": "Eau du robinet ou puits suspectés",
-     "profession_parent": "Artisan",
-     "issue": "Décès",
-     "temoignage": "C'est en 2024 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir quatre ans. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Il n'a pas survécu à la rechute. C'est en son nom que je remplis ce formulaire. Le signalement n'est pas venu de nous, il est venu de l'hôpital. On l'a appris par un rapport. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": true,
-     "recu_le": "24/05/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T011",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      4.03461,
-      43.6786
-     ]
-    },
-    "properties": {
-     "id": "T011",
-     "patho_id": "lymphome",
-     "patho_label": "Lymphome",
-     "sous_type": "Lymphome de Burkitt",
-     "color": "#0B8A4E",
-     "annee": 2023,
-     "tranche_age": "2-5 ans",
-     "sexe": "Masculin",
-     "dep": "Hérault (34)",
-     "hotspot": "h15",
-     "hotspot_nom": "Lunel-Viel et les communes sous les vents",
-     "exposition": "Ancien site pollué",
-     "profession_parent": "Sans emploi au moment du diagnostic",
-     "issue": "Décès",
-     "temoignage": "En 2023, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait mon fils. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Elle est partie deux ans après le diagnostic. On continue pour les autres. Le registre des cancers a documenté la sur-incidence. Depuis 1999. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": false,
-     "recu_le": "24/04/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T012",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      2.45457,
-      48.87378
-     ]
-    },
-    "properties": {
-     "id": "T012",
-     "patho_id": "lymphome",
-     "patho_label": "Lymphome",
-     "sous_type": "Lymphome de Burkitt",
-     "color": "#0B8A4E",
-     "annee": 2021,
-     "tranche_age": "2-5 ans",
-     "sexe": "Masculin",
-     "dep": "Seine-Saint-Denis (93)",
-     "hotspot": "h12",
-     "hotspot_nom": "Romainville — riverains de l'usine Wipelec",
-     "exposition": "Épandages agricoles réguliers",
-     "profession_parent": "Artisan",
-     "issue": "Décès",
-     "temoignage": "C'est en 2021 qu'on nous a annoncé le diagnostic. Mon fils venait d'avoir quatre ans. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Il n'a pas survécu à la rechute. C'est en son nom que je remplis ce formulaire. C'est l'association qui a fait le recensement, immeuble par immeuble. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": false,
-     "recu_le": "17/03/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T013",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      2.36186,
-      43.25527
-     ]
-    },
-    "properties": {
-     "id": "T013",
-     "patho_id": "lymphome",
-     "patho_label": "Lymphome",
-     "sous_type": "Lymphome non hodgkinien",
-     "color": "#0B8A4E",
-     "annee": 2017,
-     "tranche_age": "12-17 ans",
-     "sexe": "Masculin",
-     "dep": "Aude (11)",
-     "hotspot": "h17",
-     "hotspot_nom": "Vallée de l'Orbiel — arsenic",
-     "exposition": "Incinérateur ou décharge",
-     "profession_parent": "Employé·e de commerce",
-     "issue": "En rémission / suivi",
-     "temoignage": "En 2017, mon fils a fait une chute bête à l'école. La radio a montré autre chose. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Les premières analyses, ce sont les parents qui les ont payées. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": false,
-     "recu_le": "06/07/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T014",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      4.1738,
-      43.63084
-     ]
-    },
-    "properties": {
-     "id": "T014",
-     "patho_id": "leucemie",
-     "patho_label": "Leucémie aiguë",
-     "sous_type": "Leucémie aiguë myéloblastique",
-     "color": "#C01B5C",
-     "annee": 2016,
-     "tranche_age": "2-5 ans",
-     "sexe": "Féminin",
-     "dep": "Hérault (34)",
-     "hotspot": "h15",
-     "hotspot_nom": "Lunel-Viel et les communes sous les vents",
-     "exposition": "Aucune exposition identifiée",
-     "profession_parent": "Employé·e de commerce",
-     "issue": "En rémission / suivi",
-     "temoignage": "C'est en 2016 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir quatre ans. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. On demande des études approfondies depuis vingt-cinq ans. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": false,
-     "recu_le": "05/08/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T015",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      3.22105,
-      50.34694
-     ]
-    },
-    "properties": {
-     "id": "T015",
-     "patho_id": "leucemie",
-     "patho_label": "Leucémie aiguë",
-     "sous_type": "Leucémie aiguë lymphoblastique",
-     "color": "#C01B5C",
-     "annee": 2017,
-     "tranche_age": "2-5 ans",
-     "sexe": "Masculin",
-     "dep": "Nord (59)",
-     "hotspot": "h8",
-     "hotspot_nom": "Aniche — sols de l'ancien bassin verrier",
-     "exposition": "Activité professionnelle d'un parent",
-     "profession_parent": "Artisan",
-     "issue": "En rémission / suivi",
-     "temoignage": "En 2017, mon fils a fait une chute bête à l'école. La radio a montré autre chose. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Cinq fois plus de cas qu'attendu, et pas une ligne dans la presse. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": true,
-     "recu_le": "01/01/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T016",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      2.25119,
-      48.983
-     ]
-    },
-    "properties": {
-     "id": "T016",
-     "patho_id": "leucemie",
-     "patho_label": "Leucémie aiguë",
-     "sous_type": "Leucémie aiguë lymphoblastique",
-     "color": "#C01B5C",
-     "annee": 2019,
-     "tranche_age": "6-11 ans",
-     "sexe": "Féminin",
-     "dep": "Val-d'Oise (95)",
-     "hotspot": "h4",
-     "hotspot_nom": "Franconville — école de la Gare René-Watrelot",
-     "exposition": "Aucune exposition identifiée",
-     "profession_parent": "Enseignant·e",
-     "issue": "En rémission / suivi",
-     "temoignage": "On a appris la maladie de ma fille en 2019, presque par hasard, lors d'une prise de sang de routine. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Deux enfants sont morts. On a fini par déposer plainte. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": true,
-     "recu_le": "21/03/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T017",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      5.42115,
-      43.29271
-     ]
-    },
-    "properties": {
-     "id": "T017",
-     "patho_id": "leucemie",
-     "patho_label": "Leucémie aiguë",
-     "sous_type": "Leucémie aiguë myéloblastique",
-     "color": "#C01B5C",
-     "annee": 2012,
-     "tranche_age": "12-17 ans",
-     "sexe": "Féminin",
-     "dep": "Bouches-du-Rhône",
-     "hotspot": null,
-     "hotspot_nom": null,
-     "exposition": "Épandages agricoles réguliers",
-     "profession_parent": "Sans emploi au moment du diagnostic",
-     "issue": "En rémission / suivi",
-     "temoignage": "C'est en 2012 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir quatorze ans. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Mon conjoint a travaillé quinze ans sur un site classé. On s'est posé la question, sans jamais avoir de réponse. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": true,
-     "recu_le": "18/01/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T018",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      5.47165,
-      46.12093
-     ]
-    },
-    "properties": {
-     "id": "T018",
-     "patho_id": "leucemie",
-     "patho_label": "Leucémie aiguë",
-     "sous_type": "Leucémie aiguë lymphoblastique",
-     "color": "#C01B5C",
-     "annee": 2012,
-     "tranche_age": "12-17 ans",
-     "sexe": "Masculin",
-     "dep": "Ain (01)",
-     "hotspot": "h18",
-     "hotspot_nom": "Druillat et 67 communes — agénésies de membre",
-     "exposition": "Épandages agricoles réguliers",
-     "profession_parent": "Sans emploi au moment du diagnostic",
-     "issue": "Décès",
-     "temoignage": "C'est en 2012 qu'on nous a annoncé le diagnostic. Mon fils venait d'avoir quatorze ans. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Elle est partie deux ans après le diagnostic. On continue pour les autres. Sept cas pour zéro virgule douze attendus. Le comité a invalidé le cluster. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": true,
-     "recu_le": "27/05/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T019",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      4.92597,
-      44.95531
-     ]
-    },
-    "properties": {
-     "id": "T019",
-     "patho_id": "leucemie",
-     "patho_label": "Leucémie aiguë",
-     "sous_type": "Leucémie aiguë lymphoblastique",
-     "color": "#C01B5C",
-     "annee": 2017,
-     "tranche_age": "2-5 ans",
-     "sexe": "Féminin",
-     "dep": "Drôme",
-     "hotspot": null,
-     "hotspot_nom": null,
-     "exposition": "Incinérateur ou décharge",
-     "profession_parent": "Enseignant·e",
-     "issue": "Décès",
-     "temoignage": "En 2017, ma fille a fait une chute bête à l'école. La radio a montré autre chose. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Elle est partie deux ans après le diagnostic. On continue pour les autres. L'ARS nous a répondu qu'il n'y avait pas de sur-incidence. On n'a jamais vu les chiffres. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": false,
-     "recu_le": "28/03/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T020",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      6.10298,
-      49.25828
-     ]
-    },
-    "properties": {
-     "id": "T020",
-     "patho_id": "leucemie",
-     "patho_label": "Leucémie aiguë",
-     "sous_type": "Leucémie aiguë myéloblastique",
-     "color": "#C01B5C",
-     "annee": 2014,
-     "tranche_age": "2-5 ans",
-     "sexe": "Féminin",
-     "dep": "Moselle (57)",
-     "hotspot": "h7",
-     "hotspot_nom": "Amnéville — un même établissement scolaire",
-     "exposition": "Usine ou site industriel à proximité",
-     "profession_parent": "Personnel soignant",
-     "issue": "En rémission / suivi",
-     "temoignage": "Le diagnostic est tombé en 2014, ma fille avait quatre ans. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Trois enfants du même établissement. On a appris pour les deux autres par le bouche-à-oreille. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": true,
-     "recu_le": "09/02/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T021",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      -1.09102,
-      46.14904
-     ]
-    },
-    "properties": {
-     "id": "T021",
-     "patho_id": "snc",
-     "patho_label": "Tumeur du système nerveux central",
-     "sous_type": "Astrocytome",
-     "color": "#1F3ACC",
-     "annee": 2025,
-     "tranche_age": "2-5 ans",
-     "sexe": "Masculin",
-     "dep": "Charente-Maritime (17)",
-     "hotspot": "h2",
-     "hotspot_nom": "Plaine d'Aunis — Saint-Rogatien",
-     "exposition": "Activité professionnelle d'un parent",
-     "profession_parent": "Agriculteur / agricultrice",
-     "issue": "En rémission / suivi",
-     "temoignage": "On a appris la maladie de mon fils en 2025, presque par hasard, lors d'une prise de sang de routine. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Quatre cas d'hémopathie dans le village. On nous a dit que c'était moins d'un cas attendu. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": true,
-     "recu_le": "13/08/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T022",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      1.15108,
-      49.29486
-     ]
-    },
-    "properties": {
-     "id": "T022",
-     "patho_id": "leucemie",
-     "patho_label": "Leucémie aiguë",
-     "sous_type": "Leucémie aiguë myéloblastique",
-     "color": "#C01B5C",
-     "annee": 2016,
-     "tranche_age": "2-5 ans",
-     "sexe": "Féminin",
-     "dep": "Eure (27)",
-     "hotspot": "h6",
-     "hotspot_nom": "Pont-de-l'Arche et Igoville",
-     "exposition": "Activité professionnelle d'un parent",
-     "profession_parent": "Sans emploi au moment du diagnostic",
-     "issue": "En rémission / suivi",
-     "temoignage": "Le diagnostic est tombé en 2016, ma fille avait quatre ans. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Le collectif a fait doser les enfants. Plomb et terres rares. Le suivi a été arrêté quand même. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": false,
-     "recu_le": "28/06/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T023",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      2.44558,
-      48.87964
-     ]
-    },
-    "properties": {
-     "id": "T023",
-     "patho_id": "snc",
-     "patho_label": "Tumeur du système nerveux central",
-     "sous_type": "Médulloblastome",
-     "color": "#1F3ACC",
-     "annee": 2022,
-     "tranche_age": "2-5 ans",
-     "sexe": "Féminin",
-     "dep": "Seine-Saint-Denis (93)",
-     "hotspot": "h12",
-     "hotspot_nom": "Romainville — riverains de l'usine Wipelec",
-     "exposition": "Ancien site pollué",
-     "profession_parent": "Agriculteur / agricultrice",
-     "issue": "En rémission / suivi",
-     "temoignage": "Le diagnostic est tombé en 2022, ma fille avait quatre ans. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. C'est l'association qui a fait le recensement, immeuble par immeuble. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": false,
-     "recu_le": "21/08/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T024",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      4.84079,
-      45.7656
-     ]
-    },
-    "properties": {
-     "id": "T024",
-     "patho_id": "lymphome",
-     "patho_label": "Lymphome",
-     "sous_type": "Lymphome de Burkitt",
-     "color": "#0B8A4E",
-     "annee": 2014,
-     "tranche_age": "6-11 ans",
-     "sexe": "Masculin",
-     "dep": "Rhône (69)",
-     "hotspot": "h5",
-     "hotspot_nom": "Lyon 1er et 4e — secteur Croix-Rousse",
-     "exposition": "Épandages agricoles réguliers",
-     "profession_parent": "Chauffeur routier",
-     "issue": "En rémission / suivi",
-     "temoignage": "En 2014, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait mon fils. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. On nous dit que l'excès est réel mais que ce n'est pas un cluster. J'ai relu la phrase dix fois. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": true,
-     "recu_le": "15/03/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T025",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      -1.16793,
-      46.17489
-     ]
-    },
-    "properties": {
-     "id": "T025",
-     "patho_id": "lymphome",
-     "patho_label": "Lymphome",
-     "sous_type": "Lymphome non hodgkinien",
-     "color": "#0B8A4E",
-     "annee": 2025,
-     "tranche_age": "6-11 ans",
-     "sexe": "Féminin",
-     "dep": "Charente-Maritime (17)",
-     "hotspot": "h2",
-     "hotspot_nom": "Plaine d'Aunis — Saint-Rogatien",
-     "exposition": "Eau du robinet ou puits suspectés",
-     "profession_parent": "Sans emploi au moment du diagnostic",
-     "issue": "En rémission / suivi",
-     "temoignage": "Le diagnostic est tombé en 2025, ma fille avait huit ans. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. On est au milieu des céréales. Personne n'a jamais mesuré ce qu'on respire au printemps. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": false,
-     "recu_le": "13/05/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T026",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      -1.08785,
-      46.12941
-     ]
-    },
-    "properties": {
-     "id": "T026",
-     "patho_id": "leucemie",
-     "patho_label": "Leucémie aiguë",
-     "sous_type": "Leucémie aiguë myéloblastique",
-     "color": "#C01B5C",
-     "annee": 2022,
-     "tranche_age": "2-5 ans",
-     "sexe": "Masculin",
-     "dep": "Charente-Maritime (17)",
-     "hotspot": "h2",
-     "hotspot_nom": "Plaine d'Aunis — Saint-Rogatien",
-     "exposition": "Incinérateur ou décharge",
-     "profession_parent": "Cadre du tertiaire",
-     "issue": "Décès",
-     "temoignage": "On a appris la maladie de mon fils en 2022, presque par hasard, lors d'une prise de sang de routine. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Il n'a pas survécu à la rechute. C'est en son nom que je remplis ce formulaire. On est au milieu des céréales. Personne n'a jamais mesuré ce qu'on respire au printemps. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": true,
-     "recu_le": "03/07/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T027",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      6.0593,
-      46.48785
-     ]
-    },
-    "properties": {
-     "id": "T027",
-     "patho_id": "snc",
-     "patho_label": "Tumeur du système nerveux central",
-     "sous_type": "Gliome de bas grade",
-     "color": "#1F3ACC",
-     "annee": 2018,
-     "tranche_age": "2-5 ans",
-     "sexe": "Masculin",
-     "dep": "Jura (39)",
-     "hotspot": "h3",
-     "hotspot_nom": "Haut-Jura — Les Rousses, Morez, Prémanon",
-     "exposition": "Usine ou site industriel à proximité",
-     "profession_parent": "Employé·e de commerce",
-     "issue": "En rémission / suivi",
-     "temoignage": "Tout a commencé à l'automne 2018 : mon fils se plaignait d'une fatigue que rien n'expliquait. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. On a demandé des analyses d'eau et d'air au domicile. Six ans après, elles n'ont toujours pas été faites. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": false,
-     "recu_le": "21/05/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T028",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      2.45978,
-      48.8537
-     ]
-    },
-    "properties": {
-     "id": "T028",
-     "patho_id": "snc",
-     "patho_label": "Tumeur du système nerveux central",
-     "sous_type": "Médulloblastome",
-     "color": "#1F3ACC",
-     "annee": 2024,
-     "tranche_age": "6-11 ans",
-     "sexe": "Masculin",
-     "dep": "Val-de-Marne (94)",
-     "hotspot": "h9",
-     "hotspot_nom": "Vincennes — école Franklin-Roosevelt",
-     "exposition": "Épandages agricoles réguliers",
-     "profession_parent": "Personnel soignant",
-     "issue": "En rémission / suivi",
-     "temoignage": "Le diagnostic est tombé en 2024, mon fils avait huit ans. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. L'ancienne usine avait laissé du trichloréthylène dans la nappe. Sous l'école. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": false,
-     "recu_le": "01/05/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T029",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      2.24607,
-      48.98931
-     ]
-    },
-    "properties": {
-     "id": "T029",
-     "patho_id": "lymphome",
-     "patho_label": "Lymphome",
-     "sous_type": "Lymphome de Burkitt",
-     "color": "#0B8A4E",
-     "annee": 2020,
-     "tranche_age": "12-17 ans",
-     "sexe": "Féminin",
-     "dep": "Val-d'Oise (95)",
-     "hotspot": "h4",
-     "hotspot_nom": "Franconville — école de la Gare René-Watrelot",
-     "exposition": "Eau du robinet ou puits suspectés",
-     "profession_parent": "Sans emploi au moment du diagnostic",
-     "issue": "Décès",
-     "temoignage": "En 2020, ma fille a fait une chute bête à l'école. La radio a montré autre chose. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Elle est partie deux ans après le diagnostic. On continue pour les autres. L'école est construite sur un ancien atelier de traitement de métaux. Le diagnostic de sols de 2013 existait, on ne l'a jamais vu. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": true,
-     "recu_le": "17/08/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T030",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      2.05864,
-      48.80302
-     ]
-    },
-    "properties": {
-     "id": "T030",
-     "patho_id": "leucemie",
-     "patho_label": "Leucémie aiguë",
-     "sous_type": "Leucémie aiguë myéloblastique",
      "color": "#C01B5C",
      "annee": 2013,
      "tranche_age": "6-11 ans",
      "sexe": "Féminin",
-     "dep": "Yvelines (78)",
-     "hotspot": "h11",
-     "hotspot_nom": "Saint-Cyr-l'École — quartier de l'Épi d'Or",
-     "exposition": "Aucune exposition identifiée",
+     "dep": "Pas-de-Calais (62)",
+     "hotspot": "h16",
+     "hotspot_nom": "Lens et 101 communes — cryptorchidie",
+     "exposition": "Activité professionnelle d'un parent",
      "profession_parent": "Artisan",
      "issue": "En rémission / suivi",
-     "temoignage": "C'est en 2013 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir huit ans. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Le quartier s'est mobilisé, puis s'est épuisé. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "temoignage": "En 2013, ma fille a fait une chute bête à l'école. La radio a montré autre chose. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Le bassin minier, la métallurgie, tout ça a laissé quelque chose dans les sols. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
      "audio": null,
      "duree_audio": null,
      "verifie": true,
-     "recu_le": "06/06/2026"
+     "recu_le": "09/07/2026"
     }
    },
    {
     "type": "Feature",
-    "id": "T031",
+    "id": "T0002",
     "geometry": {
      "type": "Point",
      "coordinates": [
-      -1.05821,
-      46.07561
+      1.17164,
+      49.27745
      ]
     },
     "properties": {
-     "id": "T031",
-     "patho_id": "leucemie",
-     "patho_label": "Leucémie aiguë",
-     "sous_type": "Leucémie aiguë myéloblastique",
-     "color": "#C01B5C",
-     "annee": 2018,
-     "tranche_age": "6-11 ans",
-     "sexe": "Masculin",
-     "dep": "Charente-Maritime (17)",
-     "hotspot": "h2",
-     "hotspot_nom": "Plaine d'Aunis — Saint-Rogatien",
-     "exposition": "Eau du robinet ou puits suspectés",
-     "profession_parent": "Artisan",
-     "issue": "Décès",
-     "temoignage": "En 2018, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait mon fils. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Il n'a pas survécu à la rechute. C'est en son nom que je remplis ce formulaire. L'usine d'enrobés tourne à trois kilomètres. On nous a répondu que le lien n'était pas établi. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": false,
-     "recu_le": "23/05/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T032",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      -1.88084,
-      47.15864
-     ]
-    },
-    "properties": {
-     "id": "T032",
-     "patho_id": "snc",
-     "patho_label": "Tumeur du système nerveux central",
-     "sous_type": "Gliome de bas grade",
-     "color": "#1F3ACC",
-     "annee": 2012,
-     "tranche_age": "12-17 ans",
-     "sexe": "Masculin",
-     "dep": "Loire-Atlantique (44)",
-     "hotspot": "h1",
-     "hotspot_nom": "Sainte-Pazanne et le Pays de Retz",
-     "exposition": "Épandages agricoles réguliers",
-     "profession_parent": "Artisan",
-     "issue": "En rémission / suivi",
-     "temoignage": "Tout a commencé à l'automne 2012 : mon fils se plaignait d'une fatigue que rien n'expliquait. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Les traitements passaient au petit matin, à cinquante mètres du jardin. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": true,
-     "recu_le": "07/02/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T033",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      1.12642,
-      49.31732
-     ]
-    },
-    "properties": {
-     "id": "T033",
+     "id": "T0002",
      "patho_id": "leucemie",
      "patho_label": "Leucémie aiguë",
      "sous_type": "Leucémie aiguë lymphoblastique",
-     "color": "#C01B5C",
-     "annee": 2016,
-     "tranche_age": "12-17 ans",
-     "sexe": "Féminin",
-     "dep": "Eure (27)",
-     "hotspot": "h6",
-     "hotspot_nom": "Pont-de-l'Arche et Igoville",
-     "exposition": "Épandages agricoles réguliers",
-     "profession_parent": "Employé·e de commerce",
-     "issue": "En rémission / suivi",
-     "temoignage": "On a appris la maladie de ma fille en 2016, presque par hasard, lors d'une prise de sang de routine. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Le bilan de 2025 a clos le dossier. Nous, on habite toujours là. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": true,
-     "recu_le": "12/07/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T034",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      -0.28526,
-      44.53743
-     ]
-    },
-    "properties": {
-     "id": "T034",
-     "patho_id": "leucemie",
-     "patho_label": "Leucémie aiguë",
-     "sous_type": "Leucémie aiguë lymphoblastique",
-     "color": "#C01B5C",
-     "annee": 2023,
-     "tranche_age": "2-5 ans",
-     "sexe": "Masculin",
-     "dep": "Gironde (33)",
-     "hotspot": "h10",
-     "hotspot_nom": "Preignac — commune viticole du Sauternais",
-     "exposition": "Usine ou site industriel à proximité",
-     "profession_parent": "Agriculteur / agricultrice",
-     "issue": "En rémission / suivi",
-     "temoignage": "En 2023, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait mon fils. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. L'école est entourée de vignes. Les traitements passaient pendant la récréation. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": true,
-     "recu_le": "12/06/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T035",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      4.83102,
-      45.75029
-     ]
-    },
-    "properties": {
-     "id": "T035",
-     "patho_id": "snc",
-     "patho_label": "Tumeur du système nerveux central",
-     "sous_type": "Gliome de bas grade",
-     "color": "#1F3ACC",
-     "annee": 2014,
-     "tranche_age": "2-5 ans",
-     "sexe": "Masculin",
-     "dep": "Rhône (69)",
-     "hotspot": "h5",
-     "hotspot_nom": "Lyon 1er et 4e — secteur Croix-Rousse",
-     "exposition": "Aucune exposition identifiée",
-     "profession_parent": "Ouvrier·ère de l'industrie",
-     "issue": "En rémission / suivi",
-     "temoignage": "Le diagnostic est tombé en 2014, mon fils avait quatre ans. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. On nous dit que l'excès est réel mais que ce n'est pas un cluster. J'ai relu la phrase dix fois. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": false,
-     "recu_le": "07/05/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T036",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      3.29951,
-      50.34464
-     ]
-    },
-    "properties": {
-     "id": "T036",
-     "patho_id": "lymphome",
-     "patho_label": "Lymphome",
-     "sous_type": "Lymphome de Hodgkin",
-     "color": "#0B8A4E",
-     "annee": 2020,
-     "tranche_age": "12-17 ans",
-     "sexe": "Féminin",
-     "dep": "Nord (59)",
-     "hotspot": "h8",
-     "hotspot_nom": "Aniche — sols de l'ancien bassin verrier",
-     "exposition": "Aucune exposition identifiée",
-     "profession_parent": "Artisan",
-     "issue": "En rémission / suivi",
-     "temoignage": "Le diagnostic est tombé en 2020, ma fille avait quatorze ans. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. On a un rapport officiel. Il dort quelque part. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": false,
-     "recu_le": "06/04/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T037",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      -0.34019,
-      43.2906
-     ]
-    },
-    "properties": {
-     "id": "T037",
-     "patho_id": "leucemie",
-     "patho_label": "Leucémie aiguë",
-     "sous_type": "Leucémie aiguë myéloblastique",
-     "color": "#C01B5C",
-     "annee": 2018,
-     "tranche_age": "12-17 ans",
-     "sexe": "Masculin",
-     "dep": "Béarn",
-     "hotspot": null,
-     "hotspot_nom": null,
-     "exposition": "Activité professionnelle d'un parent",
-     "profession_parent": "Cadre du tertiaire",
-     "issue": "En rémission / suivi",
-     "temoignage": "En 2018, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait mon fils. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Mon conjoint a travaillé quinze ans sur un site classé. On s'est posé la question, sans jamais avoir de réponse. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": true,
-     "recu_le": "03/02/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T038",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      2.5475,
-      50.93849
-     ]
-    },
-    "properties": {
-     "id": "T038",
-     "patho_id": "leucemie",
-     "patho_label": "Leucémie aiguë",
-     "sous_type": "Leucémie aiguë lymphoblastique",
-     "color": "#C01B5C",
-     "annee": 2018,
-     "tranche_age": "6-11 ans",
-     "sexe": "Masculin",
-     "dep": "Nord (59)",
-     "hotspot": "h14",
-     "hotspot_nom": "Rexpoëde — école primaire Victor-Hugo",
-     "exposition": "Activité professionnelle d'un parent",
-     "profession_parent": "Chauffeur routier",
-     "issue": "En rémission / suivi",
-     "temoignage": "En 2018, mon fils a fait une chute bête à l'école. La radio a montré autre chose. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Il a fallu quatre ans pour que des agences se déplacent. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": true,
-     "recu_le": "20/01/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T039",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      2.55632,
-      50.9421
-     ]
-    },
-    "properties": {
-     "id": "T039",
-     "patho_id": "snc",
-     "patho_label": "Tumeur du système nerveux central",
-     "sous_type": "Astrocytome",
-     "color": "#1F3ACC",
-     "annee": 2017,
-     "tranche_age": "6-11 ans",
-     "sexe": "Masculin",
-     "dep": "Nord (59)",
-     "hotspot": "h14",
-     "hotspot_nom": "Rexpoëde — école primaire Victor-Hugo",
-     "exposition": "Activité professionnelle d'un parent",
-     "profession_parent": "Cadre du tertiaire",
-     "issue": "En rémission / suivi",
-     "temoignage": "On a appris la maladie de mon fils en 2017, presque par hasard, lors d'une prise de sang de routine. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Il a fallu quatre ans pour que des agences se déplacent. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": false,
-     "recu_le": "06/03/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T040",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      6.06373,
-      46.49505
-     ]
-    },
-    "properties": {
-     "id": "T040",
-     "patho_id": "leucemie",
-     "patho_label": "Leucémie aiguë",
-     "sous_type": "Leucémie aiguë myéloblastique",
      "color": "#C01B5C",
      "annee": 2015,
      "tranche_age": "2-5 ans",
      "sexe": "Féminin",
-     "dep": "Jura (39)",
-     "hotspot": "h3",
-     "hotspot_nom": "Haut-Jura — Les Rousses, Morez, Prémanon",
-     "exposition": "Incinérateur ou décharge",
-     "profession_parent": "Artisan",
+     "dep": "Eure (27)",
+     "hotspot": "h6",
+     "hotspot_nom": "Pont-de-l'Arche et Igoville",
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Employé·e de commerce",
      "issue": "En rémission / suivi",
-     "temoignage": "Tout a commencé à l'automne 2015 : ma fille se plaignait d'une fatigue que rien n'expliquait. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Le radon, les lignes haute tension, tout a été examiné et écarté. Il ne reste rien, et pourtant les cas sont là. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": true,
-     "recu_le": "15/03/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T041",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      2.5686,
-      50.476
-     ]
-    },
-    "properties": {
-     "id": "T041",
-     "patho_id": "leucemie",
-     "patho_label": "Leucémie aiguë",
-     "sous_type": "Leucémie aiguë lymphoblastique",
-     "color": "#C01B5C",
-     "annee": 2019,
-     "tranche_age": "2-5 ans",
-     "sexe": "Féminin",
-     "dep": "Pas-de-Calais (62)",
-     "hotspot": "h13",
-     "hotspot_nom": "Ruitz — école maternelle Jacques-Prévert",
-     "exposition": "Ancien site pollué",
-     "profession_parent": "Ouvrier·ère de l'industrie",
-     "issue": "En rémission / suivi",
-     "temoignage": "Tout a commencé à l'automne 2019 : ma fille se plaignait d'une fatigue que rien n'expliquait. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. On nous parle de trois cas, l'association en compte quatre. Personne ne tranche. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "temoignage": "On a appris la maladie de ma fille en 2015, presque par hasard, lors d'une prise de sang de routine. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Le bilan de 2025 a clos le dossier. Nous, on habite toujours là. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
      "audio": null,
      "duree_audio": null,
      "verifie": true,
@@ -8057,1406 +6809,30 @@ window.NK_DATA = {
    },
    {
     "type": "Feature",
-    "id": "T042",
+    "id": "T0003",
     "geometry": {
      "type": "Point",
      "coordinates": [
-      2.67569,
-      50.47664
+      6.01843,
+      46.47895
      ]
     },
     "properties": {
-     "id": "T042",
-     "patho_id": "leucemie",
-     "patho_label": "Leucémie aiguë",
-     "sous_type": "Leucémie aiguë myéloblastique",
-     "color": "#C01B5C",
-     "annee": 2012,
-     "tranche_age": "6-11 ans",
-     "sexe": "Masculin",
-     "dep": "Pas-de-Calais (62)",
-     "hotspot": "h16",
-     "hotspot_nom": "Lens et 101 communes — cryptorchidie",
-     "exposition": "Usine ou site industriel à proximité",
-     "profession_parent": "Enseignant·e",
-     "issue": "Décès",
-     "temoignage": "En 2012, mon fils a fait une chute bête à l'école. La radio a montré autre chose. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Elle est partie deux ans après le diagnostic. On continue pour les autres. Le bassin minier, la métallurgie, tout ça a laissé quelque chose dans les sols. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": true,
-     "recu_le": "26/07/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T043",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      4.06478,
-      43.60082
-     ]
-    },
-    "properties": {
-     "id": "T043",
-     "patho_id": "leucemie",
-     "patho_label": "Leucémie aiguë",
-     "sous_type": "Leucémie aiguë lymphoblastique",
-     "color": "#C01B5C",
-     "annee": 2024,
-     "tranche_age": "6-11 ans",
-     "sexe": "Masculin",
-     "dep": "Hérault (34)",
-     "hotspot": "h15",
-     "hotspot_nom": "Lunel-Viel et les communes sous les vents",
-     "exposition": "Épandages agricoles réguliers",
-     "profession_parent": "Sans emploi au moment du diagnostic",
-     "issue": "Décès",
-     "temoignage": "C'est en 2024 qu'on nous a annoncé le diagnostic. Mon fils venait d'avoir huit ans. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Il n'a pas survécu à la rechute. C'est en son nom que je remplis ce formulaire. L'incinérateur brûle cent vingt mille tonnes par an. On est sous les vents. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": false,
-     "recu_le": "18/04/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T044",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      2.70234,
-      50.55927
-     ]
-    },
-    "properties": {
-     "id": "T044",
-     "patho_id": "leucemie",
-     "patho_label": "Leucémie aiguë",
-     "sous_type": "Leucémie aiguë lymphoblastique",
-     "color": "#C01B5C",
-     "annee": 2014,
-     "tranche_age": "2-5 ans",
-     "sexe": "Masculin",
-     "dep": "Pas-de-Calais (62)",
-     "hotspot": "h16",
-     "hotspot_nom": "Lens et 101 communes — cryptorchidie",
-     "exposition": "Ancien site pollué",
-     "profession_parent": "Enseignant·e",
-     "issue": "Décès",
-     "temoignage": "En 2014, mon fils a fait une chute bête à l'école. La radio a montré autre chose. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Elle est partie deux ans après le diagnostic. On continue pour les autres. Le bassin minier, la métallurgie, tout ça a laissé quelque chose dans les sols. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": false,
-     "recu_le": "09/02/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T045",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      2.37136,
-      43.23465
-     ]
-    },
-    "properties": {
-     "id": "T045",
+     "id": "T0003",
      "patho_id": "leucemie",
      "patho_label": "Leucémie aiguë",
      "sous_type": "Leucémie aiguë lymphoblastique",
      "color": "#C01B5C",
      "annee": 2012,
-     "tranche_age": "12-17 ans",
-     "sexe": "Masculin",
-     "dep": "Aude (11)",
-     "hotspot": "h17",
-     "hotspot_nom": "Vallée de l'Orbiel — arsenic",
-     "exposition": "Épandages agricoles réguliers",
-     "profession_parent": "Cadre du tertiaire",
-     "issue": "En rémission / suivi",
-     "temoignage": "En 2012, mon fils a fait une chute bête à l'école. La radio a montré autre chose. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Après les inondations de 2018, les déchets de la mine sont descendus dans la vallée. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": false,
-     "recu_le": "14/04/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T046",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      2.43324,
-      48.85697
-     ]
-    },
-    "properties": {
-     "id": "T046",
-     "patho_id": "lymphome",
-     "patho_label": "Lymphome",
-     "sous_type": "Lymphome non hodgkinien",
-     "color": "#0B8A4E",
-     "annee": 2016,
-     "tranche_age": "12-17 ans",
-     "sexe": "Masculin",
-     "dep": "Val-de-Marne (94)",
-     "hotspot": "h9",
-     "hotspot_nom": "Vincennes — école Franklin-Roosevelt",
-     "exposition": "Incinérateur ou décharge",
-     "profession_parent": "Chauffeur routier",
-     "issue": "En rémission / suivi",
-     "temoignage": "Le diagnostic est tombé en 2016, mon fils avait quatorze ans. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Quatorze ans de surveillance pour un agrégat qu'on nous dit inexistant. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": true,
-     "recu_le": "20/08/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T047",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      -1.81756,
-      47.06065
-     ]
-    },
-    "properties": {
-     "id": "T047",
-     "patho_id": "leucemie",
-     "patho_label": "Leucémie aiguë",
-     "sous_type": "Leucémie aiguë myéloblastique",
-     "color": "#C01B5C",
-     "annee": 2022,
-     "tranche_age": "6-11 ans",
-     "sexe": "Féminin",
-     "dep": "Loire-Atlantique (44)",
-     "hotspot": "h1",
-     "hotspot_nom": "Sainte-Pazanne et le Pays de Retz",
-     "exposition": "Épandages agricoles réguliers",
-     "profession_parent": "Artisan",
-     "issue": "En rémission / suivi",
-     "temoignage": "En 2022, ma fille a fait une chute bête à l'école. La radio a montré autre chose. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Trois familles de l'école ont eu un cancer en cinq ans. Sur une commune de six mille habitants. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": false,
-     "recu_le": "25/02/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T048",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      -0.3499,
-      43.25174
-     ]
-    },
-    "properties": {
-     "id": "T048",
-     "patho_id": "leucemie",
-     "patho_label": "Leucémie aiguë",
-     "sous_type": "Leucémie aiguë myéloblastique",
-     "color": "#C01B5C",
-     "annee": 2024,
      "tranche_age": "2-5 ans",
-     "sexe": "Féminin",
-     "dep": "Béarn",
-     "hotspot": null,
-     "hotspot_nom": null,
-     "exposition": "Ancien site pollué",
-     "profession_parent": "Employé·e de commerce",
-     "issue": "En rémission / suivi",
-     "temoignage": "On a appris la maladie de ma fille en 2024, presque par hasard, lors d'une prise de sang de routine. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Je ne dis pas que c'est la cause. Je dis juste que personne n'a cherché. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": false,
-     "recu_le": "08/08/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T049",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      5.12288,
-      46.02356
-     ]
-    },
-    "properties": {
-     "id": "T049",
-     "patho_id": "snc",
-     "patho_label": "Tumeur du système nerveux central",
-     "sous_type": "Gliome de bas grade",
-     "color": "#1F3ACC",
-     "annee": 2024,
-     "tranche_age": "6-11 ans",
-     "sexe": "Féminin",
-     "dep": "Ain (01)",
-     "hotspot": "h18",
-     "hotspot_nom": "Druillat et 67 communes — agénésies de membre",
-     "exposition": "Épandages agricoles réguliers",
-     "profession_parent": "Artisan",
-     "issue": "En rémission / suivi",
-     "temoignage": "En 2024, ma fille a fait une chute bête à l'école. La radio a montré autre chose. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Deux mères entourées de champs de maïs. Des veaux nés avec les mêmes malformations. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": true,
-     "recu_le": "10/03/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T050",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      -1.70311,
-      47.13427
-     ]
-    },
-    "properties": {
-     "id": "T050",
-     "patho_id": "lymphome",
-     "patho_label": "Lymphome",
-     "sous_type": "Lymphome de Hodgkin",
-     "color": "#0B8A4E",
-     "annee": 2015,
-     "tranche_age": "12-17 ans",
-     "sexe": "Féminin",
-     "dep": "Loire-Atlantique (44)",
-     "hotspot": "h1",
-     "hotspot_nom": "Sainte-Pazanne et le Pays de Retz",
-     "exposition": "Activité professionnelle d'un parent",
-     "profession_parent": "Ouvrier·ère de l'industrie",
-     "issue": "En rémission / suivi",
-     "temoignage": "En 2015, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait ma fille. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Les traitements passaient au petit matin, à cinquante mètres du jardin. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": true,
-     "recu_le": "28/04/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T051",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      2.36797,
-      43.24013
-     ]
-    },
-    "properties": {
-     "id": "T051",
-     "patho_id": "lymphome",
-     "patho_label": "Lymphome",
-     "sous_type": "Lymphome non hodgkinien",
-     "color": "#0B8A4E",
-     "annee": 2025,
-     "tranche_age": "12-17 ans",
-     "sexe": "Masculin",
-     "dep": "Aude (11)",
-     "hotspot": "h17",
-     "hotspot_nom": "Vallée de l'Orbiel — arsenic",
-     "exposition": "Eau du robinet ou puits suspectés",
-     "profession_parent": "Personnel soignant",
-     "issue": "En rémission / suivi",
-     "temoignage": "En 2025, mon fils a fait une chute bête à l'école. La radio a montré autre chose. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Les premières analyses, ce sont les parents qui les ont payées. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": true,
-     "recu_le": "05/02/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T052",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      5.34269,
-      46.06213
-     ]
-    },
-    "properties": {
-     "id": "T052",
-     "patho_id": "leucemie",
-     "patho_label": "Leucémie aiguë",
-     "sous_type": "Leucémie aiguë lymphoblastique",
-     "color": "#C01B5C",
-     "annee": 2021,
-     "tranche_age": "0-1 an",
-     "sexe": "Masculin",
-     "dep": "Ain (01)",
-     "hotspot": "h18",
-     "hotspot_nom": "Druillat et 67 communes — agénésies de membre",
-     "exposition": "Épandages agricoles réguliers",
-     "profession_parent": "Ouvrier·ère de l'industrie",
-     "issue": "En rémission / suivi",
-     "temoignage": "Le diagnostic est tombé en 2021, mon fils avait quelques mois. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Le registre qui a tiré la sonnette n'a plus de financement. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": true,
-     "recu_le": "09/04/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T053",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      2.84116,
-      42.71538
-     ]
-    },
-    "properties": {
-     "id": "T053",
-     "patho_id": "lymphome",
-     "patho_label": "Lymphome",
-     "sous_type": "Lymphome de Burkitt",
-     "color": "#0B8A4E",
-     "annee": 2016,
-     "tranche_age": "12-17 ans",
-     "sexe": "Masculin",
-     "dep": "Pyrénées-Orientales",
-     "hotspot": null,
-     "hotspot_nom": null,
-     "exposition": "Épandages agricoles réguliers",
-     "profession_parent": "Sans emploi au moment du diagnostic",
-     "issue": "En rémission / suivi",
-     "temoignage": "Tout a commencé à l'automne 2016 : mon fils se plaignait d'une fatigue que rien n'expliquait. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. J'ai appris après coup que l'eau du quartier avait été contrôlée. On ne nous a jamais communiqué les résultats. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": true,
-     "recu_le": "14/02/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T054",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      2.59967,
-      50.45222
-     ]
-    },
-    "properties": {
-     "id": "T054",
-     "patho_id": "snc",
-     "patho_label": "Tumeur du système nerveux central",
-     "sous_type": "Astrocytome",
-     "color": "#1F3ACC",
-     "annee": 2022,
-     "tranche_age": "12-17 ans",
-     "sexe": "Féminin",
-     "dep": "Pas-de-Calais (62)",
-     "hotspot": "h13",
-     "hotspot_nom": "Ruitz — école maternelle Jacques-Prévert",
-     "exposition": "Eau du robinet ou puits suspectés",
-     "profession_parent": "Agriculteur / agricultrice",
-     "issue": "En rémission / suivi",
-     "temoignage": "Tout a commencé à l'automne 2022 : ma fille se plaignait d'une fatigue que rien n'expliquait. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. On nous parle de trois cas, l'association en compte quatre. Personne ne tranche. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": false,
-     "recu_le": "07/04/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T055",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      -4.08845,
-      47.94789
-     ]
-    },
-    "properties": {
-     "id": "T055",
-     "patho_id": "snc",
-     "patho_label": "Tumeur du système nerveux central",
-     "sous_type": "Médulloblastome",
-     "color": "#1F3ACC",
-     "annee": 2021,
-     "tranche_age": "0-1 an",
-     "sexe": "Masculin",
-     "dep": "Côtes-d'Armor",
-     "hotspot": null,
-     "hotspot_nom": null,
-     "exposition": "Aucune exposition identifiée",
-     "profession_parent": "Agriculteur / agricultrice",
-     "issue": "Décès",
-     "temoignage": "En 2021, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait mon fils. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Elle est partie deux ans après le diagnostic. On continue pour les autres. J'ai appris après coup que l'eau du quartier avait été contrôlée. On ne nous a jamais communiqué les résultats. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": false,
-     "recu_le": "17/07/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T056",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      2.55458,
-      50.92244
-     ]
-    },
-    "properties": {
-     "id": "T056",
-     "patho_id": "leucemie",
-     "patho_label": "Leucémie aiguë",
-     "sous_type": "Leucémie aiguë lymphoblastique",
-     "color": "#C01B5C",
-     "annee": 2019,
-     "tranche_age": "2-5 ans",
-     "sexe": "Masculin",
-     "dep": "Nord (59)",
-     "hotspot": "h14",
-     "hotspot_nom": "Rexpoëde — école primaire Victor-Hugo",
-     "exposition": "Aucune exposition identifiée",
-     "profession_parent": "Chauffeur routier",
-     "issue": "En rémission / suivi",
-     "temoignage": "On a appris la maladie de mon fils en 2019, presque par hasard, lors d'une prise de sang de routine. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. On a demandé une enquête sanitaire. On nous l'a refusée par courrier. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": true,
-     "recu_le": "07/02/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T057",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      -0.60867,
-      44.85928
-     ]
-    },
-    "properties": {
-     "id": "T057",
-     "patho_id": "snc",
-     "patho_label": "Tumeur du système nerveux central",
-     "sous_type": "Gliome de bas grade",
-     "color": "#1F3ACC",
-     "annee": 2017,
-     "tranche_age": "0-1 an",
-     "sexe": "Masculin",
-     "dep": "Gironde",
-     "hotspot": null,
-     "hotspot_nom": null,
-     "exposition": "Épandages agricoles réguliers",
-     "profession_parent": "Ouvrier·ère de l'industrie",
-     "issue": "En rémission / suivi",
-     "temoignage": "En 2017, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait mon fils. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. L'ARS nous a répondu qu'il n'y avait pas de sur-incidence. On n'a jamais vu les chiffres. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": false,
-     "recu_le": "04/03/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T058",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      -0.28151,
-      44.56316
-     ]
-    },
-    "properties": {
-     "id": "T058",
-     "patho_id": "leucemie",
-     "patho_label": "Leucémie aiguë",
-     "sous_type": "Leucémie aiguë lymphoblastique",
-     "color": "#C01B5C",
-     "annee": 2021,
-     "tranche_age": "6-11 ans",
-     "sexe": "Féminin",
-     "dep": "Gironde (33)",
-     "hotspot": "h10",
-     "hotspot_nom": "Preignac — commune viticole du Sauternais",
-     "exposition": "Aucune exposition identifiée",
-     "profession_parent": "Sans emploi au moment du diagnostic",
-     "issue": "En rémission / suivi",
-     "temoignage": "Le diagnostic est tombé en 2021, ma fille avait huit ans. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Ce n'est pas la maladie qu'on n'a pas su voir, c'est ce qu'on respirait. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": true,
-     "recu_le": "07/07/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T059",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      3.28362,
-      50.32942
-     ]
-    },
-    "properties": {
-     "id": "T059",
-     "patho_id": "leucemie",
-     "patho_label": "Leucémie aiguë",
-     "sous_type": "Leucémie aiguë lymphoblastique",
-     "color": "#C01B5C",
-     "annee": 2022,
-     "tranche_age": "6-11 ans",
-     "sexe": "Féminin",
-     "dep": "Nord (59)",
-     "hotspot": "h8",
-     "hotspot_nom": "Aniche — sols de l'ancien bassin verrier",
-     "exposition": "Ancien site pollué",
-     "profession_parent": "Enseignant·e",
-     "issue": "En rémission / suivi",
-     "temoignage": "Tout a commencé à l'automne 2022 : ma fille se plaignait d'une fatigue que rien n'expliquait. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Cinq fois plus de cas qu'attendu, et pas une ligne dans la presse. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": false,
-     "recu_le": "12/04/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T060",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      3.88011,
-      43.63631
-     ]
-    },
-    "properties": {
-     "id": "T060",
-     "patho_id": "snc",
-     "patho_label": "Tumeur du système nerveux central",
-     "sous_type": "Gliome de bas grade",
-     "color": "#1F3ACC",
-     "annee": 2017,
-     "tranche_age": "2-5 ans",
-     "sexe": "Féminin",
-     "dep": "Hérault",
-     "hotspot": null,
-     "hotspot_nom": null,
-     "exposition": "Aucune exposition identifiée",
-     "profession_parent": "Artisan",
-     "issue": "En rémission / suivi",
-     "temoignage": "En 2017, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait ma fille. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Je ne dis pas que c'est la cause. Je dis juste que personne n'a cherché. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": true,
-     "recu_le": "08/07/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T061",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      6.00704,
-      46.54208
-     ]
-    },
-    "properties": {
-     "id": "T061",
-     "patho_id": "lymphome",
-     "patho_label": "Lymphome",
-     "sous_type": "Lymphome non hodgkinien",
-     "color": "#0B8A4E",
-     "annee": 2019,
-     "tranche_age": "12-17 ans",
      "sexe": "Masculin",
      "dep": "Jura (39)",
      "hotspot": "h3",
      "hotspot_nom": "Haut-Jura — Les Rousses, Morez, Prémanon",
-     "exposition": "Ancien site pollué",
-     "profession_parent": "Enseignant·e",
-     "issue": "En rémission / suivi",
-     "temoignage": "En 2019, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait mon fils. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Le radon, les lignes haute tension, tout a été examiné et écarté. Il ne reste rien, et pourtant les cas sont là. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": true,
-     "recu_le": "07/05/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T062",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      2.06169,
-      48.79871
-     ]
-    },
-    "properties": {
-     "id": "T062",
-     "patho_id": "leucemie",
-     "patho_label": "Leucémie aiguë",
-     "sous_type": "Leucémie aiguë myéloblastique",
-     "color": "#C01B5C",
-     "annee": 2024,
-     "tranche_age": "12-17 ans",
-     "sexe": "Masculin",
-     "dep": "Yvelines (78)",
-     "hotspot": "h11",
-     "hotspot_nom": "Saint-Cyr-l'École — quartier de l'Épi d'Or",
-     "exposition": "Aucune exposition identifiée",
-     "profession_parent": "Sans emploi au moment du diagnostic",
-     "issue": "Décès",
-     "temoignage": "C'est en 2024 qu'on nous a annoncé le diagnostic. Mon fils venait d'avoir quatorze ans. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Il n'a pas survécu à la rechute. C'est en son nom que je remplis ce formulaire. Cinq tumeurs du cerveau pour une attendue. On nous a dit que ce n'était pas un agrégat. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": false,
-     "recu_le": "12/03/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T063",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      2.43545,
-      48.84602
-     ]
-    },
-    "properties": {
-     "id": "T063",
-     "patho_id": "lymphome",
-     "patho_label": "Lymphome",
-     "sous_type": "Lymphome de Hodgkin",
-     "color": "#0B8A4E",
-     "annee": 2013,
-     "tranche_age": "12-17 ans",
-     "sexe": "Masculin",
-     "dep": "Val-de-Marne (94)",
-     "hotspot": "h9",
-     "hotspot_nom": "Vincennes — école Franklin-Roosevelt",
-     "exposition": "Aucune exposition identifiée",
-     "profession_parent": "Enseignant·e",
-     "issue": "En rémission / suivi",
-     "temoignage": "C'est en 2013 qu'on nous a annoncé le diagnostic. Mon fils venait d'avoir quatorze ans. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. L'ancienne usine avait laissé du trichloréthylène dans la nappe. Sous l'école. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": false,
-     "recu_le": "26/04/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T064",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      4.82332,
-      45.76253
-     ]
-    },
-    "properties": {
-     "id": "T064",
-     "patho_id": "lymphome",
-     "patho_label": "Lymphome",
-     "sous_type": "Lymphome de Burkitt",
-     "color": "#0B8A4E",
-     "annee": 2017,
-     "tranche_age": "0-1 an",
-     "sexe": "Masculin",
-     "dep": "Rhône (69)",
-     "hotspot": "h5",
-     "hotspot_nom": "Lyon 1er et 4e — secteur Croix-Rousse",
-     "exposition": "Activité professionnelle d'un parent",
-     "profession_parent": "Ouvrier·ère de l'industrie",
-     "issue": "En rémission / suivi",
-     "temoignage": "On a appris la maladie de mon fils en 2017, presque par hasard, lors d'une prise de sang de routine. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. En ville, personne ne se connaît. Il n'y a jamais eu de collectif ici. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": true,
-     "recu_le": "12/05/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T065",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      2.03542,
-      48.80789
-     ]
-    },
-    "properties": {
-     "id": "T065",
-     "patho_id": "leucemie",
-     "patho_label": "Leucémie aiguë",
-     "sous_type": "Leucémie aiguë lymphoblastique",
-     "color": "#C01B5C",
-     "annee": 2012,
-     "tranche_age": "2-5 ans",
-     "sexe": "Masculin",
-     "dep": "Yvelines (78)",
-     "hotspot": "h11",
-     "hotspot_nom": "Saint-Cyr-l'École — quartier de l'Épi d'Or",
      "exposition": "Usine ou site industriel à proximité",
-     "profession_parent": "Employé·e de commerce",
-     "issue": "En rémission / suivi",
-     "temoignage": "En 2012, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait mon fils. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Il y avait des antennes sur le toit de l'école. Elles ont été démontées, sans explication. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": false,
-     "recu_le": "01/08/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T066",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      2.45444,
-      48.85647
-     ]
-    },
-    "properties": {
-     "id": "T066",
-     "patho_id": "lymphome",
-     "patho_label": "Lymphome",
-     "sous_type": "Lymphome de Hodgkin",
-     "color": "#0B8A4E",
-     "annee": 2017,
-     "tranche_age": "6-11 ans",
-     "sexe": "Féminin",
-     "dep": "Val-de-Marne (94)",
-     "hotspot": "h9",
-     "hotspot_nom": "Vincennes — école Franklin-Roosevelt",
-     "exposition": "Usine ou site industriel à proximité",
-     "profession_parent": "Ouvrier·ère de l'industrie",
-     "issue": "Décès",
-     "temoignage": "En 2017, ma fille a fait une chute bête à l'école. La radio a montré autre chose. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Il n'a pas survécu à la rechute. C'est en son nom que je remplis ce formulaire. L'ancienne usine avait laissé du trichloréthylène dans la nappe. Sous l'école. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": true,
-     "recu_le": "28/06/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T067",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      4.81176,
-      45.77054
-     ]
-    },
-    "properties": {
-     "id": "T067",
-     "patho_id": "leucemie",
-     "patho_label": "Leucémie aiguë",
-     "sous_type": "Leucémie aiguë lymphoblastique",
-     "color": "#C01B5C",
-     "annee": 2013,
-     "tranche_age": "12-17 ans",
-     "sexe": "Masculin",
-     "dep": "Rhône (69)",
-     "hotspot": "h5",
-     "hotspot_nom": "Lyon 1er et 4e — secteur Croix-Rousse",
-     "exposition": "Activité professionnelle d'un parent",
-     "profession_parent": "Ouvrier·ère de l'industrie",
-     "issue": "En rémission / suivi",
-     "temoignage": "Le diagnostic est tombé en 2013, mon fils avait quatorze ans. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. On nous dit que l'excès est réel mais que ce n'est pas un cluster. J'ai relu la phrase dix fois. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": true,
-     "recu_le": "06/06/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T068",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      2.89309,
-      50.46492
-     ]
-    },
-    "properties": {
-     "id": "T068",
-     "patho_id": "leucemie",
-     "patho_label": "Leucémie aiguë",
-     "sous_type": "Leucémie aiguë myéloblastique",
-     "color": "#C01B5C",
-     "annee": 2019,
-     "tranche_age": "2-5 ans",
-     "sexe": "Féminin",
-     "dep": "Pas-de-Calais (62)",
-     "hotspot": "h16",
-     "hotspot_nom": "Lens et 101 communes — cryptorchidie",
-     "exposition": "Ancien site pollué",
-     "profession_parent": "Ouvrier·ère de l'industrie",
-     "issue": "En rémission / suivi",
-     "temoignage": "Le diagnostic est tombé en 2019, ma fille avait quatre ans. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. On nous a opérés sans jamais nous dire que c'était plus fréquent ici qu'ailleurs. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": true,
-     "recu_le": "27/06/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T069",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      2.71227,
-      50.50857
-     ]
-    },
-    "properties": {
-     "id": "T069",
-     "patho_id": "lymphome",
-     "patho_label": "Lymphome",
-     "sous_type": "Lymphome de Burkitt",
-     "color": "#0B8A4E",
-     "annee": 2023,
-     "tranche_age": "2-5 ans",
-     "sexe": "Masculin",
-     "dep": "Pas-de-Calais (62)",
-     "hotspot": "h16",
-     "hotspot_nom": "Lens et 101 communes — cryptorchidie",
-     "exposition": "Incinérateur ou décharge",
-     "profession_parent": "Personnel soignant",
-     "issue": "En rémission / suivi",
-     "temoignage": "En 2023, mon fils a fait une chute bête à l'école. La radio a montré autre chose. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. On nous a opérés sans jamais nous dire que c'était plus fréquent ici qu'ailleurs. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": true,
-     "recu_le": "13/03/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T070",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      -0.3336,
-      44.57717
-     ]
-    },
-    "properties": {
-     "id": "T070",
-     "patho_id": "leucemie",
-     "patho_label": "Leucémie aiguë",
-     "sous_type": "Leucémie aiguë myéloblastique",
-     "color": "#C01B5C",
-     "annee": 2023,
-     "tranche_age": "2-5 ans",
-     "sexe": "Masculin",
-     "dep": "Gironde (33)",
-     "hotspot": "h10",
-     "hotspot_nom": "Preignac — commune viticole du Sauternais",
-     "exposition": "Incinérateur ou décharge",
-     "profession_parent": "Chauffeur routier",
-     "issue": "En rémission / suivi",
-     "temoignage": "Le diagnostic est tombé en 2023, mon fils avait quatre ans. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Ce n'est pas la maladie qu'on n'a pas su voir, c'est ce qu'on respirait. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": true,
-     "recu_le": "10/02/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T071",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      2.58054,
-      50.47806
-     ]
-    },
-    "properties": {
-     "id": "T071",
-     "patho_id": "lymphome",
-     "patho_label": "Lymphome",
-     "sous_type": "Lymphome de Hodgkin",
-     "color": "#0B8A4E",
-     "annee": 2018,
-     "tranche_age": "12-17 ans",
-     "sexe": "Masculin",
-     "dep": "Pas-de-Calais (62)",
-     "hotspot": "h13",
-     "hotspot_nom": "Ruitz — école maternelle Jacques-Prévert",
-     "exposition": "Ancien site pollué",
      "profession_parent": "Artisan",
      "issue": "En rémission / suivi",
-     "temoignage": "Tout a commencé à l'automne 2018 : mon fils se plaignait d'une fatigue que rien n'expliquait. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Une antenne à vingt mètres de la cour. Elle a été démontée après. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": false,
-     "recu_le": "11/01/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T072",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      2.42704,
-      48.8868
-     ]
-    },
-    "properties": {
-     "id": "T072",
-     "patho_id": "lymphome",
-     "patho_label": "Lymphome",
-     "sous_type": "Lymphome non hodgkinien",
-     "color": "#0B8A4E",
-     "annee": 2012,
-     "tranche_age": "6-11 ans",
-     "sexe": "Masculin",
-     "dep": "Seine-Saint-Denis (93)",
-     "hotspot": "h12",
-     "hotspot_nom": "Romainville — riverains de l'usine Wipelec",
-     "exposition": "Activité professionnelle d'un parent",
-     "profession_parent": "Personnel soignant",
-     "issue": "En rémission / suivi",
-     "temoignage": "Tout a commencé à l'automne 2012 : mon fils se plaignait d'une fatigue que rien n'expliquait. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. L'usine rejetait du trichloréthylène à cent mètres des immeubles. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": true,
-     "recu_le": "27/08/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T073",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      -1.88924,
-      47.14241
-     ]
-    },
-    "properties": {
-     "id": "T073",
-     "patho_id": "snc",
-     "patho_label": "Tumeur du système nerveux central",
-     "sous_type": "Épendymome",
-     "color": "#1F3ACC",
-     "annee": 2012,
-     "tranche_age": "6-11 ans",
-     "sexe": "Féminin",
-     "dep": "Loire-Atlantique (44)",
-     "hotspot": "h1",
-     "hotspot_nom": "Sainte-Pazanne et le Pays de Retz",
-     "exposition": "Activité professionnelle d'un parent",
-     "profession_parent": "Sans emploi au moment du diagnostic",
-     "issue": "En rémission / suivi",
-     "temoignage": "C'est en 2012 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir huit ans. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. On tire l'eau d'un puits. Il a fallu que le collectif la fasse analyser pour qu'on apprenne qu'elle était impropre. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": true,
-     "recu_le": "01/05/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T074",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      -0.29364,
-      44.53834
-     ]
-    },
-    "properties": {
-     "id": "T074",
-     "patho_id": "leucemie",
-     "patho_label": "Leucémie aiguë",
-     "sous_type": "Leucémie aiguë lymphoblastique",
-     "color": "#C01B5C",
-     "annee": 2025,
-     "tranche_age": "0-1 an",
-     "sexe": "Masculin",
-     "dep": "Gironde (33)",
-     "hotspot": "h10",
-     "hotspot_nom": "Preignac — commune viticole du Sauternais",
-     "exposition": "Ancien site pollué",
-     "profession_parent": "Cadre du tertiaire",
-     "issue": "En rémission / suivi",
-     "temoignage": "En 2025, mon fils a fait une chute bête à l'école. La radio a montré autre chose. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. L'école est entourée de vignes. Les traitements passaient pendant la récréation. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": false,
-     "recu_le": "27/03/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T075",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      -1.82976,
-      47.16928
-     ]
-    },
-    "properties": {
-     "id": "T075",
-     "patho_id": "lymphome",
-     "patho_label": "Lymphome",
-     "sous_type": "Lymphome non hodgkinien",
-     "color": "#0B8A4E",
-     "annee": 2020,
-     "tranche_age": "0-1 an",
-     "sexe": "Masculin",
-     "dep": "Loire-Atlantique (44)",
-     "hotspot": "h1",
-     "hotspot_nom": "Sainte-Pazanne et le Pays de Retz",
-     "exposition": "Eau du robinet ou puits suspectés",
-     "profession_parent": "Personnel soignant",
-     "issue": "En rémission / suivi",
-     "temoignage": "En 2020, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait mon fils. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Les traitements passaient au petit matin, à cinquante mètres du jardin. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": true,
-     "recu_le": "09/08/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T076",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      -1.5963,
-      47.22596
-     ]
-    },
-    "properties": {
-     "id": "T076",
-     "patho_id": "leucemie",
-     "patho_label": "Leucémie aiguë",
-     "sous_type": "Leucémie aiguë lymphoblastique",
-     "color": "#C01B5C",
-     "annee": 2019,
-     "tranche_age": "2-5 ans",
-     "sexe": "Masculin",
-     "dep": "Loire-Atlantique",
-     "hotspot": null,
-     "hotspot_nom": null,
-     "exposition": "Aucune exposition identifiée",
-     "profession_parent": "Enseignant·e",
-     "issue": "En rémission / suivi",
-     "temoignage": "On a appris la maladie de mon fils en 2019, presque par hasard, lors d'une prise de sang de routine. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. J'ai appris après coup que l'eau du quartier avait été contrôlée. On ne nous a jamais communiqué les résultats. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": false,
-     "recu_le": "23/08/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T077",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      -1.77937,
-      47.08408
-     ]
-    },
-    "properties": {
-     "id": "T077",
-     "patho_id": "lymphome",
-     "patho_label": "Lymphome",
-     "sous_type": "Lymphome de Hodgkin",
-     "color": "#0B8A4E",
-     "annee": 2013,
-     "tranche_age": "0-1 an",
-     "sexe": "Masculin",
-     "dep": "Loire-Atlantique (44)",
-     "hotspot": "h1",
-     "hotspot_nom": "Sainte-Pazanne et le Pays de Retz",
-     "exposition": "Eau du robinet ou puits suspectés",
-     "profession_parent": "Enseignant·e",
-     "issue": "En rémission / suivi",
-     "temoignage": "Tout a commencé à l'automne 2013 : mon fils se plaignait d'une fatigue que rien n'expliquait. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. On tire l'eau d'un puits. Il a fallu que le collectif la fasse analyser pour qu'on apprenne qu'elle était impropre. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": true,
-     "recu_le": "01/04/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T078",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      4.00826,
-      43.68935
-     ]
-    },
-    "properties": {
-     "id": "T078",
-     "patho_id": "leucemie",
-     "patho_label": "Leucémie aiguë",
-     "sous_type": "Leucémie aiguë lymphoblastique",
-     "color": "#C01B5C",
-     "annee": 2022,
-     "tranche_age": "6-11 ans",
-     "sexe": "Féminin",
-     "dep": "Hérault (34)",
-     "hotspot": "h15",
-     "hotspot_nom": "Lunel-Viel et les communes sous les vents",
-     "exposition": "Aucune exposition identifiée",
-     "profession_parent": "Cadre du tertiaire",
-     "issue": "En rémission / suivi",
-     "temoignage": "On a appris la maladie de ma fille en 2022, presque par hasard, lors d'une prise de sang de routine. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. On demande des études approfondies depuis vingt-cinq ans. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": true,
-     "recu_le": "06/06/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T079",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      -1.74812,
-      46.99809
-     ]
-    },
-    "properties": {
-     "id": "T079",
-     "patho_id": "leucemie",
-     "patho_label": "Leucémie aiguë",
-     "sous_type": "Leucémie aiguë lymphoblastique",
-     "color": "#C01B5C",
-     "annee": 2016,
-     "tranche_age": "2-5 ans",
-     "sexe": "Féminin",
-     "dep": "Loire-Atlantique (44)",
-     "hotspot": "h1",
-     "hotspot_nom": "Sainte-Pazanne et le Pays de Retz",
-     "exposition": "Incinérateur ou décharge",
-     "profession_parent": "Artisan",
-     "issue": "En rémission / suivi",
-     "temoignage": "C'est en 2016 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir quatre ans. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Trois familles de l'école ont eu un cancer en cinq ans. Sur une commune de six mille habitants. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": false,
-     "recu_le": "07/02/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T080",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      6.03216,
-      46.46171
-     ]
-    },
-    "properties": {
-     "id": "T080",
-     "patho_id": "snc",
-     "patho_label": "Tumeur du système nerveux central",
-     "sous_type": "Médulloblastome",
-     "color": "#1F3ACC",
-     "annee": 2014,
-     "tranche_age": "6-11 ans",
-     "sexe": "Féminin",
-     "dep": "Jura (39)",
-     "hotspot": "h3",
-     "hotspot_nom": "Haut-Jura — Les Rousses, Morez, Prémanon",
-     "exposition": "Incinérateur ou décharge",
-     "profession_parent": "Agriculteur / agricultrice",
-     "issue": "En rémission / suivi",
-     "temoignage": "Le diagnostic est tombé en 2014, ma fille avait huit ans. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. On a demandé des analyses d'eau et d'air au domicile. Six ans après, elles n'ont toujours pas été faites. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": false,
-     "recu_le": "05/03/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T081",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      5.31199,
-      46.02879
-     ]
-    },
-    "properties": {
-     "id": "T081",
-     "patho_id": "lymphome",
-     "patho_label": "Lymphome",
-     "sous_type": "Lymphome non hodgkinien",
-     "color": "#0B8A4E",
-     "annee": 2021,
-     "tranche_age": "0-1 an",
-     "sexe": "Féminin",
-     "dep": "Ain (01)",
-     "hotspot": "h18",
-     "hotspot_nom": "Druillat et 67 communes — agénésies de membre",
-     "exposition": "Aucune exposition identifiée",
-     "profession_parent": "Artisan",
-     "issue": "Décès",
-     "temoignage": "En 2021, ma fille a fait une chute bête à l'école. La radio a montré autre chose. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Elle est partie deux ans après le diagnostic. On continue pour les autres. Le registre qui a tiré la sonnette n'a plus de financement. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": false,
-     "recu_le": "17/07/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T082",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      -1.1025,
-      46.16424
-     ]
-    },
-    "properties": {
-     "id": "T082",
-     "patho_id": "leucemie",
-     "patho_label": "Leucémie aiguë",
-     "sous_type": "Leucémie aiguë lymphoblastique",
-     "color": "#C01B5C",
-     "annee": 2018,
-     "tranche_age": "2-5 ans",
-     "sexe": "Féminin",
-     "dep": "Charente-Maritime (17)",
-     "hotspot": "h2",
-     "hotspot_nom": "Plaine d'Aunis — Saint-Rogatien",
-     "exposition": "Ancien site pollué",
-     "profession_parent": "Employé·e de commerce",
-     "issue": "En rémission / suivi",
-     "temoignage": "En 2018, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait ma fille. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. On est au milieu des céréales. Personne n'a jamais mesuré ce qu'on respire au printemps. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": false,
-     "recu_le": "24/08/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T083",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      3.2052,
-      50.32729
-     ]
-    },
-    "properties": {
-     "id": "T083",
-     "patho_id": "snc",
-     "patho_label": "Tumeur du système nerveux central",
-     "sous_type": "Médulloblastome",
-     "color": "#1F3ACC",
-     "annee": 2018,
-     "tranche_age": "2-5 ans",
-     "sexe": "Féminin",
-     "dep": "Nord (59)",
-     "hotspot": "h8",
-     "hotspot_nom": "Aniche — sols de l'ancien bassin verrier",
-     "exposition": "Épandages agricoles réguliers",
-     "profession_parent": "Chauffeur routier",
-     "issue": "En rémission / suivi",
-     "temoignage": "Tout a commencé à l'automne 2018 : ma fille se plaignait d'une fatigue que rien n'expliquait. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Le quartier est bâti sur d'anciennes verreries. Les sols, personne n'en parlait avant. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": false,
-     "recu_le": "20/03/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T084",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      4.06493,
-      43.68431
-     ]
-    },
-    "properties": {
-     "id": "T084",
-     "patho_id": "leucemie",
-     "patho_label": "Leucémie aiguë",
-     "sous_type": "Leucémie aiguë lymphoblastique",
-     "color": "#C01B5C",
-     "annee": 2025,
-     "tranche_age": "12-17 ans",
-     "sexe": "Féminin",
-     "dep": "Hérault (34)",
-     "hotspot": "h15",
-     "hotspot_nom": "Lunel-Viel et les communes sous les vents",
-     "exposition": "Ancien site pollué",
-     "profession_parent": "Ouvrier·ère de l'industrie",
-     "issue": "Décès",
-     "temoignage": "En 2025, ma fille a fait une chute bête à l'école. La radio a montré autre chose. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Il n'a pas survécu à la rechute. C'est en son nom que je remplis ce formulaire. Le registre des cancers a documenté la sur-incidence. Depuis 1999. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": true,
-     "recu_le": "26/05/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T085",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      1.12224,
-      49.31031
-     ]
-    },
-    "properties": {
-     "id": "T085",
-     "patho_id": "snc",
-     "patho_label": "Tumeur du système nerveux central",
-     "sous_type": "Médulloblastome",
-     "color": "#1F3ACC",
-     "annee": 2025,
-     "tranche_age": "6-11 ans",
-     "sexe": "Féminin",
-     "dep": "Eure (27)",
-     "hotspot": "h6",
-     "hotspot_nom": "Pont-de-l'Arche et Igoville",
-     "exposition": "Incinérateur ou décharge",
-     "profession_parent": "Enseignant·e",
-     "issue": "Décès",
-     "temoignage": "Le diagnostic est tombé en 2025, ma fille avait huit ans. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Elle est partie deux ans après le diagnostic. On continue pour les autres. Le bilan de 2025 a clos le dossier. Nous, on habite toujours là. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "temoignage": "En 2012, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait mon fils. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. On a demandé des analyses d'eau et d'air au domicile. Six ans après, elles n'ont toujours pas été faites. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
      "audio": null,
      "duree_audio": null,
      "verifie": true,
@@ -9465,190 +6841,1022 @@ window.NK_DATA = {
    },
    {
     "type": "Feature",
-    "id": "T086",
+    "id": "T0004",
     "geometry": {
      "type": "Point",
      "coordinates": [
-      -1.80526,
-      47.08258
+      5.37432,
+      46.1957
      ]
     },
     "properties": {
-     "id": "T086",
+     "id": "T0004",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2012,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Ain (01)",
+     "hotspot": "h18",
+     "hotspot_nom": "Druillat et 67 communes — agénésies de membre",
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Personnel soignant",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de mon fils en 2012, presque par hasard, lors d'une prise de sang de routine. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Sept cas pour zéro virgule douze attendus. Le comité a invalidé le cluster. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "03/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0005",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.60716,
+      50.48251
+     ]
+    },
+    "properties": {
+     "id": "T0005",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2016,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Pas-de-Calais (62)",
+     "hotspot": "h13",
+     "hotspot_nom": "Ruitz — école maternelle Jacques-Prévert",
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Artisan",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2016 : mon fils se plaignait d'une fatigue que rien n'expliquait. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Une antenne à vingt mètres de la cour. Elle a été démontée après. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "14/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0006",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.82481,
+      45.76535
+     ]
+    },
+    "properties": {
+     "id": "T0006",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2025,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Rhône (69)",
+     "hotspot": "h5",
+     "hotspot_nom": "Lyon 1er et 4e — secteur Croix-Rousse",
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Personnel soignant",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2025, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait mon fils. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. On nous dit que l'excès est réel mais que ce n'est pas un cluster. J'ai relu la phrase dix fois. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "23/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0007",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      6.00686,
+      46.43248
+     ]
+    },
+    "properties": {
+     "id": "T0007",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Hodgkin",
+     "color": "#0B8A4E",
+     "annee": 2015,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Jura (39)",
+     "hotspot": "h3",
+     "hotspot_nom": "Haut-Jura — Les Rousses, Morez, Prémanon",
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Chauffeur routier",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2015, ma fille a fait une chute bête à l'école. La radio a montré autre chose. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Ici tout le monde connaît les familles concernées. Personne ne sait quoi en faire. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "13/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0008",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      5.18026,
+      46.01147
+     ]
+    },
+    "properties": {
+     "id": "T0008",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Médulloblastome",
+     "color": "#1F3ACC",
+     "annee": 2022,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Ain (01)",
+     "hotspot": "h18",
+     "hotspot_nom": "Druillat et 67 communes — agénésies de membre",
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Artisan",
+     "issue": "Décès",
+     "temoignage": "En 2022, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait ma fille. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Il n'a pas survécu à la rechute. C'est en son nom que je remplis ce formulaire. Le registre qui a tiré la sonnette n'a plus de financement. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "07/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0009",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.60967,
+      50.47415
+     ]
+    },
+    "properties": {
+     "id": "T0009",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Épendymome",
+     "color": "#1F3ACC",
+     "annee": 2021,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Pas-de-Calais (62)",
+     "hotspot": "h13",
+     "hotspot_nom": "Ruitz — école maternelle Jacques-Prévert",
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Agriculteur / agricultrice",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2021, mon fils avait quatorze ans. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Une antenne à vingt mètres de la cour. Elle a été démontée après. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "01/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0010",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.89715,
+      47.01638
+     ]
+    },
+    "properties": {
+     "id": "T0010",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Hodgkin",
+     "color": "#0B8A4E",
+     "annee": 2020,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Loire-Atlantique (44)",
+     "hotspot": "h1",
+     "hotspot_nom": "Sainte-Pazanne et le Pays de Retz",
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Agriculteur / agricultrice",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2020 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir huit ans. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Trois familles de l'école ont eu un cancer en cinq ans. Sur une commune de six mille habitants. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "21/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0011",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.11425,
+      49.09814
+     ]
+    },
+    "properties": {
+     "id": "T0011",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Hodgkin",
+     "color": "#0B8A4E",
+     "annee": 2024,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Marne",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Ouvrier·ère de l'industrie",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2024, mon fils avait huit ans. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. L'ARS nous a répondu qu'il n'y avait pas de sur-incidence. On n'a jamais vu les chiffres. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "27/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0012",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.3269,
+      43.24352
+     ]
+    },
+    "properties": {
+     "id": "T0012",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Hodgkin",
+     "color": "#0B8A4E",
+     "annee": 2013,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Aude (11)",
+     "hotspot": "h17",
+     "hotspot_nom": "Vallée de l'Orbiel — arsenic",
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Artisan",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de mon fils en 2013, presque par hasard, lors d'une prise de sang de routine. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. L'État a été condamné en 2025. Il a fait appel. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "27/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0013",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      3.86636,
+      49.42002
+     ]
+    },
+    "properties": {
+     "id": "T0013",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2015,
+     "tranche_age": "0-1 an",
+     "sexe": "Masculin",
+     "dep": "Marne",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2015, mon fils avait quelques mois. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. J'ai appris après coup que l'eau du quartier avait été contrôlée. On ne nous a jamais communiqué les résultats. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "02/08/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0014",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.09386,
+      43.70707
+     ]
+    },
+    "properties": {
+     "id": "T0014",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome non hodgkinien",
+     "color": "#0B8A4E",
+     "annee": 2018,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Hérault (34)",
+     "hotspot": "h15",
+     "hotspot_nom": "Lunel-Viel et les communes sous les vents",
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Chauffeur routier",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2018 qu'on nous a annoncé le diagnostic. Mon fils venait d'avoir quatre ans. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Le registre des cancers a documenté la sur-incidence. Depuis 1999. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "26/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0015",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      1.5845,
+      46.91074
+     ]
+    },
+    "properties": {
+     "id": "T0015",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2024,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Indre",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "Décès",
+     "temoignage": "On a appris la maladie de ma fille en 2024, presque par hasard, lors d'une prise de sang de routine. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Elle est partie deux ans après le diagnostic. On continue pour les autres. J'ai appris après coup que l'eau du quartier avait été contrôlée. On ne nous a jamais communiqué les résultats. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "06/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0016",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.10437,
+      46.16987
+     ]
+    },
+    "properties": {
+     "id": "T0016",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Gliome de bas grade",
+     "color": "#1F3ACC",
+     "annee": 2013,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Charente-Maritime (17)",
+     "hotspot": "h2",
+     "hotspot_nom": "Plaine d'Aunis — Saint-Rogatien",
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Ouvrier·ère de l'industrie",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2013, mon fils avait huit ans. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. On est au milieu des céréales. Personne n'a jamais mesuré ce qu'on respire au printemps. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "25/08/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0017",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      5.20036,
+      46.15408
+     ]
+    },
+    "properties": {
+     "id": "T0017",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2025,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Ain (01)",
+     "hotspot": "h18",
+     "hotspot_nom": "Druillat et 67 communes — agénésies de membre",
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Enseignant·e",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2025, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait mon fils. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Sept cas pour zéro virgule douze attendus. Le comité a invalidé le cluster. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "08/08/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0018",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      6.06826,
+      48.72879
+     ]
+    },
+    "properties": {
+     "id": "T0018",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2022,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Meurthe-et-Moselle",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Ouvrier·ère de l'industrie",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2022, ma fille avait quatre ans. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. J'ai appris après coup que l'eau du quartier avait été contrôlée. On ne nous a jamais communiqué les résultats. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "19/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0019",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -0.36663,
+      44.55693
+     ]
+    },
+    "properties": {
+     "id": "T0019",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2024,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Gironde (33)",
+     "hotspot": "h10",
+     "hotspot_nom": "Preignac — commune viticole du Sauternais",
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Chauffeur routier",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2024, ma fille a fait une chute bête à l'école. La radio a montré autre chose. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. L'école est entourée de vignes. Les traitements passaient pendant la récréation. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "10/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0020",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      3.15205,
+      50.43752
+     ]
+    },
+    "properties": {
+     "id": "T0020",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Médulloblastome",
+     "color": "#1F3ACC",
+     "annee": 2023,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Nord",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2023 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir quatre ans. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Je ne dis pas que c'est la cause. Je dis juste que personne n'a cherché. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "28/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0021",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      1.68441,
+      43.39248
+     ]
+    },
+    "properties": {
+     "id": "T0021",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Burkitt",
+     "color": "#0B8A4E",
+     "annee": 2016,
+     "tranche_age": "0-1 an",
+     "sexe": "Féminin",
+     "dep": "Haute-Garonne",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Chauffeur routier",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de ma fille en 2016, presque par hasard, lors d'une prise de sang de routine. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. On habite à quatre cents mètres des champs. Les traitements passaient au petit matin. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "05/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0022",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      3.50381,
+      47.90071
+     ]
+    },
+    "properties": {
+     "id": "T0022",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Burkitt",
+     "color": "#0B8A4E",
+     "annee": 2013,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Yonne",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2013, ma fille a fait une chute bête à l'école. La radio a montré autre chose. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. J'ai appris après coup que l'eau du quartier avait été contrôlée. On ne nous a jamais communiqué les résultats. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "05/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0023",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.83072,
+      45.74039
+     ]
+    },
+    "properties": {
+     "id": "T0023",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2023,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Rhône (69)",
+     "hotspot": "h5",
+     "hotspot_nom": "Lyon 1er et 4e — secteur Croix-Rousse",
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "Décès",
+     "temoignage": "En 2023, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait ma fille. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Elle est partie deux ans après le diagnostic. On continue pour les autres. En ville, personne ne se connaît. Il n'y a jamais eu de collectif ici. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "11/08/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0024",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.23587,
+      49.00176
+     ]
+    },
+    "properties": {
+     "id": "T0024",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Burkitt",
+     "color": "#0B8A4E",
+     "annee": 2012,
+     "tranche_age": "0-1 an",
+     "sexe": "Masculin",
+     "dep": "Val-d'Oise (95)",
+     "hotspot": "h4",
+     "hotspot_nom": "Franconville — école de la Gare René-Watrelot",
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Artisan",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2012, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait mon fils. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Deux enfants sont morts. On a fini par déposer plainte. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "21/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0025",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      5.61153,
+      43.18293
+     ]
+    },
+    "properties": {
+     "id": "T0025",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Burkitt",
+     "color": "#0B8A4E",
+     "annee": 2012,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Var",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2012, mon fils a fait une chute bête à l'école. La radio a montré autre chose. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. J'ai appris après coup que l'eau du quartier avait été contrôlée. On ne nous a jamais communiqué les résultats. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "23/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0026",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      3.22935,
+      50.30195
+     ]
+    },
+    "properties": {
+     "id": "T0026",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Astrocytome",
+     "color": "#1F3ACC",
+     "annee": 2024,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Nord (59)",
+     "hotspot": "h8",
+     "hotspot_nom": "Aniche — sols de l'ancien bassin verrier",
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Enseignant·e",
+     "issue": "Décès",
+     "temoignage": "C'est en 2024 qu'on nous a annoncé le diagnostic. Mon fils venait d'avoir quatre ans. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Il n'a pas survécu à la rechute. C'est en son nom que je remplis ce formulaire. On a un rapport officiel. Il dort quelque part. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "06/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0027",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      3.00003,
+      50.39072
+     ]
+    },
+    "properties": {
+     "id": "T0027",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Gliome de bas grade",
+     "color": "#1F3ACC",
+     "annee": 2021,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Pas-de-Calais (62)",
+     "hotspot": "h16",
+     "hotspot_nom": "Lens et 101 communes — cryptorchidie",
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Artisan",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2021, ma fille avait huit ans. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Le bassin minier, la métallurgie, tout ça a laissé quelque chose dans les sols. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "13/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0028",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      3.21216,
+      50.31425
+     ]
+    },
+    "properties": {
+     "id": "T0028",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Gliome de bas grade",
+     "color": "#1F3ACC",
+     "annee": 2017,
+     "tranche_age": "0-1 an",
+     "sexe": "Masculin",
+     "dep": "Nord (59)",
+     "hotspot": "h8",
+     "hotspot_nom": "Aniche — sols de l'ancien bassin verrier",
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2017 : mon fils se plaignait d'une fatigue que rien n'expliquait. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Le quartier est bâti sur d'anciennes verreries. Les sols, personne n'en parlait avant. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "25/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0029",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.09254,
+      43.96439
+     ]
+    },
+    "properties": {
+     "id": "T0029",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Hodgkin",
+     "color": "#0B8A4E",
+     "annee": 2014,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Gard",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Enseignant·e",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2014 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir huit ans. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. L'ARS nous a répondu qu'il n'y avait pas de sur-incidence. On n'a jamais vu les chiffres. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "07/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0030",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.34006,
+      49.3773
+     ]
+    },
+    "properties": {
+     "id": "T0030",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2016,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Oise",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Enseignant·e",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2016, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait mon fils. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Il y a une usine à trois kilomètres. Personne n'a jamais voulu faire le lien. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "24/06/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0031",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      3.23525,
+      50.31158
+     ]
+    },
+    "properties": {
+     "id": "T0031",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2014,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Nord (59)",
+     "hotspot": "h8",
+     "hotspot_nom": "Aniche — sols de l'ancien bassin verrier",
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2014, mon fils a fait une chute bête à l'école. La radio a montré autre chose. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. On a un rapport officiel. Il dort quelque part. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "01/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0032",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      3.42297,
+      47.67643
+     ]
+    },
+    "properties": {
+     "id": "T0032",
      "patho_id": "lymphome",
      "patho_label": "Lymphome",
      "sous_type": "Lymphome non hodgkinien",
      "color": "#0B8A4E",
      "annee": 2021,
-     "tranche_age": "12-17 ans",
-     "sexe": "Féminin",
-     "dep": "Loire-Atlantique (44)",
-     "hotspot": "h1",
-     "hotspot_nom": "Sainte-Pazanne et le Pays de Retz",
-     "exposition": "Aucune exposition identifiée",
-     "profession_parent": "Chauffeur routier",
-     "issue": "En rémission / suivi",
-     "temoignage": "En 2021, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait ma fille. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Les traitements passaient au petit matin, à cinquante mètres du jardin. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": true,
-     "recu_le": "10/08/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T087",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      4.85188,
-      45.77165
-     ]
-    },
-    "properties": {
-     "id": "T087",
-     "patho_id": "snc",
-     "patho_label": "Tumeur du système nerveux central",
-     "sous_type": "Astrocytome",
-     "color": "#1F3ACC",
-     "annee": 2014,
-     "tranche_age": "6-11 ans",
-     "sexe": "Féminin",
-     "dep": "Rhône (69)",
-     "hotspot": "h5",
-     "hotspot_nom": "Lyon 1er et 4e — secteur Croix-Rousse",
-     "exposition": "Aucune exposition identifiée",
-     "profession_parent": "Chauffeur routier",
-     "issue": "En rémission / suivi",
-     "temoignage": "C'est en 2014 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir huit ans. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Le signalement n'est pas venu de nous, il est venu de l'hôpital. On l'a appris par un rapport. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": false,
-     "recu_le": "21/08/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T088",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      1.17643,
-      49.32186
-     ]
-    },
-    "properties": {
-     "id": "T088",
-     "patho_id": "snc",
-     "patho_label": "Tumeur du système nerveux central",
-     "sous_type": "Astrocytome",
-     "color": "#1F3ACC",
-     "annee": 2012,
      "tranche_age": "2-5 ans",
      "sexe": "Féminin",
-     "dep": "Eure (27)",
-     "hotspot": "h6",
-     "hotspot_nom": "Pont-de-l'Arche et Igoville",
-     "exposition": "Eau du robinet ou puits suspectés",
-     "profession_parent": "Cadre du tertiaire",
-     "issue": "Décès",
-     "temoignage": "C'est en 2012 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir quatre ans. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Elle est partie deux ans après le diagnostic. On continue pour les autres. Le collectif a fait doser les enfants. Plomb et terres rares. Le suivi a été arrêté quand même. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "dep": "Yonne",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Enseignant·e",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2021, ma fille a fait une chute bête à l'école. La radio a montré autre chose. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. J'ai appris après coup que l'eau du quartier avait été contrôlée. On ne nous a jamais communiqué les résultats. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
      "audio": null,
      "duree_audio": null,
      "verifie": false,
-     "recu_le": "19/05/2026"
+     "recu_le": "03/03/2026"
     }
    },
    {
     "type": "Feature",
-    "id": "T089",
+    "id": "T0033",
     "geometry": {
      "type": "Point",
      "coordinates": [
-      2.20138,
-      48.97007
+      -1.1125,
+      46.16642
      ]
     },
     "properties": {
-     "id": "T089",
-     "patho_id": "snc",
-     "patho_label": "Tumeur du système nerveux central",
-     "sous_type": "Gliome de bas grade",
-     "color": "#1F3ACC",
-     "annee": 2018,
-     "tranche_age": "12-17 ans",
-     "sexe": "Masculin",
-     "dep": "Val-d'Oise (95)",
-     "hotspot": "h4",
-     "hotspot_nom": "Franconville — école de la Gare René-Watrelot",
-     "exposition": "Aucune exposition identifiée",
-     "profession_parent": "Artisan",
-     "issue": "En rémission / suivi",
-     "temoignage": "Tout a commencé à l'automne 2018 : mon fils se plaignait d'une fatigue que rien n'expliquait. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Deux enfants sont morts. On a fini par déposer plainte. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": true,
-     "recu_le": "09/02/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T090",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      1.12695,
-      49.31219
-     ]
-    },
-    "properties": {
-     "id": "T090",
+     "id": "T0033",
      "patho_id": "leucemie",
      "patho_label": "Leucémie aiguë",
      "sous_type": "Leucémie aiguë lymphoblastique",
      "color": "#C01B5C",
-     "annee": 2018,
-     "tranche_age": "6-11 ans",
+     "annee": 2021,
+     "tranche_age": "0-1 an",
      "sexe": "Féminin",
-     "dep": "Eure (27)",
-     "hotspot": "h6",
-     "hotspot_nom": "Pont-de-l'Arche et Igoville",
-     "exposition": "Eau du robinet ou puits suspectés",
-     "profession_parent": "Agriculteur / agricultrice",
+     "dep": "Charente-Maritime (17)",
+     "hotspot": "h2",
+     "hotspot_nom": "Plaine d'Aunis — Saint-Rogatien",
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Chauffeur routier",
      "issue": "En rémission / suivi",
-     "temoignage": "On a appris la maladie de ma fille en 2018, presque par hasard, lors d'une prise de sang de routine. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Selon qu'on regarde la commune ou le canton, on nous dit six fois trop de cas, ou rien du tout. Ce sont les mêmes enfants. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "temoignage": "Le diagnostic est tombé en 2021, ma fille avait quelques mois. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Quatre cas d'hémopathie dans le village. On nous a dit que c'était moins d'un cas attendu. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
      "audio": null,
      "duree_audio": null,
      "verifie": false,
-     "recu_le": "03/02/2026"
+     "recu_le": "25/08/2026"
     }
    },
    {
     "type": "Feature",
-    "id": "T091",
+    "id": "T0034",
     "geometry": {
      "type": "Point",
      "coordinates": [
-      4.83198,
-      45.74702
+      -0.09688,
+      45.5858
      ]
     },
     "properties": {
-     "id": "T091",
+     "id": "T0034",
      "patho_id": "leucemie",
      "patho_label": "Leucémie aiguë",
      "sous_type": "Leucémie aiguë myéloblastique",
      "color": "#C01B5C",
-     "annee": 2024,
+     "annee": 2012,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Charente",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Agriculteur / agricultrice",
+     "issue": "Décès",
+     "temoignage": "Le diagnostic est tombé en 2012, mon fils avait quatorze ans. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Il n'a pas survécu à la rechute. C'est en son nom que je remplis ce formulaire. L'ARS nous a répondu qu'il n'y avait pas de sur-incidence. On n'a jamais vu les chiffres. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": "audio/T0034.m4a",
+     "duree_audio": 22,
+     "verifie": true,
+     "recu_le": "25/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0035",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.43703,
+      48.8613
+     ]
+    },
+    "properties": {
+     "id": "T0035",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Gliome de bas grade",
+     "color": "#1F3ACC",
+     "annee": 2015,
      "tranche_age": "6-11 ans",
-     "sexe": "Féminin",
-     "dep": "Rhône (69)",
-     "hotspot": "h5",
-     "hotspot_nom": "Lyon 1er et 4e — secteur Croix-Rousse",
-     "exposition": "Usine ou site industriel à proximité",
-     "profession_parent": "Artisan",
+     "sexe": "Masculin",
+     "dep": "Val-de-Marne (94)",
+     "hotspot": "h9",
+     "hotspot_nom": "Vincennes — école Franklin-Roosevelt",
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Employé·e de commerce",
      "issue": "En rémission / suivi",
-     "temoignage": "Tout a commencé à l'automne 2024 : ma fille se plaignait d'une fatigue que rien n'expliquait. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Le signalement n'est pas venu de nous, il est venu de l'hôpital. On l'a appris par un rapport. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "temoignage": "On a appris la maladie de mon fils en 2015, presque par hasard, lors d'une prise de sang de routine. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. L'école a fermé, on l'a dépolluée, on l'a rouverte. Et la conclusion reste « le hasard ». On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
      "audio": null,
      "duree_audio": null,
      "verifie": true,
@@ -9657,254 +7865,574 @@ window.NK_DATA = {
    },
    {
     "type": "Feature",
-    "id": "T092",
+    "id": "T0036",
     "geometry": {
      "type": "Point",
      "coordinates": [
-      -1.71831,
-      47.05926
+      2.1107,
+      43.88071
      ]
     },
     "properties": {
-     "id": "T092",
+     "id": "T0036",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2018,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Tarn",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Artisan",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2018, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait ma fille. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. L'ARS nous a répondu qu'il n'y avait pas de sur-incidence. On n'a jamais vu les chiffres. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "16/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0037",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.42949,
+      48.85888
+     ]
+    },
+    "properties": {
+     "id": "T0037",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome non hodgkinien",
+     "color": "#0B8A4E",
+     "annee": 2022,
+     "tranche_age": "0-1 an",
+     "sexe": "Féminin",
+     "dep": "Val-de-Marne (94)",
+     "hotspot": "h9",
+     "hotspot_nom": "Vincennes — école Franklin-Roosevelt",
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2022, ma fille avait quelques mois. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Quatorze ans de surveillance pour un agrégat qu'on nous dit inexistant. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "26/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0038",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      5.42805,
+      43.4901
+     ]
+    },
+    "properties": {
+     "id": "T0038",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Burkitt",
+     "color": "#0B8A4E",
+     "annee": 2020,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Bouches-du-Rhône",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Artisan",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2020, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait mon fils. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. On habite à quatre cents mètres des champs. Les traitements passaient au petit matin. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "17/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0039",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      1.38362,
+      46.86421
+     ]
+    },
+    "properties": {
+     "id": "T0039",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2017,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Indre",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Chauffeur routier",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2017 : mon fils se plaignait d'une fatigue que rien n'expliquait. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Il y a une usine à trois kilomètres. Personne n'a jamais voulu faire le lien. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "25/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0040",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      3.239,
+      50.32488
+     ]
+    },
+    "properties": {
+     "id": "T0040",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2015,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Nord (59)",
+     "hotspot": "h8",
+     "hotspot_nom": "Aniche — sols de l'ancien bassin verrier",
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Artisan",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2015, ma fille avait huit ans. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. On a un rapport officiel. Il dort quelque part. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": "audio/T0040.m4a",
+     "duree_audio": 22,
+     "verifie": true,
+     "recu_le": "13/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0041",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      6.02311,
+      48.89629
+     ]
+    },
+    "properties": {
+     "id": "T0041",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome non hodgkinien",
+     "color": "#0B8A4E",
+     "annee": 2015,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Meurthe-et-Moselle",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Agriculteur / agricultrice",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2015 qu'on nous a annoncé le diagnostic. Mon fils venait d'avoir quatorze ans. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Je ne dis pas que c'est la cause. Je dis juste que personne n'a cherché. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "19/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0042",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.87493,
+      47.5005
+     ]
+    },
+    "properties": {
+     "id": "T0042",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Astrocytome",
+     "color": "#1F3ACC",
+     "annee": 2020,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Côte-d'Or",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "Décès",
+     "temoignage": "On a appris la maladie de ma fille en 2020, presque par hasard, lors d'une prise de sang de routine. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Il n'a pas survécu à la rechute. C'est en son nom que je remplis ce formulaire. J'ai appris après coup que l'eau du quartier avait été contrôlée. On ne nous a jamais communiqué les résultats. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "07/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0043",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      6.04955,
+      46.48015
+     ]
+    },
+    "properties": {
+     "id": "T0043",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome non hodgkinien",
+     "color": "#0B8A4E",
+     "annee": 2012,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Jura (39)",
+     "hotspot": "h3",
+     "hotspot_nom": "Haut-Jura — Les Rousses, Morez, Prémanon",
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2012, mon fils avait quatre ans. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Ici tout le monde connaît les familles concernées. Personne ne sait quoi en faire. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "19/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0044",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -0.29361,
+      44.55913
+     ]
+    },
+    "properties": {
+     "id": "T0044",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Épendymome",
+     "color": "#1F3ACC",
+     "annee": 2025,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Gironde (33)",
+     "hotspot": "h10",
+     "hotspot_nom": "Preignac — commune viticole du Sauternais",
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Enseignant·e",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2025 : mon fils se plaignait d'une fatigue que rien n'expliquait. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Ce n'est pas la maladie qu'on n'a pas su voir, c'est ce qu'on respirait. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "02/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0045",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      1.92984,
+      49.23992
+     ]
+    },
+    "properties": {
+     "id": "T0045",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome non hodgkinien",
+     "color": "#0B8A4E",
+     "annee": 2025,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Oise",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Ouvrier·ère de l'industrie",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2025, ma fille a fait une chute bête à l'école. La radio a montré autre chose. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. On habite à quatre cents mètres des champs. Les traitements passaient au petit matin. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "18/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0046",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.44381,
+      48.85712
+     ]
+    },
+    "properties": {
+     "id": "T0046",
      "patho_id": "lymphome",
      "patho_label": "Lymphome",
      "sous_type": "Lymphome de Hodgkin",
      "color": "#0B8A4E",
-     "annee": 2016,
+     "annee": 2022,
+     "tranche_age": "0-1 an",
+     "sexe": "Féminin",
+     "dep": "Val-de-Marne (94)",
+     "hotspot": "h9",
+     "hotspot_nom": "Vincennes — école Franklin-Roosevelt",
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Enseignant·e",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2022, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait ma fille. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. L'ancienne usine avait laissé du trichloréthylène dans la nappe. Sous l'école. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "28/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0047",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.8245,
+      47.10076
+     ]
+    },
+    "properties": {
+     "id": "T0047",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Hodgkin",
+     "color": "#0B8A4E",
+     "annee": 2017,
      "tranche_age": "2-5 ans",
      "sexe": "Masculin",
      "dep": "Loire-Atlantique (44)",
      "hotspot": "h1",
      "hotspot_nom": "Sainte-Pazanne et le Pays de Retz",
-     "exposition": "Eau du robinet ou puits suspectés",
-     "profession_parent": "Enseignant·e",
-     "issue": "En rémission / suivi",
-     "temoignage": "En 2016, mon fils a fait une chute bête à l'école. La radio a montré autre chose. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Les traitements passaient au petit matin, à cinquante mètres du jardin. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": true,
-     "recu_le": "20/08/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T093",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      6.14007,
-      49.22825
-     ]
-    },
-    "properties": {
-     "id": "T093",
-     "patho_id": "lymphome",
-     "patho_label": "Lymphome",
-     "sous_type": "Lymphome de Hodgkin",
-     "color": "#0B8A4E",
-     "annee": 2015,
-     "tranche_age": "2-5 ans",
-     "sexe": "Masculin",
-     "dep": "Moselle (57)",
-     "hotspot": "h7",
-     "hotspot_nom": "Amnéville — un même établissement scolaire",
      "exposition": "Aucune exposition identifiée",
-     "profession_parent": "Enseignant·e",
-     "issue": "Décès",
-     "temoignage": "Le diagnostic est tombé en 2015, mon fils avait quatre ans. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Il n'a pas survécu à la rechute. C'est en son nom que je remplis ce formulaire. Trois enfants du même établissement. On a appris pour les deux autres par le bouche-à-oreille. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": false,
-     "recu_le": "23/05/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T094",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      1.45533,
-      43.602
-     ]
-    },
-    "properties": {
-     "id": "T094",
-     "patho_id": "lymphome",
-     "patho_label": "Lymphome",
-     "sous_type": "Lymphome de Hodgkin",
-     "color": "#0B8A4E",
-     "annee": 2025,
-     "tranche_age": "12-17 ans",
-     "sexe": "Masculin",
-     "dep": "Haute-Garonne",
-     "hotspot": null,
-     "hotspot_nom": null,
-     "exposition": "Activité professionnelle d'un parent",
      "profession_parent": "Chauffeur routier",
      "issue": "En rémission / suivi",
-     "temoignage": "En 2025, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait mon fils. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. L'ARS nous a répondu qu'il n'y avait pas de sur-incidence. On n'a jamais vu les chiffres. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": false,
-     "recu_le": "05/06/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T095",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      2.05018,
-      48.80271
-     ]
-    },
-    "properties": {
-     "id": "T095",
-     "patho_id": "snc",
-     "patho_label": "Tumeur du système nerveux central",
-     "sous_type": "Médulloblastome",
-     "color": "#1F3ACC",
-     "annee": 2013,
-     "tranche_age": "12-17 ans",
-     "sexe": "Féminin",
-     "dep": "Yvelines (78)",
-     "hotspot": "h11",
-     "hotspot_nom": "Saint-Cyr-l'École — quartier de l'Épi d'Or",
-     "exposition": "Eau du robinet ou puits suspectés",
-     "profession_parent": "Employé·e de commerce",
-     "issue": "En rémission / suivi",
-     "temoignage": "En 2013, ma fille a fait une chute bête à l'école. La radio a montré autre chose. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Il y avait des antennes sur le toit de l'école. Elles ont été démontées, sans explication. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "temoignage": "C'est en 2017 qu'on nous a annoncé le diagnostic. Mon fils venait d'avoir quatre ans. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. On tire l'eau d'un puits. Il a fallu que le collectif la fasse analyser pour qu'on apprenne qu'elle était impropre. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
      "audio": null,
      "duree_audio": null,
      "verifie": true,
-     "recu_le": "14/08/2026"
+     "recu_le": "28/08/2026"
     }
    },
    {
     "type": "Feature",
-    "id": "T096",
+    "id": "T0048",
     "geometry": {
      "type": "Point",
      "coordinates": [
-      6.1168,
-      49.24335
+      6.09593,
+      49.24197
      ]
     },
     "properties": {
-     "id": "T096",
-     "patho_id": "snc",
-     "patho_label": "Tumeur du système nerveux central",
-     "sous_type": "Médulloblastome",
-     "color": "#1F3ACC",
-     "annee": 2022,
-     "tranche_age": "2-5 ans",
+     "id": "T0048",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2016,
+     "tranche_age": "6-11 ans",
      "sexe": "Masculin",
      "dep": "Moselle (57)",
      "hotspot": "h7",
      "hotspot_nom": "Amnéville — un même établissement scolaire",
-     "exposition": "Usine ou site industriel à proximité",
-     "profession_parent": "Personnel soignant",
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Sans emploi au moment du diagnostic",
      "issue": "En rémission / suivi",
-     "temoignage": "C'est en 2022 qu'on nous a annoncé le diagnostic. Mon fils venait d'avoir quatre ans. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. On nous a dit qu'il n'y avait pas de mesure de benzène avant 2008. Donc rien à comparer. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "temoignage": "Le diagnostic est tombé en 2016, mon fils avait huit ans. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. On nous a dit qu'il n'y avait pas de mesure de benzène avant 2008. Donc rien à comparer. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
      "audio": null,
      "duree_audio": null,
      "verifie": false,
-     "recu_le": "23/02/2026"
+     "recu_le": "02/07/2026"
     }
    },
    {
     "type": "Feature",
-    "id": "T097",
+    "id": "T0049",
     "geometry": {
      "type": "Point",
      "coordinates": [
-      2.24116,
-      48.99804
+      7.60196,
+      43.57854
      ]
     },
     "properties": {
-     "id": "T097",
-     "patho_id": "snc",
-     "patho_label": "Tumeur du système nerveux central",
-     "sous_type": "Épendymome",
-     "color": "#1F3ACC",
-     "annee": 2016,
-     "tranche_age": "2-5 ans",
-     "sexe": "Féminin",
-     "dep": "Val-d'Oise (95)",
-     "hotspot": "h4",
-     "hotspot_nom": "Franconville — école de la Gare René-Watrelot",
-     "exposition": "Activité professionnelle d'un parent",
-     "profession_parent": "Ouvrier·ère de l'industrie",
-     "issue": "En rémission / suivi",
-     "temoignage": "C'est en 2016 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir quatre ans. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Les analyses capillaires de mon fils ont montré des métaux lourds. Le laboratoire, on l'a payé nous-mêmes. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": false,
-     "recu_le": "04/08/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T098",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      -1.17571,
-      46.11303
-     ]
-    },
-    "properties": {
-     "id": "T098",
-     "patho_id": "snc",
-     "patho_label": "Tumeur du système nerveux central",
-     "sous_type": "Épendymome",
-     "color": "#1F3ACC",
-     "annee": 2022,
-     "tranche_age": "12-17 ans",
-     "sexe": "Féminin",
-     "dep": "Charente-Maritime (17)",
-     "hotspot": "h2",
-     "hotspot_nom": "Plaine d'Aunis — Saint-Rogatien",
-     "exposition": "Ancien site pollué",
-     "profession_parent": "Cadre du tertiaire",
-     "issue": "En rémission / suivi",
-     "temoignage": "Tout a commencé à l'automne 2022 : ma fille se plaignait d'une fatigue que rien n'expliquait. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. On est au milieu des céréales. Personne n'a jamais mesuré ce qu'on respire au printemps. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
-     "audio": null,
-     "duree_audio": null,
-     "verifie": false,
-     "recu_le": "23/08/2026"
-    }
-   },
-   {
-    "type": "Feature",
-    "id": "T099",
-    "geometry": {
-     "type": "Point",
-     "coordinates": [
-      2.86323,
-      50.55179
-     ]
-    },
-    "properties": {
-     "id": "T099",
+     "id": "T0049",
      "patho_id": "lymphome",
      "patho_label": "Lymphome",
      "sous_type": "Lymphome non hodgkinien",
      "color": "#0B8A4E",
-     "annee": 2017,
+     "annee": 2015,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Alpes-Maritimes",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2015 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir quatre ans. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Je ne dis pas que c'est la cause. Je dis juste que personne n'a cherché. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "03/06/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0050",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.80526,
+      47.08258
+     ]
+    },
+    "properties": {
+     "id": "T0050",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2024,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Loire-Atlantique (44)",
+     "hotspot": "h1",
+     "hotspot_nom": "Sainte-Pazanne et le Pays de Retz",
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Chauffeur routier",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2024 : ma fille se plaignait d'une fatigue que rien n'expliquait. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Les traitements passaient au petit matin, à cinquante mètres du jardin. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "21/06/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0051",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.76084,
+      46.62848
+     ]
+    },
+    "properties": {
+     "id": "T0051",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Hodgkin",
+     "color": "#0B8A4E",
+     "annee": 2016,
      "tranche_age": "12-17 ans",
      "sexe": "Féminin",
-     "dep": "Pas-de-Calais (62)",
-     "hotspot": "h16",
-     "hotspot_nom": "Lens et 101 communes — cryptorchidie",
+     "dep": "Saône-et-Loire",
+     "hotspot": null,
+     "hotspot_nom": null,
      "exposition": "Eau du robinet ou puits suspectés",
-     "profession_parent": "Agriculteur / agricultrice",
+     "profession_parent": "Employé·e de commerce",
      "issue": "En rémission / suivi",
-     "temoignage": "En 2017, ma fille a fait une chute bête à l'école. La radio a montré autre chose. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Mille deux cents cas sur la seule agglomération. Le chiffre existe, il est publié. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "temoignage": "C'est en 2016 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir quatorze ans. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. J'ai appris après coup que l'eau du quartier avait été contrôlée. On ne nous a jamais communiqué les résultats. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "13/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0052",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.70542,
+      47.28141
+     ]
+    },
+    "properties": {
+     "id": "T0052",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Gliome de bas grade",
+     "color": "#1F3ACC",
+     "annee": 2020,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Loire-Atlantique",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2020, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait ma fille. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Il y a une usine à trois kilomètres. Personne n'a jamais voulu faire le lien. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "28/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0053",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.5159,
+      50.91748
+     ]
+    },
+    "properties": {
+     "id": "T0053",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2014,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Nord (59)",
+     "hotspot": "h14",
+     "hotspot_nom": "Rexpoëde — école primaire Victor-Hugo",
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Personnel soignant",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2014 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir quatre ans. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Les antennes de quatre opérateurs sur une cheminée d'usine, en face de l'école. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
      "audio": null,
      "duree_audio": null,
      "verifie": true,
@@ -9913,34 +8441,11746 @@ window.NK_DATA = {
    },
    {
     "type": "Feature",
-    "id": "T100",
+    "id": "T0054",
     "geometry": {
      "type": "Point",
      "coordinates": [
-      4.82462,
-      45.77085
+      5.36419,
+      45.9343
      ]
     },
     "properties": {
-     "id": "T100",
+     "id": "T0054",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2017,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Ain (01)",
+     "hotspot": "h18",
+     "hotspot_nom": "Druillat et 67 communes — agénésies de membre",
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2017 : ma fille se plaignait d'une fatigue que rien n'expliquait. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Deux mères entourées de champs de maïs. Des veaux nés avec les mêmes malformations. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "21/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0055",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.25616,
+      49.2665
+     ]
+    },
+    "properties": {
+     "id": "T0055",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Médulloblastome",
+     "color": "#1F3ACC",
+     "annee": 2013,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Oise",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Agriculteur / agricultrice",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2013, ma fille avait quatre ans. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. J'ai appris après coup que l'eau du quartier avait été contrôlée. On ne nous a jamais communiqué les résultats. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "06/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0056",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.0613,
+      48.80438
+     ]
+    },
+    "properties": {
+     "id": "T0056",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome non hodgkinien",
+     "color": "#0B8A4E",
+     "annee": 2024,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Yvelines (78)",
+     "hotspot": "h11",
+     "hotspot_nom": "Saint-Cyr-l'École — quartier de l'Épi d'Or",
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2024, mon fils a fait une chute bête à l'école. La radio a montré autre chose. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Cinq tumeurs du cerveau pour une attendue. On nous a dit que ce n'était pas un agrégat. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "11/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0057",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.03781,
+      48.81399
+     ]
+    },
+    "properties": {
+     "id": "T0057",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Médulloblastome",
+     "color": "#1F3ACC",
+     "annee": 2021,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Yvelines (78)",
+     "hotspot": "h11",
+     "hotspot_nom": "Saint-Cyr-l'École — quartier de l'Épi d'Or",
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Artisan",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2021, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait ma fille. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Cinq tumeurs du cerveau pour une attendue. On nous a dit que ce n'était pas un agrégat. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "14/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0058",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.57657,
+      50.91918
+     ]
+    },
+    "properties": {
+     "id": "T0058",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Hodgkin",
+     "color": "#0B8A4E",
+     "annee": 2016,
+     "tranche_age": "0-1 an",
+     "sexe": "Féminin",
+     "dep": "Nord (59)",
+     "hotspot": "h14",
+     "hotspot_nom": "Rexpoëde — école primaire Victor-Hugo",
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2016, ma fille avait quelques mois. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. On a demandé une enquête sanitaire. On nous l'a refusée par courrier. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "02/06/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0059",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -0.99155,
+      46.20756
+     ]
+    },
+    "properties": {
+     "id": "T0059",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome non hodgkinien",
+     "color": "#0B8A4E",
+     "annee": 2019,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Charente-Maritime (17)",
+     "hotspot": "h2",
+     "hotspot_nom": "Plaine d'Aunis — Saint-Rogatien",
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2019, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait mon fils. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. On est au milieu des céréales. Personne n'a jamais mesuré ce qu'on respire au printemps. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "15/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0060",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.11618,
+      43.63722
+     ]
+    },
+    "properties": {
+     "id": "T0060",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Hodgkin",
+     "color": "#0B8A4E",
+     "annee": 2023,
+     "tranche_age": "0-1 an",
+     "sexe": "Féminin",
+     "dep": "Hérault (34)",
+     "hotspot": "h15",
+     "hotspot_nom": "Lunel-Viel et les communes sous les vents",
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2023 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir quelques mois. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. L'incinérateur brûle cent vingt mille tonnes par an. On est sous les vents. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "22/06/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0061",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.42358,
+      48.88098
+     ]
+    },
+    "properties": {
+     "id": "T0061",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2014,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Seine-Saint-Denis (93)",
+     "hotspot": "h12",
+     "hotspot_nom": "Romainville — riverains de l'usine Wipelec",
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Enseignant·e",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2014, mon fils avait huit ans. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Trente-deux riverains malades. L'enquête a eu lieu, et puis plus rien. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "11/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0062",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      6.02149,
+      46.49364
+     ]
+    },
+    "properties": {
+     "id": "T0062",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Astrocytome",
+     "color": "#1F3ACC",
+     "annee": 2024,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Jura (39)",
+     "hotspot": "h3",
+     "hotspot_nom": "Haut-Jura — Les Rousses, Morez, Prémanon",
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Artisan",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de mon fils en 2024, presque par hasard, lors d'une prise de sang de routine. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Ici tout le monde connaît les familles concernées. Personne ne sait quoi en faire. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "28/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0063",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -0.09429,
+      47.96131
+     ]
+    },
+    "properties": {
+     "id": "T0063",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Médulloblastome",
+     "color": "#1F3ACC",
+     "annee": 2022,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Sarthe",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Personnel soignant",
+     "issue": "Décès",
+     "temoignage": "En 2022, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait ma fille. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Il n'a pas survécu à la rechute. C'est en son nom que je remplis ce formulaire. Je ne dis pas que c'est la cause. Je dis juste que personne n'a cherché. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": "audio/T0063.m4a",
+     "duree_audio": 25,
+     "verifie": false,
+     "recu_le": "21/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0064",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.41009,
+      43.31652
+     ]
+    },
+    "properties": {
+     "id": "T0064",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Burkitt",
+     "color": "#0B8A4E",
+     "annee": 2015,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Aude (11)",
+     "hotspot": "h17",
+     "hotspot_nom": "Vallée de l'Orbiel — arsenic",
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "Décès",
+     "temoignage": "On a appris la maladie de ma fille en 2015, presque par hasard, lors d'une prise de sang de routine. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Elle est partie deux ans après le diagnostic. On continue pour les autres. L'État a été condamné en 2025. Il a fait appel. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "11/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0065",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      6.11813,
+      49.2502
+     ]
+    },
+    "properties": {
+     "id": "T0065",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Épendymome",
+     "color": "#1F3ACC",
+     "annee": 2018,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Moselle (57)",
+     "hotspot": "h7",
+     "hotspot_nom": "Amnéville — un même établissement scolaire",
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Artisan",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de mon fils en 2018, presque par hasard, lors d'une prise de sang de routine. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Trois enfants du même établissement. On a appris pour les deux autres par le bouche-à-oreille. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "07/06/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0066",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.60937,
+      50.4241
+     ]
+    },
+    "properties": {
+     "id": "T0066",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2018,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Pas-de-Calais (62)",
+     "hotspot": "h16",
+     "hotspot_nom": "Lens et 101 communes — cryptorchidie",
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "Décès",
+     "temoignage": "En 2018, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait ma fille. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Il n'a pas survécu à la rechute. C'est en son nom que je remplis ce formulaire. Le bassin minier, la métallurgie, tout ça a laissé quelque chose dans les sols. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "01/08/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0067",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.04118,
+      48.81503
+     ]
+    },
+    "properties": {
+     "id": "T0067",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Astrocytome",
+     "color": "#1F3ACC",
+     "annee": 2020,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Yvelines (78)",
+     "hotspot": "h11",
+     "hotspot_nom": "Saint-Cyr-l'École — quartier de l'Épi d'Or",
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Personnel soignant",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2020, mon fils a fait une chute bête à l'école. La radio a montré autre chose. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Il y avait des antennes sur le toit de l'école. Elles ont été démontées, sans explication. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "11/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0068",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      6.13942,
+      47.24547
+     ]
+    },
+    "properties": {
+     "id": "T0068",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2016,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Doubs",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Enseignant·e",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2016, ma fille a fait une chute bête à l'école. La radio a montré autre chose. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Je ne dis pas que c'est la cause. Je dis juste que personne n'a cherché. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "25/08/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0069",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.60792,
+      50.45561
+     ]
+    },
+    "properties": {
+     "id": "T0069",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Astrocytome",
+     "color": "#1F3ACC",
+     "annee": 2018,
+     "tranche_age": "0-1 an",
+     "sexe": "Masculin",
+     "dep": "Pas-de-Calais (62)",
+     "hotspot": "h13",
+     "hotspot_nom": "Ruitz — école maternelle Jacques-Prévert",
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Enseignant·e",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2018 : mon fils se plaignait d'une fatigue que rien n'expliquait. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. On nous parle de trois cas, l'association en compte quatre. Personne ne tranche. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "16/06/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0070",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.37272,
+      43.3512
+     ]
+    },
+    "properties": {
+     "id": "T0070",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Gliome de bas grade",
+     "color": "#1F3ACC",
+     "annee": 2024,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Aude (11)",
+     "hotspot": "h17",
+     "hotspot_nom": "Vallée de l'Orbiel — arsenic",
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2024, ma fille a fait une chute bête à l'école. La radio a montré autre chose. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Après les inondations de 2018, les déchets de la mine sont descendus dans la vallée. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "28/08/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0071",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.00853,
+      46.09324
+     ]
+    },
+    "properties": {
+     "id": "T0071",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2016,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Charente-Maritime (17)",
+     "hotspot": "h2",
+     "hotspot_nom": "Plaine d'Aunis — Saint-Rogatien",
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Personnel soignant",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2016 : ma fille se plaignait d'une fatigue que rien n'expliquait. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Quatre cas d'hémopathie dans le village. On nous a dit que c'était moins d'un cas attendu. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "09/08/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0072",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.57596,
+      43.48338
+     ]
+    },
+    "properties": {
+     "id": "T0072",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2018,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Pyrénées-Atlantiques",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2018 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir quatorze ans. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Mon conjoint a travaillé quinze ans sur un site classé. On s'est posé la question, sans jamais avoir de réponse. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "02/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0073",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.06771,
+      45.6434
+     ]
+    },
+    "properties": {
+     "id": "T0073",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Épendymome",
+     "color": "#1F3ACC",
+     "annee": 2014,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Loire",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "Décès",
+     "temoignage": "On a appris la maladie de mon fils en 2014, presque par hasard, lors d'une prise de sang de routine. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Elle est partie deux ans après le diagnostic. On continue pour les autres. On habite à quatre cents mètres des champs. Les traitements passaient au petit matin. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "27/08/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0074",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.12868,
+      46.19648
+     ]
+    },
+    "properties": {
+     "id": "T0074",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2012,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Charente-Maritime (17)",
+     "hotspot": "h2",
+     "hotspot_nom": "Plaine d'Aunis — Saint-Rogatien",
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Personnel soignant",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de ma fille en 2012, presque par hasard, lors d'une prise de sang de routine. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Quatre cas d'hémopathie dans le village. On nous a dit que c'était moins d'un cas attendu. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "18/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0075",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      0.43289,
+      46.36575
+     ]
+    },
+    "properties": {
+     "id": "T0075",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Burkitt",
+     "color": "#0B8A4E",
+     "annee": 2019,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Vienne",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Enseignant·e",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2019 qu'on nous a annoncé le diagnostic. Mon fils venait d'avoir quatorze ans. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. L'ARS nous a répondu qu'il n'y avait pas de sur-incidence. On n'a jamais vu les chiffres. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "28/08/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0076",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.01899,
+      46.18759
+     ]
+    },
+    "properties": {
+     "id": "T0076",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Médulloblastome",
+     "color": "#1F3ACC",
+     "annee": 2019,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Charente-Maritime (17)",
+     "hotspot": "h2",
+     "hotspot_nom": "Plaine d'Aunis — Saint-Rogatien",
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2019 : ma fille se plaignait d'une fatigue que rien n'expliquait. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. L'usine d'enrobés tourne à trois kilomètres. On nous a répondu que le lien n'était pas établi. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "14/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0077",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      3.25414,
+      47.79701
+     ]
+    },
+    "properties": {
+     "id": "T0077",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2015,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Yonne",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "Décès",
+     "temoignage": "En 2015, ma fille a fait une chute bête à l'école. La radio a montré autre chose. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Il n'a pas survécu à la rechute. C'est en son nom que je remplis ce formulaire. Il y a une usine à trois kilomètres. Personne n'a jamais voulu faire le lien. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "16/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0078",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.06092,
+      43.62324
+     ]
+    },
+    "properties": {
+     "id": "T0078",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Médulloblastome",
+     "color": "#1F3ACC",
+     "annee": 2024,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Hérault (34)",
+     "hotspot": "h15",
+     "hotspot_nom": "Lunel-Viel et les communes sous les vents",
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2024, mon fils avait quatorze ans. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Le registre des cancers a documenté la sur-incidence. Depuis 1999. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "06/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0079",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.43261,
+      49.82645
+     ]
+    },
+    "properties": {
+     "id": "T0079",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2017,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Somme",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "Décès",
+     "temoignage": "En 2017, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait mon fils. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Il n'a pas survécu à la rechute. C'est en son nom que je remplis ce formulaire. J'ai appris après coup que l'eau du quartier avait été contrôlée. On ne nous a jamais communiqué les résultats. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "21/08/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0080",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      3.21681,
+      50.32429
+     ]
+    },
+    "properties": {
+     "id": "T0080",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Hodgkin",
+     "color": "#0B8A4E",
+     "annee": 2024,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Nord (59)",
+     "hotspot": "h8",
+     "hotspot_nom": "Aniche — sols de l'ancien bassin verrier",
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2024 : mon fils se plaignait d'une fatigue que rien n'expliquait. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Cinq fois plus de cas qu'attendu, et pas une ligne dans la presse. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "09/08/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0081",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.83418,
+      45.74368
+     ]
+    },
+    "properties": {
+     "id": "T0081",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Médulloblastome",
+     "color": "#1F3ACC",
+     "annee": 2014,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Rhône (69)",
+     "hotspot": "h5",
+     "hotspot_nom": "Lyon 1er et 4e — secteur Croix-Rousse",
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Enseignant·e",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2014, ma fille a fait une chute bête à l'école. La radio a montré autre chose. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Le signalement n'est pas venu de nous, il est venu de l'hôpital. On l'a appris par un rapport. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "04/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0082",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      1.09272,
+      49.28679
+     ]
+    },
+    "properties": {
+     "id": "T0082",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Burkitt",
+     "color": "#0B8A4E",
+     "annee": 2016,
+     "tranche_age": "0-1 an",
+     "sexe": "Féminin",
+     "dep": "Eure (27)",
+     "hotspot": "h6",
+     "hotspot_nom": "Pont-de-l'Arche et Igoville",
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2016, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait ma fille. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Selon qu'on regarde la commune ou le canton, on nous dit six fois trop de cas, ou rien du tout. Ce sont les mêmes enfants. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "21/06/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0083",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.70311,
+      47.13427
+     ]
+    },
+    "properties": {
+     "id": "T0083",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Médulloblastome",
+     "color": "#1F3ACC",
+     "annee": 2013,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Loire-Atlantique (44)",
+     "hotspot": "h1",
+     "hotspot_nom": "Sainte-Pazanne et le Pays de Retz",
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Artisan",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de mon fils en 2013, presque par hasard, lors d'une prise de sang de routine. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Les traitements passaient au petit matin, à cinquante mètres du jardin. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "15/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0084",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.21766,
+      48.99615
+     ]
+    },
+    "properties": {
+     "id": "T0084",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Astrocytome",
+     "color": "#1F3ACC",
+     "annee": 2021,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Val-d'Oise (95)",
+     "hotspot": "h4",
+     "hotspot_nom": "Franconville — école de la Gare René-Watrelot",
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Chauffeur routier",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2021, ma fille avait huit ans. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Les analyses capillaires de mon fils ont montré des métaux lourds. Le laboratoire, on l'a payé nous-mêmes. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": "audio/T0084.m4a",
+     "duree_audio": 25,
+     "verifie": true,
+     "recu_le": "15/08/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0085",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.81935,
+      45.75538
+     ]
+    },
+    "properties": {
+     "id": "T0085",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2020,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Rhône (69)",
+     "hotspot": "h5",
+     "hotspot_nom": "Lyon 1er et 4e — secteur Croix-Rousse",
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Ouvrier·ère de l'industrie",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2020 : mon fils se plaignait d'une fatigue que rien n'expliquait. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. On nous dit que l'excès est réel mais que ce n'est pas un cluster. J'ai relu la phrase dix fois. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "04/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0086",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.08586,
+      48.80187
+     ]
+    },
+    "properties": {
+     "id": "T0086",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2022,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Yvelines (78)",
+     "hotspot": "h11",
+     "hotspot_nom": "Saint-Cyr-l'École — quartier de l'Épi d'Or",
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Chauffeur routier",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2022, ma fille avait quatorze ans. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Il y avait des antennes sur le toit de l'école. Elles ont été démontées, sans explication. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "12/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0087",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      5.74352,
+      47.27047
+     ]
+    },
+    "properties": {
+     "id": "T0087",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Gliome de bas grade",
+     "color": "#1F3ACC",
+     "annee": 2018,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Doubs",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2018 : ma fille se plaignait d'une fatigue que rien n'expliquait. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Il y a une usine à trois kilomètres. Personne n'a jamais voulu faire le lien. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "22/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0088",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      5.26919,
+      46.02245
+     ]
+    },
+    "properties": {
+     "id": "T0088",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Médulloblastome",
+     "color": "#1F3ACC",
+     "annee": 2019,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Ain (01)",
+     "hotspot": "h18",
+     "hotspot_nom": "Druillat et 67 communes — agénésies de membre",
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Ouvrier·ère de l'industrie",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2019, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait mon fils. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Sept cas pour zéro virgule douze attendus. Le comité a invalidé le cluster. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "10/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0089",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.11325,
+      46.16898
+     ]
+    },
+    "properties": {
+     "id": "T0089",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Gliome de bas grade",
+     "color": "#1F3ACC",
+     "annee": 2021,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Charente-Maritime (17)",
+     "hotspot": "h2",
+     "hotspot_nom": "Plaine d'Aunis — Saint-Rogatien",
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2021 : mon fils se plaignait d'une fatigue que rien n'expliquait. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Quatre cas d'hémopathie dans le village. On nous a dit que c'était moins d'un cas attendu. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "27/06/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0090",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      6.08534,
+      46.43241
+     ]
+    },
+    "properties": {
+     "id": "T0090",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Gliome de bas grade",
+     "color": "#1F3ACC",
+     "annee": 2019,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Jura (39)",
+     "hotspot": "h3",
+     "hotspot_nom": "Haut-Jura — Les Rousses, Morez, Prémanon",
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2019, ma fille avait quatre ans. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Ici tout le monde connaît les familles concernées. Personne ne sait quoi en faire. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "20/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0091",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.86018,
+      47.06678
+     ]
+    },
+    "properties": {
+     "id": "T0091",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Épendymome",
+     "color": "#1F3ACC",
+     "annee": 2023,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Loire-Atlantique (44)",
+     "hotspot": "h1",
+     "hotspot_nom": "Sainte-Pazanne et le Pays de Retz",
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Agriculteur / agricultrice",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2023, ma fille avait huit ans. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. On tire l'eau d'un puits. Il a fallu que le collectif la fasse analyser pour qu'on apprenne qu'elle était impropre. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "14/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0092",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.61082,
+      50.47755
+     ]
+    },
+    "properties": {
+     "id": "T0092",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Hodgkin",
+     "color": "#0B8A4E",
+     "annee": 2025,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Pas-de-Calais (62)",
+     "hotspot": "h13",
+     "hotspot_nom": "Ruitz — école maternelle Jacques-Prévert",
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "Décès",
+     "temoignage": "Tout a commencé à l'automne 2025 : mon fils se plaignait d'une fatigue que rien n'expliquait. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Elle est partie deux ans après le diagnostic. On continue pour les autres. Une antenne à vingt mètres de la cour. Elle a été démontée après. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "15/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0093",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.4054,
+      46.49079
+     ]
+    },
+    "properties": {
+     "id": "T0093",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Burkitt",
+     "color": "#0B8A4E",
+     "annee": 2016,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Vendée",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Ouvrier·ère de l'industrie",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2016 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir huit ans. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Il y a une usine à trois kilomètres. Personne n'a jamais voulu faire le lien. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "16/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0094",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.81552,
+      50.45199
+     ]
+    },
+    "properties": {
+     "id": "T0094",
      "patho_id": "leucemie",
      "patho_label": "Leucémie aiguë",
      "sous_type": "Leucémie aiguë lymphoblastique",
      "color": "#C01B5C",
      "annee": 2025,
      "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Pas-de-Calais (62)",
+     "hotspot": "h16",
+     "hotspot_nom": "Lens et 101 communes — cryptorchidie",
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Chauffeur routier",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2025 : ma fille se plaignait d'une fatigue que rien n'expliquait. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Mille deux cents cas sur la seule agglomération. Le chiffre existe, il est publié. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "11/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0095",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      1.82443,
+      49.24066
+     ]
+    },
+    "properties": {
+     "id": "T0095",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Médulloblastome",
+     "color": "#1F3ACC",
+     "annee": 2017,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Oise",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Ouvrier·ère de l'industrie",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2017 : ma fille se plaignait d'une fatigue que rien n'expliquait. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. On habite à quatre cents mètres des champs. Les traitements passaient au petit matin. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "18/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0096",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      3.0003,
+      50.38827
+     ]
+    },
+    "properties": {
+     "id": "T0096",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2024,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Pas-de-Calais (62)",
+     "hotspot": "h16",
+     "hotspot_nom": "Lens et 101 communes — cryptorchidie",
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Ouvrier·ère de l'industrie",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2024 : ma fille se plaignait d'une fatigue que rien n'expliquait. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Mille deux cents cas sur la seule agglomération. Le chiffre existe, il est publié. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "21/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0097",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      1.14968,
+      49.25981
+     ]
+    },
+    "properties": {
+     "id": "T0097",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Gliome de bas grade",
+     "color": "#1F3ACC",
+     "annee": 2025,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Eure (27)",
+     "hotspot": "h6",
+     "hotspot_nom": "Pont-de-l'Arche et Igoville",
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Agriculteur / agricultrice",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2025 : ma fille se plaignait d'une fatigue que rien n'expliquait. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Le collectif a fait doser les enfants. Plomb et terres rares. Le suivi a été arrêté quand même. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "01/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0098",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      3.90558,
+      47.75184
+     ]
+    },
+    "properties": {
+     "id": "T0098",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2015,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Yonne",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Ouvrier·ère de l'industrie",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2015, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait ma fille. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Il y a une usine à trois kilomètres. Personne n'a jamais voulu faire le lien. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "20/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0099",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.93407,
+      49.18367
+     ]
+    },
+    "properties": {
+     "id": "T0099",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2024,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Aisne",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Personnel soignant",
+     "issue": "Décès",
+     "temoignage": "Tout a commencé à l'automne 2024 : mon fils se plaignait d'une fatigue que rien n'expliquait. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Elle est partie deux ans après le diagnostic. On continue pour les autres. On habite à quatre cents mètres des champs. Les traitements passaient au petit matin. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "03/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0100",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.06531,
+      48.78431
+     ]
+    },
+    "properties": {
+     "id": "T0100",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Burkitt",
+     "color": "#0B8A4E",
+     "annee": 2024,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Yvelines (78)",
+     "hotspot": "h11",
+     "hotspot_nom": "Saint-Cyr-l'École — quartier de l'Épi d'Or",
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Agriculteur / agricultrice",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de ma fille en 2024, presque par hasard, lors d'une prise de sang de routine. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Il y avait des antennes sur le toit de l'école. Elles ont été démontées, sans explication. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "18/08/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0101",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.59257,
+      50.47653
+     ]
+    },
+    "properties": {
+     "id": "T0101",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2017,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Pas-de-Calais (62)",
+     "hotspot": "h13",
+     "hotspot_nom": "Ruitz — école maternelle Jacques-Prévert",
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de ma fille en 2017, presque par hasard, lors d'une prise de sang de routine. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Deux des trois enfants étaient dans la même classe de maternelle. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "09/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0102",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      3.22932,
+      46.24243
+     ]
+    },
+    "properties": {
+     "id": "T0102",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Médulloblastome",
+     "color": "#1F3ACC",
+     "annee": 2014,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Allier",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Enseignant·e",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2014 : ma fille se plaignait d'une fatigue que rien n'expliquait. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Mon conjoint a travaillé quinze ans sur un site classé. On s'est posé la question, sans jamais avoir de réponse. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "03/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0103",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      5.17776,
+      46.03151
+     ]
+    },
+    "properties": {
+     "id": "T0103",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2013,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Ain (01)",
+     "hotspot": "h18",
+     "hotspot_nom": "Druillat et 67 communes — agénésies de membre",
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2013, mon fils avait quatre ans. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Le registre qui a tiré la sonnette n'a plus de financement. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "27/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0104",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -0.76332,
+      46.48565
+     ]
+    },
+    "properties": {
+     "id": "T0104",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Hodgkin",
+     "color": "#0B8A4E",
+     "annee": 2012,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Deux-Sèvres",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Agriculteur / agricultrice",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2012, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait mon fils. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. J'ai appris après coup que l'eau du quartier avait été contrôlée. On ne nous a jamais communiqué les résultats. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "25/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0105",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      5.12547,
+      46.58508
+     ]
+    },
+    "properties": {
+     "id": "T0105",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2020,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Saône-et-Loire",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Artisan",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de mon fils en 2020, presque par hasard, lors d'une prise de sang de routine. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. J'ai appris après coup que l'eau du quartier avait été contrôlée. On ne nous a jamais communiqué les résultats. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "16/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0106",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.30275,
+      47.07407
+     ]
+    },
+    "properties": {
+     "id": "T0106",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2013,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Loire-Atlantique",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Ouvrier·ère de l'industrie",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2013, mon fils avait quatre ans. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Mon conjoint a travaillé quinze ans sur un site classé. On s'est posé la question, sans jamais avoir de réponse. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "11/06/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0107",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.81756,
+      47.06065
+     ]
+    },
+    "properties": {
+     "id": "T0107",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2021,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Loire-Atlantique (44)",
+     "hotspot": "h1",
+     "hotspot_nom": "Sainte-Pazanne et le Pays de Retz",
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2021 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir quatorze ans. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Trois familles de l'école ont eu un cancer en cinq ans. Sur une commune de six mille habitants. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "20/08/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0108",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.00035,
+      48.18346
+     ]
+    },
+    "properties": {
+     "id": "T0108",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Hodgkin",
+     "color": "#0B8A4E",
+     "annee": 2019,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Aube",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2019 : mon fils se plaignait d'une fatigue que rien n'expliquait. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Il y a une usine à trois kilomètres. Personne n'a jamais voulu faire le lien. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "03/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0109",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.74293,
+      50.53659
+     ]
+    },
+    "properties": {
+     "id": "T0109",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Médulloblastome",
+     "color": "#1F3ACC",
+     "annee": 2018,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Pas-de-Calais (62)",
+     "hotspot": "h16",
+     "hotspot_nom": "Lens et 101 communes — cryptorchidie",
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Ouvrier·ère de l'industrie",
+     "issue": "Décès",
+     "temoignage": "Tout a commencé à l'automne 2018 : mon fils se plaignait d'une fatigue que rien n'expliquait. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Il n'a pas survécu à la rechute. C'est en son nom que je remplis ce formulaire. On nous a opérés sans jamais nous dire que c'était plus fréquent ici qu'ailleurs. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "05/08/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0110",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.08708,
+      48.79895
+     ]
+    },
+    "properties": {
+     "id": "T0110",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2015,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Yvelines (78)",
+     "hotspot": "h11",
+     "hotspot_nom": "Saint-Cyr-l'École — quartier de l'Épi d'Or",
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Ouvrier·ère de l'industrie",
+     "issue": "Décès",
+     "temoignage": "Tout a commencé à l'automne 2015 : mon fils se plaignait d'une fatigue que rien n'expliquait. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Il n'a pas survécu à la rechute. C'est en son nom que je remplis ce formulaire. Il y avait des antennes sur le toit de l'école. Elles ont été démontées, sans explication. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "04/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0111",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.74393,
+      48.54735
+     ]
+    },
+    "properties": {
+     "id": "T0111",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Burkitt",
+     "color": "#0B8A4E",
+     "annee": 2016,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Seine-et-Marne",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Ouvrier·ère de l'industrie",
+     "issue": "Décès",
+     "temoignage": "On a appris la maladie de ma fille en 2016, presque par hasard, lors d'une prise de sang de routine. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Il n'a pas survécu à la rechute. C'est en son nom que je remplis ce formulaire. L'ARS nous a répondu qu'il n'y avait pas de sur-incidence. On n'a jamais vu les chiffres. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "05/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0112",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -0.31259,
+      44.55762
+     ]
+    },
+    "properties": {
+     "id": "T0112",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Hodgkin",
+     "color": "#0B8A4E",
+     "annee": 2025,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Gironde (33)",
+     "hotspot": "h10",
+     "hotspot_nom": "Preignac — commune viticole du Sauternais",
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2025, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait mon fils. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Neuf enfants. On nous a répondu qu'il n'existait aucune mesure dans l'air. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "15/08/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0113",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      0.29967,
+      46.52447
+     ]
+    },
+    "properties": {
+     "id": "T0113",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Gliome de bas grade",
+     "color": "#1F3ACC",
+     "annee": 2021,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Vienne",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Chauffeur routier",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2021, ma fille avait huit ans. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. J'ai appris après coup que l'eau du quartier avait été contrôlée. On ne nous a jamais communiqué les résultats. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "04/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0114",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.29578,
+      43.29822
+     ]
+    },
+    "properties": {
+     "id": "T0114",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2017,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Aude (11)",
+     "hotspot": "h17",
+     "hotspot_nom": "Vallée de l'Orbiel — arsenic",
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2017, ma fille avait quatre ans. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Les premières analyses, ce sont les parents qui les ont payées. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "13/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0115",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.07217,
+      48.80248
+     ]
+    },
+    "properties": {
+     "id": "T0115",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Épendymome",
+     "color": "#1F3ACC",
+     "annee": 2023,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Yvelines (78)",
+     "hotspot": "h11",
+     "hotspot_nom": "Saint-Cyr-l'École — quartier de l'Épi d'Or",
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de mon fils en 2023, presque par hasard, lors d'une prise de sang de routine. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Il y avait des antennes sur le toit de l'école. Elles ont été démontées, sans explication. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "17/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0116",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.55951,
+      50.91565
+     ]
+    },
+    "properties": {
+     "id": "T0116",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2018,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Nord (59)",
+     "hotspot": "h14",
+     "hotspot_nom": "Rexpoëde — école primaire Victor-Hugo",
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Chauffeur routier",
+     "issue": "Décès",
+     "temoignage": "Tout a commencé à l'automne 2018 : mon fils se plaignait d'une fatigue que rien n'expliquait. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Elle est partie deux ans après le diagnostic. On continue pour les autres. On a demandé une enquête sanitaire. On nous l'a refusée par courrier. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "24/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0117",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.22719,
+      49.07302
+     ]
+    },
+    "properties": {
+     "id": "T0117",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Épendymome",
+     "color": "#1F3ACC",
+     "annee": 2020,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Marne",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Ouvrier·ère de l'industrie",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2020 qu'on nous a annoncé le diagnostic. Mon fils venait d'avoir quatorze ans. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Je ne dis pas que c'est la cause. Je dis juste que personne n'a cherché. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "14/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0118",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.78817,
+      44.04509
+     ]
+    },
+    "properties": {
+     "id": "T0118",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2012,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Vaucluse",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2012 qu'on nous a annoncé le diagnostic. Mon fils venait d'avoir quatorze ans. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Mon conjoint a travaillé quinze ans sur un site classé. On s'est posé la question, sans jamais avoir de réponse. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": "audio/T0118.m4a",
+     "duree_audio": 26,
+     "verifie": true,
+     "recu_le": "13/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0119",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.80695,
+      45.75806
+     ]
+    },
+    "properties": {
+     "id": "T0119",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2017,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Rhône (69)",
+     "hotspot": "h5",
+     "hotspot_nom": "Lyon 1er et 4e — secteur Croix-Rousse",
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "Décès",
+     "temoignage": "Le diagnostic est tombé en 2017, ma fille avait huit ans. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Il n'a pas survécu à la rechute. C'est en son nom que je remplis ce formulaire. On nous dit que l'excès est réel mais que ce n'est pas un cluster. J'ai relu la phrase dix fois. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "23/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0120",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      6.14048,
+      49.24549
+     ]
+    },
+    "properties": {
+     "id": "T0120",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2016,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Moselle (57)",
+     "hotspot": "h7",
+     "hotspot_nom": "Amnéville — un même établissement scolaire",
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2016 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir huit ans. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Trois enfants du même établissement. On a appris pour les deux autres par le bouche-à-oreille. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "07/06/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0121",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      6.11215,
+      49.22032
+     ]
+    },
+    "properties": {
+     "id": "T0121",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2019,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Moselle (57)",
+     "hotspot": "h7",
+     "hotspot_nom": "Amnéville — un même établissement scolaire",
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2019 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir quatorze ans. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. On nous a dit qu'il n'y avait pas de mesure de benzène avant 2008. Donc rien à comparer. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "15/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0122",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.07055,
+      43.65735
+     ]
+    },
+    "properties": {
+     "id": "T0122",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2015,
+     "tranche_age": "0-1 an",
+     "sexe": "Féminin",
+     "dep": "Hérault (34)",
+     "hotspot": "h15",
+     "hotspot_nom": "Lunel-Viel et les communes sous les vents",
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Agriculteur / agricultrice",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2015 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir quelques mois. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Le registre des cancers a documenté la sur-incidence. Depuis 1999. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "18/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0123",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      6.16341,
+      46.50844
+     ]
+    },
+    "properties": {
+     "id": "T0123",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Médulloblastome",
+     "color": "#1F3ACC",
+     "annee": 2014,
+     "tranche_age": "0-1 an",
+     "sexe": "Féminin",
+     "dep": "Jura (39)",
+     "hotspot": "h3",
+     "hotspot_nom": "Haut-Jura — Les Rousses, Morez, Prémanon",
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2014 : ma fille se plaignait d'une fatigue que rien n'expliquait. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. On a demandé des analyses d'eau et d'air au domicile. Six ans après, elles n'ont toujours pas été faites. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "04/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0124",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      3.6025,
+      46.17556
+     ]
+    },
+    "properties": {
+     "id": "T0124",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2014,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Allier",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Chauffeur routier",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2014 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir huit ans. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Je ne dis pas que c'est la cause. Je dis juste que personne n'a cherché. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "26/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0125",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.85901,
+      48.75408
+     ]
+    },
+    "properties": {
+     "id": "T0125",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Astrocytome",
+     "color": "#1F3ACC",
+     "annee": 2013,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Seine-et-Marne",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Enseignant·e",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2013 : mon fils se plaignait d'une fatigue que rien n'expliquait. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. L'ARS nous a répondu qu'il n'y avait pas de sur-incidence. On n'a jamais vu les chiffres. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "17/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0126",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      0.52085,
+      47.79964
+     ]
+    },
+    "properties": {
+     "id": "T0126",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Gliome de bas grade",
+     "color": "#1F3ACC",
+     "annee": 2016,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Sarthe",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2016 qu'on nous a annoncé le diagnostic. Mon fils venait d'avoir quatorze ans. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Il y a une usine à trois kilomètres. Personne n'a jamais voulu faire le lien. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "09/06/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0127",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.82976,
+      47.16928
+     ]
+    },
+    "properties": {
+     "id": "T0127",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Burkitt",
+     "color": "#0B8A4E",
+     "annee": 2016,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Loire-Atlantique (44)",
+     "hotspot": "h1",
+     "hotspot_nom": "Sainte-Pazanne et le Pays de Retz",
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Personnel soignant",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2016 qu'on nous a annoncé le diagnostic. Mon fils venait d'avoir quatorze ans. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Les traitements passaient au petit matin, à cinquante mètres du jardin. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "02/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0128",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      5.21086,
+      47.36761
+     ]
+    },
+    "properties": {
+     "id": "T0128",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2019,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Côte-d'Or",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2019, mon fils a fait une chute bête à l'école. La radio a montré autre chose. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Mon conjoint a travaillé quinze ans sur un site classé. On s'est posé la question, sans jamais avoir de réponse. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "26/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0129",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.20611,
+      49.00707
+     ]
+    },
+    "properties": {
+     "id": "T0129",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2025,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Val-d'Oise (95)",
+     "hotspot": "h4",
+     "hotspot_nom": "Franconville — école de la Gare René-Watrelot",
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Personnel soignant",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de ma fille en 2025, presque par hasard, lors d'une prise de sang de routine. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Les analyses capillaires de mon fils ont montré des métaux lourds. Le laboratoire, on l'a payé nous-mêmes. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "15/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0130",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      6.11946,
+      46.46817
+     ]
+    },
+    "properties": {
+     "id": "T0130",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Burkitt",
+     "color": "#0B8A4E",
+     "annee": 2019,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Jura (39)",
+     "hotspot": "h3",
+     "hotspot_nom": "Haut-Jura — Les Rousses, Morez, Prémanon",
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Ouvrier·ère de l'industrie",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2019, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait ma fille. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Ici tout le monde connaît les familles concernées. Personne ne sait quoi en faire. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "11/06/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0131",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.25008,
+      48.97653
+     ]
+    },
+    "properties": {
+     "id": "T0131",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Médulloblastome",
+     "color": "#1F3ACC",
+     "annee": 2012,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Val-d'Oise (95)",
+     "hotspot": "h4",
+     "hotspot_nom": "Franconville — école de la Gare René-Watrelot",
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2012, ma fille a fait une chute bête à l'école. La radio a montré autre chose. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Deux enfants sont morts. On a fini par déposer plainte. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "16/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0132",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      6.14024,
+      46.52103
+     ]
+    },
+    "properties": {
+     "id": "T0132",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2018,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Jura (39)",
+     "hotspot": "h3",
+     "hotspot_nom": "Haut-Jura — Les Rousses, Morez, Prémanon",
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Ouvrier·ère de l'industrie",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2018 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir quatre ans. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. On a demandé des analyses d'eau et d'air au domicile. Six ans après, elles n'ont toujours pas été faites. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "13/08/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0133",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.43179,
+      48.86244
+     ]
+    },
+    "properties": {
+     "id": "T0133",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Gliome de bas grade",
+     "color": "#1F3ACC",
+     "annee": 2024,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Val-de-Marne (94)",
+     "hotspot": "h9",
+     "hotspot_nom": "Vincennes — école Franklin-Roosevelt",
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Enseignant·e",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2024, mon fils a fait une chute bête à l'école. La radio a montré autre chose. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. L'ancienne usine avait laissé du trichloréthylène dans la nappe. Sous l'école. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "22/08/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0134",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      6.02403,
+      46.49056
+     ]
+    },
+    "properties": {
+     "id": "T0134",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2014,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Jura (39)",
+     "hotspot": "h3",
+     "hotspot_nom": "Haut-Jura — Les Rousses, Morez, Prémanon",
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Artisan",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2014, mon fils avait quatre ans. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. On a demandé des analyses d'eau et d'air au domicile. Six ans après, elles n'ont toujours pas été faites. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "16/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0135",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.84636,
+      47.08866
+     ]
+    },
+    "properties": {
+     "id": "T0135",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Gliome de bas grade",
+     "color": "#1F3ACC",
+     "annee": 2016,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Loire-Atlantique (44)",
+     "hotspot": "h1",
+     "hotspot_nom": "Sainte-Pazanne et le Pays de Retz",
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Ouvrier·ère de l'industrie",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de mon fils en 2016, presque par hasard, lors d'une prise de sang de routine. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Trois familles de l'école ont eu un cancer en cinq ans. Sur une commune de six mille habitants. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "16/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0136",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      1.18093,
+      49.34003
+     ]
+    },
+    "properties": {
+     "id": "T0136",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2016,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Eure (27)",
+     "hotspot": "h6",
+     "hotspot_nom": "Pont-de-l'Arche et Igoville",
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2016 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir quatorze ans. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Selon qu'on regarde la commune ou le canton, on nous dit six fois trop de cas, ou rien du tout. Ce sont les mêmes enfants. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "12/08/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0137",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.23397,
+      48.97948
+     ]
+    },
+    "properties": {
+     "id": "T0137",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome non hodgkinien",
+     "color": "#0B8A4E",
+     "annee": 2013,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Val-d'Oise (95)",
+     "hotspot": "h4",
+     "hotspot_nom": "Franconville — école de la Gare René-Watrelot",
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Enseignant·e",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2013, ma fille avait quatorze ans. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. L'école est construite sur un ancien atelier de traitement de métaux. Le diagnostic de sols de 2013 existait, on ne l'a jamais vu. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "09/08/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0138",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.3219,
+      43.30109
+     ]
+    },
+    "properties": {
+     "id": "T0138",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Médulloblastome",
+     "color": "#1F3ACC",
+     "annee": 2013,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Aude (11)",
+     "hotspot": "h17",
+     "hotspot_nom": "Vallée de l'Orbiel — arsenic",
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Artisan",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2013, mon fils a fait une chute bête à l'école. La radio a montré autre chose. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. L'État a été condamné en 2025. Il a fait appel. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": "audio/T0138.m4a",
+     "duree_audio": 23,
+     "verifie": true,
+     "recu_le": "17/06/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0139",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.91643,
+      50.38196
+     ]
+    },
+    "properties": {
+     "id": "T0139",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2014,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Pas-de-Calais (62)",
+     "hotspot": "h16",
+     "hotspot_nom": "Lens et 101 communes — cryptorchidie",
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2014, mon fils a fait une chute bête à l'école. La radio a montré autre chose. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. On nous a opérés sans jamais nous dire que c'était plus fréquent ici qu'ailleurs. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "11/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0140",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.769,
+      46.79292
+     ]
+    },
+    "properties": {
+     "id": "T0140",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Hodgkin",
+     "color": "#0B8A4E",
+     "annee": 2021,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Saône-et-Loire",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Chauffeur routier",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2021, ma fille a fait une chute bête à l'école. La radio a montré autre chose. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Il y a une usine à trois kilomètres. Personne n'a jamais voulu faire le lien. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": "audio/T0140.m4a",
+     "duree_audio": 24,
+     "verifie": false,
+     "recu_le": "22/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0141",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      1.27006,
+      45.78483
+     ]
+    },
+    "properties": {
+     "id": "T0141",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Gliome de bas grade",
+     "color": "#1F3ACC",
+     "annee": 2024,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Haute-Vienne",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Chauffeur routier",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2024, mon fils a fait une chute bête à l'école. La radio a montré autre chose. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. On habite à quatre cents mètres des champs. Les traitements passaient au petit matin. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "19/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0142",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      1.63929,
+      47.67454
+     ]
+    },
+    "properties": {
+     "id": "T0142",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2016,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Loiret",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Ouvrier·ère de l'industrie",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2016, ma fille a fait une chute bête à l'école. La radio a montré autre chose. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. On habite à quatre cents mètres des champs. Les traitements passaient au petit matin. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "17/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0143",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -0.4947,
+      43.47616
+     ]
+    },
+    "properties": {
+     "id": "T0143",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2014,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Béarn",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Agriculteur / agricultrice",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2014 : mon fils se plaignait d'une fatigue que rien n'expliquait. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. On habite à quatre cents mètres des champs. Les traitements passaient au petit matin. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "05/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0144",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.80899,
+      45.75151
+     ]
+    },
+    "properties": {
+     "id": "T0144",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Épendymome",
+     "color": "#1F3ACC",
+     "annee": 2015,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Rhône (69)",
+     "hotspot": "h5",
+     "hotspot_nom": "Lyon 1er et 4e — secteur Croix-Rousse",
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Ouvrier·ère de l'industrie",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2015, ma fille avait huit ans. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Le signalement n'est pas venu de nous, il est venu de l'hôpital. On l'a appris par un rapport. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": "audio/T0144.m4a",
+     "duree_audio": 23,
+     "verifie": false,
+     "recu_le": "26/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0145",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.83107,
+      45.74748
+     ]
+    },
+    "properties": {
+     "id": "T0145",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Hodgkin",
+     "color": "#0B8A4E",
+     "annee": 2022,
+     "tranche_age": "12-17 ans",
      "sexe": "Masculin",
      "dep": "Rhône (69)",
      "hotspot": "h5",
      "hotspot_nom": "Lyon 1er et 4e — secteur Croix-Rousse",
-     "exposition": "Usine ou site industriel à proximité",
-     "profession_parent": "Artisan",
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Enseignant·e",
      "issue": "En rémission / suivi",
-     "temoignage": "En 2025, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait mon fils. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. En ville, personne ne se connaît. Il n'y a jamais eu de collectif ici. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "temoignage": "Tout a commencé à l'automne 2022 : mon fils se plaignait d'une fatigue que rien n'expliquait. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Le signalement n'est pas venu de nous, il est venu de l'hôpital. On l'a appris par un rapport. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
      "audio": null,
      "duree_audio": null,
      "verifie": true,
+     "recu_le": "21/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0146",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.68888,
+      50.508
+     ]
+    },
+    "properties": {
+     "id": "T0146",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2023,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Pas-de-Calais (62)",
+     "hotspot": "h16",
+     "hotspot_nom": "Lens et 101 communes — cryptorchidie",
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Personnel soignant",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2023, mon fils avait quatre ans. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. On nous a opérés sans jamais nous dire que c'était plus fréquent ici qu'ailleurs. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "05/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0147",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.94781,
+      50.60262
+     ]
+    },
+    "properties": {
+     "id": "T0147",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2024,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Pas-de-Calais (62)",
+     "hotspot": "h16",
+     "hotspot_nom": "Lens et 101 communes — cryptorchidie",
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Agriculteur / agricultrice",
+     "issue": "Décès",
+     "temoignage": "On a appris la maladie de ma fille en 2024, presque par hasard, lors d'une prise de sang de routine. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Il n'a pas survécu à la rechute. C'est en son nom que je remplis ce formulaire. Le bassin minier, la métallurgie, tout ça a laissé quelque chose dans les sols. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "13/06/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0148",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.43037,
+      48.86959
+     ]
+    },
+    "properties": {
+     "id": "T0148",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2012,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Seine-Saint-Denis (93)",
+     "hotspot": "h12",
+     "hotspot_nom": "Romainville — riverains de l'usine Wipelec",
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2012 qu'on nous a annoncé le diagnostic. Mon fils venait d'avoir quatorze ans. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Trente-deux riverains malades. L'enquête a eu lieu, et puis plus rien. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "02/08/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0149",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      3.26756,
+      50.32998
+     ]
+    },
+    "properties": {
+     "id": "T0149",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Gliome de bas grade",
+     "color": "#1F3ACC",
+     "annee": 2019,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Nord (59)",
+     "hotspot": "h8",
+     "hotspot_nom": "Aniche — sols de l'ancien bassin verrier",
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2019 : mon fils se plaignait d'une fatigue que rien n'expliquait. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Le quartier est bâti sur d'anciennes verreries. Les sols, personne n'en parlait avant. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "10/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0150",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      0.35249,
+      45.46011
+     ]
+    },
+    "properties": {
+     "id": "T0150",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Gliome de bas grade",
+     "color": "#1F3ACC",
+     "annee": 2018,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Charente",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Agriculteur / agricultrice",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2018 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir quatre ans. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. On habite à quatre cents mètres des champs. Les traitements passaient au petit matin. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "27/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0151",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      6.1252,
+      48.7406
+     ]
+    },
+    "properties": {
+     "id": "T0151",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Astrocytome",
+     "color": "#1F3ACC",
+     "annee": 2021,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Meurthe-et-Moselle",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Personnel soignant",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2021 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir quatorze ans. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. J'ai appris après coup que l'eau du quartier avait été contrôlée. On ne nous a jamais communiqué les résultats. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "22/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0152",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.2299,
+      49.0047
+     ]
+    },
+    "properties": {
+     "id": "T0152",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Hodgkin",
+     "color": "#0B8A4E",
+     "annee": 2019,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Val-d'Oise (95)",
+     "hotspot": "h4",
+     "hotspot_nom": "Franconville — école de la Gare René-Watrelot",
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Personnel soignant",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de mon fils en 2019, presque par hasard, lors d'une prise de sang de routine. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Deux enfants sont morts. On a fini par déposer plainte. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "22/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0153",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.55566,
+      50.94526
+     ]
+    },
+    "properties": {
+     "id": "T0153",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2023,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Nord (59)",
+     "hotspot": "h14",
+     "hotspot_nom": "Rexpoëde — école primaire Victor-Hugo",
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2023, mon fils a fait une chute bête à l'école. La radio a montré autre chose. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Il a fallu quatre ans pour que des agences se déplacent. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "24/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0154",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.78023,
+      50.57395
+     ]
+    },
+    "properties": {
+     "id": "T0154",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Épendymome",
+     "color": "#1F3ACC",
+     "annee": 2023,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Pas-de-Calais (62)",
+     "hotspot": "h16",
+     "hotspot_nom": "Lens et 101 communes — cryptorchidie",
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2023 : ma fille se plaignait d'une fatigue que rien n'expliquait. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Le bassin minier, la métallurgie, tout ça a laissé quelque chose dans les sols. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "03/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0155",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -0.99042,
+      46.14441
+     ]
+    },
+    "properties": {
+     "id": "T0155",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Hodgkin",
+     "color": "#0B8A4E",
+     "annee": 2016,
+     "tranche_age": "0-1 an",
+     "sexe": "Féminin",
+     "dep": "Charente-Maritime (17)",
+     "hotspot": "h2",
+     "hotspot_nom": "Plaine d'Aunis — Saint-Rogatien",
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Ouvrier·ère de l'industrie",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2016, ma fille avait quelques mois. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. L'usine d'enrobés tourne à trois kilomètres. On nous a répondu que le lien n'était pas établi. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "02/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0156",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      5.1109,
+      46.04259
+     ]
+    },
+    "properties": {
+     "id": "T0156",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome non hodgkinien",
+     "color": "#0B8A4E",
+     "annee": 2023,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Ain (01)",
+     "hotspot": "h18",
+     "hotspot_nom": "Druillat et 67 communes — agénésies de membre",
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Enseignant·e",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2023, mon fils a fait une chute bête à l'école. La radio a montré autre chose. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Sept cas pour zéro virgule douze attendus. Le comité a invalidé le cluster. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "11/06/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0157",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.53904,
+      50.91034
+     ]
+    },
+    "properties": {
+     "id": "T0157",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Astrocytome",
+     "color": "#1F3ACC",
+     "annee": 2019,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Nord (59)",
+     "hotspot": "h14",
+     "hotspot_nom": "Rexpoëde — école primaire Victor-Hugo",
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Agriculteur / agricultrice",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2019 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir quatre ans. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. On a demandé une enquête sanitaire. On nous l'a refusée par courrier. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "05/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0158",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.52131,
+      48.28772
+     ]
+    },
+    "properties": {
+     "id": "T0158",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Médulloblastome",
+     "color": "#1F3ACC",
+     "annee": 2021,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Ille-et-Vilaine",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Personnel soignant",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de ma fille en 2021, presque par hasard, lors d'une prise de sang de routine. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Il y a une usine à trois kilomètres. Personne n'a jamais voulu faire le lien. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "07/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0159",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      3.7233,
+      47.97039
+     ]
+    },
+    "properties": {
+     "id": "T0159",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2017,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Yonne",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2017, ma fille avait quatre ans. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Mon conjoint a travaillé quinze ans sur un site classé. On s'est posé la question, sans jamais avoir de réponse. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "02/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0160",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      6.0059,
+      46.08103
+     ]
+    },
+    "properties": {
+     "id": "T0160",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2024,
+     "tranche_age": "0-1 an",
+     "sexe": "Masculin",
+     "dep": "Haute-Savoie",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Artisan",
+     "issue": "Décès",
+     "temoignage": "En 2024, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait mon fils. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Il n'a pas survécu à la rechute. C'est en son nom que je remplis ce formulaire. J'ai appris après coup que l'eau du quartier avait été contrôlée. On ne nous a jamais communiqué les résultats. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": "audio/T0160.m4a",
+     "duree_audio": 28,
+     "verifie": true,
+     "recu_le": "16/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0161",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      6.12462,
+      49.21958
+     ]
+    },
+    "properties": {
+     "id": "T0161",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2025,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Moselle (57)",
+     "hotspot": "h7",
+     "hotspot_nom": "Amnéville — un même établissement scolaire",
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2025 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir quatre ans. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. L'école est à deux pas de la zone industrielle. On respire ça tous les jours. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "04/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0162",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.42966,
+      48.84953
+     ]
+    },
+    "properties": {
+     "id": "T0162",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Hodgkin",
+     "color": "#0B8A4E",
+     "annee": 2019,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Val-de-Marne (94)",
+     "hotspot": "h9",
+     "hotspot_nom": "Vincennes — école Franklin-Roosevelt",
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Ouvrier·ère de l'industrie",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2019, ma fille avait huit ans. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. L'ancienne usine avait laissé du trichloréthylène dans la nappe. Sous l'école. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "23/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0163",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      1.18636,
+      49.26806
+     ]
+    },
+    "properties": {
+     "id": "T0163",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Épendymome",
+     "color": "#1F3ACC",
+     "annee": 2014,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Eure (27)",
+     "hotspot": "h6",
+     "hotspot_nom": "Pont-de-l'Arche et Igoville",
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Personnel soignant",
+     "issue": "Décès",
+     "temoignage": "Le diagnostic est tombé en 2014, mon fils avait quatorze ans. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Elle est partie deux ans après le diagnostic. On continue pour les autres. Selon qu'on regarde la commune ou le canton, on nous dit six fois trop de cas, ou rien du tout. Ce sont les mêmes enfants. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "21/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0164",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.74845,
+      50.47738
+     ]
+    },
+    "properties": {
+     "id": "T0164",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Hodgkin",
+     "color": "#0B8A4E",
+     "annee": 2016,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Pas-de-Calais (62)",
+     "hotspot": "h16",
+     "hotspot_nom": "Lens et 101 communes — cryptorchidie",
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Artisan",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2016, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait ma fille. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Le bassin minier, la métallurgie, tout ça a laissé quelque chose dans les sols. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "28/06/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0165",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      3.24719,
+      50.31403
+     ]
+    },
+    "properties": {
+     "id": "T0165",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2013,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Nord (59)",
+     "hotspot": "h8",
+     "hotspot_nom": "Aniche — sols de l'ancien bassin verrier",
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Chauffeur routier",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2013, ma fille avait quatre ans. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Le quartier est bâti sur d'anciennes verreries. Les sols, personne n'en parlait avant. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "14/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0166",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -0.95208,
+      46.18426
+     ]
+    },
+    "properties": {
+     "id": "T0166",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Gliome de bas grade",
+     "color": "#1F3ACC",
+     "annee": 2022,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Charente-Maritime (17)",
+     "hotspot": "h2",
+     "hotspot_nom": "Plaine d'Aunis — Saint-Rogatien",
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2022 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir quatre ans. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Quatre cas d'hémopathie dans le village. On nous a dit que c'était moins d'un cas attendu. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "05/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0167",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      1.15475,
+      43.97405
+     ]
+    },
+    "properties": {
+     "id": "T0167",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Astrocytome",
+     "color": "#1F3ACC",
+     "annee": 2019,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Tarn-et-Garonne",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2019, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait ma fille. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Il y a une usine à trois kilomètres. Personne n'a jamais voulu faire le lien. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
      "recu_le": "08/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0168",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.08757,
+      43.75079
+     ]
+    },
+    "properties": {
+     "id": "T0168",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Médulloblastome",
+     "color": "#1F3ACC",
+     "annee": 2015,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Hérault (34)",
+     "hotspot": "h15",
+     "hotspot_nom": "Lunel-Viel et les communes sous les vents",
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Enseignant·e",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2015 : ma fille se plaignait d'une fatigue que rien n'expliquait. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. L'incinérateur brûle cent vingt mille tonnes par an. On est sous les vents. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "21/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0169",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      3.20026,
+      50.72243
+     ]
+    },
+    "properties": {
+     "id": "T0169",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2018,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Nord",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de ma fille en 2018, presque par hasard, lors d'une prise de sang de routine. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Il y a une usine à trois kilomètres. Personne n'a jamais voulu faire le lien. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "03/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0170",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -4.68956,
+      48.35773
+     ]
+    },
+    "properties": {
+     "id": "T0170",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Médulloblastome",
+     "color": "#1F3ACC",
+     "annee": 2024,
+     "tranche_age": "0-1 an",
+     "sexe": "Masculin",
+     "dep": "Finistère",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2024, mon fils avait quelques mois. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. On habite à quatre cents mètres des champs. Les traitements passaient au petit matin. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "22/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0171",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.41645,
+      49.69836
+     ]
+    },
+    "properties": {
+     "id": "T0171",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Épendymome",
+     "color": "#1F3ACC",
+     "annee": 2023,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Somme",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Artisan",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de ma fille en 2023, presque par hasard, lors d'une prise de sang de routine. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Mon conjoint a travaillé quinze ans sur un site classé. On s'est posé la question, sans jamais avoir de réponse. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "15/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0172",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.42072,
+      47.87476
+     ]
+    },
+    "properties": {
+     "id": "T0172",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Médulloblastome",
+     "color": "#1F3ACC",
+     "annee": 2015,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Ille-et-Vilaine",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Enseignant·e",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2015 : mon fils se plaignait d'une fatigue que rien n'expliquait. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Mon conjoint a travaillé quinze ans sur un site classé. On s'est posé la question, sans jamais avoir de réponse. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "12/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0173",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.38359,
+      43.2677
+     ]
+    },
+    "properties": {
+     "id": "T0173",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Hodgkin",
+     "color": "#0B8A4E",
+     "annee": 2016,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Aude (11)",
+     "hotspot": "h17",
+     "hotspot_nom": "Vallée de l'Orbiel — arsenic",
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Chauffeur routier",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2016 qu'on nous a annoncé le diagnostic. Mon fils venait d'avoir huit ans. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Les premières analyses, ce sont les parents qui les ont payées. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "25/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0174",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.43425,
+      48.858
+     ]
+    },
+    "properties": {
+     "id": "T0174",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome non hodgkinien",
+     "color": "#0B8A4E",
+     "annee": 2024,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Val-de-Marne (94)",
+     "hotspot": "h9",
+     "hotspot_nom": "Vincennes — école Franklin-Roosevelt",
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Personnel soignant",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2024, mon fils a fait une chute bête à l'école. La radio a montré autre chose. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. L'école a fermé, on l'a dépolluée, on l'a rouverte. Et la conclusion reste « le hasard ». Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "09/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0175",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      6.07128,
+      48.83225
+     ]
+    },
+    "properties": {
+     "id": "T0175",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2024,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Meurthe-et-Moselle",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2024 : mon fils se plaignait d'une fatigue que rien n'expliquait. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Mon conjoint a travaillé quinze ans sur un site classé. On s'est posé la question, sans jamais avoir de réponse. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "18/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0176",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      1.64875,
+      48.04543
+     ]
+    },
+    "properties": {
+     "id": "T0176",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Burkitt",
+     "color": "#0B8A4E",
+     "annee": 2024,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Loiret",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2024, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait ma fille. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Je ne dis pas que c'est la cause. Je dis juste que personne n'a cherché. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": "audio/T0176.m4a",
+     "duree_audio": 24,
+     "verifie": false,
+     "recu_le": "24/06/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0177",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.44518,
+      48.8995
+     ]
+    },
+    "properties": {
+     "id": "T0177",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2012,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Seine-Saint-Denis (93)",
+     "hotspot": "h12",
+     "hotspot_nom": "Romainville — riverains de l'usine Wipelec",
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Ouvrier·ère de l'industrie",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2012, mon fils a fait une chute bête à l'école. La radio a montré autre chose. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. C'est l'association qui a fait le recensement, immeuble par immeuble. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "08/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0178",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.1757,
+      43.68482
+     ]
+    },
+    "properties": {
+     "id": "T0178",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Médulloblastome",
+     "color": "#1F3ACC",
+     "annee": 2025,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Hérault (34)",
+     "hotspot": "h15",
+     "hotspot_nom": "Lunel-Viel et les communes sous les vents",
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Chauffeur routier",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2025, ma fille a fait une chute bête à l'école. La radio a montré autre chose. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. On demande des études approfondies depuis vingt-cinq ans. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "12/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0179",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.69212,
+      42.71619
+     ]
+    },
+    "properties": {
+     "id": "T0179",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Hodgkin",
+     "color": "#0B8A4E",
+     "annee": 2021,
+     "tranche_age": "0-1 an",
+     "sexe": "Féminin",
+     "dep": "Pyrénées-Orientales",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Personnel soignant",
+     "issue": "Décès",
+     "temoignage": "Le diagnostic est tombé en 2021, ma fille avait quelques mois. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Elle est partie deux ans après le diagnostic. On continue pour les autres. Je ne dis pas que c'est la cause. Je dis juste que personne n'a cherché. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "21/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0180",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      1.12826,
+      49.31419
+     ]
+    },
+    "properties": {
+     "id": "T0180",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Épendymome",
+     "color": "#1F3ACC",
+     "annee": 2022,
+     "tranche_age": "0-1 an",
+     "sexe": "Masculin",
+     "dep": "Eure (27)",
+     "hotspot": "h6",
+     "hotspot_nom": "Pont-de-l'Arche et Igoville",
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Ouvrier·ère de l'industrie",
+     "issue": "Décès",
+     "temoignage": "C'est en 2022 qu'on nous a annoncé le diagnostic. Mon fils venait d'avoir quelques mois. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Elle est partie deux ans après le diagnostic. On continue pour les autres. Le bilan de 2025 a clos le dossier. Nous, on habite toujours là. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "11/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0181",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.54015,
+      50.39457
+     ]
+    },
+    "properties": {
+     "id": "T0181",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Burkitt",
+     "color": "#0B8A4E",
+     "annee": 2020,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Pas-de-Calais (62)",
+     "hotspot": "h16",
+     "hotspot_nom": "Lens et 101 communes — cryptorchidie",
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2020, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait ma fille. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Le bassin minier, la métallurgie, tout ça a laissé quelque chose dans les sols. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "13/08/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0182",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.41906,
+      48.83579
+     ]
+    },
+    "properties": {
+     "id": "T0182",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2021,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Val-de-Marne (94)",
+     "hotspot": "h9",
+     "hotspot_nom": "Vincennes — école Franklin-Roosevelt",
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Enseignant·e",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2021 : ma fille se plaignait d'une fatigue que rien n'expliquait. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. L'école a fermé, on l'a dépolluée, on l'a rouverte. Et la conclusion reste « le hasard ». Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "27/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0183",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.0915,
+      43.63818
+     ]
+    },
+    "properties": {
+     "id": "T0183",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Hodgkin",
+     "color": "#0B8A4E",
+     "annee": 2018,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Hérault (34)",
+     "hotspot": "h15",
+     "hotspot_nom": "Lunel-Viel et les communes sous les vents",
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Ouvrier·ère de l'industrie",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2018, mon fils a fait une chute bête à l'école. La radio a montré autre chose. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. On demande des études approfondies depuis vingt-cinq ans. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "14/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0184",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.07454,
+      46.1435
+     ]
+    },
+    "properties": {
+     "id": "T0184",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2023,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Charente-Maritime (17)",
+     "hotspot": "h2",
+     "hotspot_nom": "Plaine d'Aunis — Saint-Rogatien",
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2023, mon fils avait huit ans. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. On est au milieu des céréales. Personne n'a jamais mesuré ce qu'on respire au printemps. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "12/08/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0185",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      5.97487,
+      46.52385
+     ]
+    },
+    "properties": {
+     "id": "T0185",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Médulloblastome",
+     "color": "#1F3ACC",
+     "annee": 2022,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Jura (39)",
+     "hotspot": "h3",
+     "hotspot_nom": "Haut-Jura — Les Rousses, Morez, Prémanon",
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de ma fille en 2022, presque par hasard, lors d'une prise de sang de routine. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Ici tout le monde connaît les familles concernées. Personne ne sait quoi en faire. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": "audio/T0185.m4a",
+     "duree_audio": 25,
+     "verifie": false,
+     "recu_le": "28/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0186",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.4396,
+      43.64023
+     ]
+    },
+    "properties": {
+     "id": "T0186",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Médulloblastome",
+     "color": "#1F3ACC",
+     "annee": 2024,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Gard",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Chauffeur routier",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2024, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait mon fils. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. On habite à quatre cents mètres des champs. Les traitements passaient au petit matin. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "04/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0187",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      5.22342,
+      46.05759
+     ]
+    },
+    "properties": {
+     "id": "T0187",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Hodgkin",
+     "color": "#0B8A4E",
+     "annee": 2025,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Ain (01)",
+     "hotspot": "h18",
+     "hotspot_nom": "Druillat et 67 communes — agénésies de membre",
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de mon fils en 2025, presque par hasard, lors d'une prise de sang de routine. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Sept cas pour zéro virgule douze attendus. Le comité a invalidé le cluster. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "18/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0188",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      6.06077,
+      46.46356
+     ]
+    },
+    "properties": {
+     "id": "T0188",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome non hodgkinien",
+     "color": "#0B8A4E",
+     "annee": 2019,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Jura (39)",
+     "hotspot": "h3",
+     "hotspot_nom": "Haut-Jura — Les Rousses, Morez, Prémanon",
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2019 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir quatorze ans. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Le radon, les lignes haute tension, tout a été examiné et écarté. Il ne reste rien, et pourtant les cas sont là. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "07/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0189",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.73247,
+      47.08996
+     ]
+    },
+    "properties": {
+     "id": "T0189",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2015,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Loire-Atlantique (44)",
+     "hotspot": "h1",
+     "hotspot_nom": "Sainte-Pazanne et le Pays de Retz",
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Chauffeur routier",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2015 qu'on nous a annoncé le diagnostic. Mon fils venait d'avoir huit ans. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. On tire l'eau d'un puits. Il a fallu que le collectif la fasse analyser pour qu'on apprenne qu'elle était impropre. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "15/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0190",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.69332,
+      49.21328
+     ]
+    },
+    "properties": {
+     "id": "T0190",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Astrocytome",
+     "color": "#1F3ACC",
+     "annee": 2023,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Aisne",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Artisan",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2023, mon fils avait huit ans. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. L'ARS nous a répondu qu'il n'y avait pas de sur-incidence. On n'a jamais vu les chiffres. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "15/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0191",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      0.9189,
+      49.28689
+     ]
+    },
+    "properties": {
+     "id": "T0191",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Astrocytome",
+     "color": "#1F3ACC",
+     "annee": 2022,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Seine-Maritime",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Chauffeur routier",
+     "issue": "Décès",
+     "temoignage": "Tout a commencé à l'automne 2022 : mon fils se plaignait d'une fatigue que rien n'expliquait. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Il n'a pas survécu à la rechute. C'est en son nom que je remplis ce formulaire. Il y a une usine à trois kilomètres. Personne n'a jamais voulu faire le lien. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "03/06/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0192",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      6.13354,
+      46.43631
+     ]
+    },
+    "properties": {
+     "id": "T0192",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome non hodgkinien",
+     "color": "#0B8A4E",
+     "annee": 2015,
+     "tranche_age": "0-1 an",
+     "sexe": "Masculin",
+     "dep": "Jura (39)",
+     "hotspot": "h3",
+     "hotspot_nom": "Haut-Jura — Les Rousses, Morez, Prémanon",
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Chauffeur routier",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2015, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait mon fils. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Le radon, les lignes haute tension, tout a été examiné et écarté. Il ne reste rien, et pourtant les cas sont là. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "10/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0193",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      5.23185,
+      43.46165
+     ]
+    },
+    "properties": {
+     "id": "T0193",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Burkitt",
+     "color": "#0B8A4E",
+     "annee": 2014,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Bouches-du-Rhône",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2014, ma fille a fait une chute bête à l'école. La radio a montré autre chose. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Mon conjoint a travaillé quinze ans sur un site classé. On s'est posé la question, sans jamais avoir de réponse. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "22/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0194",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.61775,
+      50.45158
+     ]
+    },
+    "properties": {
+     "id": "T0194",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome non hodgkinien",
+     "color": "#0B8A4E",
+     "annee": 2014,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Pas-de-Calais (62)",
+     "hotspot": "h13",
+     "hotspot_nom": "Ruitz — école maternelle Jacques-Prévert",
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Agriculteur / agricultrice",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2014, mon fils a fait une chute bête à l'école. La radio a montré autre chose. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Deux des trois enfants étaient dans la même classe de maternelle. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "11/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0195",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.8121,
+      45.75697
+     ]
+    },
+    "properties": {
+     "id": "T0195",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Hodgkin",
+     "color": "#0B8A4E",
+     "annee": 2014,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Rhône (69)",
+     "hotspot": "h5",
+     "hotspot_nom": "Lyon 1er et 4e — secteur Croix-Rousse",
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Personnel soignant",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de ma fille en 2014, presque par hasard, lors d'une prise de sang de routine. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Le signalement n'est pas venu de nous, il est venu de l'hôpital. On l'a appris par un rapport. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "14/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0196",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      5.4057,
+      46.04533
+     ]
+    },
+    "properties": {
+     "id": "T0196",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2022,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Ain (01)",
+     "hotspot": "h18",
+     "hotspot_nom": "Druillat et 67 communes — agénésies de membre",
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Ouvrier·ère de l'industrie",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de mon fils en 2022, presque par hasard, lors d'une prise de sang de routine. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Deux mères entourées de champs de maïs. Des veaux nés avec les mêmes malformations. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "17/08/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0197",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.16249,
+      46.20288
+     ]
+    },
+    "properties": {
+     "id": "T0197",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Hodgkin",
+     "color": "#0B8A4E",
+     "annee": 2024,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Charente-Maritime (17)",
+     "hotspot": "h2",
+     "hotspot_nom": "Plaine d'Aunis — Saint-Rogatien",
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de mon fils en 2024, presque par hasard, lors d'une prise de sang de routine. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. L'usine d'enrobés tourne à trois kilomètres. On nous a répondu que le lien n'était pas établi. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "21/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0198",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      7.8059,
+      48.61164
+     ]
+    },
+    "properties": {
+     "id": "T0198",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Gliome de bas grade",
+     "color": "#1F3ACC",
+     "annee": 2023,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Bas-Rhin",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Enseignant·e",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2023 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir huit ans. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. On habite à quatre cents mètres des champs. Les traitements passaient au petit matin. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "14/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0199",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.52576,
+      48.41439
+     ]
+    },
+    "properties": {
+     "id": "T0199",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2021,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Seine-et-Marne",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Artisan",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de mon fils en 2021, presque par hasard, lors d'une prise de sang de routine. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Il y a une usine à trois kilomètres. Personne n'a jamais voulu faire le lien. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "03/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0200",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.07187,
+      47.84722
+     ]
+    },
+    "properties": {
+     "id": "T0200",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Épendymome",
+     "color": "#1F3ACC",
+     "annee": 2024,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Loiret",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Agriculteur / agricultrice",
+     "issue": "Décès",
+     "temoignage": "Tout a commencé à l'automne 2024 : ma fille se plaignait d'une fatigue que rien n'expliquait. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Il n'a pas survécu à la rechute. C'est en son nom que je remplis ce formulaire. Je ne dis pas que c'est la cause. Je dis juste que personne n'a cherché. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "04/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0201",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.05491,
+      48.78904
+     ]
+    },
+    "properties": {
+     "id": "T0201",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2021,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Yvelines (78)",
+     "hotspot": "h11",
+     "hotspot_nom": "Saint-Cyr-l'École — quartier de l'Épi d'Or",
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2021 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir quatre ans. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Le quartier s'est mobilisé, puis s'est épuisé. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "10/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0202",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      5.25678,
+      46.08027
+     ]
+    },
+    "properties": {
+     "id": "T0202",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Gliome de bas grade",
+     "color": "#1F3ACC",
+     "annee": 2024,
+     "tranche_age": "0-1 an",
+     "sexe": "Masculin",
+     "dep": "Ain (01)",
+     "hotspot": "h18",
+     "hotspot_nom": "Druillat et 67 communes — agénésies de membre",
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Artisan",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2024, mon fils avait quelques mois. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Sept cas pour zéro virgule douze attendus. Le comité a invalidé le cluster. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": "audio/T0202.m4a",
+     "duree_audio": 23,
+     "verifie": false,
+     "recu_le": "19/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0203",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      7.78431,
+      48.44596
+     ]
+    },
+    "properties": {
+     "id": "T0203",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2017,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Bas-Rhin",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2017, mon fils a fait une chute bête à l'école. La radio a montré autre chose. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Il y a une usine à trois kilomètres. Personne n'a jamais voulu faire le lien. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "05/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0204",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      3.43484,
+      46.2813
+     ]
+    },
+    "properties": {
+     "id": "T0204",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Épendymome",
+     "color": "#1F3ACC",
+     "annee": 2013,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Allier",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Agriculteur / agricultrice",
+     "issue": "Décès",
+     "temoignage": "Le diagnostic est tombé en 2013, ma fille avait huit ans. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Elle est partie deux ans après le diagnostic. On continue pour les autres. Il y a une usine à trois kilomètres. Personne n'a jamais voulu faire le lien. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "10/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0205",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -0.5343,
+      43.33043
+     ]
+    },
+    "properties": {
+     "id": "T0205",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome non hodgkinien",
+     "color": "#0B8A4E",
+     "annee": 2021,
+     "tranche_age": "0-1 an",
+     "sexe": "Féminin",
+     "dep": "Béarn",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Agriculteur / agricultrice",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2021 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir quelques mois. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Il y a une usine à trois kilomètres. Personne n'a jamais voulu faire le lien. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "16/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0206",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.79453,
+      50.53659
+     ]
+    },
+    "properties": {
+     "id": "T0206",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Burkitt",
+     "color": "#0B8A4E",
+     "annee": 2023,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Nord",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2023, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait ma fille. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. On habite à quatre cents mètres des champs. Les traitements passaient au petit matin. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "26/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0207",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.31308,
+      43.36006
+     ]
+    },
+    "properties": {
+     "id": "T0207",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2022,
+     "tranche_age": "0-1 an",
+     "sexe": "Masculin",
+     "dep": "Pyrénées-Atlantiques",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Artisan",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2022 qu'on nous a annoncé le diagnostic. Mon fils venait d'avoir quelques mois. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. On habite à quatre cents mètres des champs. Les traitements passaient au petit matin. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "03/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0208",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.43469,
+      48.86947
+     ]
+    },
+    "properties": {
+     "id": "T0208",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Gliome de bas grade",
+     "color": "#1F3ACC",
+     "annee": 2023,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Seine-Saint-Denis (93)",
+     "hotspot": "h12",
+     "hotspot_nom": "Romainville — riverains de l'usine Wipelec",
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Ouvrier·ère de l'industrie",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2023, mon fils avait quatorze ans. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. L'usine rejetait du trichloréthylène à cent mètres des immeubles. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "18/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0209",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -0.32534,
+      44.588
+     ]
+    },
+    "properties": {
+     "id": "T0209",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome non hodgkinien",
+     "color": "#0B8A4E",
+     "annee": 2018,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Gironde (33)",
+     "hotspot": "h10",
+     "hotspot_nom": "Preignac — commune viticole du Sauternais",
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Ouvrier·ère de l'industrie",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de ma fille en 2018, presque par hasard, lors d'une prise de sang de routine. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. L'école est entourée de vignes. Les traitements passaient pendant la récréation. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "01/06/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0210",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.42101,
+      48.88377
+     ]
+    },
+    "properties": {
+     "id": "T0210",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Épendymome",
+     "color": "#1F3ACC",
+     "annee": 2025,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Seine-Saint-Denis (93)",
+     "hotspot": "h12",
+     "hotspot_nom": "Romainville — riverains de l'usine Wipelec",
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Personnel soignant",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de ma fille en 2025, presque par hasard, lors d'une prise de sang de routine. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Trente-deux riverains malades. L'enquête a eu lieu, et puis plus rien. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "20/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0211",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      1.97027,
+      49.56044
+     ]
+    },
+    "properties": {
+     "id": "T0211",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Épendymome",
+     "color": "#1F3ACC",
+     "annee": 2023,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Oise",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2023, mon fils avait huit ans. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. L'ARS nous a répondu qu'il n'y avait pas de sur-incidence. On n'a jamais vu les chiffres. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "07/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0212",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.85394,
+      46.55702
+     ]
+    },
+    "properties": {
+     "id": "T0212",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2023,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Saône-et-Loire",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Enseignant·e",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2023 : ma fille se plaignait d'une fatigue que rien n'expliquait. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Je ne dis pas que c'est la cause. Je dis juste que personne n'a cherché. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "18/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0213",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      3.86264,
+      46.27393
+     ]
+    },
+    "properties": {
+     "id": "T0213",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Médulloblastome",
+     "color": "#1F3ACC",
+     "annee": 2018,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Rhône",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Enseignant·e",
+     "issue": "Décès",
+     "temoignage": "On a appris la maladie de mon fils en 2018, presque par hasard, lors d'une prise de sang de routine. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Il n'a pas survécu à la rechute. C'est en son nom que je remplis ce formulaire. On habite à quatre cents mètres des champs. Les traitements passaient au petit matin. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "09/06/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0214",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.43082,
+      48.87481
+     ]
+    },
+    "properties": {
+     "id": "T0214",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Médulloblastome",
+     "color": "#1F3ACC",
+     "annee": 2012,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Seine-Saint-Denis (93)",
+     "hotspot": "h12",
+     "hotspot_nom": "Romainville — riverains de l'usine Wipelec",
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2012 : ma fille se plaignait d'une fatigue que rien n'expliquait. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. C'est l'association qui a fait le recensement, immeuble par immeuble. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "16/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0215",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.17968,
+      46.13881
+     ]
+    },
+    "properties": {
+     "id": "T0215",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Burkitt",
+     "color": "#0B8A4E",
+     "annee": 2013,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Charente-Maritime (17)",
+     "hotspot": "h2",
+     "hotspot_nom": "Plaine d'Aunis — Saint-Rogatien",
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Ouvrier·ère de l'industrie",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de ma fille en 2013, presque par hasard, lors d'une prise de sang de routine. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. On est au milieu des céréales. Personne n'a jamais mesuré ce qu'on respire au printemps. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "24/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0216",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -0.31047,
+      44.58059
+     ]
+    },
+    "properties": {
+     "id": "T0216",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2024,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Gironde (33)",
+     "hotspot": "h10",
+     "hotspot_nom": "Preignac — commune viticole du Sauternais",
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Personnel soignant",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de mon fils en 2024, presque par hasard, lors d'une prise de sang de routine. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Neuf enfants. On nous a répondu qu'il n'existait aucune mesure dans l'air. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "14/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0217",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.00936,
+      46.17739
+     ]
+    },
+    "properties": {
+     "id": "T0217",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Médulloblastome",
+     "color": "#1F3ACC",
+     "annee": 2018,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Charente-Maritime (17)",
+     "hotspot": "h2",
+     "hotspot_nom": "Plaine d'Aunis — Saint-Rogatien",
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2018, ma fille a fait une chute bête à l'école. La radio a montré autre chose. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. L'usine d'enrobés tourne à trois kilomètres. On nous a répondu que le lien n'était pas établi. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "15/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0218",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      1.13414,
+      49.3281
+     ]
+    },
+    "properties": {
+     "id": "T0218",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2013,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Eure (27)",
+     "hotspot": "h6",
+     "hotspot_nom": "Pont-de-l'Arche et Igoville",
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Ouvrier·ère de l'industrie",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de ma fille en 2013, presque par hasard, lors d'une prise de sang de routine. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Selon qu'on regarde la commune ou le canton, on nous dit six fois trop de cas, ou rien du tout. Ce sont les mêmes enfants. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "10/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0219",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.65174,
+      49.19776
+     ]
+    },
+    "properties": {
+     "id": "T0219",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2013,
+     "tranche_age": "0-1 an",
+     "sexe": "Masculin",
+     "dep": "Aisne",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2013 : mon fils se plaignait d'une fatigue que rien n'expliquait. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Il y a une usine à trois kilomètres. Personne n'a jamais voulu faire le lien. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "25/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0220",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      1.14243,
+      49.29807
+     ]
+    },
+    "properties": {
+     "id": "T0220",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Burkitt",
+     "color": "#0B8A4E",
+     "annee": 2012,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Eure (27)",
+     "hotspot": "h6",
+     "hotspot_nom": "Pont-de-l'Arche et Igoville",
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Ouvrier·ère de l'industrie",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de ma fille en 2012, presque par hasard, lors d'une prise de sang de routine. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Selon qu'on regarde la commune ou le canton, on nous dit six fois trop de cas, ou rien du tout. Ce sont les mêmes enfants. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "10/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0221",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.58035,
+      50.44749
+     ]
+    },
+    "properties": {
+     "id": "T0221",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Burkitt",
+     "color": "#0B8A4E",
+     "annee": 2020,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Pas-de-Calais (62)",
+     "hotspot": "h13",
+     "hotspot_nom": "Ruitz — école maternelle Jacques-Prévert",
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Artisan",
+     "issue": "Décès",
+     "temoignage": "En 2020, mon fils a fait une chute bête à l'école. La radio a montré autre chose. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Elle est partie deux ans après le diagnostic. On continue pour les autres. Une antenne à vingt mètres de la cour. Elle a été démontée après. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "05/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0222",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      5.33172,
+      46.03598
+     ]
+    },
+    "properties": {
+     "id": "T0222",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Burkitt",
+     "color": "#0B8A4E",
+     "annee": 2016,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Ain (01)",
+     "hotspot": "h18",
+     "hotspot_nom": "Druillat et 67 communes — agénésies de membre",
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Ouvrier·ère de l'industrie",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2016 : ma fille se plaignait d'une fatigue que rien n'expliquait. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Deux mères entourées de champs de maïs. Des veaux nés avec les mêmes malformations. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "13/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0223",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.58742,
+      50.47086
+     ]
+    },
+    "properties": {
+     "id": "T0223",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2024,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Pas-de-Calais (62)",
+     "hotspot": "h13",
+     "hotspot_nom": "Ruitz — école maternelle Jacques-Prévert",
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Personnel soignant",
+     "issue": "Décès",
+     "temoignage": "On a appris la maladie de mon fils en 2024, presque par hasard, lors d'une prise de sang de routine. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Elle est partie deux ans après le diagnostic. On continue pour les autres. Une antenne à vingt mètres de la cour. Elle a été démontée après. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "28/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0224",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.46555,
+      43.4005
+     ]
+    },
+    "properties": {
+     "id": "T0224",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2012,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Pyrénées-Atlantiques",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Enseignant·e",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2012 : ma fille se plaignait d'une fatigue que rien n'expliquait. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Il y a une usine à trois kilomètres. Personne n'a jamais voulu faire le lien. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "17/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0225",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -4.28152,
+      47.90848
+     ]
+    },
+    "properties": {
+     "id": "T0225",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2016,
+     "tranche_age": "0-1 an",
+     "sexe": "Masculin",
+     "dep": "Côtes-d'Armor",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "Décès",
+     "temoignage": "En 2016, mon fils a fait une chute bête à l'école. La radio a montré autre chose. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Elle est partie deux ans après le diagnostic. On continue pour les autres. L'ARS nous a répondu qu'il n'y avait pas de sur-incidence. On n'a jamais vu les chiffres. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "05/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0226",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.43078,
+      48.85987
+     ]
+    },
+    "properties": {
+     "id": "T0226",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Gliome de bas grade",
+     "color": "#1F3ACC",
+     "annee": 2017,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Val-de-Marne (94)",
+     "hotspot": "h9",
+     "hotspot_nom": "Vincennes — école Franklin-Roosevelt",
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Agriculteur / agricultrice",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2017, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait ma fille. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. L'école a fermé, on l'a dépolluée, on l'a rouverte. Et la conclusion reste « le hasard ». Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "23/08/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0227",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.04839,
+      48.81253
+     ]
+    },
+    "properties": {
+     "id": "T0227",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Burkitt",
+     "color": "#0B8A4E",
+     "annee": 2025,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Yvelines (78)",
+     "hotspot": "h11",
+     "hotspot_nom": "Saint-Cyr-l'École — quartier de l'Épi d'Or",
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Enseignant·e",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2025, mon fils avait quatre ans. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Cinq tumeurs du cerveau pour une attendue. On nous a dit que ce n'était pas un agrégat. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "18/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0228",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.45332,
+      43.25771
+     ]
+    },
+    "properties": {
+     "id": "T0228",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Burkitt",
+     "color": "#0B8A4E",
+     "annee": 2013,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Aude (11)",
+     "hotspot": "h17",
+     "hotspot_nom": "Vallée de l'Orbiel — arsenic",
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Chauffeur routier",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2013 : mon fils se plaignait d'une fatigue que rien n'expliquait. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. L'État a été condamné en 2025. Il a fait appel. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "13/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0229",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.69036,
+      43.34093
+     ]
+    },
+    "properties": {
+     "id": "T0229",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2013,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Pyrénées-Atlantiques",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2013 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir huit ans. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Je ne dis pas que c'est la cause. Je dis juste que personne n'a cherché. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "17/06/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0230",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.75827,
+      47.16416
+     ]
+    },
+    "properties": {
+     "id": "T0230",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2022,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Loire-Atlantique (44)",
+     "hotspot": "h1",
+     "hotspot_nom": "Sainte-Pazanne et le Pays de Retz",
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Personnel soignant",
+     "issue": "Décès",
+     "temoignage": "C'est en 2022 qu'on nous a annoncé le diagnostic. Mon fils venait d'avoir huit ans. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Elle est partie deux ans après le diagnostic. On continue pour les autres. Trois familles de l'école ont eu un cancer en cinq ans. Sur une commune de six mille habitants. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "18/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0231",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.84255,
+      47.06546
+     ]
+    },
+    "properties": {
+     "id": "T0231",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2013,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Loire-Atlantique (44)",
+     "hotspot": "h1",
+     "hotspot_nom": "Sainte-Pazanne et le Pays de Retz",
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Agriculteur / agricultrice",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2013 qu'on nous a annoncé le diagnostic. Mon fils venait d'avoir quatre ans. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. On tire l'eau d'un puits. Il a fallu que le collectif la fasse analyser pour qu'on apprenne qu'elle était impropre. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "16/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0232",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.54072,
+      50.45963
+     ]
+    },
+    "properties": {
+     "id": "T0232",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome non hodgkinien",
+     "color": "#0B8A4E",
+     "annee": 2012,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Pas-de-Calais (62)",
+     "hotspot": "h16",
+     "hotspot_nom": "Lens et 101 communes — cryptorchidie",
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Agriculteur / agricultrice",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2012 : mon fils se plaignait d'une fatigue que rien n'expliquait. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Mille deux cents cas sur la seule agglomération. Le chiffre existe, il est publié. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "11/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0233",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      6.13219,
+      49.23331
+     ]
+    },
+    "properties": {
+     "id": "T0233",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2021,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Moselle (57)",
+     "hotspot": "h7",
+     "hotspot_nom": "Amnéville — un même établissement scolaire",
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Enseignant·e",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2021, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait mon fils. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. On nous a dit qu'il n'y avait pas de mesure de benzène avant 2008. Donc rien à comparer. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "02/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0234",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.56641,
+      50.93138
+     ]
+    },
+    "properties": {
+     "id": "T0234",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2023,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Nord (59)",
+     "hotspot": "h14",
+     "hotspot_nom": "Rexpoëde — école primaire Victor-Hugo",
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Chauffeur routier",
+     "issue": "Décès",
+     "temoignage": "Le diagnostic est tombé en 2023, mon fils avait quatre ans. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Elle est partie deux ans après le diagnostic. On continue pour les autres. Il a fallu quatre ans pour que des agences se déplacent. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "08/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0235",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.0839,
+      46.14514
+     ]
+    },
+    "properties": {
+     "id": "T0235",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Médulloblastome",
+     "color": "#1F3ACC",
+     "annee": 2021,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Charente-Maritime (17)",
+     "hotspot": "h2",
+     "hotspot_nom": "Plaine d'Aunis — Saint-Rogatien",
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2021, mon fils a fait une chute bête à l'école. La radio a montré autre chose. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. L'usine d'enrobés tourne à trois kilomètres. On nous a répondu que le lien n'était pas établi. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "01/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0236",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      5.23246,
+      43.48869
+     ]
+    },
+    "properties": {
+     "id": "T0236",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2017,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Bouches-du-Rhône",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Ouvrier·ère de l'industrie",
+     "issue": "Décès",
+     "temoignage": "Le diagnostic est tombé en 2017, ma fille avait quatre ans. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Elle est partie deux ans après le diagnostic. On continue pour les autres. Il y a une usine à trois kilomètres. Personne n'a jamais voulu faire le lien. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "01/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0237",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.13023,
+      45.20248
+     ]
+    },
+    "properties": {
+     "id": "T0237",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome non hodgkinien",
+     "color": "#0B8A4E",
+     "annee": 2014,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Loire",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2014 : mon fils se plaignait d'une fatigue que rien n'expliquait. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. L'ARS nous a répondu qu'il n'y avait pas de sur-incidence. On n'a jamais vu les chiffres. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "28/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0238",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      5.90413,
+      47.40809
+     ]
+    },
+    "properties": {
+     "id": "T0238",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2020,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Doubs",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Chauffeur routier",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2020 : ma fille se plaignait d'une fatigue que rien n'expliquait. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Il y a une usine à trois kilomètres. Personne n'a jamais voulu faire le lien. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "15/08/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0239",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.85994,
+      45.76582
+     ]
+    },
+    "properties": {
+     "id": "T0239",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Médulloblastome",
+     "color": "#1F3ACC",
+     "annee": 2016,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Rhône (69)",
+     "hotspot": "h5",
+     "hotspot_nom": "Lyon 1er et 4e — secteur Croix-Rousse",
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2016 qu'on nous a annoncé le diagnostic. Mon fils venait d'avoir huit ans. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. On nous dit que l'excès est réel mais que ce n'est pas un cluster. J'ai relu la phrase dix fois. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "20/06/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0240",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.60197,
+      50.46337
+     ]
+    },
+    "properties": {
+     "id": "T0240",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2024,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Pas-de-Calais (62)",
+     "hotspot": "h13",
+     "hotspot_nom": "Ruitz — école maternelle Jacques-Prévert",
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Enseignant·e",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2024 : ma fille se plaignait d'une fatigue que rien n'expliquait. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Une antenne à vingt mètres de la cour. Elle a été démontée après. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "24/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0241",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.22627,
+      48.99768
+     ]
+    },
+    "properties": {
+     "id": "T0241",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2015,
+     "tranche_age": "0-1 an",
+     "sexe": "Féminin",
+     "dep": "Val-d'Oise (95)",
+     "hotspot": "h4",
+     "hotspot_nom": "Franconville — école de la Gare René-Watrelot",
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Artisan",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2015, ma fille a fait une chute bête à l'école. La radio a montré autre chose. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Deux enfants sont morts. On a fini par déposer plainte. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "28/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0242",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      6.11241,
+      46.4214
+     ]
+    },
+    "properties": {
+     "id": "T0242",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Hodgkin",
+     "color": "#0B8A4E",
+     "annee": 2018,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Jura (39)",
+     "hotspot": "h3",
+     "hotspot_nom": "Haut-Jura — Les Rousses, Morez, Prémanon",
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Chauffeur routier",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2018, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait ma fille. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. On a demandé des analyses d'eau et d'air au domicile. Six ans après, elles n'ont toujours pas été faites. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "14/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0243",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -0.30968,
+      45.06043
+     ]
+    },
+    "properties": {
+     "id": "T0243",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2023,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Gironde",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2023 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir quatorze ans. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Je ne dis pas que c'est la cause. Je dis juste que personne n'a cherché. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "10/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0244",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      6.13465,
+      49.26115
+     ]
+    },
+    "properties": {
+     "id": "T0244",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome non hodgkinien",
+     "color": "#0B8A4E",
+     "annee": 2020,
+     "tranche_age": "0-1 an",
+     "sexe": "Féminin",
+     "dep": "Moselle (57)",
+     "hotspot": "h7",
+     "hotspot_nom": "Amnéville — un même établissement scolaire",
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "Décès",
+     "temoignage": "Tout a commencé à l'automne 2020 : ma fille se plaignait d'une fatigue que rien n'expliquait. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Elle est partie deux ans après le diagnostic. On continue pour les autres. L'école est à deux pas de la zone industrielle. On respire ça tous les jours. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "13/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0245",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -4.22601,
+      47.88575
+     ]
+    },
+    "properties": {
+     "id": "T0245",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Burkitt",
+     "color": "#0B8A4E",
+     "annee": 2022,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Côtes-d'Armor",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2022, mon fils avait quatre ans. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. J'ai appris après coup que l'eau du quartier avait été contrôlée. On ne nous a jamais communiqué les résultats. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "10/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0246",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      1.20823,
+      49.32323
+     ]
+    },
+    "properties": {
+     "id": "T0246",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Médulloblastome",
+     "color": "#1F3ACC",
+     "annee": 2018,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Eure (27)",
+     "hotspot": "h6",
+     "hotspot_nom": "Pont-de-l'Arche et Igoville",
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Chauffeur routier",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2018 : ma fille se plaignait d'une fatigue que rien n'expliquait. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Le bilan de 2025 a clos le dossier. Nous, on habite toujours là. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "03/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0247",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.43761,
+      48.88405
+     ]
+    },
+    "properties": {
+     "id": "T0247",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2022,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Seine-Saint-Denis (93)",
+     "hotspot": "h12",
+     "hotspot_nom": "Romainville — riverains de l'usine Wipelec",
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Enseignant·e",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2022 : ma fille se plaignait d'une fatigue que rien n'expliquait. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. L'usine rejetait du trichloréthylène à cent mètres des immeubles. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "05/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0248",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.88084,
+      47.15864
+     ]
+    },
+    "properties": {
+     "id": "T0248",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Hodgkin",
+     "color": "#0B8A4E",
+     "annee": 2014,
+     "tranche_age": "0-1 an",
+     "sexe": "Masculin",
+     "dep": "Loire-Atlantique (44)",
+     "hotspot": "h1",
+     "hotspot_nom": "Sainte-Pazanne et le Pays de Retz",
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Enseignant·e",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2014, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait mon fils. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Les traitements passaient au petit matin, à cinquante mètres du jardin. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "14/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0249",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      7.82509,
+      48.35209
+     ]
+    },
+    "properties": {
+     "id": "T0249",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2013,
+     "tranche_age": "0-1 an",
+     "sexe": "Féminin",
+     "dep": "Bas-Rhin",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "Décès",
+     "temoignage": "C'est en 2013 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir quelques mois. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Il n'a pas survécu à la rechute. C'est en son nom que je remplis ce formulaire. Mon conjoint a travaillé quinze ans sur un site classé. On s'est posé la question, sans jamais avoir de réponse. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "22/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0250",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.74812,
+      46.99809
+     ]
+    },
+    "properties": {
+     "id": "T0250",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Astrocytome",
+     "color": "#1F3ACC",
+     "annee": 2025,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Loire-Atlantique (44)",
+     "hotspot": "h1",
+     "hotspot_nom": "Sainte-Pazanne et le Pays de Retz",
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2025 : mon fils se plaignait d'une fatigue que rien n'expliquait. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Trois familles de l'école ont eu un cancer en cinq ans. Sur une commune de six mille habitants. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "03/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0251",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.53368,
+      50.9225
+     ]
+    },
+    "properties": {
+     "id": "T0251",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Épendymome",
+     "color": "#1F3ACC",
+     "annee": 2020,
+     "tranche_age": "0-1 an",
+     "sexe": "Féminin",
+     "dep": "Nord (59)",
+     "hotspot": "h14",
+     "hotspot_nom": "Rexpoëde — école primaire Victor-Hugo",
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "Décès",
+     "temoignage": "En 2020, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait ma fille. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Il n'a pas survécu à la rechute. C'est en son nom que je remplis ce formulaire. On a demandé une enquête sanitaire. On nous l'a refusée par courrier. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "07/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0252",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.8925,
+      48.146
+     ]
+    },
+    "properties": {
+     "id": "T0252",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome non hodgkinien",
+     "color": "#0B8A4E",
+     "annee": 2022,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Ille-et-Vilaine",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Enseignant·e",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2022 : mon fils se plaignait d'une fatigue que rien n'expliquait. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. L'ARS nous a répondu qu'il n'y avait pas de sur-incidence. On n'a jamais vu les chiffres. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "05/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0253",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.36258,
+      43.28668
+     ]
+    },
+    "properties": {
+     "id": "T0253",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome non hodgkinien",
+     "color": "#0B8A4E",
+     "annee": 2021,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Aude (11)",
+     "hotspot": "h17",
+     "hotspot_nom": "Vallée de l'Orbiel — arsenic",
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Enseignant·e",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2021, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait ma fille. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. L'État a été condamné en 2025. Il a fait appel. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "26/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0254",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -2.73256,
+      47.5136
+     ]
+    },
+    "properties": {
+     "id": "T0254",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2014,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Morbihan",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Ouvrier·ère de l'industrie",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2014, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait mon fils. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Mon conjoint a travaillé quinze ans sur un site classé. On s'est posé la question, sans jamais avoir de réponse. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "24/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0255",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.83661,
+      45.75228
+     ]
+    },
+    "properties": {
+     "id": "T0255",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Hodgkin",
+     "color": "#0B8A4E",
+     "annee": 2020,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Rhône (69)",
+     "hotspot": "h5",
+     "hotspot_nom": "Lyon 1er et 4e — secteur Croix-Rousse",
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2020, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait mon fils. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. En ville, personne ne se connaît. Il n'y a jamais eu de collectif ici. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "25/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0256",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.43023,
+      43.96968
+     ]
+    },
+    "properties": {
+     "id": "T0256",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2022,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Gard",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Artisan",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de mon fils en 2022, presque par hasard, lors d'une prise de sang de routine. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. On habite à quatre cents mètres des champs. Les traitements passaient au petit matin. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "15/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0257",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.82515,
+      45.75154
+     ]
+    },
+    "properties": {
+     "id": "T0257",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome non hodgkinien",
+     "color": "#0B8A4E",
+     "annee": 2019,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Rhône (69)",
+     "hotspot": "h5",
+     "hotspot_nom": "Lyon 1er et 4e — secteur Croix-Rousse",
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "Décès",
+     "temoignage": "En 2019, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait ma fille. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Il n'a pas survécu à la rechute. C'est en son nom que je remplis ce formulaire. On nous dit que l'excès est réel mais que ce n'est pas un cluster. J'ai relu la phrase dix fois. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "05/06/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0258",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.06031,
+      43.61507
+     ]
+    },
+    "properties": {
+     "id": "T0258",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2016,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Hérault (34)",
+     "hotspot": "h15",
+     "hotspot_nom": "Lunel-Viel et les communes sous les vents",
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2016, ma fille a fait une chute bête à l'école. La radio a montré autre chose. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Le registre des cancers a documenté la sur-incidence. Depuis 1999. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "08/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0259",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.06991,
+      43.75297
+     ]
+    },
+    "properties": {
+     "id": "T0259",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Médulloblastome",
+     "color": "#1F3ACC",
+     "annee": 2020,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Hérault (34)",
+     "hotspot": "h15",
+     "hotspot_nom": "Lunel-Viel et les communes sous les vents",
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Agriculteur / agricultrice",
+     "issue": "Décès",
+     "temoignage": "Le diagnostic est tombé en 2020, mon fils avait quatorze ans. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Elle est partie deux ans après le diagnostic. On continue pour les autres. Le registre des cancers a documenté la sur-incidence. Depuis 1999. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "15/08/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0260",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      1.89733,
+      49.61464
+     ]
+    },
+    "properties": {
+     "id": "T0260",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Hodgkin",
+     "color": "#0B8A4E",
+     "annee": 2024,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Oise",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Chauffeur routier",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2024, ma fille a fait une chute bête à l'école. La radio a montré autre chose. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Il y a une usine à trois kilomètres. Personne n'a jamais voulu faire le lien. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "22/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0261",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.56192,
+      50.94514
+     ]
+    },
+    "properties": {
+     "id": "T0261",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2025,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Nord (59)",
+     "hotspot": "h14",
+     "hotspot_nom": "Rexpoëde — école primaire Victor-Hugo",
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Chauffeur routier",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2025, mon fils avait huit ans. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Les antennes de quatre opérateurs sur une cheminée d'usine, en face de l'école. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "06/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0262",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.83132,
+      45.74963
+     ]
+    },
+    "properties": {
+     "id": "T0262",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2022,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Rhône (69)",
+     "hotspot": "h5",
+     "hotspot_nom": "Lyon 1er et 4e — secteur Croix-Rousse",
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Ouvrier·ère de l'industrie",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2022, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait mon fils. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. On nous dit que l'excès est réel mais que ce n'est pas un cluster. J'ai relu la phrase dix fois. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "18/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0263",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.03982,
+      43.63327
+     ]
+    },
+    "properties": {
+     "id": "T0263",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Médulloblastome",
+     "color": "#1F3ACC",
+     "annee": 2024,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Hérault (34)",
+     "hotspot": "h15",
+     "hotspot_nom": "Lunel-Viel et les communes sous les vents",
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "Décès",
+     "temoignage": "En 2024, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait mon fils. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Il n'a pas survécu à la rechute. C'est en son nom que je remplis ce formulaire. L'incinérateur brûle cent vingt mille tonnes par an. On est sous les vents. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "14/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0264",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      5.96384,
+      49.152
+     ]
+    },
+    "properties": {
+     "id": "T0264",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2018,
+     "tranche_age": "0-1 an",
+     "sexe": "Féminin",
+     "dep": "Moselle",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Agriculteur / agricultrice",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de ma fille en 2018, presque par hasard, lors d'une prise de sang de routine. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. L'ARS nous a répondu qu'il n'y avait pas de sur-incidence. On n'a jamais vu les chiffres. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "07/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0265",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      1.12701,
+      49.27446
+     ]
+    },
+    "properties": {
+     "id": "T0265",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Gliome de bas grade",
+     "color": "#1F3ACC",
+     "annee": 2018,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Eure (27)",
+     "hotspot": "h6",
+     "hotspot_nom": "Pont-de-l'Arche et Igoville",
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2018, ma fille avait huit ans. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Le bilan de 2025 a clos le dossier. Nous, on habite toujours là. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "13/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0266",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.81084,
+      45.76324
+     ]
+    },
+    "properties": {
+     "id": "T0266",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2016,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Rhône (69)",
+     "hotspot": "h5",
+     "hotspot_nom": "Lyon 1er et 4e — secteur Croix-Rousse",
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "Décès",
+     "temoignage": "C'est en 2016 qu'on nous a annoncé le diagnostic. Mon fils venait d'avoir quatre ans. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Il n'a pas survécu à la rechute. C'est en son nom que je remplis ce formulaire. On nous dit que l'excès est réel mais que ce n'est pas un cluster. J'ai relu la phrase dix fois. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "08/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0267",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      5.64911,
+      45.76479
+     ]
+    },
+    "properties": {
+     "id": "T0267",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2024,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Savoie",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "Décès",
+     "temoignage": "En 2024, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait ma fille. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Il n'a pas survécu à la rechute. C'est en son nom que je remplis ce formulaire. Je ne dis pas que c'est la cause. Je dis juste que personne n'a cherché. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "06/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0268",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      1.57249,
+      45.69847
+     ]
+    },
+    "properties": {
+     "id": "T0268",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2018,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Haute-Vienne",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2018 : mon fils se plaignait d'une fatigue que rien n'expliquait. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. L'ARS nous a répondu qu'il n'y avait pas de sur-incidence. On n'a jamais vu les chiffres. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "10/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0269",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.81868,
+      47.11013
+     ]
+    },
+    "properties": {
+     "id": "T0269",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Épendymome",
+     "color": "#1F3ACC",
+     "annee": 2015,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Loire-Atlantique (44)",
+     "hotspot": "h1",
+     "hotspot_nom": "Sainte-Pazanne et le Pays de Retz",
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Personnel soignant",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2015, ma fille avait quatre ans. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Les traitements passaient au petit matin, à cinquante mètres du jardin. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "01/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0270",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      8.02256,
+      48.45002
+     ]
+    },
+    "properties": {
+     "id": "T0270",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2024,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Bas-Rhin",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Artisan",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2024, ma fille avait huit ans. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Il y a une usine à trois kilomètres. Personne n'a jamais voulu faire le lien. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "19/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0271",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.77937,
+      47.08408
+     ]
+    },
+    "properties": {
+     "id": "T0271",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Gliome de bas grade",
+     "color": "#1F3ACC",
+     "annee": 2018,
+     "tranche_age": "0-1 an",
+     "sexe": "Féminin",
+     "dep": "Loire-Atlantique (44)",
+     "hotspot": "h1",
+     "hotspot_nom": "Sainte-Pazanne et le Pays de Retz",
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2018, ma fille avait quelques mois. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. On tire l'eau d'un puits. Il a fallu que le collectif la fasse analyser pour qu'on apprenne qu'elle était impropre. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "22/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0272",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.80869,
+      48.62269
+     ]
+    },
+    "properties": {
+     "id": "T0272",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2017,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Seine-et-Marne",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Artisan",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2017, mon fils avait quatre ans. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Mon conjoint a travaillé quinze ans sur un site classé. On s'est posé la question, sans jamais avoir de réponse. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "17/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0273",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.21608,
+      48.99168
+     ]
+    },
+    "properties": {
+     "id": "T0273",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Médulloblastome",
+     "color": "#1F3ACC",
+     "annee": 2014,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Val-d'Oise (95)",
+     "hotspot": "h4",
+     "hotspot_nom": "Franconville — école de la Gare René-Watrelot",
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Enseignant·e",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2014, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait ma fille. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Les analyses capillaires de mon fils ont montré des métaux lourds. Le laboratoire, on l'a payé nous-mêmes. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "24/06/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0274",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -0.33747,
+      44.58318
+     ]
+    },
+    "properties": {
+     "id": "T0274",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Burkitt",
+     "color": "#0B8A4E",
+     "annee": 2012,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Gironde (33)",
+     "hotspot": "h10",
+     "hotspot_nom": "Preignac — commune viticole du Sauternais",
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "Décès",
+     "temoignage": "C'est en 2012 qu'on nous a annoncé le diagnostic. Mon fils venait d'avoir quatre ans. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Elle est partie deux ans après le diagnostic. On continue pour les autres. L'école est entourée de vignes. Les traitements passaient pendant la récréation. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "21/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0275",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -3.90355,
+      47.94667
+     ]
+    },
+    "properties": {
+     "id": "T0275",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Burkitt",
+     "color": "#0B8A4E",
+     "annee": 2017,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Côtes-d'Armor",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Chauffeur routier",
+     "issue": "Décès",
+     "temoignage": "C'est en 2017 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir quatorze ans. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Elle est partie deux ans après le diagnostic. On continue pour les autres. Il y a une usine à trois kilomètres. Personne n'a jamais voulu faire le lien. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "15/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0276",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -4.4358,
+      47.94755
+     ]
+    },
+    "properties": {
+     "id": "T0276",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome non hodgkinien",
+     "color": "#0B8A4E",
+     "annee": 2015,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Côtes-d'Armor",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Enseignant·e",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2015, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait mon fils. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Il y a une usine à trois kilomètres. Personne n'a jamais voulu faire le lien. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "24/06/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0277",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      6.09781,
+      46.46076
+     ]
+    },
+    "properties": {
+     "id": "T0277",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2018,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Jura (39)",
+     "hotspot": "h3",
+     "hotspot_nom": "Haut-Jura — Les Rousses, Morez, Prémanon",
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de ma fille en 2018, presque par hasard, lors d'une prise de sang de routine. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Le radon, les lignes haute tension, tout a été examiné et écarté. Il ne reste rien, et pourtant les cas sont là. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "04/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0278",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.89321,
+      47.17125
+     ]
+    },
+    "properties": {
+     "id": "T0278",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2019,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Loire-Atlantique (44)",
+     "hotspot": "h1",
+     "hotspot_nom": "Sainte-Pazanne et le Pays de Retz",
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Agriculteur / agricultrice",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2019, mon fils avait huit ans. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Les traitements passaient au petit matin, à cinquante mètres du jardin. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "21/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0279",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.8069,
+      47.00187
+     ]
+    },
+    "properties": {
+     "id": "T0279",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Burkitt",
+     "color": "#0B8A4E",
+     "annee": 2022,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Loire-Atlantique (44)",
+     "hotspot": "h1",
+     "hotspot_nom": "Sainte-Pazanne et le Pays de Retz",
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Enseignant·e",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2022 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir quatorze ans. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Les traitements passaient au petit matin, à cinquante mètres du jardin. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "24/06/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0280",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      1.20415,
+      49.29776
+     ]
+    },
+    "properties": {
+     "id": "T0280",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome non hodgkinien",
+     "color": "#0B8A4E",
+     "annee": 2025,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Eure (27)",
+     "hotspot": "h6",
+     "hotspot_nom": "Pont-de-l'Arche et Igoville",
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Enseignant·e",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2025 : mon fils se plaignait d'une fatigue que rien n'expliquait. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Le collectif a fait doser les enfants. Plomb et terres rares. Le suivi a été arrêté quand même. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "14/08/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0281",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.41785,
+      48.87274
+     ]
+    },
+    "properties": {
+     "id": "T0281",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2024,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Seine-Saint-Denis (93)",
+     "hotspot": "h12",
+     "hotspot_nom": "Romainville — riverains de l'usine Wipelec",
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Enseignant·e",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2024, ma fille a fait une chute bête à l'école. La radio a montré autre chose. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. L'usine rejetait du trichloréthylène à cent mètres des immeubles. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "27/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0282",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      5.86729,
+      45.13626
+     ]
+    },
+    "properties": {
+     "id": "T0282",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Gliome de bas grade",
+     "color": "#1F3ACC",
+     "annee": 2021,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Isère",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2021, ma fille avait huit ans. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. J'ai appris après coup que l'eau du quartier avait été contrôlée. On ne nous a jamais communiqué les résultats. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "08/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0283",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.19839,
+      48.99311
+     ]
+    },
+    "properties": {
+     "id": "T0283",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Médulloblastome",
+     "color": "#1F3ACC",
+     "annee": 2018,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Val-d'Oise (95)",
+     "hotspot": "h4",
+     "hotspot_nom": "Franconville — école de la Gare René-Watrelot",
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Agriculteur / agricultrice",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2018, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait ma fille. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Deux enfants sont morts. On a fini par déposer plainte. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "06/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0284",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      6.1005,
+      49.23308
+     ]
+    },
+    "properties": {
+     "id": "T0284",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2014,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Moselle (57)",
+     "hotspot": "h7",
+     "hotspot_nom": "Amnéville — un même établissement scolaire",
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Artisan",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de mon fils en 2014, presque par hasard, lors d'une prise de sang de routine. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Trois enfants du même établissement. On a appris pour les deux autres par le bouche-à-oreille. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "16/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0285",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.10759,
+      43.76093
+     ]
+    },
+    "properties": {
+     "id": "T0285",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2015,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Hérault (34)",
+     "hotspot": "h15",
+     "hotspot_nom": "Lunel-Viel et les communes sous les vents",
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Artisan",
+     "issue": "Décès",
+     "temoignage": "En 2015, mon fils a fait une chute bête à l'école. La radio a montré autre chose. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Elle est partie deux ans après le diagnostic. On continue pour les autres. On demande des études approfondies depuis vingt-cinq ans. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "05/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0286",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      6.35217,
+      48.90488
+     ]
+    },
+    "properties": {
+     "id": "T0286",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Burkitt",
+     "color": "#0B8A4E",
+     "annee": 2018,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Meurthe-et-Moselle",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Chauffeur routier",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2018 : mon fils se plaignait d'une fatigue que rien n'expliquait. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. J'ai appris après coup que l'eau du quartier avait été contrôlée. On ne nous a jamais communiqué les résultats. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "11/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0287",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      5.84182,
+      47.22324
+     ]
+    },
+    "properties": {
+     "id": "T0287",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome non hodgkinien",
+     "color": "#0B8A4E",
+     "annee": 2016,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Doubs",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2016 : mon fils se plaignait d'une fatigue que rien n'expliquait. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. L'ARS nous a répondu qu'il n'y avait pas de sur-incidence. On n'a jamais vu les chiffres. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "01/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0288",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -0.32369,
+      46.28509
+     ]
+    },
+    "properties": {
+     "id": "T0288",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Gliome de bas grade",
+     "color": "#1F3ACC",
+     "annee": 2017,
+     "tranche_age": "0-1 an",
+     "sexe": "Masculin",
+     "dep": "Deux-Sèvres",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Chauffeur routier",
+     "issue": "Décès",
+     "temoignage": "En 2017, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait mon fils. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Il n'a pas survécu à la rechute. C'est en son nom que je remplis ce formulaire. J'ai appris après coup que l'eau du quartier avait été contrôlée. On ne nous a jamais communiqué les résultats. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "14/08/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0289",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.75053,
+      47.12334
+     ]
+    },
+    "properties": {
+     "id": "T0289",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2016,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Loire-Atlantique (44)",
+     "hotspot": "h1",
+     "hotspot_nom": "Sainte-Pazanne et le Pays de Retz",
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2016, ma fille a fait une chute bête à l'école. La radio a montré autre chose. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Les traitements passaient au petit matin, à cinquante mètres du jardin. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "20/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0290",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      3.87308,
+      45.92242
+     ]
+    },
+    "properties": {
+     "id": "T0290",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Burkitt",
+     "color": "#0B8A4E",
+     "annee": 2024,
+     "tranche_age": "0-1 an",
+     "sexe": "Féminin",
+     "dep": "Rhône",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Chauffeur routier",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2024, ma fille a fait une chute bête à l'école. La radio a montré autre chose. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. On habite à quatre cents mètres des champs. Les traitements passaient au petit matin. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "09/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0291",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      6.09665,
+      46.42305
+     ]
+    },
+    "properties": {
+     "id": "T0291",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2017,
+     "tranche_age": "0-1 an",
+     "sexe": "Masculin",
+     "dep": "Jura (39)",
+     "hotspot": "h3",
+     "hotspot_nom": "Haut-Jura — Les Rousses, Morez, Prémanon",
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2017 qu'on nous a annoncé le diagnostic. Mon fils venait d'avoir quelques mois. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. On a demandé des analyses d'eau et d'air au domicile. Six ans après, elles n'ont toujours pas été faites. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "17/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0292",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.26925,
+      46.69338
+     ]
+    },
+    "properties": {
+     "id": "T0292",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2019,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Vendée",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2019 qu'on nous a annoncé le diagnostic. Mon fils venait d'avoir huit ans. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. J'ai appris après coup que l'eau du quartier avait été contrôlée. On ne nous a jamais communiqué les résultats. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "07/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0293",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      1.15255,
+      49.30171
+     ]
+    },
+    "properties": {
+     "id": "T0293",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Médulloblastome",
+     "color": "#1F3ACC",
+     "annee": 2023,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Eure (27)",
+     "hotspot": "h6",
+     "hotspot_nom": "Pont-de-l'Arche et Igoville",
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Ouvrier·ère de l'industrie",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2023 : ma fille se plaignait d'une fatigue que rien n'expliquait. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Le bilan de 2025 a clos le dossier. Nous, on habite toujours là. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "24/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0294",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.39415,
+      43.27342
+     ]
+    },
+    "properties": {
+     "id": "T0294",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2012,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Aude (11)",
+     "hotspot": "h17",
+     "hotspot_nom": "Vallée de l'Orbiel — arsenic",
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Artisan",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2012, ma fille avait quatorze ans. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Après les inondations de 2018, les déchets de la mine sont descendus dans la vallée. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "24/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0295",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      6.24945,
+      45.99981
+     ]
+    },
+    "properties": {
+     "id": "T0295",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Gliome de bas grade",
+     "color": "#1F3ACC",
+     "annee": 2024,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Haute-Savoie",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2024, ma fille avait quatre ans. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Je ne dis pas que c'est la cause. Je dis juste que personne n'a cherché. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "24/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0296",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      3.86445,
+      43.41516
+     ]
+    },
+    "properties": {
+     "id": "T0296",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Médulloblastome",
+     "color": "#1F3ACC",
+     "annee": 2021,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Hérault",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Enseignant·e",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2021, mon fils a fait une chute bête à l'école. La radio a montré autre chose. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. On habite à quatre cents mètres des champs. Les traitements passaient au petit matin. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "20/08/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0297",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.41712,
+      48.85222
+     ]
+    },
+    "properties": {
+     "id": "T0297",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2019,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Val-de-Marne (94)",
+     "hotspot": "h9",
+     "hotspot_nom": "Vincennes — école Franklin-Roosevelt",
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Artisan",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2019 qu'on nous a annoncé le diagnostic. Mon fils venait d'avoir quatre ans. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. L'ancienne usine avait laissé du trichloréthylène dans la nappe. Sous l'école. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "18/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0298",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.83316,
+      45.74526
+     ]
+    },
+    "properties": {
+     "id": "T0298",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Burkitt",
+     "color": "#0B8A4E",
+     "annee": 2017,
+     "tranche_age": "0-1 an",
+     "sexe": "Masculin",
+     "dep": "Rhône (69)",
+     "hotspot": "h5",
+     "hotspot_nom": "Lyon 1er et 4e — secteur Croix-Rousse",
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Ouvrier·ère de l'industrie",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2017 qu'on nous a annoncé le diagnostic. Mon fils venait d'avoir quelques mois. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. On nous dit que l'excès est réel mais que ce n'est pas un cluster. J'ai relu la phrase dix fois. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "17/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0299",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      1.59316,
+      47.8788
+     ]
+    },
+    "properties": {
+     "id": "T0299",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Burkitt",
+     "color": "#0B8A4E",
+     "annee": 2020,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Loiret",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Chauffeur routier",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2020, mon fils avait quatre ans. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Mon conjoint a travaillé quinze ans sur un site classé. On s'est posé la question, sans jamais avoir de réponse. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "12/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0300",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -0.84773,
+      44.73479
+     ]
+    },
+    "properties": {
+     "id": "T0300",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Médulloblastome",
+     "color": "#1F3ACC",
+     "annee": 2023,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Gironde",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Chauffeur routier",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2023 qu'on nous a annoncé le diagnostic. Mon fils venait d'avoir huit ans. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Il y a une usine à trois kilomètres. Personne n'a jamais voulu faire le lien. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "27/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0301",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.83584,
+      45.77479
+     ]
+    },
+    "properties": {
+     "id": "T0301",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2023,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Rhône (69)",
+     "hotspot": "h5",
+     "hotspot_nom": "Lyon 1er et 4e — secteur Croix-Rousse",
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Agriculteur / agricultrice",
+     "issue": "Décès",
+     "temoignage": "En 2023, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait mon fils. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Elle est partie deux ans après le diagnostic. On continue pour les autres. En ville, personne ne se connaît. Il n'y a jamais eu de collectif ici. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "05/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0302",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      3.98168,
+      49.25562
+     ]
+    },
+    "properties": {
+     "id": "T0302",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Gliome de bas grade",
+     "color": "#1F3ACC",
+     "annee": 2018,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Marne",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Enseignant·e",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2018, ma fille a fait une chute bête à l'école. La radio a montré autre chose. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Je ne dis pas que c'est la cause. Je dis juste que personne n'a cherché. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "03/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0303",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      0.37169,
+      45.75658
+     ]
+    },
+    "properties": {
+     "id": "T0303",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2014,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Charente",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Personnel soignant",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de ma fille en 2014, presque par hasard, lors d'une prise de sang de routine. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. On habite à quatre cents mètres des champs. Les traitements passaient au petit matin. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "01/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0304",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      6.04817,
+      46.52327
+     ]
+    },
+    "properties": {
+     "id": "T0304",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2012,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Jura (39)",
+     "hotspot": "h3",
+     "hotspot_nom": "Haut-Jura — Les Rousses, Morez, Prémanon",
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Ouvrier·ère de l'industrie",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de ma fille en 2012, presque par hasard, lors d'une prise de sang de routine. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Ici tout le monde connaît les familles concernées. Personne ne sait quoi en faire. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "02/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0305",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -0.28295,
+      44.53184
+     ]
+    },
+    "properties": {
+     "id": "T0305",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Burkitt",
+     "color": "#0B8A4E",
+     "annee": 2012,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Gironde (33)",
+     "hotspot": "h10",
+     "hotspot_nom": "Preignac — commune viticole du Sauternais",
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Personnel soignant",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2012 : mon fils se plaignait d'une fatigue que rien n'expliquait. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. L'école est entourée de vignes. Les traitements passaient pendant la récréation. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "05/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0306",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.66792,
+      43.44502
+     ]
+    },
+    "properties": {
+     "id": "T0306",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome non hodgkinien",
+     "color": "#0B8A4E",
+     "annee": 2013,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Pyrénées-Atlantiques",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "Décès",
+     "temoignage": "En 2013, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait mon fils. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Il n'a pas survécu à la rechute. C'est en son nom que je remplis ce formulaire. Il y a une usine à trois kilomètres. Personne n'a jamais voulu faire le lien. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "18/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0307",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      5.73845,
+      42.99715
+     ]
+    },
+    "properties": {
+     "id": "T0307",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Médulloblastome",
+     "color": "#1F3ACC",
+     "annee": 2018,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Var",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Artisan",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2018, mon fils a fait une chute bête à l'école. La radio a montré autre chose. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. L'ARS nous a répondu qu'il n'y avait pas de sur-incidence. On n'a jamais vu les chiffres. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "10/08/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0308",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.20661,
+      48.99007
+     ]
+    },
+    "properties": {
+     "id": "T0308",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2022,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Val-d'Oise (95)",
+     "hotspot": "h4",
+     "hotspot_nom": "Franconville — école de la Gare René-Watrelot",
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Artisan",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2022, mon fils avait huit ans. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Les analyses capillaires de mon fils ont montré des métaux lourds. Le laboratoire, on l'a payé nous-mêmes. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "18/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0309",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.59071,
+      50.47107
+     ]
+    },
+    "properties": {
+     "id": "T0309",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2021,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Pas-de-Calais (62)",
+     "hotspot": "h13",
+     "hotspot_nom": "Ruitz — école maternelle Jacques-Prévert",
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de ma fille en 2021, presque par hasard, lors d'une prise de sang de routine. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. On nous parle de trois cas, l'association en compte quatre. Personne ne tranche. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "11/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0310",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.15598,
+      43.61777
+     ]
+    },
+    "properties": {
+     "id": "T0310",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2025,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Hérault (34)",
+     "hotspot": "h15",
+     "hotspot_nom": "Lunel-Viel et les communes sous les vents",
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Personnel soignant",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2025, ma fille a fait une chute bête à l'école. La radio a montré autre chose. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Le registre des cancers a documenté la sur-incidence. Depuis 1999. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "28/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0311",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      5.96656,
+      49.22665
+     ]
+    },
+    "properties": {
+     "id": "T0311",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2023,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Moselle",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Personnel soignant",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2023, mon fils a fait une chute bête à l'école. La radio a montré autre chose. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. On habite à quatre cents mètres des champs. Les traitements passaient au petit matin. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "12/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0312",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      6.11929,
+      49.23216
+     ]
+    },
+    "properties": {
+     "id": "T0312",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2016,
+     "tranche_age": "0-1 an",
+     "sexe": "Masculin",
+     "dep": "Moselle (57)",
+     "hotspot": "h7",
+     "hotspot_nom": "Amnéville — un même établissement scolaire",
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Chauffeur routier",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2016 qu'on nous a annoncé le diagnostic. Mon fils venait d'avoir quelques mois. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. On nous a dit qu'il n'y avait pas de mesure de benzène avant 2008. Donc rien à comparer. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "28/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0313",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      1.6549,
+      46.57935
+     ]
+    },
+    "properties": {
+     "id": "T0313",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome non hodgkinien",
+     "color": "#0B8A4E",
+     "annee": 2012,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Indre",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Ouvrier·ère de l'industrie",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de mon fils en 2012, presque par hasard, lors d'une prise de sang de routine. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Il y a une usine à trois kilomètres. Personne n'a jamais voulu faire le lien. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "18/06/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0314",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.93885,
+      47.11921
+     ]
+    },
+    "properties": {
+     "id": "T0314",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2021,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Loire-Atlantique (44)",
+     "hotspot": "h1",
+     "hotspot_nom": "Sainte-Pazanne et le Pays de Retz",
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Artisan",
+     "issue": "Décès",
+     "temoignage": "En 2021, mon fils a fait une chute bête à l'école. La radio a montré autre chose. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Elle est partie deux ans après le diagnostic. On continue pour les autres. On tire l'eau d'un puits. Il a fallu que le collectif la fasse analyser pour qu'on apprenne qu'elle était impropre. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "16/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0315",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.42309,
+      48.83676
+     ]
+    },
+    "properties": {
+     "id": "T0315",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Hodgkin",
+     "color": "#0B8A4E",
+     "annee": 2013,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Val-de-Marne (94)",
+     "hotspot": "h9",
+     "hotspot_nom": "Vincennes — école Franklin-Roosevelt",
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Artisan",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2013, mon fils avait huit ans. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. L'école a fermé, on l'a dépolluée, on l'a rouverte. Et la conclusion reste « le hasard ». Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "12/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0316",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.20515,
+      48.99448
+     ]
+    },
+    "properties": {
+     "id": "T0316",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Épendymome",
+     "color": "#1F3ACC",
+     "annee": 2023,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Val-d'Oise (95)",
+     "hotspot": "h4",
+     "hotspot_nom": "Franconville — école de la Gare René-Watrelot",
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Chauffeur routier",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2023, mon fils a fait une chute bête à l'école. La radio a montré autre chose. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. L'école est construite sur un ancien atelier de traitement de métaux. Le diagnostic de sols de 2013 existait, on ne l'a jamais vu. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "15/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0317",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      5.29458,
+      43.31051
+     ]
+    },
+    "properties": {
+     "id": "T0317",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Hodgkin",
+     "color": "#0B8A4E",
+     "annee": 2016,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Bouches-du-Rhône",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Agriculteur / agricultrice",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2016, ma fille a fait une chute bête à l'école. La radio a montré autre chose. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. On habite à quatre cents mètres des champs. Les traitements passaient au petit matin. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "07/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0318",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.42185,
+      48.87571
+     ]
+    },
+    "properties": {
+     "id": "T0318",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Burkitt",
+     "color": "#0B8A4E",
+     "annee": 2024,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Seine-Saint-Denis (93)",
+     "hotspot": "h12",
+     "hotspot_nom": "Romainville — riverains de l'usine Wipelec",
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Chauffeur routier",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2024, ma fille a fait une chute bête à l'école. La radio a montré autre chose. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. C'est l'association qui a fait le recensement, immeuble par immeuble. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "27/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0319",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      0.16509,
+      45.72591
+     ]
+    },
+    "properties": {
+     "id": "T0319",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2020,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Charente",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Enseignant·e",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2020, mon fils a fait une chute bête à l'école. La radio a montré autre chose. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Je ne dis pas que c'est la cause. Je dis juste que personne n'a cherché. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "15/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0320",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.59186,
+      50.48015
+     ]
+    },
+    "properties": {
+     "id": "T0320",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2012,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Pas-de-Calais (62)",
+     "hotspot": "h13",
+     "hotspot_nom": "Ruitz — école maternelle Jacques-Prévert",
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Chauffeur routier",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2012, mon fils a fait une chute bête à l'école. La radio a montré autre chose. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Une antenne à vingt mètres de la cour. Elle a été démontée après. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "28/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0321",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.58083,
+      50.45191
+     ]
+    },
+    "properties": {
+     "id": "T0321",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Hodgkin",
+     "color": "#0B8A4E",
+     "annee": 2022,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Pas-de-Calais (62)",
+     "hotspot": "h13",
+     "hotspot_nom": "Ruitz — école maternelle Jacques-Prévert",
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Agriculteur / agricultrice",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de ma fille en 2022, presque par hasard, lors d'une prise de sang de routine. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Deux des trois enfants étaient dans la même classe de maternelle. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "12/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0322",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.86439,
+      45.75844
+     ]
+    },
+    "properties": {
+     "id": "T0322",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Astrocytome",
+     "color": "#1F3ACC",
+     "annee": 2023,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Rhône (69)",
+     "hotspot": "h5",
+     "hotspot_nom": "Lyon 1er et 4e — secteur Croix-Rousse",
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Chauffeur routier",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2023 qu'on nous a annoncé le diagnostic. Mon fils venait d'avoir quatre ans. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Le signalement n'est pas venu de nous, il est venu de l'hôpital. On l'a appris par un rapport. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "09/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0323",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.81382,
+      45.76084
+     ]
+    },
+    "properties": {
+     "id": "T0323",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Gliome de bas grade",
+     "color": "#1F3ACC",
+     "annee": 2022,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Rhône (69)",
+     "hotspot": "h5",
+     "hotspot_nom": "Lyon 1er et 4e — secteur Croix-Rousse",
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2022, mon fils a fait une chute bête à l'école. La radio a montré autre chose. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. En ville, personne ne se connaît. Il n'y a jamais eu de collectif ici. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "04/08/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0324",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.04816,
+      46.11729
+     ]
+    },
+    "properties": {
+     "id": "T0324",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome non hodgkinien",
+     "color": "#0B8A4E",
+     "annee": 2022,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Charente-Maritime (17)",
+     "hotspot": "h2",
+     "hotspot_nom": "Plaine d'Aunis — Saint-Rogatien",
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Artisan",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2022, mon fils avait quatre ans. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. On est au milieu des céréales. Personne n'a jamais mesuré ce qu'on respire au printemps. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "14/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0325",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.82388,
+      50.40371
+     ]
+    },
+    "properties": {
+     "id": "T0325",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2019,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Pas-de-Calais (62)",
+     "hotspot": "h16",
+     "hotspot_nom": "Lens et 101 communes — cryptorchidie",
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2019, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait mon fils. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Le bassin minier, la métallurgie, tout ça a laissé quelque chose dans les sols. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "03/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0326",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -0.14629,
+      49.62355
+     ]
+    },
+    "properties": {
+     "id": "T0326",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Hodgkin",
+     "color": "#0B8A4E",
+     "annee": 2014,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Seine-Maritime",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Artisan",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2014, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait mon fils. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. J'ai appris après coup que l'eau du quartier avait été contrôlée. On ne nous a jamais communiqué les résultats. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "06/08/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0327",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.128,
+      48.51032
+     ]
+    },
+    "properties": {
+     "id": "T0327",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome non hodgkinien",
+     "color": "#0B8A4E",
+     "annee": 2025,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Aube",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Personnel soignant",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de mon fils en 2025, presque par hasard, lors d'une prise de sang de routine. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. J'ai appris après coup que l'eau du quartier avait été contrôlée. On ne nous a jamais communiqué les résultats. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "28/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0328",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      1.19499,
+      49.33893
+     ]
+    },
+    "properties": {
+     "id": "T0328",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Burkitt",
+     "color": "#0B8A4E",
+     "annee": 2014,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Eure (27)",
+     "hotspot": "h6",
+     "hotspot_nom": "Pont-de-l'Arche et Igoville",
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Chauffeur routier",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2014, ma fille a fait une chute bête à l'école. La radio a montré autre chose. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Le bilan de 2025 a clos le dossier. Nous, on habite toujours là. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "23/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0329",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.37917,
+      43.31997
+     ]
+    },
+    "properties": {
+     "id": "T0329",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome non hodgkinien",
+     "color": "#0B8A4E",
+     "annee": 2021,
+     "tranche_age": "0-1 an",
+     "sexe": "Féminin",
+     "dep": "Aude (11)",
+     "hotspot": "h17",
+     "hotspot_nom": "Vallée de l'Orbiel — arsenic",
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de ma fille en 2021, presque par hasard, lors d'une prise de sang de routine. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Après les inondations de 2018, les déchets de la mine sont descendus dans la vallée. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "04/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0330",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -0.50747,
+      46.23957
+     ]
+    },
+    "properties": {
+     "id": "T0330",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2012,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Deux-Sèvres",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Artisan",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2012 : ma fille se plaignait d'une fatigue que rien n'expliquait. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Mon conjoint a travaillé quinze ans sur un site classé. On s'est posé la question, sans jamais avoir de réponse. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "15/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0331",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      3.25306,
+      50.33351
+     ]
+    },
+    "properties": {
+     "id": "T0331",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Médulloblastome",
+     "color": "#1F3ACC",
+     "annee": 2018,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Nord (59)",
+     "hotspot": "h8",
+     "hotspot_nom": "Aniche — sols de l'ancien bassin verrier",
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Ouvrier·ère de l'industrie",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2018 qu'on nous a annoncé le diagnostic. Mon fils venait d'avoir quatorze ans. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. On a un rapport officiel. Il dort quelque part. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "21/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0332",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.65454,
+      46.56831
+     ]
+    },
+    "properties": {
+     "id": "T0332",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2014,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Saône-et-Loire",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Chauffeur routier",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2014, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait ma fille. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Je ne dis pas que c'est la cause. Je dis juste que personne n'a cherché. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "13/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0333",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.55196,
+      50.94517
+     ]
+    },
+    "properties": {
+     "id": "T0333",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2025,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Nord (59)",
+     "hotspot": "h14",
+     "hotspot_nom": "Rexpoëde — école primaire Victor-Hugo",
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2025, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait ma fille. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Il a fallu quatre ans pour que des agences se déplacent. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "18/06/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0334",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -0.29301,
+      44.55151
+     ]
+    },
+    "properties": {
+     "id": "T0334",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2023,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Gironde (33)",
+     "hotspot": "h10",
+     "hotspot_nom": "Preignac — commune viticole du Sauternais",
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "Décès",
+     "temoignage": "En 2023, mon fils a fait une chute bête à l'école. La radio a montré autre chose. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Elle est partie deux ans après le diagnostic. On continue pour les autres. Neuf enfants. On nous a répondu qu'il n'existait aucune mesure dans l'air. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "07/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0335",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.82693,
+      45.75881
+     ]
+    },
+    "properties": {
+     "id": "T0335",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Gliome de bas grade",
+     "color": "#1F3ACC",
+     "annee": 2018,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Rhône (69)",
+     "hotspot": "h5",
+     "hotspot_nom": "Lyon 1er et 4e — secteur Croix-Rousse",
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de ma fille en 2018, presque par hasard, lors d'une prise de sang de routine. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Le signalement n'est pas venu de nous, il est venu de l'hôpital. On l'a appris par un rapport. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "17/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0336",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.08042,
+      46.11718
+     ]
+    },
+    "properties": {
+     "id": "T0336",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2020,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Charente-Maritime (17)",
+     "hotspot": "h2",
+     "hotspot_nom": "Plaine d'Aunis — Saint-Rogatien",
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2020, mon fils a fait une chute bête à l'école. La radio a montré autre chose. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. L'usine d'enrobés tourne à trois kilomètres. On nous a répondu que le lien n'était pas établi. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "28/08/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0337",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.29319,
+      47.41464
+     ]
+    },
+    "properties": {
+     "id": "T0337",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2016,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Loire-Atlantique",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Personnel soignant",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2016 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir quatre ans. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Il y a une usine à trois kilomètres. Personne n'a jamais voulu faire le lien. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "11/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0338",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.07636,
+      46.10338
+     ]
+    },
+    "properties": {
+     "id": "T0338",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Hodgkin",
+     "color": "#0B8A4E",
+     "annee": 2023,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Charente-Maritime (17)",
+     "hotspot": "h2",
+     "hotspot_nom": "Plaine d'Aunis — Saint-Rogatien",
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2023, mon fils avait quatorze ans. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. On est au milieu des céréales. Personne n'a jamais mesuré ce qu'on respire au printemps. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "17/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0339",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.44397,
+      48.88943
+     ]
+    },
+    "properties": {
+     "id": "T0339",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2016,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Seine-Saint-Denis (93)",
+     "hotspot": "h12",
+     "hotspot_nom": "Romainville — riverains de l'usine Wipelec",
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Personnel soignant",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2016, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait ma fille. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. L'usine rejetait du trichloréthylène à cent mètres des immeubles. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "20/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0340",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.05011,
+      43.64413
+     ]
+    },
+    "properties": {
+     "id": "T0340",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Burkitt",
+     "color": "#0B8A4E",
+     "annee": 2018,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Hérault (34)",
+     "hotspot": "h15",
+     "hotspot_nom": "Lunel-Viel et les communes sous les vents",
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2018, mon fils avait quatre ans. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Le registre des cancers a documenté la sur-incidence. Depuis 1999. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "27/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0341",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.85035,
+      47.10069
+     ]
+    },
+    "properties": {
+     "id": "T0341",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome non hodgkinien",
+     "color": "#0B8A4E",
+     "annee": 2020,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Loire-Atlantique (44)",
+     "hotspot": "h1",
+     "hotspot_nom": "Sainte-Pazanne et le Pays de Retz",
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2020 : ma fille se plaignait d'une fatigue que rien n'expliquait. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Trois familles de l'école ont eu un cancer en cinq ans. Sur une commune de six mille habitants. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "12/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0342",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      5.96413,
+      46.49885
+     ]
+    },
+    "properties": {
+     "id": "T0342",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2012,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Jura (39)",
+     "hotspot": "h3",
+     "hotspot_nom": "Haut-Jura — Les Rousses, Morez, Prémanon",
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Artisan",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2012 qu'on nous a annoncé le diagnostic. Mon fils venait d'avoir huit ans. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. On a demandé des analyses d'eau et d'air au domicile. Six ans après, elles n'ont toujours pas été faites. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "11/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0343",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.96102,
+      50.41759
+     ]
+    },
+    "properties": {
+     "id": "T0343",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Gliome de bas grade",
+     "color": "#1F3ACC",
+     "annee": 2014,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Pas-de-Calais (62)",
+     "hotspot": "h16",
+     "hotspot_nom": "Lens et 101 communes — cryptorchidie",
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2014, ma fille avait quatorze ans. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. On nous a opérés sans jamais nous dire que c'était plus fréquent ici qu'ailleurs. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "25/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0344",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      3.2796,
+      50.34533
+     ]
+    },
+    "properties": {
+     "id": "T0344",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome non hodgkinien",
+     "color": "#0B8A4E",
+     "annee": 2015,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Nord (59)",
+     "hotspot": "h8",
+     "hotspot_nom": "Aniche — sols de l'ancien bassin verrier",
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Ouvrier·ère de l'industrie",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2015 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir quatorze ans. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. On a un rapport officiel. Il dort quelque part. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "07/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0345",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.42554,
+      48.88187
+     ]
+    },
+    "properties": {
+     "id": "T0345",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2023,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Seine-Saint-Denis (93)",
+     "hotspot": "h12",
+     "hotspot_nom": "Romainville — riverains de l'usine Wipelec",
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Artisan",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2023 : mon fils se plaignait d'une fatigue que rien n'expliquait. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. L'usine rejetait du trichloréthylène à cent mètres des immeubles. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "24/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0346",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      1.12969,
+      49.346
+     ]
+    },
+    "properties": {
+     "id": "T0346",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome non hodgkinien",
+     "color": "#0B8A4E",
+     "annee": 2014,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Eure (27)",
+     "hotspot": "h6",
+     "hotspot_nom": "Pont-de-l'Arche et Igoville",
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Personnel soignant",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2014 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir quatre ans. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Le bilan de 2025 a clos le dossier. Nous, on habite toujours là. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "06/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0347",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.21604,
+      48.96803
+     ]
+    },
+    "properties": {
+     "id": "T0347",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Médulloblastome",
+     "color": "#1F3ACC",
+     "annee": 2024,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Val-d'Oise (95)",
+     "hotspot": "h4",
+     "hotspot_nom": "Franconville — école de la Gare René-Watrelot",
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Enseignant·e",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2024 : ma fille se plaignait d'une fatigue que rien n'expliquait. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. L'école est construite sur un ancien atelier de traitement de métaux. Le diagnostic de sols de 2013 existait, on ne l'a jamais vu. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "28/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0348",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.24357,
+      47.7794
+     ]
+    },
+    "properties": {
+     "id": "T0348",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2020,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Loiret",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Chauffeur routier",
+     "issue": "Décès",
+     "temoignage": "Tout a commencé à l'automne 2020 : mon fils se plaignait d'une fatigue que rien n'expliquait. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Elle est partie deux ans après le diagnostic. On continue pour les autres. Il y a une usine à trois kilomètres. Personne n'a jamais voulu faire le lien. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "16/08/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0349",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.03974,
+      48.8156
+     ]
+    },
+    "properties": {
+     "id": "T0349",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome non hodgkinien",
+     "color": "#0B8A4E",
+     "annee": 2013,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Yvelines (78)",
+     "hotspot": "h11",
+     "hotspot_nom": "Saint-Cyr-l'École — quartier de l'Épi d'Or",
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2013 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir quatorze ans. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Il y avait des antennes sur le toit de l'école. Elles ont été démontées, sans explication. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "04/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0350",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      6.11969,
+      49.22139
+     ]
+    },
+    "properties": {
+     "id": "T0350",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2024,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Moselle (57)",
+     "hotspot": "h7",
+     "hotspot_nom": "Amnéville — un même établissement scolaire",
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2024, ma fille avait huit ans. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. L'école est à deux pas de la zone industrielle. On respire ça tous les jours. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "28/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0351",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      3.2983,
+      50.34668
+     ]
+    },
+    "properties": {
+     "id": "T0351",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Gliome de bas grade",
+     "color": "#1F3ACC",
+     "annee": 2015,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Nord (59)",
+     "hotspot": "h8",
+     "hotspot_nom": "Aniche — sols de l'ancien bassin verrier",
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Enseignant·e",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2015, mon fils avait quatre ans. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Cinq fois plus de cas qu'attendu, et pas une ligne dans la presse. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "25/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0352",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.48719,
+      44.06429
+     ]
+    },
+    "properties": {
+     "id": "T0352",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2024,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Gard",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Agriculteur / agricultrice",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2024, ma fille a fait une chute bête à l'école. La radio a montré autre chose. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Il y a une usine à trois kilomètres. Personne n'a jamais voulu faire le lien. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "20/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0353",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.41746,
+      48.88048
+     ]
+    },
+    "properties": {
+     "id": "T0353",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2025,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Seine-Saint-Denis (93)",
+     "hotspot": "h12",
+     "hotspot_nom": "Romainville — riverains de l'usine Wipelec",
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Chauffeur routier",
+     "issue": "Décès",
+     "temoignage": "C'est en 2025 qu'on nous a annoncé le diagnostic. Mon fils venait d'avoir huit ans. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Elle est partie deux ans après le diagnostic. On continue pour les autres. C'est l'association qui a fait le recensement, immeuble par immeuble. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "27/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0354",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.88924,
+      47.14241
+     ]
+    },
+    "properties": {
+     "id": "T0354",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2023,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Loire-Atlantique (44)",
+     "hotspot": "h1",
+     "hotspot_nom": "Sainte-Pazanne et le Pays de Retz",
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Agriculteur / agricultrice",
+     "issue": "Décès",
+     "temoignage": "En 2023, ma fille a fait une chute bête à l'école. La radio a montré autre chose. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Elle est partie deux ans après le diagnostic. On continue pour les autres. On tire l'eau d'un puits. Il a fallu que le collectif la fasse analyser pour qu'on apprenne qu'elle était impropre. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "18/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0355",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -0.02543,
+      49.39017
+     ]
+    },
+    "properties": {
+     "id": "T0355",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Gliome de bas grade",
+     "color": "#1F3ACC",
+     "annee": 2025,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Seine-Maritime",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2025, ma fille a fait une chute bête à l'école. La radio a montré autre chose. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. L'ARS nous a répondu qu'il n'y avait pas de sur-incidence. On n'a jamais vu les chiffres. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "03/06/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0356",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.42464,
+      43.30514
+     ]
+    },
+    "properties": {
+     "id": "T0356",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2019,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Aude (11)",
+     "hotspot": "h17",
+     "hotspot_nom": "Vallée de l'Orbiel — arsenic",
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Enseignant·e",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2019, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait ma fille. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Après les inondations de 2018, les déchets de la mine sont descendus dans la vallée. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "03/08/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0357",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.67748,
+      47.38696
+     ]
+    },
+    "properties": {
+     "id": "T0357",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2017,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Loire-Atlantique",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Enseignant·e",
+     "issue": "Décès",
+     "temoignage": "Le diagnostic est tombé en 2017, ma fille avait quatorze ans. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Il n'a pas survécu à la rechute. C'est en son nom que je remplis ce formulaire. Mon conjoint a travaillé quinze ans sur un site classé. On s'est posé la question, sans jamais avoir de réponse. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "28/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0358",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      0.41113,
+      47.29173
+     ]
+    },
+    "properties": {
+     "id": "T0358",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Gliome de bas grade",
+     "color": "#1F3ACC",
+     "annee": 2022,
+     "tranche_age": "0-1 an",
+     "sexe": "Masculin",
+     "dep": "Indre-et-Loire",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Artisan",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de mon fils en 2022, presque par hasard, lors d'une prise de sang de routine. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. L'ARS nous a répondu qu'il n'y avait pas de sur-incidence. On n'a jamais vu les chiffres. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "02/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0359",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.82386,
+      45.77063
+     ]
+    },
+    "properties": {
+     "id": "T0359",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2025,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Rhône (69)",
+     "hotspot": "h5",
+     "hotspot_nom": "Lyon 1er et 4e — secteur Croix-Rousse",
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2025 qu'on nous a annoncé le diagnostic. Mon fils venait d'avoir quatre ans. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Le signalement n'est pas venu de nous, il est venu de l'hôpital. On l'a appris par un rapport. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "01/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0360",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      3.54141,
+      46.2435
+     ]
+    },
+    "properties": {
+     "id": "T0360",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2021,
+     "tranche_age": "0-1 an",
+     "sexe": "Masculin",
+     "dep": "Allier",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Agriculteur / agricultrice",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2021 : mon fils se plaignait d'une fatigue que rien n'expliquait. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Mon conjoint a travaillé quinze ans sur un site classé. On s'est posé la question, sans jamais avoir de réponse. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "28/08/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0361",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.08762,
+      48.79877
+     ]
+    },
+    "properties": {
+     "id": "T0361",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Épendymome",
+     "color": "#1F3ACC",
+     "annee": 2015,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Yvelines (78)",
+     "hotspot": "h11",
+     "hotspot_nom": "Saint-Cyr-l'École — quartier de l'Épi d'Or",
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Agriculteur / agricultrice",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2015, mon fils avait quatre ans. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Il y avait des antennes sur le toit de l'école. Elles ont été démontées, sans explication. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "22/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0362",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.44618,
+      48.83832
+     ]
+    },
+    "properties": {
+     "id": "T0362",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2022,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Val-de-Marne (94)",
+     "hotspot": "h9",
+     "hotspot_nom": "Vincennes — école Franklin-Roosevelt",
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Chauffeur routier",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de ma fille en 2022, presque par hasard, lors d'une prise de sang de routine. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. L'ancienne usine avait laissé du trichloréthylène dans la nappe. Sous l'école. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "22/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0363",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.51785,
+      50.92714
+     ]
+    },
+    "properties": {
+     "id": "T0363",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2012,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Nord (59)",
+     "hotspot": "h14",
+     "hotspot_nom": "Rexpoëde — école primaire Victor-Hugo",
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2012 qu'on nous a annoncé le diagnostic. Mon fils venait d'avoir quatorze ans. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Les antennes de quatre opérateurs sur une cheminée d'usine, en face de l'école. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "28/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0364",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.14141,
+      46.19028
+     ]
+    },
+    "properties": {
+     "id": "T0364",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2018,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Charente-Maritime (17)",
+     "hotspot": "h2",
+     "hotspot_nom": "Plaine d'Aunis — Saint-Rogatien",
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2018, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait ma fille. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. L'usine d'enrobés tourne à trois kilomètres. On nous a répondu que le lien n'était pas établi. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "28/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0365",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.84197,
+      45.76081
+     ]
+    },
+    "properties": {
+     "id": "T0365",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Médulloblastome",
+     "color": "#1F3ACC",
+     "annee": 2016,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Rhône (69)",
+     "hotspot": "h5",
+     "hotspot_nom": "Lyon 1er et 4e — secteur Croix-Rousse",
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2016 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir quatre ans. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. On nous dit que l'excès est réel mais que ce n'est pas un cluster. J'ai relu la phrase dix fois. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "02/06/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0366",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.86017,
+      47.10662
+     ]
+    },
+    "properties": {
+     "id": "T0366",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2014,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Loire-Atlantique (44)",
+     "hotspot": "h1",
+     "hotspot_nom": "Sainte-Pazanne et le Pays de Retz",
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Ouvrier·ère de l'industrie",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2014 qu'on nous a annoncé le diagnostic. Mon fils venait d'avoir quatorze ans. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. On tire l'eau d'un puits. Il a fallu que le collectif la fasse analyser pour qu'on apprenne qu'elle était impropre. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "01/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0367",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      7.55109,
+      43.71891
+     ]
+    },
+    "properties": {
+     "id": "T0367",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2022,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Alpes-Maritimes",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "Décès",
+     "temoignage": "Le diagnostic est tombé en 2022, mon fils avait quatorze ans. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Il n'a pas survécu à la rechute. C'est en son nom que je remplis ce formulaire. Mon conjoint a travaillé quinze ans sur un site classé. On s'est posé la question, sans jamais avoir de réponse. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "01/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0368",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.98852,
+      50.35842
+     ]
+    },
+    "properties": {
+     "id": "T0368",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2012,
+     "tranche_age": "0-1 an",
+     "sexe": "Masculin",
+     "dep": "Pas-de-Calais (62)",
+     "hotspot": "h16",
+     "hotspot_nom": "Lens et 101 communes — cryptorchidie",
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Personnel soignant",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2012 qu'on nous a annoncé le diagnostic. Mon fils venait d'avoir quelques mois. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Mille deux cents cas sur la seule agglomération. Le chiffre existe, il est publié. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "21/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0369",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.54905,
+      48.3736
+     ]
+    },
+    "properties": {
+     "id": "T0369",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome non hodgkinien",
+     "color": "#0B8A4E",
+     "annee": 2016,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Seine-et-Marne",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Enseignant·e",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2016 : mon fils se plaignait d'une fatigue que rien n'expliquait. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Il y a une usine à trois kilomètres. Personne n'a jamais voulu faire le lien. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "10/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0370",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.06273,
+      46.13809
+     ]
+    },
+    "properties": {
+     "id": "T0370",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Hodgkin",
+     "color": "#0B8A4E",
+     "annee": 2021,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Charente-Maritime (17)",
+     "hotspot": "h2",
+     "hotspot_nom": "Plaine d'Aunis — Saint-Rogatien",
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Chauffeur routier",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2021, ma fille a fait une chute bête à l'école. La radio a montré autre chose. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. L'usine d'enrobés tourne à trois kilomètres. On nous a répondu que le lien n'était pas établi. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "19/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0371",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.20012,
+      43.64737
+     ]
+    },
+    "properties": {
+     "id": "T0371",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Burkitt",
+     "color": "#0B8A4E",
+     "annee": 2018,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Hérault (34)",
+     "hotspot": "h15",
+     "hotspot_nom": "Lunel-Viel et les communes sous les vents",
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2018, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait ma fille. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Le registre des cancers a documenté la sur-incidence. Depuis 1999. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "25/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0372",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -0.30257,
+      44.61232
+     ]
+    },
+    "properties": {
+     "id": "T0372",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Astrocytome",
+     "color": "#1F3ACC",
+     "annee": 2020,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Gironde (33)",
+     "hotspot": "h10",
+     "hotspot_nom": "Preignac — commune viticole du Sauternais",
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Agriculteur / agricultrice",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2020 : ma fille se plaignait d'une fatigue que rien n'expliquait. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. L'école est entourée de vignes. Les traitements passaient pendant la récréation. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "02/06/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0373",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.71831,
+      47.05926
+     ]
+    },
+    "properties": {
+     "id": "T0373",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2024,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Loire-Atlantique (44)",
+     "hotspot": "h1",
+     "hotspot_nom": "Sainte-Pazanne et le Pays de Retz",
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "Décès",
+     "temoignage": "En 2024, mon fils a fait une chute bête à l'école. La radio a montré autre chose. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Il n'a pas survécu à la rechute. C'est en son nom que je remplis ce formulaire. Les traitements passaient au petit matin, à cinquante mètres du jardin. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "07/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0374",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      1.49912,
+      46.97453
+     ]
+    },
+    "properties": {
+     "id": "T0374",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Médulloblastome",
+     "color": "#1F3ACC",
+     "annee": 2025,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Indre",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2025, ma fille a fait une chute bête à l'école. La radio a montré autre chose. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. L'ARS nous a répondu qu'il n'y avait pas de sur-incidence. On n'a jamais vu les chiffres. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "04/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0375",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.79883,
+      46.55426
+     ]
+    },
+    "properties": {
+     "id": "T0375",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2020,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Saône-et-Loire",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Chauffeur routier",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2020 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir quatre ans. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. On habite à quatre cents mètres des champs. Les traitements passaient au petit matin. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "01/06/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0376",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      6.10341,
+      46.50244
+     ]
+    },
+    "properties": {
+     "id": "T0376",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2016,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Jura (39)",
+     "hotspot": "h3",
+     "hotspot_nom": "Haut-Jura — Les Rousses, Morez, Prémanon",
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2016 : mon fils se plaignait d'une fatigue que rien n'expliquait. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. On a demandé des analyses d'eau et d'air au domicile. Six ans après, elles n'ont toujours pas été faites. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "12/06/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0377",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.37674,
+      43.31569
+     ]
+    },
+    "properties": {
+     "id": "T0377",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome non hodgkinien",
+     "color": "#0B8A4E",
+     "annee": 2021,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Aude (11)",
+     "hotspot": "h17",
+     "hotspot_nom": "Vallée de l'Orbiel — arsenic",
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Ouvrier·ère de l'industrie",
+     "issue": "Décès",
+     "temoignage": "Le diagnostic est tombé en 2021, ma fille avait huit ans. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Il n'a pas survécu à la rechute. C'est en son nom que je remplis ce formulaire. Après les inondations de 2018, les déchets de la mine sont descendus dans la vallée. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "11/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0378",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.94821,
+      47.0461
+     ]
+    },
+    "properties": {
+     "id": "T0378",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2012,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Loire-Atlantique (44)",
+     "hotspot": "h1",
+     "hotspot_nom": "Sainte-Pazanne et le Pays de Retz",
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Enseignant·e",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2012, ma fille a fait une chute bête à l'école. La radio a montré autre chose. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. On tire l'eau d'un puits. Il a fallu que le collectif la fasse analyser pour qu'on apprenne qu'elle était impropre. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "24/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0379",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -0.81932,
+      47.58497
+     ]
+    },
+    "properties": {
+     "id": "T0379",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Gliome de bas grade",
+     "color": "#1F3ACC",
+     "annee": 2021,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Maine-et-Loire",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Chauffeur routier",
+     "issue": "Décès",
+     "temoignage": "En 2021, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait ma fille. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Elle est partie deux ans après le diagnostic. On continue pour les autres. Il y a une usine à trois kilomètres. Personne n'a jamais voulu faire le lien. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "09/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0380",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      5.25994,
+      46.1758
+     ]
+    },
+    "properties": {
+     "id": "T0380",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2025,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Ain (01)",
+     "hotspot": "h18",
+     "hotspot_nom": "Druillat et 67 communes — agénésies de membre",
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Artisan",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de ma fille en 2025, presque par hasard, lors d'une prise de sang de routine. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Le registre qui a tiré la sonnette n'a plus de financement. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "21/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0381",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      3.09455,
+      50.45418
+     ]
+    },
+    "properties": {
+     "id": "T0381",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2022,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Pas-de-Calais (62)",
+     "hotspot": "h16",
+     "hotspot_nom": "Lens et 101 communes — cryptorchidie",
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2022 : ma fille se plaignait d'une fatigue que rien n'expliquait. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Mille deux cents cas sur la seule agglomération. Le chiffre existe, il est publié. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "21/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0382",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -0.30175,
+      44.58586
+     ]
+    },
+    "properties": {
+     "id": "T0382",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2016,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Gironde (33)",
+     "hotspot": "h10",
+     "hotspot_nom": "Preignac — commune viticole du Sauternais",
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Chauffeur routier",
+     "issue": "Décès",
+     "temoignage": "En 2016, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait ma fille. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Elle est partie deux ans après le diagnostic. On continue pour les autres. Neuf enfants. On nous a répondu qu'il n'existait aucune mesure dans l'air. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "25/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0383",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.72988,
+      46.7198
+     ]
+    },
+    "properties": {
+     "id": "T0383",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome non hodgkinien",
+     "color": "#0B8A4E",
+     "annee": 2016,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Vendée",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Enseignant·e",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2016 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir quatre ans. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. On habite à quatre cents mètres des champs. Les traitements passaient au petit matin. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "04/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0384",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.71385,
+      45.13593
+     ]
+    },
+    "properties": {
+     "id": "T0384",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2016,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Drôme",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Personnel soignant",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2016, ma fille a fait une chute bête à l'école. La radio a montré autre chose. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Il y a une usine à trois kilomètres. Personne n'a jamais voulu faire le lien. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "15/08/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0385",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.08458,
+      48.80336
+     ]
+    },
+    "properties": {
+     "id": "T0385",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Astrocytome",
+     "color": "#1F3ACC",
+     "annee": 2022,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Yvelines (78)",
+     "hotspot": "h11",
+     "hotspot_nom": "Saint-Cyr-l'École — quartier de l'Épi d'Or",
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de mon fils en 2022, presque par hasard, lors d'une prise de sang de routine. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Il y avait des antennes sur le toit de l'école. Elles ont été démontées, sans explication. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "01/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0386",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.10529,
+      46.17927
+     ]
+    },
+    "properties": {
+     "id": "T0386",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2016,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Charente-Maritime (17)",
+     "hotspot": "h2",
+     "hotspot_nom": "Plaine d'Aunis — Saint-Rogatien",
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Personnel soignant",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de mon fils en 2016, presque par hasard, lors d'une prise de sang de routine. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Quatre cas d'hémopathie dans le village. On nous a dit que c'était moins d'un cas attendu. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "12/08/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0387",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      5.18957,
+      47.14181
+     ]
+    },
+    "properties": {
+     "id": "T0387",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2022,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Côte-d'Or",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "Décès",
+     "temoignage": "Tout a commencé à l'automne 2022 : ma fille se plaignait d'une fatigue que rien n'expliquait. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Elle est partie deux ans après le diagnostic. On continue pour les autres. J'ai appris après coup que l'eau du quartier avait été contrôlée. On ne nous a jamais communiqué les résultats. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "23/08/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0388",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.71359,
+      47.06584
+     ]
+    },
+    "properties": {
+     "id": "T0388",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome non hodgkinien",
+     "color": "#0B8A4E",
+     "annee": 2018,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Loire-Atlantique (44)",
+     "hotspot": "h1",
+     "hotspot_nom": "Sainte-Pazanne et le Pays de Retz",
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Ouvrier·ère de l'industrie",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2018 : mon fils se plaignait d'une fatigue que rien n'expliquait. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Trois familles de l'école ont eu un cancer en cinq ans. Sur une commune de six mille habitants. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "02/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0389",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.80836,
+      44.1402
+     ]
+    },
+    "properties": {
+     "id": "T0389",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2013,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Vaucluse",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Enseignant·e",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2013 : ma fille se plaignait d'une fatigue que rien n'expliquait. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Il y a une usine à trois kilomètres. Personne n'a jamais voulu faire le lien. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "12/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0390",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.66167,
+      42.73772
+     ]
+    },
+    "properties": {
+     "id": "T0390",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2017,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Pyrénées-Orientales",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Personnel soignant",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de ma fille en 2017, presque par hasard, lors d'une prise de sang de routine. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Mon conjoint a travaillé quinze ans sur un site classé. On s'est posé la question, sans jamais avoir de réponse. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "10/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0391",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.97786,
+      50.59134
+     ]
+    },
+    "properties": {
+     "id": "T0391",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Astrocytome",
+     "color": "#1F3ACC",
+     "annee": 2021,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Pas-de-Calais (62)",
+     "hotspot": "h16",
+     "hotspot_nom": "Lens et 101 communes — cryptorchidie",
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Personnel soignant",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de ma fille en 2021, presque par hasard, lors d'une prise de sang de routine. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. On nous a opérés sans jamais nous dire que c'était plus fréquent ici qu'ailleurs. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "03/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0392",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      3.30253,
+      50.32442
+     ]
+    },
+    "properties": {
+     "id": "T0392",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Astrocytome",
+     "color": "#1F3ACC",
+     "annee": 2016,
+     "tranche_age": "0-1 an",
+     "sexe": "Masculin",
+     "dep": "Nord (59)",
+     "hotspot": "h8",
+     "hotspot_nom": "Aniche — sols de l'ancien bassin verrier",
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2016, mon fils a fait une chute bête à l'école. La radio a montré autre chose. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Cinq fois plus de cas qu'attendu, et pas une ligne dans la presse. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "26/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0393",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      3.29519,
+      50.32734
+     ]
+    },
+    "properties": {
+     "id": "T0393",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Hodgkin",
+     "color": "#0B8A4E",
+     "annee": 2019,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Nord (59)",
+     "hotspot": "h8",
+     "hotspot_nom": "Aniche — sols de l'ancien bassin verrier",
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Agriculteur / agricultrice",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2019, ma fille avait quatre ans. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Le quartier est bâti sur d'anciennes verreries. Les sols, personne n'en parlait avant. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "03/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0394",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.88329,
+      47.12965
+     ]
+    },
+    "properties": {
+     "id": "T0394",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Hodgkin",
+     "color": "#0B8A4E",
+     "annee": 2014,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Côte-d'Or",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Personnel soignant",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2014, mon fils a fait une chute bête à l'école. La radio a montré autre chose. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Mon conjoint a travaillé quinze ans sur un site classé. On s'est posé la question, sans jamais avoir de réponse. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "19/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0395",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.58104,
+      50.92747
+     ]
+    },
+    "properties": {
+     "id": "T0395",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2023,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Nord (59)",
+     "hotspot": "h14",
+     "hotspot_nom": "Rexpoëde — école primaire Victor-Hugo",
+     "exposition": "Ancien site pollué",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de ma fille en 2023, presque par hasard, lors d'une prise de sang de routine. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. On a demandé une enquête sanitaire. On nous l'a refusée par courrier. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "01/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0396",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      7.93672,
+      48.49008
+     ]
+    },
+    "properties": {
+     "id": "T0396",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Hodgkin",
+     "color": "#0B8A4E",
+     "annee": 2024,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Bas-Rhin",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2024, ma fille a fait une chute bête à l'école. La radio a montré autre chose. Le protocole a duré dix-huit mois, avec des hospitalisations tous les quinze jours. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. On habite à quatre cents mètres des champs. Les traitements passaient au petit matin. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "20/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0397",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.8411,
+      45.75718
+     ]
+    },
+    "properties": {
+     "id": "T0397",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome non hodgkinien",
+     "color": "#0B8A4E",
+     "annee": 2025,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Rhône (69)",
+     "hotspot": "h5",
+     "hotspot_nom": "Lyon 1er et 4e — secteur Croix-Rousse",
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Chauffeur routier",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2025, mon fils avait huit ans. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. En ville, personne ne se connaît. Il n'y a jamais eu de collectif ici. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "03/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0398",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      6.11743,
+      49.23019
+     ]
+    },
+    "properties": {
+     "id": "T0398",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2020,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Moselle (57)",
+     "hotspot": "h7",
+     "hotspot_nom": "Amnéville — un même établissement scolaire",
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Agriculteur / agricultrice",
+     "issue": "Décès",
+     "temoignage": "Le diagnostic est tombé en 2020, ma fille avait quatre ans. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Elle est partie deux ans après le diagnostic. On continue pour les autres. Trois enfants du même établissement. On a appris pour les deux autres par le bouche-à-oreille. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "28/06/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0399",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      3.6043,
+      47.98412
+     ]
+    },
+    "properties": {
+     "id": "T0399",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2013,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Yonne",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Agriculteur / agricultrice",
+     "issue": "Décès",
+     "temoignage": "En 2013, ma fille a fait une chute bête à l'école. La radio a montré autre chose. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Elle est partie deux ans après le diagnostic. On continue pour les autres. L'ARS nous a répondu qu'il n'y avait pas de sur-incidence. On n'a jamais vu les chiffres. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "17/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0400",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.58249,
+      50.93458
+     ]
+    },
+    "properties": {
+     "id": "T0400",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Épendymome",
+     "color": "#1F3ACC",
+     "annee": 2015,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Nord (59)",
+     "hotspot": "h14",
+     "hotspot_nom": "Rexpoëde — école primaire Victor-Hugo",
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2015 : ma fille se plaignait d'une fatigue que rien n'expliquait. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. On a demandé une enquête sanitaire. On nous l'a refusée par courrier. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "03/08/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0401",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -0.32027,
+      44.60648
+     ]
+    },
+    "properties": {
+     "id": "T0401",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Burkitt",
+     "color": "#0B8A4E",
+     "annee": 2019,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Gironde (33)",
+     "hotspot": "h10",
+     "hotspot_nom": "Preignac — commune viticole du Sauternais",
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Chauffeur routier",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2019, mon fils a fait une chute bête à l'école. La radio a montré autre chose. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Ce n'est pas la maladie qu'on n'a pas su voir, c'est ce qu'on respirait. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "01/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0402",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.09552,
+      43.68796
+     ]
+    },
+    "properties": {
+     "id": "T0402",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Médulloblastome",
+     "color": "#1F3ACC",
+     "annee": 2013,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Hérault (34)",
+     "hotspot": "h15",
+     "hotspot_nom": "Lunel-Viel et les communes sous les vents",
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2013, ma fille a fait une chute bête à l'école. La radio a montré autre chose. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Le registre des cancers a documenté la sur-incidence. Depuis 1999. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "17/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0403",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.83476,
+      45.74075
+     ]
+    },
+    "properties": {
+     "id": "T0403",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Gliome de bas grade",
+     "color": "#1F3ACC",
+     "annee": 2014,
+     "tranche_age": "0-1 an",
+     "sexe": "Masculin",
+     "dep": "Rhône (69)",
+     "hotspot": "h5",
+     "hotspot_nom": "Lyon 1er et 4e — secteur Croix-Rousse",
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2014, mon fils a fait une chute bête à l'école. La radio a montré autre chose. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. On nous dit que l'excès est réel mais que ce n'est pas un cluster. J'ai relu la phrase dix fois. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "04/03/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0404",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.84059,
+      45.74286
+     ]
+    },
+    "properties": {
+     "id": "T0404",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2015,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Rhône (69)",
+     "hotspot": "h5",
+     "hotspot_nom": "Lyon 1er et 4e — secteur Croix-Rousse",
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2015, mon fils a fait une chute bête à l'école. La radio a montré autre chose. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. On nous dit que l'excès est réel mais que ce n'est pas un cluster. J'ai relu la phrase dix fois. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "10/06/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0405",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.26577,
+      46.1747
+     ]
+    },
+    "properties": {
+     "id": "T0405",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Astrocytome",
+     "color": "#1F3ACC",
+     "annee": 2024,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Rhône",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Artisan",
+     "issue": "Décès",
+     "temoignage": "En 2024, mon fils a fait une chute bête à l'école. La radio a montré autre chose. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Il n'a pas survécu à la rechute. C'est en son nom que je remplis ce formulaire. On habite à quatre cents mètres des champs. Les traitements passaient au petit matin. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "22/08/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0406",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.7056,
+      47.03989
+     ]
+    },
+    "properties": {
+     "id": "T0406",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Astrocytome",
+     "color": "#1F3ACC",
+     "annee": 2025,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Loire-Atlantique (44)",
+     "hotspot": "h1",
+     "hotspot_nom": "Sainte-Pazanne et le Pays de Retz",
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2025 : ma fille se plaignait d'une fatigue que rien n'expliquait. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Les traitements passaient au petit matin, à cinquante mètres du jardin. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "07/08/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0407",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      7.08292,
+      43.71642
+     ]
+    },
+    "properties": {
+     "id": "T0407",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome non hodgkinien",
+     "color": "#0B8A4E",
+     "annee": 2021,
+     "tranche_age": "0-1 an",
+     "sexe": "Féminin",
+     "dep": "Alpes-Maritimes",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Enseignant·e",
+     "issue": "En rémission / suivi",
+     "temoignage": "Tout a commencé à l'automne 2021 : ma fille se plaignait d'une fatigue que rien n'expliquait. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. J'ai appris après coup que l'eau du quartier avait été contrôlée. On ne nous a jamais communiqué les résultats. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "23/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0408",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.68697,
+      43.62325
+     ]
+    },
+    "properties": {
+     "id": "T0408",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Astrocytome",
+     "color": "#1F3ACC",
+     "annee": 2015,
+     "tranche_age": "12-17 ans",
+     "sexe": "Féminin",
+     "dep": "Gard",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2015, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait ma fille. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. J'ai appris après coup que l'eau du quartier avait été contrôlée. On ne nous a jamais communiqué les résultats. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "16/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0409",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.03882,
+      46.18196
+     ]
+    },
+    "properties": {
+     "id": "T0409",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome non hodgkinien",
+     "color": "#0B8A4E",
+     "annee": 2017,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Charente-Maritime (17)",
+     "hotspot": "h2",
+     "hotspot_nom": "Plaine d'Aunis — Saint-Rogatien",
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de mon fils en 2017, presque par hasard, lors d'une prise de sang de routine. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. L'usine d'enrobés tourne à trois kilomètres. On nous a répondu que le lien n'était pas établi. Je témoigne pour que d'autres familles se signalent, parce que seuls on ne pèse rien.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "14/06/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0410",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -0.34258,
+      44.5841
+     ]
+    },
+    "properties": {
+     "id": "T0410",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2014,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Gironde (33)",
+     "hotspot": "h10",
+     "hotspot_nom": "Preignac — commune viticole du Sauternais",
+     "exposition": "Activité professionnelle d'un parent",
+     "profession_parent": "Agriculteur / agricultrice",
+     "issue": "Décès",
+     "temoignage": "C'est en 2014 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir quatre ans. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Il n'a pas survécu à la rechute. C'est en son nom que je remplis ce formulaire. Neuf enfants. On nous a répondu qu'il n'existait aucune mesure dans l'air. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "19/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0411",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.73599,
+      49.44812
+     ]
+    },
+    "properties": {
+     "id": "T0411",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Hodgkin",
+     "color": "#0B8A4E",
+     "annee": 2016,
+     "tranche_age": "0-1 an",
+     "sexe": "Féminin",
+     "dep": "Aisne",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2016 qu'on nous a annoncé le diagnostic. Ma fille venait d'avoir quelques mois. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Il y a une usine à trois kilomètres. Personne n'a jamais voulu faire le lien. On nous a dit « c'est le hasard ». J'aimerais qu'on me le prouve avec des données.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "05/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0412",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -0.43287,
+      44.65406
+     ]
+    },
+    "properties": {
+     "id": "T0412",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome non hodgkinien",
+     "color": "#0B8A4E",
+     "annee": 2024,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Gironde",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2024, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait ma fille. On a enchaîné chimio, greffe, puis une rechute que personne n'avait vue venir. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Je ne dis pas que c'est la cause. Je dis juste que personne n'a cherché. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "05/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0413",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      6.14844,
+      49.23024
+     ]
+    },
+    "properties": {
+     "id": "T0413",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Astrocytome",
+     "color": "#1F3ACC",
+     "annee": 2021,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Moselle (57)",
+     "hotspot": "h7",
+     "hotspot_nom": "Amnéville — un même établissement scolaire",
+     "exposition": "Aucune exposition identifiée",
+     "profession_parent": "Employé·e de commerce",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2021, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait ma fille. Il a fallu partir au CHU pour le protocole, deux ans de traitement, des semaines entières à l'hôpital. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. On nous a dit qu'il n'y avait pas de mesure de benzène avant 2008. Donc rien à comparer. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "18/07/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0414",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -1.86642,
+      47.15381
+     ]
+    },
+    "properties": {
+     "id": "T0414",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë lymphoblastique",
+     "color": "#C01B5C",
+     "annee": 2012,
+     "tranche_age": "2-5 ans",
+     "sexe": "Masculin",
+     "dep": "Loire-Atlantique (44)",
+     "hotspot": "h1",
+     "hotspot_nom": "Sainte-Pazanne et le Pays de Retz",
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2012, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait mon fils. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. Trois familles de l'école ont eu un cancer en cinq ans. Sur une commune de six mille habitants. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "07/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0415",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      1.19363,
+      49.26809
+     ]
+    },
+    "properties": {
+     "id": "T0415",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Hodgkin",
+     "color": "#0B8A4E",
+     "annee": 2020,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Eure (27)",
+     "hotspot": "h6",
+     "hotspot_nom": "Pont-de-l'Arche et Igoville",
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Artisan",
+     "issue": "Décès",
+     "temoignage": "En 2020, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait ma fille. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Elle est partie deux ans après le diagnostic. On continue pour les autres. Selon qu'on regarde la commune ou le canton, on nous dit six fois trop de cas, ou rien du tout. Ce sont les mêmes enfants. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "11/05/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0416",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      5.78426,
+      43.23155
+     ]
+    },
+    "properties": {
+     "id": "T0416",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome de Hodgkin",
+     "color": "#0B8A4E",
+     "annee": 2015,
+     "tranche_age": "0-1 an",
+     "sexe": "Masculin",
+     "dep": "Var",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Cadre du tertiaire",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2015, mon fils a fait une chute bête à l'école. La radio a montré autre chose. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. On habite à quatre cents mètres des champs. Les traitements passaient au petit matin. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "14/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0417",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      4.85535,
+      45.75003
+     ]
+    },
+    "properties": {
+     "id": "T0417",
+     "patho_id": "leucemie",
+     "patho_label": "Leucémie aiguë",
+     "sous_type": "Leucémie aiguë myéloblastique",
+     "color": "#C01B5C",
+     "annee": 2020,
+     "tranche_age": "12-17 ans",
+     "sexe": "Masculin",
+     "dep": "Rhône (69)",
+     "hotspot": "h5",
+     "hotspot_nom": "Lyon 1er et 4e — secteur Croix-Rousse",
+     "exposition": "Incinérateur ou décharge",
+     "profession_parent": "Artisan",
+     "issue": "En rémission / suivi",
+     "temoignage": "Le diagnostic est tombé en 2020, mon fils avait quatorze ans. Entre les traitements et le trajet de cent kilomètres, on a vécu deux ans en apnée. Elle est en rémission, mais il reste des séquelles auditives et beaucoup de fatigue. En ville, personne ne se connaît. Il n'y a jamais eu de collectif ici. Ce que je demande, c'est qu'on compte. Juste qu'on compte.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "15/02/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0418",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -0.44458,
+      43.24901
+     ]
+    },
+    "properties": {
+     "id": "T0418",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Gliome de bas grade",
+     "color": "#1F3ACC",
+     "annee": 2025,
+     "tranche_age": "6-11 ans",
+     "sexe": "Féminin",
+     "dep": "Béarn",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Usine ou site industriel à proximité",
+     "profession_parent": "Personnel soignant",
+     "issue": "En rémission / suivi",
+     "temoignage": "On a appris la maladie de ma fille en 2025, presque par hasard, lors d'une prise de sang de routine. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. Il y a une usine à trois kilomètres. Personne n'a jamais voulu faire le lien. On a monté un collectif de parents, on recense nous-mêmes depuis deux ans.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": true,
+     "recu_le": "25/04/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0419",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      2.42134,
+      48.85453
+     ]
+    },
+    "properties": {
+     "id": "T0419",
+     "patho_id": "lymphome",
+     "patho_label": "Lymphome",
+     "sous_type": "Lymphome non hodgkinien",
+     "color": "#0B8A4E",
+     "annee": 2012,
+     "tranche_age": "2-5 ans",
+     "sexe": "Féminin",
+     "dep": "Val-de-Marne (94)",
+     "hotspot": "h9",
+     "hotspot_nom": "Vincennes — école Franklin-Roosevelt",
+     "exposition": "Épandages agricoles réguliers",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "En rémission / suivi",
+     "temoignage": "En 2012, après trois mois d'allers-retours chez le médecin, on a fini par avoir un nom sur ce qu'avait ma fille. J'ai arrêté de travailler pendant quatorze mois. Mon conjoint a fait les trajets seul. Il a repris l'école avec un an de retard. On vit avec la peur de la rechute. L'ancienne usine avait laissé du trichloréthylène dans la nappe. Sous l'école. Je ne veux pas d'un coupable, je veux une carte et des chiffres publics.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "10/01/2026"
+    }
+   },
+   {
+    "type": "Feature",
+    "id": "T0420",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      5.61379,
+      43.19508
+     ]
+    },
+    "properties": {
+     "id": "T0420",
+     "patho_id": "snc",
+     "patho_label": "Tumeur du système nerveux central",
+     "sous_type": "Épendymome",
+     "color": "#1F3ACC",
+     "annee": 2014,
+     "tranche_age": "6-11 ans",
+     "sexe": "Masculin",
+     "dep": "Var",
+     "hotspot": null,
+     "hotspot_nom": null,
+     "exposition": "Eau du robinet ou puits suspectés",
+     "profession_parent": "Sans emploi au moment du diagnostic",
+     "issue": "En rémission / suivi",
+     "temoignage": "C'est en 2014 qu'on nous a annoncé le diagnostic. Mon fils venait d'avoir huit ans. Le service nous a très bien accompagnés, mais on était les seuls à poser des questions sur l'environnement. Aujourd'hui, la rémission tient depuis quatre ans. On surveille tous les six mois. Mon conjoint a travaillé quinze ans sur un site classé. On s'est posé la question, sans jamais avoir de réponse. Si nos cas peuvent servir à quelque chose, je veux bien les donner.",
+     "audio": null,
+     "duree_audio": null,
+     "verifie": false,
+     "recu_le": "07/01/2026"
     }
    }
   ]

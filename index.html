@@ -9,12 +9,11 @@
      témoignages fictifs. À retirer au moment de la publication réelle. -->
 <meta name="robots" content="noindex, nofollow">
 
-<title>Atlas de l'exposome — clusters pédiatriques en France (démo carto)</title>
+<title>Atlas de l'exposome — clusters pédiatriques en France</title>
 
 <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-<link rel="stylesheet" href="css/page.css?v=31aabc89">
-<link rel="stylesheet" href="css/app.css?v=31aabc89">
+<link rel="stylesheet" href="css/page.css?v=08c3dde3">
+<link rel="stylesheet" href="css/app.css?v=08c3dde3">
 </head>
 <body>
 
@@ -26,12 +25,6 @@
   </div>
 
   <div class="spacer"></div>
-
-  <div class="engine-switch" id="engine-switch" role="tablist" aria-label="Moteur de carte">
-    <button data-engine="maplibre" class="on" role="tab"><span class="dot"></span><span class="e-full">MapLibre GL</span><span class="e-short">ML</span></button>
-    <button data-engine="leaflet" role="tab"><span class="dot"></span><span class="e-full">Leaflet</span><span class="e-short">LF</span></button>
-    <button data-engine="deck" role="tab"><span class="dot"></span><span class="e-full">deck.gl</span><span class="e-short">GL</span></button>
-  </div>
 
   <div class="mode-switch" id="mode-switch">
     <button data-mode="intro" class="on">Déroulé</button>
@@ -63,9 +56,8 @@
         Les témoignages individuels sont <b>fictifs</b>, générés pour tester le rendu.
       </p>
       <p class="fine">
-        Cliquez un secteur pour lire les témoignages qu'il contient, un cluster pour sa fiche
-        complète. Le sélecteur en haut change de moteur de carte sans changer ni la donnée ni
-        l'interface.
+        Cliquez un <b>carré</b> pour la fiche complète d'un cluster, une <b>tache</b> pour lire
+        les témoignages du secteur. Deux formes, deux natures de donnée.
       </p>
     </section>
 
@@ -75,15 +67,29 @@
     </section>
 
     <section class="sec explore">
-      <h2>Couches</h2>
-      <label class="toggle-row"><input type="checkbox" id="tg-zones" checked>
-        <span>Zones de cluster <em id="c-zones"></em></span></label>
-      <label class="toggle-row"><input type="checkbox" id="tg-sig" checked>
-        <span>Autres signalements instruits <em id="c-sig"></em></span></label>
-      <label class="toggle-row"><input type="checkbox" id="tg-temoins" checked>
-        <span>Témoignages, secteurs flous <em id="c-tem"></em></span></label>
-      <label class="toggle-row" id="row-agg"><input type="checkbox" id="tg-agg">
-        <span>Agrégation spatiale <em>deck.gl</em></span></label>
+      <h2>Deux couches, deux natures</h2>
+
+      <div class="famille famille-officiel">
+        <div class="fam-tete"><span class="fam-ico ico-hotspot">1</span>
+          <b>Clusters &amp; signalements</b></div>
+        <p class="fam-txt">Ce que l'État a instruit. Périmètre publié, mesure officielle,
+          rapport source. Carré numéroté.</p>
+        <label class="toggle-row"><input type="checkbox" id="tg-zones" checked>
+          <span>Clusters documentés <em id="c-zones"></em></span></label>
+        <label class="toggle-row"><input type="checkbox" id="tg-sig" checked>
+          <span>Autres signalements instruits <em id="c-sig"></em></span></label>
+      </div>
+
+      <div class="famille famille-citoyen">
+        <div class="fam-tete"><span class="fam-ico ico-temoin"></span>
+          <b>Cas déclarés par les familles</b></div>
+        <p class="fam-txt">Ce que les familles signalent elles-mêmes. <b>Jamais de position
+          exacte</b> : une tache floue par secteur, à partir de 3 cas. Tache ronde, sans contour.</p>
+        <label class="toggle-row"><input type="checkbox" id="tg-temoins" checked>
+          <span>Secteurs de témoignages <em id="c-tem"></em></span></label>
+        <label class="toggle-row" id="row-agg"><input type="checkbox" id="tg-agg">
+          <span>Agrégation en hexagones <em>2,5D</em></span></label>
+      </div>
       <p class="fine" id="k-note" style="margin-top:8px"></p>
 
       <label class="toggle-row danger-row"><input type="checkbox" id="tg-exact">
@@ -115,9 +121,7 @@
 
 <!-- ------------------------------------------------------------- CARTE -->
 <div id="map-stage">
-  <div id="map-maplibre" class="map-canvas on"></div>
-  <div id="map-leaflet"  class="map-canvas"></div>
-  <div id="map-deck"     class="map-canvas"></div>
+  <div id="map-deck" class="map-canvas on"></div>
   <div id="deck-tip"></div>
 
   <div id="loading">chargement du fond de carte…</div>
@@ -129,8 +133,6 @@
     un cas isolé dans une commune rurale est retrouvable.
     <button id="exact-off">Masquer</button>
   </div>
-
-  <div class="hud" id="engine-note"></div>
 
   <div class="hud" id="playbar">
     <button class="play" id="pb-toggle" aria-label="Lancer la lecture">▶</button>
@@ -147,12 +149,15 @@
   <div class="hud" id="legend">
     <button id="legend-toggle" aria-label="Légende">Légende</button>
     <div id="legend-body">
-      <div id="legend-patho"></div>
-      <hr>
-      <div class="li"><span class="zone sig"></span> Cluster, excès confirmé</div>
-      <div class="li"><span class="zone nonsig"></span> Excès non retenu ou enquête en cours</div>
-      <div class="li"><span class="zone anon"></span> Périmètre non publié (RGPD)</div>
+      <div class="leg-titre">Instruit par l'État</div>
+      <div class="li"><span class="leg-carre confirme">1</span> Cluster, excès confirmé</div>
+      <div class="li"><span class="leg-carre enquete">1</span> Excès non retenu ou enquête en cours</div>
+      <div class="li"><span class="leg-carre anon">?</span> Périmètre non publié (RGPD)</div>
       <div class="li"><span class="sq"></span> Autre signalement instruit</div>
+      <hr>
+      <div class="leg-titre">Déclaré par les familles</div>
+      <div class="li"><span class="leg-tache"></span> Secteur flou, 3 cas ou plus</div>
+      <div id="legend-patho"></div>
     </div>
   </div>
 </div>
@@ -161,18 +166,15 @@
 <div id="modal" role="dialog" aria-modal="true"><div class="modal-box" id="modal-box"></div></div>
 
 <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://unpkg.com/deck.gl@9.0.35/dist.min.js"></script>
 <script src="https://unpkg.com/pmtiles@3.2.0/dist/pmtiles.js"></script>
 
-<script src="js/data.js?v=31aabc89"></script>
-<script src="js/concepts.js?v=31aabc89"></script>
-<script src="js/section1.js?v=31aabc89"></script>
-<script src="js/style-nk.js?v=31aabc89"></script>
-<script src="js/shared.js?v=31aabc89"></script>
-<script src="js/engine-maplibre.js?v=31aabc89"></script>
-<script src="js/engine-leaflet.js?v=31aabc89"></script>
-<script src="js/engine-deck.js?v=31aabc89"></script>
-<script src="js/app.js?v=31aabc89"></script>
+<script src="js/data.js?v=08c3dde3"></script>
+<script src="js/concepts.js?v=08c3dde3"></script>
+<script src="js/section1.js?v=08c3dde3"></script>
+<script src="js/style-nk.js?v=08c3dde3"></script>
+<script src="js/shared.js?v=08c3dde3"></script>
+<script src="js/engine-deck.js?v=08c3dde3"></script>
+<script src="js/app.js?v=08c3dde3"></script>
 </body>
 </html>

@@ -95,9 +95,11 @@ window.NK_SECTION1 = (function () {
       const t = h > 0 ? Math.min(1, root.scrollTop / h) : 0;
       const l = entre(t, DEBUT_LEVEE, FIN_LEVEE);   // 0 pendant la lecture, 1 à la fin
 
-      /* La carte garde son opacité : c'est le voile qui s'efface. */
-      stage.style.setProperty('--tease', (9 - 9 * l).toFixed(1) + 'px');
-      root.style.setProperty('--voile', (0.82 - 0.82 * l).toFixed(3));
+      /* La carte garde son opacité : c'est le voile qui s'efface. Elle doit
+         être reconnaissable comme carte dès le premier écran — donc un flou
+         léger et un voile modéré, pas un aplat qui la fait disparaître. */
+      stage.style.setProperty('--tease', (2.5 - 2.5 * l).toFixed(1) + 'px');
+      root.style.setProperty('--voile', (0.42 - 0.42 * l).toFixed(3));
       reveal.style.setProperty('--net', l.toFixed(3));
 
       pilule.classList.toggle('on', root.scrollTop > 140 && l < 0.75);

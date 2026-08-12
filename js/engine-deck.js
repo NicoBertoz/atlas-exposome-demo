@@ -44,6 +44,36 @@ window.NK_ENGINES.deck = (function () {
   }
   const hideTip = () => { tip().style.display = 'none'; };
 
+  /* Les clusters sont posés en marqueurs DOM plutôt qu'en couche GL : on veut
+     un CARRÉ à bord d'encre, numéroté — une forme qui dit « périmètre publié,
+     dossier instruit ». deck.gl ne dessine que des ronds, et c'est justement
+     la forme réservée aux cas déclarés. */
+  let badges = [];
+  function creerBadges() {
+    badges.forEach(m => m.remove());
+    badges = S().marqueurs.features.map(f => {
+      const el = document.createElement('button');
+      el.className = 'nk-hotspot';
+      el.innerHTML = `<span style="background:${f.properties.marker_color}">${f.properties.num}</span>`;
+      el.title = f.properties.nom;
+      const h = S().hotspotParId(f.properties.id);
+      el.addEventListener('click', ev => { ev.stopPropagation(); ctx.onZone(h); });
+      el.addEventListener('mouseenter', ev => {
+        const r = document.getElementById('map-stage').getBoundingClientRect();
+        showTip(S().zoneHTML(h, true), ev.clientX - r.left, ev.clientY - r.top);
+      });
+      el.addEventListener('mouseleave', hideTip);
+      return new maplibregl.Marker({ element: el })
+        .setLngLat(f.geometry.coordinates).addTo(map);
+    });
+    map.on('zoomend', () => syncBadges(last && last.zones));
+  }
+
+  function syncBadges(on) {
+    const visible = on !== false && zoom() < 9;
+    badges.forEach(m => { m.getElement().style.display = visible ? '' : 'none'; });
+  }
+
   function layers(state) {
     const L = [];
     // dessinées en dernier : les pastilles de cluster et les signalements
@@ -55,32 +85,14 @@ window.NK_ENGINES.deck = (function () {
         id: 'zones', data: window.NK_DATA.hotspots,
         filled: true, stroked: true, pickable: true, autoHighlight: true,
         highlightColor: [245, 212, 0, 120],
+        /* Contour net et continu : un cluster a un périmètre publié, et la
+           carte doit le dire. C'est l'inverse exact des taches déclaratives. */
         getFillColor: f => [...S().rgb(S().zoneColor(f.properties)),
-                            f.properties.anonyme ? 18 : 44],
-        getLineColor: f => [...S().rgb(S().zoneColor(f.properties)), 210],
-        lineWidthMinPixels: 1.4,
+                            f.properties.anonyme ? 14 : 34],
+        getLineColor: f => [...S().rgb(S().zoneColor(f.properties)), 255],
+        lineWidthMinPixels: 2, lineWidthMaxPixels: 3,
         onHover: i => i.object ? showTip(S().zoneHTML(i.object.properties, true), i.x, i.y) : hideTip(),
         onClick: i => i.object && ctx.onZone(i.object.properties),
-      }));
-    }
-
-    // Pastilles numérotées, seulement tant qu'on est loin (cf. les 2 autres moteurs)
-    if (state.zones && zoom() < 9) {
-      dessus.push(new deck.ScatterplotLayer({
-        id: 'marq', data: S().marqueurs.features,
-        getPosition: f => f.geometry.coordinates,
-        getFillColor: f => S().rgb(f.properties.marker_color),
-        getRadius: 24, radiusUnits: 'pixels',
-        stroked: true, lineWidthMinPixels: 2, getLineColor: [20, 18, 13, 235],
-        pickable: true, autoHighlight: true, highlightColor: [20, 18, 13, 255],
-        onHover: i => i.object ? showTip(S().zoneHTML(S().hotspotParId(i.object.properties.id), true), i.x, i.y) : hideTip(),
-        onClick: i => i.object && ctx.onZone(S().hotspotParId(i.object.properties.id)),
-      }));
-      dessus.push(new deck.TextLayer({
-        id: 'marq-num', data: S().marqueurs.features,
-        getPosition: f => f.geometry.coordinates,
-        getText: f => f.properties.num,
-        getSize: 13, getColor: [20, 18, 13], fontWeight: 700, pickable: false,
       }));
     }
 
@@ -100,9 +112,9 @@ window.NK_ENGINES.deck = (function () {
       dessus.push(new deck.ScatterplotLayer({
         id: 'sig', data: window.NK_DATA.signalements,
         getPosition: f => f.geometry.coordinates,
-        filled: false, stroked: true, getLineColor: [139, 133, 122, 235],
-        lineWidthMinPixels: 1.5,
-        getRadius: 2200, radiusMinPixels: 4, radiusMaxPixels: 9,
+        filled: true, getFillColor: [244, 241, 232, 235],
+        stroked: true, getLineColor: [87, 83, 74, 255], lineWidthMinPixels: 1.8,
+        getRadius: 2200, radiusMinPixels: 5, radiusMaxPixels: 9,
         pickable: true, autoHighlight: true, highlightColor: [20, 18, 13, 255],
         onHover: i => i.object ? showTip(S().sigHTML(i.object.properties), i.x, i.y) : hideTip(),
         onClick: i => i.object && ctx.onSignal(i.object.properties),
@@ -127,23 +139,27 @@ window.NK_ENGINES.deck = (function () {
            <div class="cta">Agrégation calculée à la volée sur GPU</div></div>`, i.x, i.y) : hideTip(),
       }));
     } else if (state.temoins) {
-      // Rayon en mètres : la tache vaut exactement la demi-maille. Trois
-      // passes concentriques pour un dégradé, deck n'ayant pas de flou.
-      [[1, 36], [0.72, 46], [0.44, 68]].forEach(([k, alpha], idx) =>
-        L.push(new deck.ScatterplotLayer({
-          id: 'cell-' + idx, data: state.cellules,
-          getPosition: c => c.centre,
-          getFillColor: c => [...S().rgb(c.color), alpha],
-          getRadius: c => c.rayon_km * 1000 * k,
-          radiusMinPixels: 15 * k, pickable: false,
-        })));
+      /* Grammaire visuelle des cas déclarés : une TACHE, ronde, dégradée,
+         SANS CONTOUR. Rien qui ressemble à un périmètre : le flou est le
+         message. Six passes concentriques donnent le dégradé que deck.gl ne
+         sait pas produire, et l'absence de bord net dit qu'aucune limite
+         n'est revendiquée — à l'exact opposé du carré des clusters. */
+      [[1, 14], [0.82, 20], [0.64, 28], [0.48, 36], [0.34, 46], [0.2, 60]]
+        .forEach(([k, alpha], idx) =>
+          L.push(new deck.ScatterplotLayer({
+            id: 'cell-' + idx, data: state.cellules,
+            getPosition: c => c.centre,
+            getFillColor: c => [...S().rgb(c.color), alpha],
+            getRadius: c => c.rayon_km * 1000 * k,
+            radiusMinPixels: 17 * k, pickable: false,
+          })));
+      // cible de clic invisible, un peu plus large que le cœur de la tache
       L.push(new deck.ScatterplotLayer({
         id: 'cells', data: state.cellules,
         getPosition: c => c.centre,
-        filled: false, stroked: true, lineWidthMinPixels: 1,
-        getLineColor: c => [...S().rgb(c.color), 100],
-        getRadius: c => c.rayon_km * 1000 * 0.72, radiusMinPixels: 11,
-        pickable: true, autoHighlight: true, highlightColor: [20, 18, 13, 60],
+        getFillColor: [0, 0, 0, 0], stroked: false,
+        getRadius: c => c.rayon_km * 1000 * 0.7, radiusMinPixels: 12,
+        pickable: true, autoHighlight: true, highlightColor: [20, 18, 13, 40],
         onHover: i => i.object ? showTip(S().celluleHTML(i.object), i.x, i.y) : hideTip(),
         onClick: i => {
           if (!i.object) return;
@@ -154,7 +170,7 @@ window.NK_ENGINES.deck = (function () {
       L.push(new deck.TextLayer({
         id: 'cell-n', data: state.cellules,
         getPosition: c => c.centre, getText: c => String(c.n),
-        getSize: 13, getColor: [20, 18, 13], fontWeight: 700, pickable: false,
+        getSize: 11, getColor: [20, 18, 13, 190], fontWeight: 700, pickable: false,
       }));
     }
     return L.concat(dessus);
@@ -187,6 +203,7 @@ window.NK_ENGINES.deck = (function () {
         whenReady(() => {
           if (!auto) S().libellesEnFrancais(map);
           map.addControl(overlay);
+          creerBadges();
           if (last) this.render(last);
           map.fitBounds(S().FRANCE.bounds, { padding: S().FRANCE.padding(), duration: 0 });
           c.onReady('deck'); resolve();
@@ -206,6 +223,7 @@ window.NK_ENGINES.deck = (function () {
       if (!overlay) return;
       hideTip();
       overlay.setProps({ layers: layers(state) });
+      syncBadges(state.zones);
       if (map) map.easeTo({ pitch: state.agg ? 46 : 0, duration: 700 });
     },
 

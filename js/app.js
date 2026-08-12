@@ -22,7 +22,7 @@
 
   /* ----------------------------------------------------------- ÉTAT */
   const state = {
-    engine: 'maplibre',
+    engine: 'deck',
     mode: 'intro',
     pathos: new Set(PATHOS.map(p => p.id)),
     yearMax: null,
@@ -65,31 +65,18 @@
     onReady: id => { ready[id] = true; if (id === state.engine) $('#loading').classList.add('off'); },
   };
 
+  /* Un seul moteur depuis l'arbitrage : deck.gl posé sur MapLibre.
+     MapLibre porte le fond vectoriel et la caméra, deck.gl les couches de
+     données. La fonction reste pour garder le contrat inchangé si un second
+     moteur revenait un jour. */
   async function switchEngine(id) {
-    if (id === state.engine && ready[id]) return;
-    stopPlayback();
+    if (ready[id]) return;
     state.engine = id;
-    document.querySelectorAll('#engine-switch button')
-      .forEach(b => b.classList.toggle('on', b.dataset.engine === id));
-    document.querySelectorAll('.map-canvas')
-      .forEach(c => c.classList.toggle('on', c.id === 'map-' + id));
-
-    const e = engines[id];
-    $('#engine-note').innerHTML =
-      `<b>${e.label}</b>${e.note}<div class="caps">${
-        e.caps.map(c => `<span class="cap ${c[1] ? '' : 'no'}">${c[0]}</span>`).join('')}</div>`;
-
-    const aggOk = e.caps.some(c => c[0] === 'agrégation GPU' && c[1]);
-    $('#tg-agg').disabled = !aggOk;
-    $('#row-agg').classList.toggle('dim', !aggOk);
-
-    if (!ready[id]) {
-      $('#loading').classList.remove('off');
-      await e.init(document.getElementById('map-' + id), ctx);
-    }
-    e.setBasemap(state.basemap);
-    e.render(state);
-    e.resize();
+    $('#loading').classList.remove('off');
+    await engines[id].init(document.getElementById('map-' + id), ctx);
+    engines[id].setBasemap(state.basemap);
+    engines[id].render(state);
+    engines[id].resize();
     $('#loading').classList.add('off');
   }
 
@@ -163,9 +150,6 @@
     setTimeout(() => engines[state.engine].render(state), 400);
   });
 
-  document.querySelectorAll('#engine-switch button')
-    .forEach(b => b.addEventListener('click', () => switchEngine(b.dataset.engine)));
-
   /* -------------------------------------------- FEUILLE MOBILE (sheet) */
   function openSheet(open) {
     if (!isMobile()) return;
@@ -175,21 +159,6 @@
   }
   $('#sheet-grip').addEventListener('click', () => openSheet(!$('#panel').classList.contains('open')));
   $('#legend-toggle').addEventListener('click', () => $('#legend').classList.toggle('open'));
-
-  /* Sur téléphone, la barre du haut ne peut pas porter à la fois la marque,
-     le choix du moteur, le mode et l'appel à l'action. Le sélecteur de moteur
-     descend donc dans le pied du panneau : c'est un réglage de démonstration,
-     pas une commande de lecture. */
-  const mq = window.matchMedia('(max-width: 560px)');
-  function placerSelecteurMoteur() {
-    const sw = $('#engine-switch');
-    const cible = mq.matches ? $('.panel-foot') : $('#topbar');
-    if (sw.parentElement === cible) return;
-    if (mq.matches) cible.prepend(sw); else cible.insertBefore(sw, $('#mode-switch'));
-    sw.classList.toggle('in-panel', mq.matches);
-  }
-  mq.addEventListener('change', placerSelecteurMoteur);
-  placerSelecteurMoteur();
 
   /* ------------------------------------------------------- LES FICHES */
   function openDetail() {
@@ -658,5 +627,5 @@
      d'attendre le fond de carte. La carte se charge derrière, floutée.
      #carte permet de pointer directement sur la section 2 depuis une page concept. */
   setMode(location.hash === '#carte' ? 'carte' : 'intro');
-  switchEngine('maplibre');
+  switchEngine('deck');
 })();

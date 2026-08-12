@@ -42,18 +42,21 @@ window.NK_STYLE = (function () {
     /* Papier : le fond de carte doit s'effacer derrière les encres des
        clusters. Aucun aplat ne dépasse le contraste d'un tramé léger. */
     light: {
-      fond:      '#F4F1E8',
-      terre:     '#FAF8F1',
-      eau:       '#DFE6E0',
-      vert:      '#EFEDE0',
-      urbain:    '#EAE5D6',
-      frontiere: '#C9C2AE',
-      pays:      '#ADA694',
-      route:     '#E4DFCE',
-      routeMaj:  '#D8D2BD',
-      texte:     '#8B857A',
-      texteFort: '#3A362E',
-      halo:      'rgba(244,241,232,.92)',
+      /* La mer est franchement plus foncée que la terre : sans ce contraste,
+         le contour de la France ne se lit pas, et un fond de carte qu'on ne
+         reconnaît pas comme une carte ne sert à rien en arrière-plan. */
+      fond:      '#CFDCDA',
+      eau:       '#CFDCDA',
+      terre:     '#F7F4EA',
+      vert:      '#ECEBDB',
+      urbain:    '#E6E0CE',
+      frontiere: '#BDB6A1',
+      pays:      '#9C947F',
+      route:     '#E0DAC6',
+      routeMaj:  '#CFC8B0',
+      texte:     '#7A7468',
+      texteFort: '#332F28',
+      halo:      'rgba(247,244,234,.92)',
     },
   };
 

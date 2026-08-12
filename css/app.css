@@ -250,7 +250,7 @@ input[type=range] { width: 100%; accent-color: var(--accent); }
 #section1 {
   position: fixed; inset: var(--bar-h) 0 0 0; z-index: 40;
   overflow-y: auto; -webkit-overflow-scrolling: touch; display: none;
-  background: rgba(244, 241, 232, var(--voile, .82));
+  background: rgba(244, 241, 232, var(--voile, .42));
   transition: background .2s linear;
 }
 body.vue-intro #section1 { display: block; }
@@ -268,13 +268,20 @@ body.vue-intro #btn-basemap { display: none; }
 body.vue-intro .map-canvas {
   /* La carte garde son opacité : sur un fond clair comme sur un fond
      sombre, une carte à 20 % ne se voit pas. C'est le voile qui dose. */
-  filter: blur(var(--tease, 9px));
+  filter: blur(var(--tease, 2.5px));
   pointer-events: none;
 }
 
 /* ------------------------------------------------------------ HÉRO */
 .s1-hero {
   max-width: 940px; margin: 0 auto; padding: 8vh 24px 44px;
+}
+/* La carte se voit derrière : le titre a besoin d'un fond à lui pour rester
+   lisible sans qu'on remette un aplat sur toute la page. */
+.s1-hero h1, .s1-chapo, .s1-chiffres, .s1-kicker { position: relative; }
+.s1-hero h1 { text-shadow: 0 0 18px var(--papier), 0 0 8px var(--papier); }
+.s1-chapo, .s1-chiffres b, .s1-chiffres span, .s1-kicker, .s1-ou {
+  text-shadow: 0 0 12px var(--papier), 0 0 6px var(--papier);
 }
 .s1-kicker {
   display: block; font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase;
@@ -523,14 +530,6 @@ body.vue-intro .map-canvas {
 .tem-list .nm { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .tem-list .yr { font-family: var(--mono); font-size: 11px; color: var(--txt-faint); flex: none; }
 
-/* Pastille numérotée d'un cluster : divIcon côté Leaflet, marqueur DOM
-   côté MapLibre et deck.gl. Même rendu dans les trois moteurs. */
-.nk-marq.gl { background: none; border: 0; padding: 0; cursor: pointer; }
-.nk-marq span {
-  display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%;
-  font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--sur-accent);
-  border: 2px solid var(--encre); box-shadow: 0 0 0 8px rgba(226,45,34,.1);
-}
 
 #deck-tip {
   position: absolute; z-index: 20; pointer-events: none; display: none;
@@ -801,7 +800,6 @@ body::before {
 .stat > div { background: var(--papier-2); border: 1.5px solid var(--trait-doux); }
 .fiche-cta { background: rgba(245,212,0,.28); border: 1.5px solid var(--trait); }
 
-.nk-marq span { border: 2px solid var(--trait); box-shadow: none; color: var(--papier); }
 .nk-cell span { color: var(--encre); text-shadow: 0 0 3px var(--papier), 0 0 2px var(--papier); }
 
 .modal-box { background: var(--papier); border: 1.5px solid var(--trait); box-shadow: 5px 5px 0 var(--trait); }
@@ -823,3 +821,72 @@ a:hover { border-bottom-color: var(--encre); }
 .maplibregl-ctrl-attrib, .leaflet-control-attribution {
   background: rgba(244,241,232,.9) !important; color: var(--encre-2) !important;
 }
+
+
+/* ================================================================== *
+ *  DEUX OBJETS, DEUX FORMES
+ *
+ *  Toute la lisibilité de la carte tient à cette opposition, et elle est
+ *  volontairement grossière :
+ *
+ *    CARRÉ à bord d'encre, numéroté   = instruit par l'État. Un périmètre
+ *                                       publié, une mesure, un rapport.
+ *    TACHE ronde, dégradée, sans bord = déclaré par les familles. Aucune
+ *                                       limite revendiquée, aucune position.
+ *
+ *  Un carré a des angles : il affirme. Une tache n'en a pas : elle situe.
+ * ================================================================== */
+.nk-hotspot { background: none; border: 0; padding: 0; cursor: pointer; line-height: 0; }
+.nk-hotspot span {
+  display: grid; place-items: center; width: 26px; height: 26px;
+  border: 2px solid var(--trait); border-radius: 3px;
+  font-family: var(--mono); font-size: 12px; font-weight: 700;
+  color: var(--papier); line-height: 1;
+  box-shadow: 2px 2px 0 rgba(20,18,13,.35);
+  transition: transform .1s ease, box-shadow .1s ease;
+}
+.nk-hotspot:hover span { transform: translate(-1px, -1px); box-shadow: 3px 3px 0 var(--trait); }
+
+/* Les deux familles, rappelées dans le panneau */
+.famille { border: 1.5px solid var(--trait); border-radius: 8px; padding: 12px 14px; margin-bottom: 10px; }
+.famille-citoyen { border-style: dashed; }
+.fam-tete { display: flex; align-items: center; gap: 9px; margin-bottom: 6px; }
+.fam-tete b { font-size: 13px; }
+.fam-ico { flex: none; display: grid; place-items: center; }
+.ico-hotspot {
+  width: 20px; height: 20px; border: 2px solid var(--trait); border-radius: 3px;
+  background: var(--rouge); color: var(--papier);
+  font-family: var(--mono); font-size: 10px; font-weight: 700;
+}
+.ico-temoin {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(192,27,92,.65) 0%, rgba(192,27,92,.28) 45%, rgba(192,27,92,0) 72%);
+}
+.fam-txt { margin: 0 0 8px; font-size: 11.5px; line-height: 1.5; color: var(--txt-dim); }
+.fam-txt b { color: var(--encre); }
+.famille .toggle-row { padding: 5px 0; }
+
+/* Légende : la même grammaire, en petit */
+.leg-titre {
+  font-size: 9.5px; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--txt-faint); margin: 0 0 6px;
+}
+#legend hr + .leg-titre { margin-top: 0; }
+.leg-carre {
+  width: 14px; height: 14px; border: 1.5px solid var(--trait); border-radius: 2px; flex: none;
+  display: grid; place-items: center; font-family: var(--mono); font-size: 8px;
+  font-weight: 700; color: var(--papier); line-height: 1;
+}
+.leg-carre.confirme { background: var(--rouge); }
+.leg-carre.enquete  { background: var(--orange); }
+.leg-carre.anon     { background: var(--encre-3); }
+#legend .sq {
+  width: 11px; height: 11px; border-radius: 50%; background: var(--papier);
+  border: 1.8px solid var(--encre-2); flex: none;
+}
+.leg-tache {
+  width: 16px; height: 16px; border-radius: 50%; flex: none;
+  background: radial-gradient(circle, rgba(192,27,92,.6) 0%, rgba(192,27,92,.25) 45%, rgba(192,27,92,0) 72%);
+}
+#legend-patho { margin-top: 4px; }
+#legend-patho .li { font-size: 11px; }

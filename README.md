@@ -1,8 +1,7 @@
 # Démo carto — Atlas de l'exposome
 
-Trois moteurs de carte open source, la **même donnée** et la **même interface**, pour trancher
-lequel on embarque. On bascule de l'un à l'autre en haut à droite : ce qui change à l'écran,
-c'est exactement ce que le choix technique coûte ou rapporte.
+Carte des clusters de cancers pédiatriques documentés en France, et de la couche participative
+qui l'accompagne. **deck.gl posé sur MapLibre GL JS**, fond de carte auto-hébergé.
 
 ## Lancer
 
@@ -24,69 +23,53 @@ cd demo-cartes && python3 scripts/generate-data.py
 
 ---
 
-## 1. Les trois systèmes retenus
+## 1. Le moteur : deck.gl + MapLibre GL JS
 
-| | **MapLibre GL JS** | **Leaflet** | **deck.gl + MapLibre** |
+**Arbitrage rendu.** Trois moteurs ont été comparés sur la même donnée et la même interface :
+MapLibre GL JS seul, Leaflet, et deck.gl posé sur MapLibre. Le troisième est retenu, les deux
+autres sont retirés du dépôt.
+
+| | **deck.gl + MapLibre** *(retenu)* | MapLibre seul | Leaflet |
 |---|---|---|---|
-| Licence | BSD-3 | BSD-2 | MIT (fondation OpenJS) |
-| Poids | ~230 ko gz | **~42 ko gz** | ~230 ko + ~450 ko gz |
-| Rendu | WebGL, tuiles vectorielles | Canvas/SVG, tuiles raster | WebGL par lots |
-| Style du fond | **JSON, écrit à la main (`style-nk.js`)** | image, non modifiable | JSON (hérité de MapLibre) |
-| Zoom | continu, fractionnaire | par pas (fractionnable via `zoomSnap`) | continu |
-| Points confortables | ~10 000 | ~1 000 | **~1 000 000** |
-| Inclinaison, 2,5D, extrusion | rotation et pitch | non | **oui** |
-| Agrégation (hexagones, heatmap) | à faire soi-même | plugin | **native** |
-| Écosystème de plugins | moyen | **très large** | orienté data viz |
-| Repris par un bénévole | moyen | **facile** | difficile |
-| Tuiles auto-hébergées | **oui, PMTiles** | non sans plugin | **oui, PMTiles** |
+| Licence | MIT + BSD-3 | BSD-3 | BSD-2 |
+| Rendu | WebGL par lots | WebGL | Canvas/SVG |
+| Points confortables | **~1 000 000** | ~10 000 | ~1 000 |
+| Style du fond | JSON écrit à la main | JSON | image, non modifiable |
+| Libellés en français | oui, `name:fr` | oui | non, dessinés dans la tuile |
+| Agrégation, 2,5D | **natives** | à coder | plugin |
+| Tuiles auto-hébergées | oui, PMTiles | oui | non sans plugin |
 
-**Ce qui se voit dans la démo.** Trois différences ne sont pas théoriques, elles sont visibles
-en basculant de moteur :
+**Ce qui a tranché.** La couche participative est faite pour grossir : 420 cas simulés
+aujourd'hui, plusieurs milliers si le questionnaire prend. Leaflet décroche autour du millier de
+marqueurs, MapLibre seul tient mais impose de coder l'agrégation à la main. deck.gl la fait
+nativement, et il n'ajoute rien à installer puisqu'il **s'appuie sur le même MapLibre** pour le
+fond et la caméra. Le fond, le zoom continu et la francisation des libellés viennent donc de
+MapLibre ; les couches de données, le dégradé des taches et l'agrégation hexagonale de deck.gl.
 
-1. **La langue du fond.** En vectoriel, les libellés sont des données : nos tuiles portent
-   `name:fr`, le style le lit, la carte est en français. En raster, ils sont **dessinés dans
-   l'image** : Leaflet utilise donc un fond sombre sans aucun libellé, et les tuiles OSM France
-   en fond clair. (Sur le repli CARTO, `libellesEnFrancais()` dans `js/shared.js` réécrit le
-   `text-field` de chaque couche — utile de savoir que c'est possible.)
-2. **Le zoom.** MapLibre et deck.gl volent d'un cluster à l'autre en continu. Leaflet compte
-   en tuiles de 256 px là où MapLibre compte en 512 : un même cadrage y vaut `zoom + 1`,
-   et l'animation reste plus saccadée.
-3. **L'agrégation.** Le bouton « agrégation spatiale » n'est actif que sur deck.gl. Il empile
-   les témoignages en colonnes hexagonales calculées sur GPU, en vue inclinée. Les deux autres
-   moteurs ne savent pas le faire sans code supplémentaire.
+Les deux différences qui se voyaient à l'écran pendant la comparaison restent utiles à connaître :
+Leaflet compte en tuiles de 256 px là où MapLibre compte en 512 (un même cadrage y vaut
+`zoom + 1`), et ses libellés étant dessinés dans l'image, aucune traduction n'est possible côté
+client. Ce sont deux raisons de ne pas y revenir.
 
-### Recommandation
+### Deux objets, deux formes
 
-**MapLibre GL JS**, pour trois raisons qui tiennent au projet et pas à la technique :
+C'est la décision de lisibilité la plus importante de la carte, et elle est volontairement
+grossière.
 
-- le récit visé (Forensic Architecture, Les Décodeurs) repose sur des **transitions de caméra
-  continues** et sur un **fond qui s'efface ou se rallume** selon l'étape — c'est précisément ce
-  que le style JSON permet, et ce que le raster interdit ;
-- la charte NK arrive en septembre : un style vectoriel se **repeint** en changeant des valeurs,
-  sans changer de fournisseur ;
-- l'**auto-hébergement** est un chemin balisé (voir plus bas), et il compte pour un projet qui
-  parle de souveraineté sur la donnée.
+| | **Carré** numéroté, bord d'encre | **Tache** ronde, dégradée, sans bord |
+|---|---|---|
+| Ce que c'est | un cluster ou un signalement instruit | des cas déclarés par des familles |
+| Origine | Santé publique France, registres, presse | le questionnaire du site |
+| Localisation | périmètre publié, tracé | secteur d'environ 25 km, jamais une adresse |
+| Ce qu'on peut en dire | une mesure officielle, un rapport source | un signal, rien de plus |
 
-**Leaflet** reste le bon choix si l'équipe qui reprendra le code est majoritairement bénévole et
-que la carte se limite à des points cliquables : 42 ko, une API qu'on apprend en une soirée.
-C'est le plan B assumé, pas un mauvais choix.
-
-**deck.gl** n'est pas un concurrent des deux autres : c'est une **surcouche**. On peut démarrer
-sur MapLibre seul et l'ajouter plus tard, le jour où la carte participative dépassera quelques
-milliers de points ou voudra une vue agrégée. Aucune migration à prévoir.
-
-### Ce qu'on n'a pas retenu
-
-- **OpenLayers** — très complet (projections, WMS, WFS), mais API verbeuse et rendu daté pour
-  du récit grand public.
-- **Mapbox GL JS** — non libre depuis la v2, et facturé au chargement de carte. MapLibre en est
-  le fork libre.
-- **Google Maps, ArcGIS** — propriétaires, et l'esthétique institutionnelle est exactement ce que
-  le projet veut éviter.
+Un carré a des angles : il affirme un périmètre. Une tache n'en a pas : elle situe sans
+délimiter. Aucun contour n'est jamais dessiné autour des cas déclarés — le flou **est** le
+message, pas un effet graphique.
 
 ### Le fond de carte est le nôtre
 
-Plus de dépendance à un serveur de tuiles tiers pour les deux moteurs vectoriels.
+Plus de dépendance à un serveur de tuiles tiers.
 
 `tiles/france.pmtiles` (82 Mo) contient la France métropolitaine jusqu'au zoom 9, extraite du
 build public **Protomaps** (données OpenStreetMap). Le navigateur ne télécharge pas les 82 Mo :
@@ -116,8 +99,9 @@ cette limite n'existe pas, et de ne changer qu'une URL dans `style-nk.js`.
 **Repli.** Si le fichier est absent, les deux moteurs retombent automatiquement sur CARTO et
 le signalent dans la console. La démo ne casse pas.
 
-**Leaflet garde ses tuiles raster** : il ne lit pas le vectoriel sans plugin. C'est une des
-différences que le comparatif est là pour montrer.
+La mer est volontairement plus foncée que la terre : sans ce contraste, le contour de la France
+ne se lit pas, et un fond qu'on ne reconnaît pas comme une carte ne sert à rien en arrière-plan
+du déroulé.
 
 ---
 

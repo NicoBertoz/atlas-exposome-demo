@@ -766,21 +766,22 @@ for i, (geo, nom, lieu, cat, patho, periode, cas, conclusion, cause, src) in enu
     })
 
 # --- 100 témoignages fictifs -----------------------------------------------
+TOTAL = 420        # cas déclarés simulés
 brut = []
 for h in HOTSPOTS:
     centre = GEO[h["geo"]]
-    for _ in range(h["n_temoins"]):
+    for _ in range(h["n_temoins"] * 3):
         brut.append({
             "coord": point_dans_cercle(centre, h["rayon_km"] * 0.88),
             "dep": h["lieu"],
             "hotspot": h["id"], "hotspot_nom": h["nom"],
             "soupcon": random.choice(SOUPCONS[h["id"]]),
         })
-for _ in range(100 - len(brut)):
+for _ in range(TOTAL - len(brut)):
     nom, lon, lat = random.choice(COMMUNES_DIFFUSES)
     brut.append({
-        "coord": [round(lon + random.uniform(-0.06, 0.06), 5),
-                  round(lat + random.uniform(-0.05, 0.05), 5)],
+        "coord": [round(lon + random.uniform(-0.34, 0.34), 5),
+                  round(lat + random.uniform(-0.24, 0.24), 5)],
         "dep": nom, "hotspot": None, "hotspot_nom": None,
         "soupcon": random.choice(SOUPCONS_DIFFUS),
     })
@@ -793,9 +794,9 @@ for i, t in enumerate(brut):
     tranche = random.choices(TRANCHES, weights=[8, 34, 33, 25])[0]
     sexe = random.choice(SEXES)
     deces = random.random() < 0.17
-    tid = f"T{i+1:03d}"
+    tid = f"T{i+1:04d}"
     # 8 témoignages « à la une » reçoivent un vrai fichier audio
-    audio = audio_n < 8 and t["hotspot"] is not None and random.random() < 0.5
+    audio = audio_n < 12 and random.random() < 0.05
     if audio:
         audio_n += 1
     temoin_features.append({
