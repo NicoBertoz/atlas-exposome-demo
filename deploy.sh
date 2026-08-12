@@ -12,6 +12,8 @@ cd "$(dirname "$0")"
 REPO="atlas-exposome-demo"
 
 check() {
+  echo "→ empreinte des ressources"
+  python3 scripts/version-assets.py
   echo "→ fichiers attendus"
   for f in index.html questionnaire.html js/data.js js/app.js css/app.css; do
     [ -f "$f" ] && echo "   ok  $f" || { echo "   MANQUE $f"; exit 1; }

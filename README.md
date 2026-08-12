@@ -7,11 +7,14 @@ c'est exactement ce que le choix technique coûte ou rapporte.
 ## Lancer
 
 ```bash
-python3 -m http.server 8777 --directory demo-cartes
+python3 demo-cartes/scripts/serve.py
 ```
 
 Puis ouvrir <http://localhost:8777>. Aucune installation, aucune clé d'API.
-Les trois bibliothèques sont chargées depuis unpkg, les fonds de carte depuis CARTO et OSM France.
+
+Ne pas utiliser `python3 -m http.server` : il ne répond pas aux requêtes HTTP Range,
+et le fond de carte auto-hébergé se lit par tranches d'octets. Il resterait vide en local
+alors qu'il fonctionne en ligne.
 
 Régénérer le jeu de données :
 
@@ -28,22 +31,23 @@ cd demo-cartes && python3 scripts/generate-data.py
 | Licence | BSD-3 | BSD-2 | MIT (fondation OpenJS) |
 | Poids | ~230 ko gz | **~42 ko gz** | ~230 ko + ~450 ko gz |
 | Rendu | WebGL, tuiles vectorielles | Canvas/SVG, tuiles raster | WebGL par lots |
-| Style du fond | **JSON, modifiable couche par couche** | image, non modifiable | JSON (hérité de MapLibre) |
+| Style du fond | **JSON, écrit à la main (`style-nk.js`)** | image, non modifiable | JSON (hérité de MapLibre) |
 | Zoom | continu, fractionnaire | par pas (fractionnable via `zoomSnap`) | continu |
 | Points confortables | ~10 000 | ~1 000 | **~1 000 000** |
 | Inclinaison, 2,5D, extrusion | rotation et pitch | non | **oui** |
 | Agrégation (hexagones, heatmap) | à faire soi-même | plugin | **native** |
 | Écosystème de plugins | moyen | **très large** | orienté data viz |
 | Repris par un bénévole | moyen | **facile** | difficile |
+| Tuiles auto-hébergées | **oui, PMTiles** | non sans plugin | **oui, PMTiles** |
 
 **Ce qui se voit dans la démo.** Trois différences ne sont pas théoriques, elles sont visibles
 en basculant de moteur :
 
-1. **La langue du fond.** Les fonds CARTO servent « New Aquitania », « Island of France ».
-   En vectoriel, on réécrit le `text-field` de chaque couche de libellés pour préférer `name:fr`
-   (voir `libellesEnFrancais()` dans `js/shared.js`) : la carte passe en français en une passe.
-   En raster, les libellés sont **dessinés dans l'image**, on ne peut rien y faire. Leaflet
-   utilise donc un fond sombre sans aucun libellé, et les tuiles OSM France en fond clair.
+1. **La langue du fond.** En vectoriel, les libellés sont des données : nos tuiles portent
+   `name:fr`, le style le lit, la carte est en français. En raster, ils sont **dessinés dans
+   l'image** : Leaflet utilise donc un fond sombre sans aucun libellé, et les tuiles OSM France
+   en fond clair. (Sur le repli CARTO, `libellesEnFrancais()` dans `js/shared.js` réécrit le
+   `text-field` de chaque couche — utile de savoir que c'est possible.)
 2. **Le zoom.** MapLibre et deck.gl volent d'un cluster à l'autre en continu. Leaflet compte
    en tuiles de 256 px là où MapLibre compte en 512 : un même cadrage y vaut `zoom + 1`,
    et l'animation reste plus saccadée.
@@ -80,15 +84,40 @@ milliers de points ou voudra une vue agrégée. Aucune migration à prévoir.
 - **Google Maps, ArcGIS** — propriétaires, et l'esthétique institutionnelle est exactement ce que
   le projet veut éviter.
 
-### Souveraineté des tuiles
+### Le fond de carte est le nôtre
 
-La démo tape sur les serveurs publics de CARTO et d'OSM France, ce qui est acceptable pour une
-maquette et pas pour une publication. Deux chemins pour la suite, tous deux compatibles MapLibre :
+Plus de dépendance à un serveur de tuiles tiers pour les deux moteurs vectoriels.
 
-- **Protomaps** : la France entière tient dans **un seul fichier `.pmtiles`** posé sur n'importe
-  quel stockage objet, lu directement par le navigateur. Pas de serveur de tuiles, pas de quota,
-  fonctionne hors ligne. C'est l'option la plus proche de l'esprit du projet.
-- **OpenFreeMap** ou un **TileServer GL** auto-hébergé, si on préfère un service.
+`tiles/france.pmtiles` (82 Mo) contient la France métropolitaine jusqu'au zoom 9, extraite du
+build public **Protomaps** (données OpenStreetMap). Le navigateur ne télécharge pas les 82 Mo :
+PMTiles lit le fichier **par tranches d'octets**, seules les tuiles affichées transitent.
+
+Le style est écrit à la main dans `js/style-nk.js` : une trentaine de lignes de couleurs et une
+douzaine de couches. Deux gains concrets :
+
+- **les libellés sont en français nativement**, lus dans le champ `name:fr` des tuiles, sans la
+  réécriture côté client qu'imposait CARTO ;
+- **la charte NK de septembre se posera à deux endroits** : le bloc `PALETTES` de ce fichier et
+  le bloc `:root` de `css/app.css`. Rien d'autre.
+
+Régénérer ou étendre le fichier :
+
+```bash
+pmtiles extract https://build.protomaps.com/AAAAMMJJ.pmtiles demo-cartes/tiles/france.pmtiles \
+  --bbox=-5.4,41.2,9.8,51.3 --maxzoom=9
+```
+
+**La limite à connaître.** Au-delà du zoom 9, MapLibre réutilise les tuiles du zoom 9 : au plus
+près des petits clusters (Franconville, Croix-Rousse) la géométrie s'épaissit. Monter à
+`--maxzoom=12` donnerait un rendu net, mais dépasserait la limite de 100 Mo par fichier de GitHub.
+La réponse de production est de poser le fichier sur du stockage objet (Cloudflare R2, S3), où
+cette limite n'existe pas, et de ne changer qu'une URL dans `style-nk.js`.
+
+**Repli.** Si le fichier est absent, les deux moteurs retombent automatiquement sur CARTO et
+le signalent dans la console. La démo ne casse pas.
+
+**Leaflet garde ses tuiles raster** : il ne lit pas le vectoriel sans plugin. C'est une des
+différences que le comparatif est là pour montrer.
 
 ---
 
@@ -255,12 +284,15 @@ demo-cartes/
 ├─ index.html               la carte : récit + exploration
 ├─ questionnaire.html       le formulaire participatif (maquette)
 ├─ deploy.sh                mise en ligne (check | pages | vercel)
+├─ tiles/
+│  └─ france.pmtiles        fond de carte auto-hébergé (82 Mo, z0-9)
 ├─ css/
 │  ├─ app.css               habillage commun + mise en page mobile
 │  └─ form.css              le formulaire seulement
 ├─ js/
 │  ├─ data.js               généré — ne pas éditer à la main
-│  ├─ shared.js             couleurs, popups, emprises, francisation, FLOU
+│  ├─ style-nk.js           le style du fond de carte, couleurs comprises
+│  ├─ shared.js             couleurs, popups, emprises, FLOU
 │  ├─ app.js                état, filtres, fiches, audio, modes, feuille mobile
 │  ├─ recit.js              les 9 chapitres et leurs scènes
 │  ├─ form.js               questionnaire : étapes, géocodage, hachage
@@ -269,6 +301,8 @@ demo-cartes/
 │  └─ engine-deck.js        ┘
 ├─ audio/                   8 témoignages synthétisés (emplacements)
 └─ scripts/
+   ├─ serve.py              serveur local avec HTTP Range (obligatoire)
+   ├─ version-assets.py     empreinte des ressources, anti-cache
    ├─ generate-data.py      construit data.js
    ├─ geo-cache.json        coordonnées des communes (API Adresse)
    └─ audio-todo.txt        textes à synthétiser
@@ -315,8 +349,10 @@ de maille, le `case` doit être **à l'intérieur** de l'interpolation, pas auto
 
 ## 5. Mise en ligne
 
-Le site est entièrement statique : aucun serveur applicatif, aucune base, 1,5 Mo dont 1,1 Mo
-d'audio. N'importe quel hébergeur de fichiers convient.
+Le site est entièrement statique : aucun serveur applicatif, aucune base. 84 Mo, dont 82 Mo pour
+le fichier de tuiles et 1,1 Mo d'audio. N'importe quel hébergeur de fichiers convient, **à une
+condition : qu'il réponde aux requêtes HTTP Range**. GitHub Pages, Vercel, Netlify, R2 et S3 le
+font. `python3 -m http.server` non, d'où `scripts/serve.py`.
 
 ```bash
 cd demo-cartes && ./deploy.sh check     # vérifie avant d'envoyer
@@ -326,10 +362,9 @@ cd demo-cartes && ./deploy.sh check     # vérifie avant d'envoyer
 
 **Trois points à régler avant d'ouvrir l'URL au public :**
 
-1. **Les tuiles.** La démo tape sur les serveurs publics de CARTO et d'OSM France. Acceptable pour
-   une maquette partagée en interne, pas pour une page qui circule : la politique d'usage d'OSM
-   France décourage explicitement les usages tiers en production. C'est le moment de basculer sur
-   un fichier Protomaps auto-hébergé.
+1. **Les tuiles.** Les deux moteurs vectoriels servent désormais nos propres tuiles. Seul Leaflet
+   tape encore sur CARTO et OSM France, dont la politique d'usage décourage les usages tiers en
+   production : si Leaflet est retenu, il faudra régler ce point.
 2. **Le `noindex`.** Les deux pages portent `<meta name="robots" content="noindex, nofollow">`.
    Tant que les témoignages sont fictifs et que l'équipe éditoriale n'a pas relu, une page
    « cancers pédiatriques » qui remonte dans les moteurs de recherche ferait plus de mal que de
@@ -345,9 +380,10 @@ cd demo-cartes && ./deploy.sh check     # vérifie avant d'envoyer
 - **Trancher le moteur** avec Jérémy, puis supprimer les deux autres du dépôt.
 - **Fixer K et la maille** avec la juriste RGPD (§3), en incluant le risque de ré-identification
   par croisement pathologie × année × tranche d'âge.
-- **Auto-héberger les tuiles** (Protomaps `.pmtiles` en tête).
-- **Appliquer la charte NK** de septembre : un bloc `:root` dans `css/app.css`, plus le style JSON
-  du fond.
+- **Appliquer la charte NK** de septembre : le bloc `PALETTES` de `js/style-nk.js` et le bloc
+  `:root` de `css/app.css`.
+- **Monter le fichier de tuiles au zoom 12** et le poser sur du stockage objet, pour un rendu net
+  au plus près des clusters.
 - **Brancher le questionnaire** sur une vraie base, et décider du géocodage IRIS réel (l'API
   Adresse donne la commune ; l'IRIS demande le référentiel IRIS).
 - **Enregistrer les vrais témoignages audio**, en remplacement des huit voix de synthèse.

@@ -9,10 +9,13 @@ window.NK_ENGINES.deck = (function () {
   'use strict';
 
   const S = () => window.NK_SHARED;
-  const STYLES = {
+  /* Repli si le fichier de tuiles n'a pas été déployé (cf. style-nk.js) */
+  const CARTO = {
     dark: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
     light: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',
   };
+  let auto = false;   // vrai si on sert nos propres tuiles
+  const styleDe = key => (auto ? window.NK_STYLE.style(key) : CARTO[key]);
 
   let map, overlay, ctx, last, current = 'dark', marqOn = true;
   const tip = () => document.getElementById('deck-tip');
@@ -70,6 +73,18 @@ window.NK_ENGINES.deck = (function () {
         getPosition: f => f.geometry.coordinates,
         getText: f => f.properties.num,
         getSize: 13, getColor: [11, 13, 16], fontWeight: 700, pickable: false,
+      }));
+    }
+
+    if ((state.pointsExacts || []).length) {
+      // comparateur d'atelier : positions exactes par-dessus les secteurs
+      dessus.push(new deck.ScatterplotLayer({
+        id: 'exact', data: state.pointsExacts,
+        getPosition: f => f.geometry.coordinates,
+        getFillColor: f => S().rgb(f.properties.color),
+        getRadius: 1200, radiusMinPixels: 2.4, radiusMaxPixels: 6,
+        stroked: true, lineWidthMinPixels: 1, getLineColor: [11, 13, 16, 255],
+        pickable: false,
       }));
     }
 
@@ -146,9 +161,10 @@ window.NK_ENGINES.deck = (function () {
 
     init(container, c) {
       ctx = c;
-      return new Promise(resolve => {
+      return new Promise(async resolve => {
+        auto = window.NK_STYLE.enregistrerProtocole() && await window.NK_STYLE.disponible();
         map = new maplibregl.Map({
-          container, style: STYLES.dark,
+          container, style: styleDe('dark'),
           center: S().FRANCE.center, zoom: S().FRANCE.zoom, pitch: 0,
           attributionControl: { compact: true },
         });
@@ -161,7 +177,7 @@ window.NK_ENGINES.deck = (function () {
           if (on !== marqOn) { marqOn = on; if (last) overlay.setProps({ layers: layers(last) }); }
         });
         whenReady(() => {
-          S().libellesEnFrancais(map);
+          if (!auto) S().libellesEnFrancais(map);
           map.addControl(overlay);
           if (last) this.render(last);
           map.fitBounds(S().FRANCE.bounds, { padding: S().FRANCE.padding(), duration: 0 });
@@ -173,8 +189,8 @@ window.NK_ENGINES.deck = (function () {
     setBasemap(key) {
       if (!map || key === current) return;
       current = key;
-      map.setStyle(STYLES[key]);   // la surcouche deck.gl survit au changement de fond
-      map.once('styledata', () => setTimeout(() => S().libellesEnFrancais(map), 0));
+      map.setStyle(styleDe(key));   // la surcouche deck.gl survit au changement de fond
+      if (!auto) map.once('styledata', () => setTimeout(() => S().libellesEnFrancais(map), 0));
     },
 
     render(state) {

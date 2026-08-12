@@ -26,7 +26,7 @@
     mode: 'recit',
     pathos: new Set(PATHOS.map(p => p.id)),
     yearMax: null,
-    zones: true, sig: true, temoins: true, agg: false,
+    zones: true, sig: true, temoins: true, agg: false, exact: false,
     basemap: 'dark',
     features: D.temoignages.features,   // interne, jamais envoyé tel quel aux moteurs
     cellules: [], horsMaille: 0, parCellule: {},
@@ -44,6 +44,11 @@
     /* Les moteurs ne reçoivent que le résultat flouté : aucune position
        individuelle ne quitte cette fonction. */
     const f = S.flouter(state.features);
+    /* SEULE exception à la règle « aucune position individuelle ne sort d'ici » :
+       le comparateur de l'atelier, explicitement activé, signalé par un bandeau
+       rouge, et éteint à chaque rechargement. Retirer la case à cocher retire
+       le canal : rien d'autre ne lit `pointsExacts`. */
+    state.pointsExacts = state.exact ? state.features : [];
     state.cellules = f.cellules;
     state.horsMaille = f.horsMaille;
     state.parCellule = Object.fromEntries(f.cellules.map(c => [c.id, c]));
@@ -99,6 +104,7 @@
     $('#k-note').textContent = state.horsMaille
       ? `${state.horsMaille} témoignages non placés : leur secteur compte moins de ${S.K_ANONYMAT} cas.`
       : 'Tous les secteurs atteignent le seuil.';
+    $('#exact-warn').hidden = !state.exact;
     renderFilters();
   }
 
@@ -135,10 +141,18 @@
     refresh();
   });
 
-  [['tg-zones', 'zones'], ['tg-sig', 'sig'], ['tg-temoins', 'temoins'], ['tg-agg', 'agg']]
+  [['tg-zones', 'zones'], ['tg-sig', 'sig'], ['tg-temoins', 'temoins'], ['tg-agg', 'agg'],
+   ['tg-exact', 'exact']]
     .forEach(([id, key]) => $('#' + id).addEventListener('change', ev => {
-      state[key] = ev.target.checked; refresh();
+      state[key] = ev.target.checked;
+      if (key === 'exact') $('#exact-warn').hidden = !state.exact;
+      refresh();
     }));
+
+  $('#exact-off').addEventListener('click', () => {
+    $('#tg-exact').checked = false;
+    state.exact = false; $('#exact-warn').hidden = true; refresh();
+  });
 
   $('#btn-basemap').addEventListener('click', () => {
     state.basemap = state.basemap === 'dark' ? 'light' : 'dark';
@@ -565,6 +579,7 @@
       .forEach(b => b.classList.toggle('on', b.dataset.mode === m));
     if (m === 'recit') {
       closeDetail(); stopPlayback();
+      $('#tg-exact').checked = false; state.exact = false; $('#exact-warn').hidden = true;
       if (!recitMonte) recitMonte = NK_RECIT.monter($('#recit'), api);
       else recitMonte.rejouer();
       $('#panel-scroll').scrollTop = 0;

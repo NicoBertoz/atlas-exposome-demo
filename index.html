@@ -13,7 +13,7 @@
 
 <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-<link rel="stylesheet" href="css/app.css">
+<link rel="stylesheet" href="css/app.css?v=85d6c4dc">
 </head>
 <body>
 
@@ -87,6 +87,9 @@
       <label class="toggle-row" id="row-agg"><input type="checkbox" id="tg-agg">
         <span>Agrégation spatiale <em>deck.gl</em></span></label>
       <p class="fine" id="k-note" style="margin-top:8px"></p>
+
+      <label class="toggle-row danger-row"><input type="checkbox" id="tg-exact">
+        <span>Comparer : positions exactes <em>ce qu'on ne publie pas</em></span></label>
     </section>
 
     <section class="sec explore">
@@ -121,6 +124,14 @@
 
   <div id="loading">chargement du fond de carte…</div>
 
+  <!-- Bandeau d'alerte du comparateur : impossible d'oublier qu'il est actif -->
+  <div id="exact-warn" hidden>
+    <b>Vue de travail</b> Les positions exactes des 100 témoignages sont affichées par-dessus
+    les secteurs. C'est ce que le dispositif s'interdit de publier : à ce niveau de précision,
+    un cas isolé dans une commune rurale est retrouvable.
+    <button id="exact-off">Masquer</button>
+  </div>
+
   <div class="hud" id="engine-note"></div>
 
   <div class="hud" id="playbar">
@@ -154,13 +165,15 @@
 <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://unpkg.com/deck.gl@9.0.35/dist.min.js"></script>
+<script src="https://unpkg.com/pmtiles@3.2.0/dist/pmtiles.js"></script>
 
-<script src="js/data.js"></script>
-<script src="js/shared.js"></script>
-<script src="js/engine-maplibre.js"></script>
-<script src="js/engine-leaflet.js"></script>
-<script src="js/engine-deck.js"></script>
-<script src="js/recit.js"></script>
-<script src="js/app.js"></script>
+<script src="js/data.js?v=85d6c4dc"></script>
+<script src="js/style-nk.js?v=85d6c4dc"></script>
+<script src="js/shared.js?v=85d6c4dc"></script>
+<script src="js/engine-maplibre.js?v=85d6c4dc"></script>
+<script src="js/engine-leaflet.js?v=85d6c4dc"></script>
+<script src="js/engine-deck.js?v=85d6c4dc"></script>
+<script src="js/recit.js?v=85d6c4dc"></script>
+<script src="js/app.js?v=85d6c4dc"></script>
 </body>
 </html>

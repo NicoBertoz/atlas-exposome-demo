@@ -25,7 +25,7 @@ window.NK_ENGINES.leaflet = (function () {
     },
   };
 
-  let map, ctx, tiles, ptLayer, sigLayer, zoneLayer, marqLayer, last;
+  let map, ctx, tiles, ptLayer, sigLayer, zoneLayer, marqLayer, exactLayer, last;
 
   function zoneStyle(f, hover) {
     const p = f.properties, c = S().zoneColor(p);
@@ -105,6 +105,7 @@ window.NK_ENGINES.leaflet = (function () {
       map.on('zoomend', () => syncMarq(map.getZoom()));
 
       ptLayer = L.layerGroup().addTo(map);
+      exactLayer = L.layerGroup().addTo(map);
       const fb = S().FRANCE.bounds, pd = S().FRANCE.padding();
       map.fitBounds([[fb[0][1], fb[0][0]], [fb[1][1], fb[1][0]]], { padding: [pd, pd] });
       c.onReady('leaflet');
@@ -156,6 +157,16 @@ window.NK_ENGINES.leaflet = (function () {
           map.flyTo([c.centre[1], c.centre[0]], Math.max(map.getZoom(), 9), { duration: 0.9 });
         });
         g.addTo(ptLayer);
+      });
+
+      // comparateur d'atelier : positions exactes par-dessus les secteurs
+      exactLayer.clearLayers();
+      (state.pointsExacts || []).forEach(f => {
+        const [lng, lat] = f.geometry.coordinates;
+        L.circleMarker([lat, lng], {
+          radius: 3.5, color: '#0B0D10', weight: 1,
+          fillColor: f.properties.color, fillOpacity: 1,
+        }).addTo(exactLayer);
       });
 
       const toggle = (layer, on) => on

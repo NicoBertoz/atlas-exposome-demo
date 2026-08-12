@@ -28,9 +28,33 @@ window.NK_RECIT = (function () {
       scene: api => { api.setLayers({ zones: false, sig: false, temoins: false }); api.fitFrance(); },
     },
     {
-      num: '01', titre: 'Ce que l\'État a instruit',
-      texte: `<p>Vingt-cinq signalements d'agrégats de cancers pédiatriques ont fait l'objet d'une
-        investigation officielle. La plupart n'ont jamais été médiatisés.</p>
+      num: '01', titre: 'Ce qu\'on cherche a un nom : les perturbateurs endocriniens',
+      texte: `<p>Ce sont des molécules qui imitent ou bloquent les hormones. À très faible dose,
+        et surtout à des moments précis du développement : la grossesse, les premières années.</p>
+        <p>Leur trace se lit d'abord sur des pathologies discrètes. En 2021, Santé publique France
+        publie une étude sur la <b>cryptorchidie opérée</b> et trouve <b>24 agrégats</b> en
+        métropole, sur 91 400 cas. Le principal, autour de <b>Lens</b>, compte 1 244 cas pour un
+        excès de 453, dans un bassin marqué par l'activité minière et métallurgique.</p>
+        <p>Ces malformations ne tuent pas. Elles indiquent. C'est pour cela que le projet les
+        appelle des <b>sentinelles</b>.</p>`,
+      scene: api => { api.setLayers({ zones: false, sig: true, temoins: false }); api.fitFrance(); },
+    },
+    {
+      num: '02', titre: 'PFAS et pesticides : le décor est partout',
+      texte: `<p>Les composés perfluorés ne se dégradent pas. On les retrouve dans l'eau, les sols,
+        le sang. Les pesticides, eux, se renouvellent chaque saison, et la commune de résidence de
+        la mère suffit souvent à approcher l'exposition.</p>
+        <p>Une remarque à garder pour la suite : <b>une exposition n'est pas un agrégat</b>.
+        Salindres est un site majeur de production de PFAS, sans aucun cas groupé documenté.
+        Ce ne sont pas les mêmes objets, et les confondre coûterait la crédibilité de la carte.</p>
+        <p>Le projet tient donc deux couches séparées : où les gens tombent malades, et à quoi ils
+        sont exposés. La seconde est encore à construire.</p>`,
+      scene: api => { api.setLayers({ zones: false, sig: true, temoins: false }); api.fitFrance(); },
+    },
+    {
+      num: '03', titre: 'Ce que l\'État a instruit',
+      texte: `<p>Vingt-cinq signalements d'agrégats ont fait l'objet d'une investigation officielle.
+        La plupart n'ont jamais été médiatisés.</p>
         <p>Une habitante appelle l'ARS de <b>Pouilley-les-Vignes</b> un matin d'octobre 2012 :
         la cellule régionale est saisie le jour même. À <b>Saint-Philbert-en-Mauges</b>, c'est le
         maire. À <b>Preignac</b>, une institutrice.</p>
@@ -39,7 +63,7 @@ window.NK_RECIT = (function () {
       scene: api => { api.setLayers({ zones: false, sig: true, temoins: false }); api.fitFrance(); },
     },
     {
-      num: '02', titre: 'Six d\'entre eux tiennent encore',
+      num: '04', titre: 'Six d\'entre eux tiennent encore',
       texte: `<p>Six dossiers concentrent l'essentiel de ce qu'on peut dire aujourd'hui. Deux
         seulement sont des excès <b>officiellement confirmés et toujours suivis</b>.</p>
         <p>Les autres sont dans des états intermédiaires : reconnus puis refermés, contestés,
@@ -49,7 +73,7 @@ window.NK_RECIT = (function () {
       scene: api => { api.setLayers({ zones: true, sig: true, temoins: false }); api.fitFrance(); },
     },
     {
-      num: '03', titre: 'Sainte-Pazanne : quand ce sont les parents qui comptent',
+      num: '05', titre: 'Sainte-Pazanne : quand ce sont les parents qui comptent',
       texte: `<p>Dix-neuf enfants de moins de 18 ans, entre 2015 et 2022, dans une poignée de
         communes du Pays de Retz. Santé publique France retient un <b>SIR de 2,27</b> : deux fois
         plus de cas qu'attendu.</p>
@@ -59,7 +83,7 @@ window.NK_RECIT = (function () {
       scene: api => { api.setLayers({ zones: true, sig: false, temoins: false }); api.fit(hs('h1')); },
     },
     {
-      num: '04', titre: 'Pont-de-l\'Arche : la maille décide',
+      num: '06', titre: 'Pont-de-l\'Arche : la maille décide',
       texte: `<p>Onze leucémies chez des moins de 15 ans, entre 2017 et 2019.</p>
         <p>À l'échelle de la <b>commune</b>, le rapport observé sur attendu vaut <b>6,4</b>. À
         l'échelle du <b>canton</b>, sur exactement les mêmes enfants, il tombe à <b>2,3</b>, et
@@ -70,7 +94,7 @@ window.NK_RECIT = (function () {
       scene: api => { api.setLayers({ zones: true, sig: false, temoins: false }); api.fit(hs('h6')); },
     },
     {
-      num: '05', titre: 'Preignac : l\'enquête qui échoue faute de mesure',
+      num: '07', titre: 'Preignac : l\'enquête qui échoue faute de mesure',
       texte: `<p>Neuf enfants malades pour 5,7 attendus, dans une commune viticole du Sauternais.
         Une école entourée de vignes.</p>
         <p>L'investigation n'a pas conclu. Non pas parce que le signal sanitaire était faible,
@@ -84,7 +108,23 @@ window.NK_RECIT = (function () {
       },
     },
     {
-      num: '06', titre: 'Le secteur qu\'on ne peut pas vous montrer',
+      num: '08', titre: 'La fabrique du doute a une adresse : le fond naturel',
+      texte: `<p>Autour des anciennes mines de <b>Saint-Félix-de-Pallières</b>, dans le Gard,
+        651 volontaires ont été testés. 22 % au-dessus de la référence pour l'arsenic, 13 % pour
+        le cadmium.</p>
+        <p>Quarante-cinq plaintes pénales ont été déposées en 2016. Toutes ont été classées en 2020,
+        au motif qu'on ne pouvait pas <b>distinguer l'origine anthropique de l'origine naturelle</b>
+        des métaux.</p>
+        <p>L'argument est réel, et il sera opposé à ce projet. Sur les métaux d'abord, sur les
+        pesticides ensuite. Y répondre demande des mesures d'exposition, pas des convictions.</p>`,
+      scene: api => {
+        api.setLayers({ zones: false, sig: true, temoins: false });
+        const f = sig('Saint-Félix');
+        api.flyTo(f.geometry.coordinates[0], f.geometry.coordinates[1], 8.5);
+      },
+    },
+    {
+      num: '09', titre: 'Le secteur qu\'on ne peut pas vous montrer',
       texte: `<p>Mars 2026, rapport le plus récent du corpus : cinq enfants, une sur-incidence
         <b>explicitement confirmée</b>, dans six communes contiguës de l'est des Pays de la Loire.</p>
         <p>Lesquelles ? Le rapport ne le dit pas. Le secteur a été anonymisé au titre du RGPD.</p>
@@ -94,7 +134,19 @@ window.NK_RECIT = (function () {
       scene: api => { api.setLayers({ zones: true, sig: false, temoins: false }); api.fit(hs('anon')); },
     },
     {
-      num: '07', titre: 'Alors nous, comment affichons-nous les familles ?',
+      num: '10', titre: 'Ce que cette carte ne montre pas encore',
+      texte: `<p>Elle ne montre aucune entreprise. Pas par prudence excessive : parce qu'un site
+        industriel n'est pas un agrégat sanitaire, et qu'il faudrait la couche d'exposition pour
+        les mettre en regard sans mentir.</p>
+        <p>Les procédures existent pourtant. Le 3 février 2026 s'est ouvert à Lyon un procès civil
+        opposant 192 riverains de la vallée de la chimie à Arkema et Daikin, sur la contamination
+        aux PFAS. Aucun agrégat pédiatrique n'y est documenté à ce jour.</p>
+        <p>Tenir les deux ensemble, c'est tout l'enjeu de la suite : une carte des expositions,
+        sourcée, à côté de la carte des cas.</p>`,
+      scene: api => { api.setLayers({ zones: true, sig: true, temoins: false }); api.fitFrance(); },
+    },
+    {
+      num: '11', titre: 'Alors nous, comment affichons-nous les familles ?',
       texte: `<p>Voici les témoignages reçus. Pas un par point : <b>par secteur</b>.</p>
         <p>Chaque tache couvre environ 25 km et n'apparaît qu'à partir de <b>trois cas</b>.
         En dessous du seuil, le secteur est fondu dans une maille plus large, ou pas affiché.
@@ -105,7 +157,7 @@ window.NK_RECIT = (function () {
       scene: api => { api.setLayers({ zones: true, sig: false, temoins: true }); api.fitFrance(); },
     },
     {
-      num: '08', titre: 'Ce qui manque, c\'est vous',
+      num: '12', titre: 'Ce qui manque, c\'est vous',
       texte: `<p>À Noyelles-Godault, l'invitation institutionnelle a touché 91 % des enfants
         concernés. <b>24 % ont participé.</b> La confiance ne se décrète pas.</p>
         <p>Un recensement citoyen ne prouve rien à lui seul. Il indique où regarder, et il oblige

@@ -9,10 +9,13 @@ window.NK_ENGINES.maplibre = (function () {
   'use strict';
 
   const S = () => window.NK_SHARED;
-  const STYLES = {
+  /* Repli si le fichier de tuiles n'a pas été déployé (cf. style-nk.js) */
+  const CARTO = {
     dark: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
     light: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',
   };
+  let auto = false;   // vrai si on sert nos propres tuiles
+  const styleDe = key => (auto ? window.NK_STYLE.style(key) : CARTO[key]);
   const EMPTY = { type: 'FeatureCollection', features: [] };
 
   let map, ctx, last, popup, hover = null, current = 'dark';
@@ -26,7 +29,8 @@ window.NK_ENGINES.maplibre = (function () {
   }
 
   function addLayers() {
-    S().libellesEnFrancais(map);
+    // notre style lit déjà name:fr ; la réécriture ne sert qu'au repli CARTO
+    if (!auto) S().libellesEnFrancais(map);
 
     const col = ['case',
       ['get', 'anonyme'], S().C.anonyme,
@@ -134,9 +138,21 @@ window.NK_ENGINES.maplibre = (function () {
       paint: { 'text-color': '#E8EAED', 'text-halo-color': 'rgba(11,13,16,.85)', 'text-halo-width': 1.4 },
     });
 
+    /* Comparateur d'atelier : les positions exactes, par-dessus les secteurs.
+       Vide en temps normal (cf. app.js). */
+    map.addSource('exact', { type: 'geojson', data: EMPTY });
+    map.addLayer({
+      id: 'exact', type: 'circle', source: 'exact',
+      paint: {
+        'circle-color': ['get', 'color'],
+        'circle-radius': ['interpolate', ['linear'], ['zoom'], 5, 2.4, 10, 4, 14, 6],
+        'circle-stroke-width': 1, 'circle-stroke-color': '#0B0D10',
+      },
+    });
+
     /* Les taches floues sont larges : sans ce réordonnancement elles passent
        devant les pastilles de cluster, qui portent le propos principal. */
-    ['sig', 'marq-halo', 'marq', 'marq-num', 'zone-label'].forEach(l => map.moveLayer(l));
+    ['exact', 'sig', 'marq-halo', 'marq', 'marq-num', 'zone-label'].forEach(l => map.moveLayer(l));
   }
 
   /* Un seul gestionnaire de survol par source, pour éviter que trois
@@ -191,9 +207,10 @@ window.NK_ENGINES.maplibre = (function () {
 
     init(container, c) {
       ctx = c;
-      return new Promise(resolve => {
+      return new Promise(async resolve => {
+        auto = window.NK_STYLE.enregistrerProtocole() && await window.NK_STYLE.disponible();
         map = new maplibregl.Map({
-          container, style: STYLES.dark,
+          container, style: styleDe('dark'),
           center: S().FRANCE.center, zoom: S().FRANCE.zoom,
           attributionControl: { compact: true },
         });
@@ -211,7 +228,7 @@ window.NK_ENGINES.maplibre = (function () {
     setBasemap(key) {
       if (!map || key === current) return;
       current = key;
-      map.setStyle(STYLES[key]);
+      map.setStyle(styleDe(key));
       // setStyle repart d'une feuille vierge : il faut reposer sources et couches
       map.once('styledata', () => setTimeout(() => {
         addLayers(); bindEvents(); if (last) this.render(last);
@@ -222,6 +239,8 @@ window.NK_ENGINES.maplibre = (function () {
       last = state;
       if (!map || !map.getSource('pts')) return;
       map.getSource('pts').setData(S().cellulesGeoJSON(state.cellules));
+      map.getSource('exact').setData(
+        { type: 'FeatureCollection', features: state.pointsExacts || [] });
       const vis = (l, on) => map.getLayer(l) && map.setLayoutProperty(l, 'visibility', on ? 'visible' : 'none');
       ['zone-fill', 'zone-line', 'zone-label', 'marq-halo', 'marq', 'marq-num']
         .forEach(l => vis(l, state.zones));
