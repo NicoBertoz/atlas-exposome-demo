@@ -181,10 +181,6 @@ input[type=range] { width: 100%; accent-color: var(--accent); }
 }
 .mode-switch button.on { background: var(--accent); color: #0B0D10; font-weight: 600; }
 
-#recit { display: none; }
-body.mode-recit #recit { display: block; }
-body.mode-recit .explore { display: none !important; }
-body.mode-recit #playbar { display: none; }
 
 .chap {
   padding: 30px 22px; border-bottom: 1px solid var(--line-soft);
@@ -216,6 +212,115 @@ body.mode-recit #playbar { display: none; }
 .chap-fin {
   padding: 34px 22px 60px; font-size: 12px; color: var(--txt-faint); line-height: 1.6;
   border-top: 1px solid var(--line-soft);
+}
+
+/* ============================================ SECTION 1 : LE DÉROULÉ
+   Le déroulé occupe tout l'écran, la carte tourne derrière, floutée. Elle
+   n'est pas une image d'illustration : c'est la vraie carte, déjà chargée,
+   qui se révèle quand on passe en section 2. */
+#section1 {
+  position: fixed; inset: var(--bar-h) 0 0 0; z-index: 40;
+  overflow-y: auto; -webkit-overflow-scrolling: touch;
+  display: none;
+  background: linear-gradient(180deg, rgba(11,13,16,.94) 0%, rgba(11,13,16,.86) 40%, rgba(11,13,16,.92) 100%);
+}
+body.vue-intro #section1 { display: block; }
+body.vue-intro #panel { display: none; }
+body.vue-intro #map-stage { left: 0; }
+/* Sélecteurs par id : les règles d'origine en portent aussi, et l'emportent
+   sinon sur une simple classe. */
+body.vue-intro #playbar,
+body.vue-intro #legend,
+body.vue-intro #engine-note,
+body.vue-intro #exact-warn,
+body.vue-intro #loading,
+body.vue-intro #engine-switch,
+body.vue-intro #btn-basemap { display: none; }
+body.vue-intro .map-canvas {
+  filter: blur(var(--tease, 10px)) saturate(.45);
+  opacity: var(--tease-op, .3);
+  transition: opacity .4s linear;
+  pointer-events: none;
+}
+
+.s1-hero {
+  min-height: calc(100vh - var(--bar-h) - 40px);
+  max-width: 720px; margin: 0 auto; padding: 12vh 22px 60px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.s1-kicker {
+  font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--txt-faint); margin-bottom: 20px;
+}
+.s1-hero h1 {
+  margin: 0 0 18px; font-size: clamp(30px, 6vw, 54px); line-height: 1.08;
+  letter-spacing: -.035em; font-weight: 700;
+}
+.s1-chapo {
+  margin: 0 0 26px; font-size: clamp(16px, 2.4vw, 21px); line-height: 1.45;
+  color: var(--accent);
+}
+.s1-intro { margin: 0; font-size: 15.5px; line-height: 1.7; color: var(--txt-dim); max-width: 560px; }
+.s1-scroll-hint {
+  margin-top: 48px; font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--txt-faint);
+}
+.s1-scroll-hint::after { content: ' ↓'; }
+
+.s1-concepts { max-width: 720px; margin: 0 auto; padding: 0 22px; }
+
+/* Une carte-concept = un résumé de 200 mots maximum, et un lien pour creuser */
+.concept {
+  padding: 52px 0; border-top: 1px solid var(--line-soft);
+  opacity: .35; transform: translateY(10px);
+  transition: opacity .45s ease, transform .45s ease;
+}
+.concept.vu { opacity: 1; transform: none; }
+.concept-num {
+  font-family: var(--mono); font-size: 10.5px; color: var(--txt-faint);
+  letter-spacing: .1em; margin-bottom: 14px;
+}
+.concept-kicker {
+  display: block; font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 8px;
+}
+.concept h2 {
+  margin: 0 0 16px; font-size: clamp(22px, 3.4vw, 30px); line-height: 1.18;
+  letter-spacing: -.025em; font-weight: 700;
+}
+.concept-resume p { margin: 0 0 13px; font-size: 15.5px; line-height: 1.72; color: #CDD2D9; }
+.concept-resume p:last-child { margin-bottom: 0; }
+.concept-resume b { color: var(--txt); }
+.concept-lien {
+  display: inline-block; margin-top: 18px; font-size: 13.5px; font-weight: 600;
+  border: 1px solid rgba(232,255,59,.3); border-radius: 8px; padding: 9px 15px;
+  transition: .12s;
+}
+.concept-lien:hover { border-color: var(--accent); background: rgba(232,255,59,.07); }
+
+.s1-fin {
+  max-width: 720px; margin: 0 auto;
+  padding: 60px 22px calc(90px + var(--safe-b));
+  border-top: 1px solid var(--line);
+}
+.s1-fin h2 { margin: 0 0 12px; font-size: 26px; letter-spacing: -.025em; }
+.s1-fin p { margin: 0 0 24px; font-size: 15.5px; line-height: 1.7; color: var(--txt-dim); }
+.s1-cta { display: flex; gap: 10px; flex-wrap: wrap; }
+.s1-cta .btn { padding: 13px 22px; font-size: 14px; }
+
+/* Appel au témoignage, en pied de chaque fiche */
+.fiche-cta {
+  margin-top: 18px; padding: 14px 16px; border-radius: 10px;
+  background: rgba(232,255,59,.06); border: 1px solid rgba(232,255,59,.24);
+}
+.fiche-cta p { margin: 0 0 10px; font-size: 12.5px; color: var(--txt-dim); line-height: 1.5; }
+.fiche-cta .btn { display: block; width: 100%; text-align: center; }
+
+@media (max-width: 859px) {
+  .s1-hero { min-height: auto; padding: 8vh 18px 48px; }
+  .s1-concepts, .s1-fin { padding-left: 18px; padding-right: 18px; }
+  .concept { padding: 38px 0; }
+  .s1-cta .btn { width: 100%; text-align: center; }
 }
 
 /* -------------------------------------------------------------- FICHES */
@@ -290,6 +395,9 @@ body.mode-recit #playbar { display: none; }
 .danger-row input { accent-color: var(--warn); }
 .danger-row em { color: rgba(255,154,60,.7) !important; }
 
+/* L'attribut hidden ne pèse rien face à un sélecteur d'id : on le rétablit. */
+#exact-warn[hidden] { display: none; }
+
 #exact-warn {
   position: absolute; z-index: 30; left: 12px; right: 12px; top: 12px;
   background: rgba(255,59,92,.14); border: 1px solid rgba(255,59,92,.55);
@@ -305,7 +413,6 @@ body.mode-recit #playbar { display: none; }
   margin-left: auto; background: none; border: 1px solid rgba(255,59,92,.5);
   color: #FFD6DD; border-radius: 6px; padding: 4px 10px; font-size: 11.5px;
 }
-body.mode-recit #exact-warn { display: none; }
 @media (max-width: 859px) { #exact-warn { font-size: 11.5px; padding: 9px 11px; } }
 
 /* -------------------------------------------------------------- POPUPS */
@@ -446,17 +553,6 @@ body.mode-recit #exact-warn { display: none; }
   }
   #panel.open { transform: translateY(0); }
 
-  /* En récit, la feuille est ouverte en permanence mais laisse voir la carte :
-     le texte occupe le bas, la scène cartographique le haut. */
-  body.mode-recit #panel { height: 62vh; max-height: 62vh; transform: translateY(0); }
-  body.mode-recit #sheet-grip { pointer-events: none; opacity: .4; }
-  body.mode-recit .chap { padding: 24px 18px; }
-  body.mode-recit .chap:first-child { padding-top: 20px; }
-  body.mode-recit .chap-titre { font-size: 18.5px; }
-  body.mode-recit .chap:first-child .chap-titre { font-size: 22px; }
-  body.mode-recit #legend { bottom: calc(62vh + 10px); }
-  body.mode-recit .maplibregl-ctrl-bottom-right,
-  body.mode-recit .leaflet-bottom.leaflet-right { bottom: calc(62vh + 4px) !important; }
 
   #sheet-grip {
     display: block; width: 100%; height: 26px; background: none; border: 0;

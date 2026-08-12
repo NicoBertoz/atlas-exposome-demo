@@ -23,7 +23,7 @@
   /* ----------------------------------------------------------- ÉTAT */
   const state = {
     engine: 'maplibre',
-    mode: 'recit',
+    mode: 'intro',
     pathos: new Set(PATHOS.map(p => p.id)),
     yearMax: null,
     zones: true, sig: true, temoins: true, agg: false, exact: false,
@@ -202,6 +202,38 @@
     stopAudio();
   }
 
+  /* Flow du 28/07 : « [[Permettre donner témoignage]] » figure sur la page
+     hotspot ET sur la page cas particulier. Le formulaire doit être atteignable
+     depuis l'endroit qui donne envie de le remplir, pas seulement depuis la
+     barre du haut. */
+  function blocParticiper(contexte) {
+    return `<div class="fiche-cta">
+      <p>${contexte}</p>
+      <a class="btn btn-accent" href="participer.html">Ajouter mon cas →</a>
+    </div>`;
+  }
+
+  /* Connexion hotspot ↔ cas particuliers, demandée dans le flow :
+     « Etablir connexion entre hotspot et cas particulier pour les afficher
+     côté hotspot ». On respecte les filtres en cours. */
+  function temoinsDuCluster(id) {
+    const out = [];
+    state.cellules.forEach(c => c.temoins.forEach(t => {
+      if (t.hotspot === id) out.push(t);
+    }));
+    return out.sort((a, b) => a.annee - b.annee);
+  }
+
+  function listeTemoins(liste) {
+    if (!liste.length) return '<p class="fine">Aucun témoignage reçu pour cette zone, ou aucun qui atteigne le seuil d\'affichage.</p>';
+    return `<div class="tem-list">${liste.map(t => `
+      <button data-tem="${t.id}">
+        <span class="pin" style="background:${t.color}"></span>
+        <span class="nm">${t.patho_label}</span>
+        <span class="yr">${t.annee}${t.audio ? ' ♪' : ''}</span>
+      </button>`).join('')}</div>`;
+  }
+
   /* Fiche d'une maille : la seule porte d'entrée vers les témoignages.
      On n'atteint jamais un témoignage par sa position, toujours par son groupe. */
   function showCellule(c) {
@@ -223,12 +255,8 @@
         pas la position des familles.
       </p>
       <div class="block"><h4>Les témoignages de ce secteur</h4></div>
-      <div class="tem-list">${c.temoins.map(t => `
-        <button data-tem="${t.id}">
-          <span class="pin" style="background:${t.color}"></span>
-          <span class="nm">${t.patho_label}</span>
-          <span class="yr">${t.annee}${t.audio ? ' ♪' : ''}</span>
-        </button>`).join('')}</div>`;
+      ${listeTemoins(c.temoins)}
+      ${blocParticiper('Un cas de plus dans ce secteur ?')}`;
     openDetail();
   }
 
@@ -261,6 +289,7 @@
           p.verifie ? 'vérifié' : 'en attente de revue'}</span></dd>
       </dl>
       ${cell ? `<div class="src"><a href="#" data-cell="${cell.id}">← les ${cell.n} témoignages du secteur</a></div>` : ''}
+      ${blocParticiper('Vous vivez une situation comparable ?')}
       <p class="caution">
         Témoignage généré pour la démonstration. Ni commune ni adresse ne sont affichées :
         la collecte descend à l'IRIS, la publication remonte à la maille.
@@ -295,6 +324,12 @@
       <div class="block"><h4>Collectif</h4><p>${p.collectif}</p></div>
       <div class="block"><h4>Pourquoi ce cluster compte</h4><p>${p.interet}</p></div>
       <div class="src"><a href="${p.source}" target="_blank" rel="noopener">Rapport source ↗</a></div>
+
+      <div class="block"><h4>Témoignages reçus dans cette zone</h4></div>
+      ${listeTemoins(temoinsDuCluster(p.id))}
+
+      ${blocParticiper('Votre enfant a été diagnostiqué dans ce secteur ?')}
+
       <p class="caution">
         Association spatiale ou constat d'excès, <b>pas</b> une relation de cause à effet.
         Un cluster signale une zone où compter davantage, pas une responsabilité établie.
@@ -317,7 +352,8 @@
       <div class="block"><h4>Cas</h4><p>${p.cas}</p></div>
       <div class="block"><h4>Ce qu'en dit l'instruction</h4><p>${p.conclusion}</p></div>
       <div class="block"><h4>Cause suspectée</h4><p>${p.cause}</p></div>
-      <div class="src"><a href="${p.source}" target="_blank" rel="noopener">Source ↗</a></div>`;
+      <div class="src"><a href="${p.source}" target="_blank" rel="noopener">Source ↗</a></div>
+      ${blocParticiper('Vous connaissez un cas dans ce secteur ?')}`;
     openDetail();
   }
 
@@ -566,41 +602,41 @@
       });
       refresh();
     },
-    fit: p => engines[state.engine].fitZone(p),
-    fitFrance: () => engines[state.engine].fitFrance(),
-    flyTo: (lng, lat, z) => engines[state.engine].flyTo(lng, lat, z),
+    fit: p => ready[state.engine] && engines[state.engine].fitZone(p),
+    fitFrance: () => ready[state.engine] && engines[state.engine].fitFrance(),
+    flyTo: (lng, lat, z) => ready[state.engine] && engines[state.engine].flyTo(lng, lat, z),
   };
 
-  let recitMonte = null;
+  let s1 = null;
   function setMode(m) {
     state.mode = m;
-    document.body.classList.toggle('mode-recit', m === 'recit');
+    document.body.classList.toggle('vue-intro', m === 'intro');
+    document.body.classList.toggle('vue-carte', m === 'carte');
     document.querySelectorAll('#mode-switch button')
       .forEach(b => b.classList.toggle('on', b.dataset.mode === m));
-    if (m === 'recit') {
+
+    if (m === 'intro') {
       closeDetail(); stopPlayback();
       $('#tg-exact').checked = false; state.exact = false; $('#exact-warn').hidden = true;
-      if (!recitMonte) recitMonte = NK_RECIT.monter($('#recit'), api);
-      else recitMonte.rejouer();
-      $('#panel-scroll').scrollTop = 0;
-      // sur mobile, le récit n'a de sens que la feuille ouverte
-      if (isMobile()) $('#panel').classList.add('open');
-      setTimeout(() => {
-        $('#panel-scroll').dispatchEvent(new Event('scroll'));
-        NK_RECIT.CHAPITRES[0].scene(api);
-      }, 60);
-    } else {
-      /* Les chapitres éteignent des couches au fil du récit. Quitter au
-         chapitre 1 laisserait une carte vide : on remet tout en marche. */
+      if (!s1) s1 = NK_SECTION1.monter($('#section1'), () => setMode('carte'));
+      else s1.auDefilement();
+      /* La carte tourne derrière le déroulé, floutée : elle doit être prête
+         au moment où on la révèle, pas se charger à ce moment-là. */
       api.setLayers({ zones: true, sig: true, temoins: true });
-      engines[state.engine].fitFrance();
+    } else {
+      /* Sortir du déroulé remet la carte à plat : couches allumées, France entière. */
+      api.setLayers({ zones: true, sig: true, temoins: true });
+      if (ready[state.engine]) engines[state.engine].fitFrance();
+      $('#section1').scrollTop = 0;
     }
-    setTimeout(() => ready[state.engine] && engines[state.engine].resize(), 320);
+    history.replaceState(null, '', m === 'carte' ? '#carte' : location.pathname);
+    setTimeout(() => ready[state.engine] && engines[state.engine].resize(), 340);
   }
   document.querySelectorAll('#mode-switch button')
     .forEach(b => b.addEventListener('click', () => setMode(b.dataset.mode)));
   document.addEventListener('click', ev => {
-    if (ev.target.closest('[data-goto-explore]')) setMode('explore');
+    const g = ev.target.closest('[data-mode-go]');
+    if (g) setMode(g.dataset.modeGo);
   });
 
   /* ----------------------------------------------------------- UTILS */
@@ -616,5 +652,9 @@
     rz = setTimeout(() => ready[state.engine] && engines[state.engine].resize(), 120);
   });
   refresh();
-  switchEngine('maplibre').then(() => setMode('recit'));
+  /* Le déroulé s'affiche tout de suite : c'est du texte, il n'a aucune raison
+     d'attendre le fond de carte. La carte se charge derrière, floutée.
+     #carte permet de pointer directement sur la section 2 depuis une page concept. */
+  setMode(location.hash === '#carte' ? 'carte' : 'intro');
+  switchEngine('maplibre');
 })();

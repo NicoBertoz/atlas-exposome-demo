@@ -134,24 +134,55 @@ différences que le comparatif est là pour montrer.
 | Bouton questionnaire / « en savoir plus » | **fait** | « Je participe » ouvre le questionnaire, « Récit » rejoue le déroulé |
 | **Zone floue au lieu du point individuel** | **fait** | voir §3, c'est le changement structurant |
 | **Questionnaire de démonstration** | **fait** | `questionnaire.html`, 5 étapes, géocodage réel, e-mail haché |
-| **Section narrative** | **fait** | mode « Récit », 9 chapitres qui pilotent la carte au défilement |
+| **Section 1 = déroulé narratif** | **fait** | 8 concepts de ~200 mots, carte teasée floutée derrière |
+| **Chaque concept mène à sa page** | **fait** | `concept.html?id=…`, un gabarit, contenu dans `js/concepts.js` |
+| **Page de transition avant le formulaire** | **fait** | `participer.html` : ce qu'on demande, ce qu'on en fait, espace d'échange |
+| **Formulaire atteignable depuis les fiches** | **fait** | bloc « Ajouter mon cas » sur cluster, secteur, cas particulier, signalement |
+| **Lien hotspot ↔ cas particuliers** | **fait** | la fiche cluster liste les témoignages de sa zone, et chaque cas renvoie à son cluster |
 | Lisible sur mobile | **fait** | voir plus bas |
 
-### Le récit
+### La structure, alignée sur le flow du 28/07
 
-Le mode « Récit » est l'état par défaut au chargement. Neuf chapitres défilent dans le panneau ;
-chacun reconfigure la carte quand il franchit la ligne de lecture : couches allumées ou éteintes,
-cadrage, zoom sur un cluster. Le lecteur ne clique rien, il descend. Le dernier chapitre ouvre sur
-les deux sorties : signaler un cas, ou passer en mode « Explorer ».
+Une page principale, deux sections, dans cet ordre.
 
-L'enchaînement suit un argument, pas la géographie : ce que l'État a instruit, ce qui reste debout,
-Sainte-Pazanne (des parents qui comptent à la place de l'État), Pont-de-l'Arche (la maille décide),
-Preignac (l'enquête qui échoue faute de mesure d'exposition), le secteur anonymisé, puis notre
-propre règle d'affichage.
+**Section 1, le déroulé.** Huit concepts, chacun en 200 mots maximum, qui se lisent au
+défilement : les enfants sentinelles, l'effet cocktail, PFAS et pesticides, la difficulté de
+prouver, la maille qui décide, la donnée verrouillée, la collecte citoyenne, les témoignages.
+Chacun porte un bouton « Creuser ce point », qui ouvre sa **page dédiée** — exactement le
+« click sur un des concepts à creuser » du flow.
 
-Détail d'implémentation : le chapitre actif est calculé **au défilement**, pas avec un
-`IntersectionObserver`. Celui-ci ne se déclenche qu'au rendu et reste muet dans un onglet non
-peint — aperçus, tests automatisés, arrière-plan.
+Pendant toute la section 1, **la vraie carte tourne derrière, floutée**, et son flou se lève à
+mesure qu'on descend. Ce n'est pas une image : c'est la carte déjà chargée, qui s'affiche en
+grand dès qu'on passe en section 2. Le bouton « Explorer la carte » clôt le déroulé.
+
+**Section 2, la carte.** Deux niveaux comme demandé : la couche participative (témoignages
+regroupés en secteurs) et les gros hotspots (clusters documentés + signalements instruits),
+avec filtre par pathologie et curseur d'années.
+
+**Les deux types de page qu'ouvre la carte :**
+
+- **Hotspot** — pathologies concernées, cas recensés, conclusion officielle, cause suspectée,
+  où en est le dossier, collectif local, lien vers le rapport source, et **la liste des
+  témoignages reçus dans la zone**.
+- **Cas particulier** — pathologie, année, tranche d'âge, exposition suspectée, témoignage écrit
+  et audio quand la famille l'a fourni, et un retour vers son secteur et vers son cluster.
+
+Le contenu vit dans `js/concepts.js` : le résumé du déroulé et la page longue sont dans la même
+entrée, ils ne peuvent pas diverger, et l'équipe éditoriale NK n'a qu'un fichier à reprendre.
+
+### Le formulaire, atteignable là où on en a envie
+
+Le flow porte deux fois la mention « [[Permettre donner témoignage]] », sur la page hotspot et
+sur la page cas particulier. Chaque fiche se termine donc par un bloc d'appel contextualisé
+(« Votre enfant a été diagnostiqué dans ce secteur ? »), qui mène à `participer.html`.
+
+Cette page de transition est celle du flow : ce qu'on demande champ par champ, ce qui arrive à
+l'adresse saisie, le fait que les consentements sont séparés, et un espace d'échange pour les
+familles qui veulent d'abord parler à d'autres familles avant de remplir quoi que ce soit.
+Le lien vers cet espace est présent aussi en fin de questionnaire.
+
+**Ce qui manque encore côté NK** : l'URL de l'espace d'échange (Discord). Les deux boutons sont
+en place et le disent explicitement au clic plutôt que d'ouvrir une page morte.
 
 ### Le questionnaire
 
@@ -281,20 +312,25 @@ RGPD avant toute mise en ligne.
 
 ```
 demo-cartes/
-├─ index.html               la carte : récit + exploration
+├─ index.html               section 1 (déroulé) + section 2 (carte)
+├─ concept.html             page dédiée d'un concept, alimentée par js/concepts.js
+├─ participer.html          page de transition avant le formulaire
 ├─ questionnaire.html       le formulaire participatif (maquette)
 ├─ deploy.sh                mise en ligne (check | pages | vercel)
 ├─ tiles/
 │  └─ france.pmtiles        fond de carte auto-hébergé (82 Mo, z0-9)
 ├─ css/
 │  ├─ app.css               habillage commun + mise en page mobile
+│  ├─ page.css              les pages de lecture (concepts, transition)
 │  └─ form.css              le formulaire seulement
 ├─ js/
 │  ├─ data.js               généré — ne pas éditer à la main
+│  ├─ concepts.js           les 8 concepts : résumé + page longue + sources
+│  ├─ section1.js           rendu du déroulé et flou progressif de la carte
+│  ├─ concept-page.js       gabarit unique des pages concept
 │  ├─ style-nk.js           le style du fond de carte, couleurs comprises
 │  ├─ shared.js             couleurs, popups, emprises, FLOU
 │  ├─ app.js                état, filtres, fiches, audio, modes, feuille mobile
-│  ├─ recit.js              les 9 chapitres et leurs scènes
 │  ├─ form.js               questionnaire : étapes, géocodage, hachage
 │  ├─ engine-maplibre.js    ┐
 │  ├─ engine-leaflet.js     ├─ même contrat, trois implémentations
@@ -389,5 +425,8 @@ cd demo-cartes && ./deploy.sh check     # vérifie avant d'envoyer
 - **Enregistrer les vrais témoignages audio**, en remplacement des huit voix de synthèse.
 - **Faire relire les fiches cluster** par Ayisha : elles reprennent le classeur, dont l'en-tête
   signale que certaines lignes restent à vérifier.
-- **Écrire le texte définitif du récit** avec l'équipe éditoriale NK. Les neuf chapitres actuels
-  sont une proposition de structure et d'angle, pas une copie validée.
+- **Écrire le texte définitif du déroulé** avec l'équipe éditoriale NK. Les huit concepts et
+  leurs pages sont une proposition de structure et d'angle, pas une copie validée.
+- **Fournir l'URL de l'espace d'échange** (Discord), attendue à trois endroits.
+- **Monter à 15-20 hotspots** comme prévu au lancement : le corpus en contient 31, dont 6 mis en
+  avant et 25 en couche secondaire. Le passage se fait dans `scripts/generate-data.py`.

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0B0D10">
+<!-- Démo de travail, pas encore validée par l'équipe éditoriale. -->
+<meta name="robots" content="noindex, nofollow">
+<title>Avant de commencer — Atlas de l'exposome</title>
+<link rel="stylesheet" href="css/app.css">
+<link rel="stylesheet" href="css/page.css">
+</head>
+<body class="page-article">
+
+<header id="topbar">
+  <div class="brand">Atlas<span class="brand-long"> de l'exposome</span>
+    <small>Avant de commencer</small></div>
+  <div class="spacer"></div>
+  <a class="btn" href="index.html">← La carte</a>
+</header>
+
+<main id="article">
+<article>
+  <span class="art-kicker">Page de transition</span>
+  <h1>Avant de nous confier quoi que ce soit</h1>
+  <p class="chapo">Vous êtes sur le point de déclarer une maladie. C'est une donnée sensible.
+    Voici précisément ce qu'on vous demande, ce qu'on en fait, et ce qu'on n'en fait pas.</p>
+
+  <section class="art-sec">
+    <h2>Ce qu'on vous demandera</h2>
+    <ul class="liste-champs">
+      <li><b>La pathologie</b><span>Une liste courte : les cancers pédiatriques et les
+        malformations dont le lien avec l'environnement est confirmé ou fortement suspecté.</span></li>
+      <li><b>L'année du diagnostic</b><span>L'année seule, jamais la date.</span></li>
+      <li><b>L'âge au diagnostic</b><span>Une tranche, pas un âge exact.</span></li>
+      <li><b>La commune de résidence</b><span>Et, si elle était différente, la commune de la mère
+        pendant la grossesse : pour une malformation, c'est la fenêtre d'exposition qui compte.</span></li>
+      <li><b>La profession des parents à l'époque</b><span>Facultatif. Sert à construire un
+        indice socio-économique, jamais à identifier quelqu'un.</span></li>
+      <li><b>L'exposition que vous suspectez</b><span>Facultatif. Enregistrée comme une
+        hypothèse de votre part, ce qu'elle est.</span></li>
+      <li><b>Votre témoignage, environ 200 mots</b><span>Facultatif, et c'est souvent lui
+        qu'on lira.</span></li>
+    </ul>
+    <p class="fin-liste">Nous ne demandons <b>ni nom, ni date de naissance, ni pièce médicale</b>.
+      Un e-mail sert uniquement à confirmer, dédoublonner, et vous permettre d'effacer.</p>
+  </section>
+
+  <section class="art-sec encadre">
+    <h2>Ce qui arrive à votre adresse</h2>
+    <p>Elle est envoyée à l'<a href="https://adresse.data.gouv.fr" target="_blank"
+      rel="noopener">API Adresse de l'État</a> <b>depuis votre navigateur</b>, pour en déduire un
+      code IRIS — une maille statistique d'environ 2 000 habitants. Elle ne transite par aucun
+      serveur du projet et n'est jamais écrite en base. Seul le code est conservé.</p>
+    <p>Sur la carte publique, l'IRIS lui-même n'apparaît pas. Les cas sont regroupés par
+      <b>secteurs d'environ 25 km</b>, et un secteur ne s'affiche qu'à partir de <b>trois cas</b>.
+      En dessous du seuil, il est fondu dans un secteur plus large, ou pas affiché du tout.
+      Le point dessiné est le centre du secteur, jamais celui des familles.</p>
+    <p class="regle">Collecter fin, publier grossier. C'est la règle, elle ne bouge pas.</p>
+  </section>
+
+  <section class="art-sec">
+    <h2>Vos consentements sont séparés</h2>
+    <p>Un seul est obligatoire : celui d'enregistrer le signalement. Vous pouvez accepter
+      qu'il soit compté sans accepter qu'il apparaisse sur la carte, ou accepter la carte sans
+      publier votre témoignage. Chaque case est indépendante, et révocable.</p>
+  </section>
+
+  <section class="art-sec">
+    <h2>Vous n'êtes pas obligé·e de faire ça seul·e</h2>
+    <p>Beaucoup de familles veulent d'abord parler à d'autres familles. Un espace d'échange est
+      ouvert pour ça : poser des questions, comprendre ce que devient la donnée, ou simplement
+      lire ce que d'autres ont vécu avant de remplir quoi que ce soit.</p>
+    <p class="art-cta-btns">
+      <a class="btn" href="#" data-discord>Rejoindre l'espace d'échange ↗</a>
+    </p>
+    <p class="fine-note">Lien Discord à fournir par Projet NK — la maquette pointe pour l'instant
+      dans le vide.</p>
+  </section>
+
+  <section class="art-sec">
+    <h2>Ce que ça ne remplace pas</h2>
+    <p>Ni une démarche médicale, ni un signalement à votre ARS. Ce recensement citoyen ne prouve
+      rien à lui seul : il indique où regarder, et il oblige à regarder.</p>
+  </section>
+
+  <section class="art-cta">
+    <div class="art-cta-btns">
+      <a class="btn btn-accent" href="questionnaire.html">J'ai compris, commencer →</a>
+      <a class="btn" href="index.html">Revenir à la carte</a>
+    </div>
+  </section>
+</article>
+</main>
+
+<script>
+  // Le lien Discord n'existe pas encore : on le dit plutôt que d'ouvrir une page morte.
+  document.querySelector('[data-discord]').addEventListener('click', e => {
+    e.preventDefault();
+    e.target.textContent = 'Lien à venir — demandé à Projet NK';
+    e.target.style.opacity = '.6';
+  });
+</script>
+</body>
+</html>

@@ -13,7 +13,8 @@
 
 <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-<link rel="stylesheet" href="css/app.css?v=fa6003e4">
+<link rel="stylesheet" href="css/page.css?v=5829b01f">
+<link rel="stylesheet" href="css/app.css?v=5829b01f">
 </head>
 <body>
 
@@ -33,23 +34,23 @@
   </div>
 
   <div class="mode-switch" id="mode-switch">
-    <button data-mode="recit" class="on">Récit</button>
-    <button data-mode="explore">Explorer</button>
+    <button data-mode="intro" class="on">Déroulé</button>
+    <button data-mode="carte">Carte</button>
   </div>
 
   <button class="btn btn-ghost hide-sm" id="btn-basemap">Fond clair</button>
-  <button class="btn hide-sm" data-modal="deroule">Le déroulé</button>
-  <a class="btn btn-accent" href="questionnaire.html"><span class="e-full">Je participe</span><span class="e-short">Participer</span></a>
+  <a class="btn btn-accent" href="participer.html"><span class="e-full">Je participe</span><span class="e-short">Participer</span></a>
 </header>
 
 <!-- ----------------------------------------------------------- PANNEAU -->
+<!-- ------------------------------------ SECTION 1 : LE DÉROULÉ -->
+<main id="section1"></main>
+
+<!-- ------------------------------ SECTION 2 : LA CARTE + FICHES -->
 <aside id="panel" aria-label="Informations">
   <button id="sheet-grip" aria-label="Ouvrir ou fermer le panneau"><span></span></button>
 
   <div class="panel-scroll" id="panel-scroll">
-
-    <!-- ------------------------------------------------------- RÉCIT -->
-    <div id="recit"></div>
 
     <section class="sec detail" id="detail"></section>
 
@@ -66,8 +67,9 @@
         Les 100 témoignages individuels sont <b>fictifs</b>, générés pour tester le rendu.
       </p>
       <p class="fine">
-        Cliquez un point, survolez une zone, ou lancez le récit guidé. Le sélecteur en haut
-        change de moteur de carte sans changer ni la donnée ni l'interface.
+        Cliquez un secteur pour lire les témoignages qu'il contient, un cluster pour sa fiche
+        complète. Le sélecteur en haut change de moteur de carte sans changer ni la donnée ni
+        l'interface.
       </p>
     </section>
 
@@ -110,8 +112,8 @@
   </div>
 
   <div class="panel-foot">
-    <a class="btn btn-accent" href="questionnaire.html">Signaler un cas →</a>
-    <button class="btn show-sm" data-modal="deroule">Lire le déroulé</button>
+    <a class="btn btn-accent" href="participer.html">Signaler un cas →</a>
+    <button class="btn show-sm" data-mode-go="intro">← Revenir au déroulé</button>
   </div>
 </aside>
 
@@ -167,13 +169,14 @@
 <script src="https://unpkg.com/deck.gl@9.0.35/dist.min.js"></script>
 <script src="https://unpkg.com/pmtiles@3.2.0/dist/pmtiles.js"></script>
 
-<script src="js/data.js?v=fa6003e4"></script>
-<script src="js/style-nk.js?v=fa6003e4"></script>
-<script src="js/shared.js?v=fa6003e4"></script>
-<script src="js/engine-maplibre.js?v=fa6003e4"></script>
-<script src="js/engine-leaflet.js?v=fa6003e4"></script>
-<script src="js/engine-deck.js?v=fa6003e4"></script>
-<script src="js/recit.js?v=fa6003e4"></script>
-<script src="js/app.js?v=fa6003e4"></script>
+<script src="js/data.js?v=5829b01f"></script>
+<script src="js/concepts.js?v=5829b01f"></script>
+<script src="js/section1.js?v=5829b01f"></script>
+<script src="js/style-nk.js?v=5829b01f"></script>
+<script src="js/shared.js?v=5829b01f"></script>
+<script src="js/engine-maplibre.js?v=5829b01f"></script>
+<script src="js/engine-leaflet.js?v=5829b01f"></script>
+<script src="js/engine-deck.js?v=5829b01f"></script>
+<script src="js/app.js?v=5829b01f"></script>
 </body>
 </html>

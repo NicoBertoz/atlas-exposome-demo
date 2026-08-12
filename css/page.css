@@ -1,0 +1,98 @@
+/* ------------------------------------------------------------------ *
+ *  page.css — les pages de lecture : concepts et page de transition.
+ *  Une colonne, une largeur de ligne confortable, rien d'autre.
+ * ------------------------------------------------------------------ */
+.page-article { overflow: auto; }
+.page-article #topbar { position: sticky; }
+
+#article {
+  max-width: 720px; margin: 0 auto;
+  padding: 46px 22px calc(70px + var(--safe-b));
+}
+
+.art-kicker {
+  display: inline-block; font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 14px;
+}
+#article h1 {
+  margin: 0 0 16px; font-size: clamp(28px, 5vw, 40px); line-height: 1.14;
+  letter-spacing: -.03em; font-weight: 700;
+}
+.chapo { font-size: 17px; line-height: 1.6; color: var(--txt-dim); margin: 0 0 32px; }
+
+/* Le résumé lu dans le déroulé, rappelé en tête de page */
+.art-resume {
+  border-left: 2px solid var(--accent); padding: 18px 0 6px 20px; margin: 0 0 40px;
+}
+.art-resume-lab {
+  display: block; font-size: 10px; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--txt-faint); margin-bottom: 10px;
+}
+.art-resume p { font-size: 16px; line-height: 1.66; color: #D6DAE0; margin: 0 0 12px; }
+.art-resume p:last-child { margin-bottom: 0; }
+.art-resume b { color: var(--txt); }
+
+.art-sec { margin-bottom: 34px; }
+.art-sec h2 {
+  font-size: 13px; letter-spacing: .07em; text-transform: uppercase; color: var(--txt-faint);
+  font-weight: 600; margin: 0 0 10px;
+}
+.art-sec p { font-size: 15.5px; line-height: 1.72; color: #CDD2D9; margin: 0 0 14px; }
+.art-sec p:last-child { margin-bottom: 0; }
+.art-sec b { color: var(--txt); }
+
+.art-sec.encadre {
+  background: rgba(59,232,255,.05); border: 1px solid rgba(59,232,255,.2);
+  border-radius: 13px; padding: 20px 22px;
+}
+.art-sec.encadre h2 { color: #7FDCF0; }
+.regle {
+  font-weight: 600; color: var(--txt) !important; border-top: 1px solid rgba(59,232,255,.2);
+  padding-top: 12px; margin-top: 4px !important;
+}
+
+.liste-champs { list-style: none; padding: 0; margin: 0 0 16px; }
+.liste-champs li {
+  padding: 12px 0; border-bottom: 1px solid var(--line-soft);
+  display: grid; grid-template-columns: 240px 1fr; gap: 16px; align-items: baseline;
+}
+.liste-champs li:last-child { border-bottom: 0; }
+.liste-champs b { font-size: 14.5px; }
+.liste-champs span { font-size: 13.5px; color: var(--txt-dim); line-height: 1.6; }
+.fin-liste { font-size: 14px !important; color: var(--txt-dim) !important; }
+.fine-note { font-size: 12px !important; color: var(--txt-faint) !important; margin-top: 8px !important; }
+
+.art-sources ul { padding-left: 18px; margin: 0; }
+.art-sources li { font-size: 14px; line-height: 1.6; margin-bottom: 8px; color: var(--txt-dim); }
+
+.art-cta {
+  border-top: 1px solid var(--line); padding-top: 26px; margin-top: 42px;
+}
+.art-cta h2 { font-size: 13px; letter-spacing: .07em; text-transform: uppercase; color: var(--txt-faint); margin: 0 0 10px; }
+.art-cta p { font-size: 15px; line-height: 1.7; color: #CDD2D9; margin: 0 0 18px; }
+.art-cta-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+.art-cta-btns .btn { padding: 11px 18px; font-size: 13.5px; }
+
+.art-nav {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+  margin-top: 42px; padding-top: 22px; border-top: 1px solid var(--line-soft);
+}
+.art-nav a {
+  border: 1px solid var(--line-soft); border-radius: 11px; padding: 14px 16px;
+  font-size: 14px; color: var(--txt); line-height: 1.4; transition: .12s;
+}
+.art-nav a:hover { border-color: var(--txt-faint); }
+.art-nav a.suiv { text-align: right; }
+.art-nav span {
+  display: block; font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--txt-faint); margin-bottom: 6px;
+}
+.liste-concepts { padding-left: 18px; }
+.liste-concepts li { font-size: 15px; margin-bottom: 10px; }
+
+@media (max-width: 640px) {
+  #article { padding: 30px 18px calc(50px + var(--safe-b)); }
+  .liste-champs li { grid-template-columns: 1fr; gap: 4px; }
+  .art-nav { grid-template-columns: 1fr; }
+  .art-nav a.suiv { text-align: left; }
+}

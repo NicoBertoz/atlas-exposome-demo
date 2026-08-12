@@ -167,6 +167,13 @@
     $('#steps').hidden = true;
     $('#nav').hidden = true;
     $('#done').hidden = false;
+    // Le lien Discord n'existe pas encore : on le dit plutôt que d'ouvrir une page morte
+    const lienDiscord = $('[data-discord]');
+    if (lienDiscord) lienDiscord.addEventListener('click', e => {
+      e.preventDefault();
+      e.target.textContent = 'Lien à venir — demandé à Projet NK';
+      e.target.style.opacity = '.6';
+    });
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
