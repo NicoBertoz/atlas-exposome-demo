@@ -22,6 +22,18 @@ window.NK_SECTION1 = (function () {
 
   const C = window.NK_CONCEPTS;
 
+  /* L'argument en sept mots-clés. Même ordre que les concepts : le fil se lit
+     d'un coup d'œil avant qu'on le déroule, et chaque maillon mène à sa page. */
+  const FIL = [
+    'Les agrégats existent',
+    'Les enfants les révèlent',
+    'La donnée est fermée',
+    'Le doute est fabriqué',
+    'Prouver reste difficile',
+    'Les familles font bouger',
+    'D\'où cette carte',
+  ];
+
   /* Le voile et le flou tiennent pendant la lecture, puis tombent d'un coup
      sur le dernier tiers : on lit d'abord, on découvre la carte ensuite. */
   const DEBUT_LEVEE = 0.42;   // avant : rien ne bouge
@@ -35,24 +47,32 @@ window.NK_SECTION1 = (function () {
     root.innerHTML = `
       <section class="s1-hero">
         <span class="s1-kicker">Atlas de l'exposome</span>
-        <h1>Il y a des endroits où les enfants tombent malades ensemble.</h1>
-        <p class="s1-chapo">Et il y a des raisons, à chaque fois différentes, pour lesquelles
-          on n'en conclut rien.</p>
+        <h1>La cartographie écocitoyenne des maladies rares de l'enfant.</h1>
+        <p class="s1-chapo">Des cancers et des malformations se concentrent à certains endroits.
+          La donnée qui permettrait de le démontrer n'est pas publique. Alors nous la
+          construisons.</p>
         <div class="s1-chiffres">
-          <div><b>${nHot}</b><span>clusters documentés</span></div>
-          <div><b>${D.signalements.features.length}</b><span>autres signalements instruits</span></div>
-          <div><b>${D.temoignages.features.length}</b><span>témoignages reçus</span></div>
+          <div><b>${nHot}</b><span>agrégats documentés</span></div>
+          <div><b>${D.signalements.features.length}</b><span>autres investigations instruites</span></div>
+          <div><b>${D.temoignages.features.length}</b><span>cas déclarés par des familles</span></div>
         </div>
         <div class="s1-hero-cta">
           <button class="btn btn-accent" data-carte>Ouvrir la carte →</button>
-          <span class="s1-ou">ou lisez d'abord, huit points, deux minutes</span>
+          <span class="s1-ou">ou suivez le raisonnement, sept points, deux minutes</span>
         </div>
       </section>
+
+      <!-- Le fil : l'argument en une ligne, avant de le dérouler -->
+      <nav class="s1-fil" aria-label="Le fil du raisonnement">
+        ${FIL.map((etape, i) => `
+          <a href="concept.html?id=${C[i].id}" class="fil-etape">
+            <span class="fil-num">${String(i + 1).padStart(2, '0')}</span>${etape}
+          </a>`).join('')}
+      </nav>
 
       <div class="s1-grille">
         ${C.map((c, i) => `
           <a class="concept" href="concept.html?id=${c.id}" data-i="${i}">
-            <span class="concept-num">${String(i + 1).padStart(2, '0')}</span>
             <span class="concept-kicker">${c.kicker}</span>
             <h2>${c.titre}</h2>
             <p>${c.teaser}</p>
@@ -63,9 +83,9 @@ window.NK_SECTION1 = (function () {
       <!-- Zone de révélation : rien à lire, la carte prend la place -->
       <section class="s1-reveal">
         <div class="s1-reveal-txt">
-          <h2>La carte</h2>
-          <p>Les clusters documentés, les signalements instruits, et les témoignages reçus,
-            regroupés par secteur pour qu'aucune famille ne soit localisable.</p>
+          <h2>Notre cartographie</h2>
+          <p>Ce que l'État a instruit, et ce que les familles déclarent. Collecté à l'IRIS,
+            publié par secteurs d'environ 25 km, à partir de trois cas. Jamais à l'adresse.</p>
         </div>
         <div class="s1-reveal-fin">
           <span class="s1-fleche">↓</span>

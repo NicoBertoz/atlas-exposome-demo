@@ -9,11 +9,11 @@
      témoignages fictifs. À retirer au moment de la publication réelle. -->
 <meta name="robots" content="noindex, nofollow">
 
-<title>Atlas de l'exposome — clusters pédiatriques en France</title>
+<title>Atlas de l'exposome — cartographie écocitoyenne des maladies rares de l'enfant</title>
 
 <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
-<link rel="stylesheet" href="css/page.css?v=08c3dde3">
-<link rel="stylesheet" href="css/app.css?v=08c3dde3">
+<link rel="stylesheet" href="css/page.css?v=6c63f4f6">
+<link rel="stylesheet" href="css/app.css?v=6c63f4f6">
 </head>
 <body>
 
@@ -21,7 +21,7 @@
 <header id="topbar">
   <div class="brand">
     Atlas<span class="brand-long"> de l'exposome</span>
-    <small>Cancers pédiatriques · clusters documentés</small>
+    <small>Maladies rares de l'enfant · cartographie écocitoyenne</small>
   </div>
 
   <div class="spacer"></div>
@@ -51,18 +51,18 @@
       <h2>Ce que montre cette carte</h2>
       <p class="lede" id="lede-chiffres"></p>
       <p class="fine">
-        Les clusters et les signalements sont des <b>données publiques réelles</b> : rapports
+        Les agrégats et les investigations sont des <b>données publiques réelles</b> : rapports
         de Santé publique France, registres, presse. Chaque fiche porte son lien source.
-        Les témoignages individuels sont <b>fictifs</b>, générés pour tester le rendu.
+        Les cas déclarés sont <b>fictifs</b>, générés pour tester le rendu.
       </p>
       <p class="fine">
-        Cliquez un <b>carré</b> pour la fiche complète d'un cluster, une <b>tache</b> pour lire
-        les témoignages du secteur. Deux formes, deux natures de donnée.
+        Cliquez un <b>carré</b> pour la fiche d'un agrégat instruit, une <b>tache</b> pour lire
+        les cas déclarés d'un secteur. Deux formes, deux natures de donnée.
       </p>
     </section>
 
     <section class="sec explore">
-      <h2>Type de cancer <span class="h2-sub">témoignages</span></h2>
+      <h2>Pathologie <span class="h2-sub">cas déclarés</span></h2>
       <div class="filters" id="filters"></div>
     </section>
 
@@ -71,22 +71,23 @@
 
       <div class="famille famille-officiel">
         <div class="fam-tete"><span class="fam-ico ico-hotspot">1</span>
-          <b>Clusters &amp; signalements</b></div>
-        <p class="fam-txt">Ce que l'État a instruit. Périmètre publié, mesure officielle,
-          rapport source. Carré numéroté.</p>
+          <b>Instruit par l'État</b></div>
+        <p class="fam-txt">Agrégats spatio-temporels investigués par Santé publique France.
+          Périmètre publié, SIR, rapport source. <b>Carré numéroté.</b></p>
         <label class="toggle-row"><input type="checkbox" id="tg-zones" checked>
-          <span>Clusters documentés <em id="c-zones"></em></span></label>
+          <span>Agrégats documentés <em id="c-zones"></em></span></label>
         <label class="toggle-row"><input type="checkbox" id="tg-sig" checked>
-          <span>Autres signalements instruits <em id="c-sig"></em></span></label>
+          <span>Autres investigations <em id="c-sig"></em></span></label>
       </div>
 
       <div class="famille famille-citoyen">
         <div class="fam-tete"><span class="fam-ico ico-temoin"></span>
           <b>Cas déclarés par les familles</b></div>
-        <p class="fam-txt">Ce que les familles signalent elles-mêmes. <b>Jamais de position
-          exacte</b> : une tache floue par secteur, à partir de 3 cas. Tache ronde, sans contour.</p>
+        <p class="fam-txt">Recensement participatif. <b>Jamais de position exacte</b> : collecté
+          à l'IRIS, publié par secteur d'environ 25 km, à partir de 3 cas.
+          <b>Tache ronde, sans contour.</b></p>
         <label class="toggle-row"><input type="checkbox" id="tg-temoins" checked>
-          <span>Secteurs de témoignages <em id="c-tem"></em></span></label>
+          <span>Secteurs de cas déclarés <em id="c-tem"></em></span></label>
         <label class="toggle-row" id="row-agg"><input type="checkbox" id="tg-agg">
           <span>Agrégation en hexagones <em>2,5D</em></span></label>
       </div>
@@ -107,7 +108,7 @@
     </section>
 
     <section class="sec explore">
-      <h2>Les clusters documentés <span class="h2-sub" id="hs-count"></span></h2>
+      <h2>Les agrégats documentés <span class="h2-sub" id="hs-count"></span></h2>
       <div class="hs" id="hs-list"></div>
     </section>
 
@@ -128,9 +129,9 @@
 
   <!-- Bandeau d'alerte du comparateur : impossible d'oublier qu'il est actif -->
   <div id="exact-warn" hidden>
-    <b>Vue de travail</b> Les positions exactes des 100 témoignages sont affichées par-dessus
-    les secteurs. C'est ce que le dispositif s'interdit de publier : à ce niveau de précision,
-    un cas isolé dans une commune rurale est retrouvable.
+    <b>Vue de travail</b> Les positions exactes des cas déclarés sont affichées par-dessus les
+    secteurs. C'est ce que le dispositif s'interdit de publier : à ce niveau de précision, un cas
+    isolé dans une commune rurale est retrouvable.
     <button id="exact-off">Masquer</button>
   </div>
 
@@ -150,13 +151,13 @@
     <button id="legend-toggle" aria-label="Légende">Légende</button>
     <div id="legend-body">
       <div class="leg-titre">Instruit par l'État</div>
-      <div class="li"><span class="leg-carre confirme">1</span> Cluster, excès confirmé</div>
-      <div class="li"><span class="leg-carre enquete">1</span> Excès non retenu ou enquête en cours</div>
+      <div class="li"><span class="leg-carre confirme">1</span> Agrégat, excès confirmé</div>
+      <div class="li"><span class="leg-carre enquete">1</span> Excès non retenu, ou enquête en cours</div>
       <div class="li"><span class="leg-carre anon">?</span> Périmètre non publié (RGPD)</div>
-      <div class="li"><span class="sq"></span> Autre signalement instruit</div>
+      <div class="li"><span class="sq"></span> Autre investigation instruite</div>
       <hr>
       <div class="leg-titre">Déclaré par les familles</div>
-      <div class="li"><span class="leg-tache"></span> Secteur flou, 3 cas ou plus</div>
+      <div class="li"><span class="leg-tache"></span> Secteur, 3 cas déclarés ou plus</div>
       <div id="legend-patho"></div>
     </div>
   </div>
@@ -169,12 +170,12 @@
 <script src="https://unpkg.com/deck.gl@9.0.35/dist.min.js"></script>
 <script src="https://unpkg.com/pmtiles@3.2.0/dist/pmtiles.js"></script>
 
-<script src="js/data.js?v=08c3dde3"></script>
-<script src="js/concepts.js?v=08c3dde3"></script>
-<script src="js/section1.js?v=08c3dde3"></script>
-<script src="js/style-nk.js?v=08c3dde3"></script>
-<script src="js/shared.js?v=08c3dde3"></script>
-<script src="js/engine-deck.js?v=08c3dde3"></script>
-<script src="js/app.js?v=08c3dde3"></script>
+<script src="js/data.js?v=6c63f4f6"></script>
+<script src="js/concepts.js?v=6c63f4f6"></script>
+<script src="js/section1.js?v=6c63f4f6"></script>
+<script src="js/style-nk.js?v=6c63f4f6"></script>
+<script src="js/shared.js?v=6c63f4f6"></script>
+<script src="js/engine-deck.js?v=6c63f4f6"></script>
+<script src="js/app.js?v=6c63f4f6"></script>
 </body>
 </html>

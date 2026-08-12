@@ -55,7 +55,7 @@ window.NK_SHARED = (function () {
       <div class="m">${p.lieu} · ${p.periode}</div>
       <div class="m" style="margin-top:6px"><b style="color:#E8EAED">${p.cas}</b></div>
       <div class="m">${p.pathologie}</div>
-      <div class="cta">Signalement instruit · cliquer pour la fiche</div>
+      <div class="cta">Investigation instruite · cliquer pour la fiche</div>
     </div>`;
   }
 
@@ -64,7 +64,7 @@ window.NK_SHARED = (function () {
       <h4>${p.dep}</h4>
       <div class="m" style="color:${p.color}">${p.patho_label}</div>
       <div class="m">Diagnostic en ${p.annee} · ${p.tranche_age}</div>
-      <div class="cta">Témoignage fictif · cliquer pour le lire</div>
+      <div class="cta">Cas déclaré, fictif · cliquer pour le lire</div>
     </div>`;
   }
 
@@ -211,10 +211,10 @@ window.NK_SHARED = (function () {
         return `<div class="m" style="color:${p.color}">${n} × ${p.label}</div>`;
       }).join('');
     return `<div class="pop">
-      <h4>${c.n} témoignages</h4>
+      <h4>${c.n} cas déclarés</h4>
       <div class="m">${c.maille} · ${c.deps.slice(0, 2).join(', ')}${c.deps.length > 2 ? '…' : ''}</div>
       <div style="margin:7px 0 0">${det}</div>
-      <div class="cta">Position volontairement approximative · cliquer pour lire</div>
+      <div class="cta">Secteur d'environ 25 km · position volontairement approximative</div>
     </div>`;
   }
 

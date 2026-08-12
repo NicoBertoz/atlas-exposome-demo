@@ -129,9 +129,30 @@ du déroulé.
 
 Une page principale, deux sections, dans cet ordre.
 
-**Section 1, le déroulé.** Huit points présentés en **grille**, pas en colonne : deux lignes de
-teaser chacun, l'ensemble tient en deux écrans. Les 200 mots et les sources sont sur la **page
-dédiée** qu'ouvre « Creuser ce point » — le « click sur un des concepts à creuser » du flow.
+**Section 1, le déroulé.** Ce n'est pas une liste de sujets, c'est **un argument en sept temps**,
+et l'ordre porte la démonstration :
+
+> **01** Les agrégats existent → **02** Les enfants les révèlent → **03** La donnée est fermée →
+> **04** Le doute est fabriqué → **05** Prouver reste difficile → **06** Les familles font
+> bouger → **07** D'où cette carte
+
+Le fil est affiché tel quel en haut de page, en chaîne de sept maillons cliquables : on voit où
+mène le raisonnement avant de le lire, et on peut sauter au point qui intéresse. Les sept points
+sont ensuite présentés en **grille**, deux lignes de teaser chacun, l'ensemble tenant en deux
+écrans. Les 200 mots et les sources sont sur la **page dédiée** qu'ouvre « Creuser ce point ».
+
+**Vocabulaire.** On emploie les termes du dossier et ceux de la santé publique plutôt que des
+approximations : un « pic local » est un **agrégat spatio-temporel**, mesuré par un **SIR**,
+instruit dans une **investigation**. Les cas déclarés relèvent du **recensement participatif**,
+collecté à l'**IRIS**. Les cancers pédiatriques et les malformations concernées sont des
+**pathologies sentinelles**, et l'ensemble des expositions subies s'appelle l'**exposome** — d'où
+le nom du projet.
+
+**Sur le point 04.** Le sujet est réel et documenté, mais il est aussi le plus exposé
+juridiquement. Le parti pris est d'exposer un **mécanisme** — là où la donnée d'exposition manque,
+l'enquête s'arrête — en s'appuyant sur des faits vérifiables (classements sans suite, fond
+géochimique naturel opposé, procédures en cours), sans nommer aucune entreprise et sans procès
+d'intention. Cette règle vaut aussi pour la modération des témoignages.
 
 **Trois chemins vers la carte**, du plus rapide au plus lent :
 

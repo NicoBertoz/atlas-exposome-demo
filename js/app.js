@@ -84,14 +84,14 @@
     applyFilters();
     if (ready[state.engine]) engines[state.engine].render(state);
     const places = state.features.length - state.horsMaille;
-    $('#year-count').textContent = `${places} sur ${state.features.length} placés`;
+    $('#year-count').textContent = `${places} cas sur ${state.features.length} placés`;
     $('#c-zones').textContent = HOTSPOTS.length + ' + 1 anonymisée';
     $('#hs-count').textContent = HOTSPOTS.length;
-    $('#lede-chiffres').innerHTML = `<b>${HOTSPOTS.length} clusters</b> de cancers pédiatriques documentés en France, <b>${state.signalements.length} autres signalements</b> instruits par les autorités, et <b>${D.temoignages.features.length} témoignages</b> posés par les familles.`;
+    $('#lede-chiffres').innerHTML = `<b>${HOTSPOTS.length} agrégats</b> de maladies rares de l'enfant documentés en France, <b>${state.signalements.length} autres investigations</b> instruites par les autorités, et <b>${D.temoignages.features.length} cas</b> déclarés par des familles.`;
     $('#c-sig').textContent = state.signalements.length;
     $('#c-tem').textContent = `${state.cellules.length} secteurs`;
     $('#k-note').textContent = state.horsMaille
-      ? `${state.horsMaille} témoignages non placés : leur secteur compte moins de ${S.K_ANONYMAT} cas.`
+      ? `${state.horsMaille} cas non placés : leur secteur compte moins de ${S.K_ANONYMAT} déclarations.`
       : 'Tous les secteurs atteignent le seuil.';
     $('#exact-warn').hidden = !state.exact;
     renderFilters();
@@ -218,14 +218,14 @@
         <span class="id">SECTEUR AGRÉGÉ · ${c.maille}</span>
         <button class="detail-close" data-close aria-label="Fermer">×</button>
       </div>
-      <h3>${c.n} témoignages</h3>
+      <h3>${c.n} cas déclarés</h3>
       <div class="sub">${c.deps.join(', ')}</div>
       <div style="margin-top:8px">${det}</div>
       <p class="caution" style="border-top:0;padding-top:10px;margin-top:10px">
         Position approximative, volontairement. Le point affiché est le centre de la maille,
         pas la position des familles.
       </p>
-      <div class="block"><h4>Les témoignages de ce secteur</h4></div>
+      
       ${listeTemoins(c.temoins)}
       ${blocParticiper('Un cas de plus dans ce secteur ?')}`;
     openDetail();
@@ -296,7 +296,7 @@
       <div class="block"><h4>Pourquoi ce cluster compte</h4><p>${p.interet}</p></div>
       <div class="src"><a href="${p.source}" target="_blank" rel="noopener">Rapport source ↗</a></div>
 
-      <div class="block"><h4>Témoignages reçus dans cette zone</h4></div>
+      <div class="block"><h4>Cas déclarés dans cette zone</h4></div>
       ${listeTemoins(temoinsDuCluster(p.id))}
 
       ${blocParticiper('Votre enfant a été diagnostiqué dans ce secteur ?')}
