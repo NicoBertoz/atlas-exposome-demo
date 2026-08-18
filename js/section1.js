@@ -1,113 +1,91 @@
 /* ------------------------------------------------------------------ *
  *  section1.js — le déroulé narratif, première section de la page.
  *
- *  Flow du 28/07 : section 1 à scroller, résumés courts qui mènent chacun
- *  vers une page dédiée, et la carte teasée en arrière-plan avant
- *  d'apparaître en section 2.
+ *  Refonte du 18/08/2026. Les quatre relectures convergeaient sur le même
+ *  point, avec des mots différents : la grille de blocs numérotés était du
+ *  bruit visuel, et on perdait le lecteur. Elle est remplacée par UNE
+ *  COLONNE VERTICALE, aérée, sur fond blanc.
  *
- *  Deux partis pris.
+ *  Quatre partis pris, chacun issu d'une remarque :
  *
- *  1. Le déroulé tient en deux écrans. Chaque point se lit en deux lignes ;
- *     les 200 mots sont sur sa page.
+ *  1. La landing est une page de titre. Un titre, un paragraphe qui annonce
+ *     la couleur, et un lien discret vers la carte — pas un bouton de plus.
+ *     (Nico : « réduire à tagline + 1-liner » ; Philippine : « page de titre ».)
  *
- *  2. La carte n'est jamais masquée par de la transparence. Un fond de carte
- *     sombre à 20 % d'opacité sur un fond noir, ça ne donne rien de visible.
- *     Elle reste donc à pleine opacité, et c'est un VOILE posé par-dessus qui
- *     l'assombrit. Le voile se lève au défilement, la carte apparaît en entier,
- *     et le passage en plein écran se fait tout seul en fin de course — sans
- *     clic, sans changement de page.
+ *  2. Le fil en sept maillons et les sept blocs sous lui étaient la même
+ *     chose dite deux fois. Ils sont fusionnés : un temps = un numéro, un
+ *     titre, deux lignes, un lien. (Nico.)
+ *
+ *  3. Chaque temps est gris tant qu'on ne l'a pas atteint, et prend l'encre
+ *     au passage. C'est ce qui remplace l'animation d'apparition, qui faisait
+ *     sauter la page. (Fau : « grisé puis qui se colore au fil du scroll ».)
+ *
+ *  4. Le septième temps prend toute la largeur et remplace l'ancien encadré
+ *     « Notre cartographie », qui était transparent et illisible. (Nico, Lila.)
+ *
+ *  La carte, elle, se compose derrière la lecture : presque invisible et
+ *  désaturée au début, nette et colorée à l'arrivée. C'est le « l'image
+ *  abstraite se transforme progressivement en carte » de Philippine, obtenu
+ *  avec le fond de carte lui-même plutôt qu'avec une illustration à produire.
  * ------------------------------------------------------------------ */
 window.NK_SECTION1 = (function () {
   'use strict';
 
   const C = window.NK_CONCEPTS;
 
-  /* L'argument en sept mots-clés. Même ordre que les concepts : le fil se lit
-     d'un coup d'œil avant qu'on le déroule, et chaque maillon mène à sa page. */
-  const FIL = [
-    'Les agrégats existent',
-    'Les enfants les révèlent',
-    'La donnée est fermée',
-    'Le doute est fabriqué',
-    'Prouver reste difficile',
-    'Les familles font bouger',
-    'D\'où cette carte',
-  ];
-
-  /* Le voile et le flou tiennent pendant la lecture, puis tombent d'un coup
-     sur le dernier tiers : on lit d'abord, on découvre la carte ensuite. */
-  const DEBUT_LEVEE = 0.42;   // avant : rien ne bouge
-  const FIN_LEVEE = 0.90;     // après : carte nette et sans voile
-  const BASCULE = 0.94;       // plein écran, pendant qu'il reste de la course
+  /* Le voile tient pendant la lecture du titre, puis la carte se compose sur
+     toute la longueur du déroulé. On lit et on voit la carte se construire. */
+  const DEBUT_LEVEE = 0.18;
+  const FIN_LEVEE = 0.88;
+  const BASCULE = 0.97;   // plein écran, tout à la fin de la course
 
   function monter(root, onCarte) {
-    const D = window.NK_DATA;
-    const nHot = D.hotspots.features.filter(f => !f.properties.anonyme).length;
-
     root.innerHTML = `
       <section class="s1-hero">
-        <div class="s1-bloc">
-          <span class="s1-kicker">Atlas de l'exposome</span>
-          <h1>La cartographie écocitoyenne des maladies rares de l'enfant.</h1>
-          <p class="s1-chapo">Des cancers et des malformations se concentrent à certains
-            endroits. La donnée qui permettrait de le démontrer n'est pas publique. Alors nous
-            la construisons.</p>
-          <div class="s1-chiffres">
-            <div><b>${nHot}</b><span>agrégats documentés</span></div>
-            <div><b>${D.signalements.features.length}</b><span>autres investigations instruites</span></div>
-            <div><b>${D.temoignages.features.length}</b><span>cas déclarés par des familles</span></div>
-          </div>
-          <div class="s1-hero-cta">
-            <button class="btn btn-accent" data-carte>Ouvrir la carte →</button>
-            <span class="s1-ou">ou suivez le raisonnement, sept points, deux minutes</span>
-          </div>
+        <h1>Veille sanitaire participative des cancers pédiatriques</h1>
+        <p class="s1-annonce">Ceci est une veille sanitaire participative, en constante
+          évolution. Les cas de cancers pédiatriques et les principales concentrations de cas
+          y sont répertoriés. Les données sont obtenues par un questionnaire construit avec des
+          scientifiques, auquel chaque personne touchée peut répondre.</p>
+        <div class="s1-hero-cta">
+          <button class="lien-action" data-carte data-mot="Accéder à la carte">Accéder à la carte</button>
         </div>
+        <span class="s1-descendre">Ou lisez d'abord — sept points, deux minutes ↓</span>
       </section>
 
-      <!-- Le fil : l'argument en une ligne, avant de le dérouler -->
-      <nav class="s1-fil" aria-label="Le fil du raisonnement">
-        ${FIL.map((etape, i) => `
-          <a href="concept.html?id=${C[i].id}" class="fil-etape">
-            <span class="fil-num">${String(i + 1).padStart(2, '0')}</span>${etape}
-          </a>`).join('')}
-      </nav>
-
-      <div class="s1-grille">
+      <div class="s1-deroule">
         ${C.map((c, i) => `
-          <a class="concept" href="concept.html?id=${c.id}" data-i="${i}">
-            <span class="concept-kicker">${c.kicker}</span>
+          <a class="s1-temps" href="concept.html?id=${c.id}" data-i="${i}">
+            <span class="s1-temps-num">${String(i + 1).padStart(2, '0')} · ${c.kicker.split('· ')[1] || c.kicker}</span>
             <h2>${c.titre}</h2>
             <p>${c.teaser}</p>
-            <span class="concept-lien">Creuser ce point →</span>
+            <span class="s1-temps-lien" data-mot="Lire ce point">Lire ce point →</span>
           </a>`).join('')}
       </div>
 
-      <!-- Zone de révélation : rien à lire, la carte prend la place -->
-      <section class="s1-reveal">
-        <div class="s1-reveal-txt s1-bloc">
-          <h2>Notre cartographie</h2>
-          <p>Ce que l'État a instruit, et ce que les familles déclarent. Collecté à l'IRIS,
-            publié par secteurs d'environ 25 km, à partir de trois cas. Jamais à l'adresse.</p>
-        </div>
-        <div class="s1-reveal-fin s1-bloc">
-          <span class="s1-fleche">↓</span>
-          <span class="s1-fin-txt">Continuez à défiler, la carte prend la place</span>
-          <button class="btn btn-accent" data-carte>Ouvrir maintenant</button>
-        </div>
-      </section>`;
+      <!-- Le dernier temps, pleine largeur : il annonce la carte et remplace
+           l'ancien encadré « Notre cartographie ». -->
+      <section class="s1-final">
+        <h2>Voilà pourquoi nous faisons cette carte</h2>
+        <p>Ce que l'État a enquêté, et ce que les familles racontent, sur le même fond.
+          Les adresses ne sont jamais publiées : elles sont regroupées par secteurs,
+          et un secteur n'apparaît qu'à partir de plusieurs cas.</p>
+        <button class="btn btn-accent" data-carte>Ouvrir la carte →</button>
+      </section>
+
+      <div class="s1-reveal" aria-hidden="true"></div>`;
 
     /* Raccourci permanent, pour qui ne veut pas défiler du tout. */
     const pilule = document.createElement('button');
     pilule.id = 's1-pilule';
-    pilule.innerHTML = '<span class="pt"></span>Voir la carte';
+    pilule.textContent = 'Accéder à la carte →';
     pilule.addEventListener('click', onCarte);
     root.appendChild(pilule);
 
     root.querySelectorAll('[data-carte]').forEach(b => b.addEventListener('click', onCarte));
 
     const stage = document.getElementById('map-stage');
-    const cartes = [...root.querySelectorAll('.concept')];
-    const reveal = root.querySelector('.s1-reveal');
+    const temps = [...root.querySelectorAll('.s1-temps')];
     let bascule = false;
 
     const entre = (v, a, b) => Math.max(0, Math.min(1, (v - a) / (b - a)));
@@ -115,23 +93,21 @@ window.NK_SECTION1 = (function () {
     function auDefilement() {
       const h = root.scrollHeight - root.clientHeight;
       const t = h > 0 ? Math.min(1, root.scrollTop / h) : 0;
-      const l = entre(t, DEBUT_LEVEE, FIN_LEVEE);   // 0 pendant la lecture, 1 à la fin
+      const l = entre(t, DEBUT_LEVEE, FIN_LEVEE);
 
-      /* La carte garde son opacité : c'est le voile qui s'efface. Elle doit
-         être reconnaissable comme carte dès le premier écran — donc un flou
-         léger et un voile modéré, pas un aplat qui la fait disparaître. */
-      stage.style.setProperty('--tease', (2.5 - 2.5 * l).toFixed(1) + 'px');
-      stage.style.setProperty('--monte', (7 - 7 * l).toFixed(2) + 'vh');
-      root.style.setProperty('--voile', (0.42 - 0.42 * l).toFixed(3));
-      reveal.style.setProperty('--net', l.toFixed(3));
+      /* La carte se compose : elle sort du blanc, se désatures moins, et se
+         dénette. Trois réglages sur le même curseur — pas un fondu d'opacité
+         seul, qui donne un gris sale plutôt qu'une carte qui apparaît. */
+      stage.style.setProperty('--tease', (3 - 3 * l).toFixed(2) + 'px');
+      stage.style.setProperty('--sat', (0.1 + 0.9 * l).toFixed(3));
+      stage.style.setProperty('--carte-op', (0.16 + 0.84 * l).toFixed(3));
+      root.style.setProperty('--voile', (1 - 0.34 * l).toFixed(3));
 
-      pilule.classList.toggle('on', root.scrollTop > 140 && l < 0.75);
+      pilule.classList.toggle('on', root.scrollTop > 200 && l < 0.8);
 
-      const ligne = root.clientHeight * 0.97;
-      cartes.forEach(el => el.classList.toggle('vu', el.getBoundingClientRect().top < ligne));
+      const ligne = root.clientHeight * 0.82;
+      temps.forEach(el => el.classList.toggle('vu', el.getBoundingClientRect().top < ligne));
 
-      /* Fin de course : la carte est déjà nette et sans voile, il ne reste
-         qu'à retirer le déroulé. La bascule ne se voit donc presque pas. */
       if (t >= BASCULE && !bascule) { bascule = true; onCarte(); }
       if (t < BASCULE - 0.05) bascule = false;
     }

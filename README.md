@@ -21,6 +21,42 @@ Régénérer le jeu de données :
 cd demo-cartes && python3 scripts/generate-data.py
 ```
 
+Régénérer le contour de la France (masque de carte) :
+
+```bash
+cd demo-cartes && node scripts/gen-masque.js
+```
+
+---
+
+## 0. Révision du 18/08/2026 — relecture Philippine / Fau / Lila / Nico
+
+Cette version applique la relecture croisée du Google Doc de retours. Les sections
+qui suivent décrivent encore, par endroits, l'état antérieur : **en cas de
+contradiction, c'est ce tableau qui fait foi.**
+
+| Sujet | Avant | Maintenant |
+|---|---|---|
+| Identité | papier/fanzine, fond texturé, cadres d'encre 1,5 px, ombres portées, bords arrondis | **fond blanc**, aucun motif, **aucun encadré noir**, filets gris fins, **aucun bord arrondi**, Helvetica |
+| Navigation | barre « Déroulé / Carte » + bouton Participer | **cinq onglets partout** : Contexte · Carte · À propos · Participer · Ressources, surlignés au survol |
+| Landing | titre + chapô + 3 compteurs + 2 boutons | **titre seul + un paragraphe + un lien discret** vers la carte |
+| Déroulé | fil de 7 maillons **puis** grille de 7 blocs | **une colonne verticale**, les deux fusionnés, gris → encre au défilement |
+| Fond de carte | Europe entière, forêts, routes, limites régionales | **France seule** (masque `js/masque-france.js`), blanc cassé, trait de côte, rien d'autre |
+| Points de cas | une couleur par pathologie | **un seul bleu** ; le tri se fait au filtre |
+| Filtre | liste de pathologies + curseur d'année | **liste déroulante multi-choix** (modèle dansmoneau.fr), curseur d'année supprimé |
+| Légende | 8 lignes, 2 familles, 3 états d'agrégat | **3 lignes** |
+| Panneau | « Deux couches, deux natures », liste des agrégats, hexagones, positions exactes | supprimés ; « Ce que montre cette carte » **replié derrière une icône** |
+| Entrée dans la carte | dérive automatique de cluster en cluster | **visite guidée**, six lieux, flèches, « explorer librement » |
+| Fiches | grille de rubriques | **texte rédigé**, collectif mis en avant |
+| Audio | barre de lecture flottante | **dans la fiche du cas**, et nulle part ailleurs |
+| Accessibilité | rien hors carte | **tableau équivalent** au clavier + **export CSV** |
+| Questionnaire | 5 étapes, aiguillage maladie/pollution, valeurs pré-cochées, barre de boutons fixée en bas | **6 étapes courtes**, pollution retirée, **rien de pré-coché**, boutons dans le flux |
+| Discord | 3 emplacements | **retiré partout** |
+| Mode sombre | bouton dans la barre | supprimé |
+
+Les arbitrages qui restaient à trancher côté équipe sont listés en fin de
+section 6.
+
 ---
 
 ## 1. Le moteur : deck.gl + MapLibre GL JS
@@ -437,24 +473,46 @@ cd demo-cartes && ./deploy.sh check     # vérifie avant d'envoyer
 
 ## 6. Ce qui reste à faire
 
-- **Trancher le moteur** avec Jérémy, puis supprimer les deux autres du dépôt.
-- **Fixer K et la maille** avec la juriste RGPD (§3), en incluant le risque de ré-identification
-  par croisement pathologie × année × tranche d'âge.
 - **Appliquer la charte NK** de septembre : le bloc `PALETTES` de `js/style-nk.js` et le bloc
-  `:root` de `css/app.css`. La direction actuelle est **papier et encres franches**, esprit
-  fanzine militant : fond papier chaud, noir d'encre, cinq couleurs saturées (rouge pour les
-  excès confirmés, orange pour les dossiers contestés, magenta/bleu/vert pour les trois
-  pathologies) et un jaune réservé à l'action. Pas de dégradé, pas d'ombre douce : des traits
-  d'encre et des ombres portées franches.
+  `:root` de `css/app.css`. La direction actuelle est celle demandée en relecture pour la
+  version de travail : **fond blanc, aucun motif, aucun encadré noir, aucun bord arrondi,
+  Helvetica**, trois encres (rouge pour un excès confirmé, orange pour un excès non confirmé
+  ou une enquête en cours, bleu pour un cas raconté) et un jaune réservé à l'action.
+- **Fixer K et la maille** avec la juriste RGPD (§3), en incluant le risque de ré-identification
+  par croisement pathologie × année × tranche d'âge. Bloquant pour l'arbitrage « afficher à
+  partir d'un seul cas » (ci-dessous).
 - **Monter le fichier de tuiles au zoom 12** et le poser sur du stockage objet, pour un rendu net
-  au plus près des clusters.
+  au plus près des zones.
 - **Brancher le questionnaire** sur une vraie base, et décider du géocodage IRIS réel (l'API
   Adresse donne la commune ; l'IRIS demande le référentiel IRIS).
-- **Enregistrer les vrais témoignages audio**, en remplacement des huit voix de synthèse.
-- **Faire relire les fiches cluster** par Ayisha : elles reprennent le classeur, dont l'en-tête
+- **Enregistrer les vrais témoignages audio**, en remplacement des voix de synthèse.
+- **Faire relire les fiches de zone** par Ayisha : elles reprennent le classeur, dont l'en-tête
   signale que certaines lignes restent à vérifier.
-- **Écrire le texte définitif du déroulé** avec l'équipe éditoriale NK. Les huit concepts et
-  leurs pages sont une proposition de structure et d'angle, pas une copie validée.
-- **Fournir l'URL de l'espace d'échange** (Discord), attendue à trois endroits.
-- **Monter à 15-20 hotspots** comme prévu au lancement : le corpus en contient 31, dont 6 mis en
-  avant et 25 en couche secondaire. Le passage se fait dans `scripts/generate-data.py`.
+- **Écrire le texte définitif du déroulé** avec l'équipe éditoriale NK. Les sept temps et leurs
+  pages sont une proposition de structure et d'angle, pas une copie validée.
+- **Remplir « À propos » et « Ressources »** : les deux pages existent avec leur structure, et
+  portent un bandeau « contenu à valider ». Manquent les descriptions officielles des
+  organisations, l'adresse de contact, la bibliographie, et surtout les **contacts
+  d'accompagnement pour les familles** — on ne peut pas demander un récit de diagnostic sans
+  proposer où en parler.
+- **Monter à 15-20 zones mises en avant** : le corpus en contient 31, dont 22 mises en avant et
+  13 signalements en couche secondaire. Le passage se fait dans `scripts/generate-data.py`.
+
+### Restées ouvertes après la relecture du 18/08
+
+Sept points n'ont pas pu être tranchés côté production, parce qu'ils demandent une
+décision d'équipe. Ils sont détaillés dans la note de restitution ; en résumé :
+
+1. **Afficher un cas isolé** (demandé) contre **seuil de trois cas** (en place). Décision
+   RGPD, pas décision de design : un cas seul + maladie rare + maille fine se retrouve.
+2. **Carte de chaleur** (demandée) contre **points** (en place). Une heatmap se lit comme
+   une densité de maladie, et nous n'avons pas de dénominateur.
+3. **Nom du bouton** : « Signaler un cas » partout aujourd'hui, contre « Participer »,
+   « Je témoigne », « Apporter votre témoignage ». Un seul libellé, à choisir.
+4. **Page « Participer »** : conservée et coupée de moitié, contre supprimée.
+5. **DROM-COM** : le contour et les tuiles ne couvrent que la métropole. Un cartouche
+   demande un jeu de tuiles et un contour de plus.
+6. **Détail au survol d'un mot souligné** : joli, mais inaccessible au clavier et au tactile.
+   À tester avant de l'inscrire au socle.
+7. **Vérification des déclarations** : question posée deux fois en relecture, sans réponse
+   produit à ce stade.

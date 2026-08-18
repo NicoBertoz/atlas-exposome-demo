@@ -17,9 +17,8 @@ window.NK_ENGINES.deck = (function () {
   let auto = false;   // vrai si on sert nos propres tuiles
   const styleDe = key => (auto ? window.NK_STYLE.style(key) : CARTO[key]);
 
-  let map, overlay, ctx, last, current = 'light', marqOn = true;
+  let map, overlay, ctx, last, current = 'light';
   const tip = () => document.getElementById('deck-tip');
-  const zoom = () => (map ? map.getZoom() : 0);
 
   /* On n'attend PAS l'événement 'load' : il dépend d'une première frame de
      rendu, qui n'arrive jamais dans un onglet non peint (aperçus, tests
@@ -44,20 +43,27 @@ window.NK_ENGINES.deck = (function () {
   }
   const hideTip = () => { tip().style.display = 'none'; };
 
+  /* Le bleu unique des cas déclarés. La relecture a demandé « une seule
+     couleur de point, aucune différenciation par pathologie » : le tri se
+     fait au filtre, pas à l'œil. Une couleur de moins à décoder. */
+  const BLEU = [31, 58, 204];
+
   function layers(state) {
     const L = [];
-    // dessinées en dernier : les pastilles de cluster et les signalements
-    // doivent rester devant les taches floues, plus larges
+    // dessinés en dernier : les signalements restent devant les surfaces
     const dessus = [];
 
     if (state.zones) {
-      /* UN AGRÉGAT EST UNE SURFACE.
-         Son périmètre est publié, il couvre un territoire, et la carte doit le
-         montrer comme tel : un aplat plein, cerné d'un trait continu, à
-         l'échelle réelle. Le plancher en pixels n'existe que pour qu'un
-         cluster de 2 km reste visible à l'échelle de la France — il agrandit
-         la surface, il ne la déplace pas.
-         C'est l'exact opposé du cas déclaré, qui est un point sans contour. */
+      /* UNE ZONE ENQUÊTÉE EST UNE SURFACE.
+         Son périmètre est publié, elle couvre un territoire, et la carte doit
+         le montrer : un aplat plein, cerné d'un trait continu, à l'échelle
+         réelle. Le plancher en pixels n'existe que pour qu'une zone de 2 km
+         reste visible à l'échelle de la France — il agrandit la surface, il
+         ne la déplace pas.
+         C'est l'exact opposé du cas déclaré, qui est un point sans contour.
+
+         Plus de pastille numérotée par-dessus : la numérotation n'apportait
+         rien une fois la liste des agrégats retirée du panneau. */
       const rayonZone = f => f.properties.rayon_km * 1000;
 
       L.push(new deck.ScatterplotLayer({
@@ -65,44 +71,12 @@ window.NK_ENGINES.deck = (function () {
         getPosition: f => f.properties.centre,
         getRadius: rayonZone, radiusMinPixels: 19,
         filled: true, stroked: true,
-        getFillColor: f => [...S().rgb(S().zoneColor(f.properties)),
-                            f.properties.anonyme ? 30 : 62],
+        getFillColor: f => [...S().rgb(S().zoneColor(f.properties)), 58],
         getLineColor: f => [...S().rgb(S().zoneColor(f.properties)), 255],
-        lineWidthMinPixels: 2.5, lineWidthMaxPixels: 4,
+        lineWidthMinPixels: 2, lineWidthMaxPixels: 3.5,
         pickable: true, autoHighlight: true, highlightColor: [245, 212, 0, 150],
         onHover: i => i.object ? showTip(S().zoneHTML(i.object.properties, true), i.x, i.y) : hideTip(),
         onClick: i => i.object && ctx.onZone(i.object.properties),
-      }));
-
-      // Second cerne, plus fin et détaché : ça dit « périmètre », pas « point »
-      L.push(new deck.ScatterplotLayer({
-        id: 'zone-cerne', data: window.NK_DATA.hotspots.features,
-        getPosition: f => f.properties.centre,
-        getRadius: f => rayonZone(f) * 1.22, radiusMinPixels: 24,
-        filled: false, stroked: true, lineWidthMinPixels: 1,
-        getLineColor: f => [...S().rgb(S().zoneColor(f.properties)), 110],
-        pickable: false,
-      }));
-
-      L.push(new deck.TextLayer({
-        id: 'zone-num', data: S().marqueurs.features,
-        getPosition: f => f.geometry.coordinates,
-        getText: f => f.properties.num,
-        getSize: 12, getColor: [20, 18, 13], fontWeight: 700,
-        outlineWidth: 3, outlineColor: [244, 241, 232, 230], fontSettings: { sdf: true },
-        pickable: false,
-      }));
-    }
-
-    if ((state.pointsExacts || []).length) {
-      // comparateur d'atelier : positions exactes par-dessus les secteurs
-      dessus.push(new deck.ScatterplotLayer({
-        id: 'exact', data: state.pointsExacts,
-        getPosition: f => f.geometry.coordinates,
-        getFillColor: f => S().rgb(f.properties.color),
-        getRadius: 1200, radiusMinPixels: 2.4, radiusMaxPixels: 6,
-        stroked: true, lineWidthMinPixels: 1, getLineColor: [20, 18, 13, 255],
-        pickable: false,
       }));
     }
 
@@ -110,8 +84,8 @@ window.NK_ENGINES.deck = (function () {
       dessus.push(new deck.ScatterplotLayer({
         id: 'sig', data: window.NK_DATA.signalements,
         getPosition: f => f.geometry.coordinates,
-        filled: true, getFillColor: [244, 241, 232, 235],
-        stroked: true, getLineColor: [87, 83, 74, 255], lineWidthMinPixels: 1.8,
+        filled: true, getFillColor: [255, 255, 255, 235],
+        stroked: true, getLineColor: [124, 119, 110, 255], lineWidthMinPixels: 1.6,
         getRadius: 2200, radiusMinPixels: 5, radiusMaxPixels: 9,
         pickable: true, autoHighlight: true, highlightColor: [20, 18, 13, 255],
         onHover: i => i.object ? showTip(S().sigHTML(i.object.properties), i.x, i.y) : hideTip(),
@@ -119,35 +93,23 @@ window.NK_ENGINES.deck = (function () {
       }));
     }
 
-    if (state.agg) {
-      // Ce que les deux autres moteurs ne font pas nativement : agrégation
-      // spatiale calculée sur GPU, hauteur proportionnelle à la densité.
-      L.push(new deck.HexagonLayer({
-        id: 'hex', data: state.cellules,
-        getPosition: c => c.centre,
-        getElevationWeight: c => c.n, getColorWeight: c => c.n,
-        // elevationRange vaut [0, 1000] par défaut : la hauteur maximale est
-        // donc 1000 × elevationScale mètres, pas le nombre de cas × l'échelle.
-        radius: 16000, elevationScale: 14, extruded: true, opacity: 0.75,
-        coverage: 0.86, pickable: true,
-        colorRange: [[59, 232, 255], [110, 220, 240], [255, 210, 59], [255, 150, 60], [255, 90, 80], [255, 59, 92]],
-        onHover: i => i.object ? showTip(
-          `<div class="pop"><h4>${i.object.points.reduce((a, c) => a + c.n, 0)} témoignages</h4>
-           <div class="m">maille hexagonale de 16 km</div>
-           <div class="cta">Agrégation calculée à la volée sur GPU</div></div>`, i.x, i.y) : hideTip(),
-      }));
-    } else if (state.temoins) {
+    if (state.temoins) {
       /* UN CAS DÉCLARÉ EST UN POINT, PAS UNE SURFACE.
          Il ne couvre aucun territoire : on ne sait pas où il est, à 25 km
          près. On le dessine donc petit, avec un cœur net et un halo qui se
          dissout — le halo dit l'incertitude de position, il ne prétend pas
-         délimiter quoi que ce soit. Aucun contour, jamais. */
+         délimiter quoi que ce soit. Aucun contour, jamais.
+
+         Et surtout : PAS de carte de chaleur. Une heatmap se lit comme une
+         densité de maladie, or nous n'avons pas de dénominateur — on ne
+         rapporte rien à la population. Ce serait donner à lire une incidence
+         qu'on n'a pas mesurée. Voir la note d'arbitrage du 12/08. */
       const HALO = [[1, 10], [0.74, 18], [0.5, 30], [0.3, 48]];
       HALO.forEach(([k, alpha], idx) =>
         L.push(new deck.ScatterplotLayer({
           id: 'cell-' + idx, data: state.cellules,
           getPosition: c => c.centre,
-          getFillColor: c => [...S().rgb(c.color), alpha],
+          getFillColor: [...BLEU, alpha],
           getRadius: c => c.rayon_km * 1000 * 0.55 * k,
           radiusMinPixels: 15 * k, radiusMaxPixels: 34 * k, pickable: false,
         })));
@@ -155,7 +117,7 @@ window.NK_ENGINES.deck = (function () {
       L.push(new deck.ScatterplotLayer({
         id: 'cell-coeur', data: state.cellules,
         getPosition: c => c.centre,
-        getFillColor: c => [...S().rgb(c.color), 235],
+        getFillColor: [...BLEU, 235],
         getRadius: c => c.rayon_km * 1000 * 0.07,
         radiusMinPixels: 3.5, radiusMaxPixels: 6, pickable: false,
       }));
@@ -173,14 +135,12 @@ window.NK_ENGINES.deck = (function () {
           map.flyTo({ center: i.object.centre, zoom: Math.max(map.getZoom(), 8), speed: 0.9 });
         },
       }));
-      /* Le compte se lit à côté du point, pas dedans : dedans, il ferait du
-         point une pastille, donc un objet du même genre qu'un agrégat. */
       L.push(new deck.TextLayer({
         id: 'cell-n', data: state.cellules,
         getPosition: c => c.centre, getText: c => String(c.n),
         getSize: 10.5, getColor: [20, 18, 13, 210], fontWeight: 700,
         getPixelOffset: [0, -14],
-        outlineWidth: 3, outlineColor: [244, 241, 232, 220], fontSettings: { sdf: true },
+        outlineWidth: 3, outlineColor: [255, 255, 255, 235], fontSettings: { sdf: true },
         pickable: false,
       }));
     }
@@ -217,17 +177,11 @@ window.NK_ENGINES.deck = (function () {
         // plus de boussole à afficher puisqu'on ne peut plus tourner
         map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'bottom-right');
         overlay = new deck.MapboxOverlay({ interleaved: false, layers: [] });
-        // les pastilles n'existent qu'en dessous du zoom 9 : on ne recalcule
-        // les couches qu'au franchissement du seuil, pas à chaque frame
-        map.on('zoomend', () => {
-          const on = zoom() < 9;
-          if (on !== marqOn) { marqOn = on; if (last) overlay.setProps({ layers: layers(last) }); }
-        });
         whenReady(() => {
-          if (!auto) S().libellesEnFrancais(map);
+          if (!auto) { S().libellesEnFrancais(map); window.NK_STYLE.poserMasque(map); }
           map.addControl(overlay);
           if (last) this.render(last);
-          map.fitBounds(S().FRANCE.bounds, { padding: S().FRANCE.padding(), duration: 0 });
+          map.fitBounds(S().FRANCE.bounds, { padding: S().FRANCE.padding(map.getContainer()), duration: 0 });
           c.onReady('deck'); resolve();
         });
       });
@@ -245,14 +199,35 @@ window.NK_ENGINES.deck = (function () {
       if (!overlay) return;
       hideTip();
       overlay.setProps({ layers: layers(state) });
-      if (map) map.easeTo({ pitch: state.agg ? 46 : 0, duration: 700 });
     },
 
-    flyTo(lng, lat, zoom) { map && map.flyTo({ center: [lng, lat], zoom, speed: 0.85, curve: 1.4 }); },
+    /* Les déplacements de caméra de MapLibre sont animés par
+       requestAnimationFrame. Dans un onglet non peint — arrière-plan, aperçu,
+       capture automatisée — la boucle ne tourne pas : l'animation ne démarre
+       jamais et la carte reste où elle était, sans la moindre erreur. On
+       coupe donc l'animation quand la page est masquée, plutôt que de la
+       laisser silencieusement ne rien faire. */
+    flyTo(lng, lat, zoom) {
+      if (!map) return;
+      if (document.hidden) return map.jumpTo({ center: [lng, lat], zoom });
+      map.flyTo({ center: [lng, lat], zoom, speed: 0.85, curve: 1.4 });
+    },
 
-    fitZone(p) { map && map.fitBounds(S().bounds(p), { padding: S().FRANCE.zonePadding(), duration: 1200 }); },
+    fitZone(p) {
+      if (!map) return;
+      map.fitBounds(S().bounds(p), {
+        padding: S().FRANCE.zonePadding(map.getContainer()),
+        duration: document.hidden ? 0 : 1200,
+      });
+    },
 
-    fitFrance() { map && map.fitBounds(S().FRANCE.bounds, { padding: S().FRANCE.padding(), duration: 1400 }); },
+    fitFrance() {
+      if (!map) return;
+      map.fitBounds(S().FRANCE.bounds, {
+        padding: S().FRANCE.padding(map.getContainer()),
+        duration: document.hidden ? 0 : 1400,
+      });
+    },
 
     /* Le panneau se pose PAR-DESSUS la carte : sans marge de caméra, la France
        se retrouve à moitié cachée. On la recentre par une animation de padding
@@ -260,7 +235,7 @@ window.NK_ENGINES.deck = (function () {
     setPadding(marges, duree) {
       if (!map) return;
       map.easeTo({ padding: Object.assign({ top: 0, right: 0, bottom: 0, left: 0 }, marges),
-                   duration: duree === undefined ? 650 : duree });
+                   duration: document.hidden ? 0 : (duree === undefined ? 650 : duree) });
     },
 
     /* Le cadre de la caméra dépend du rapport du viewport : une rotation de

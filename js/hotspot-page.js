@@ -53,8 +53,9 @@
   const CAT_COL = { A: 'var(--rouge)', B: 'var(--orange)', C: 'var(--orange)', D: 'var(--bleu)' };
   const col = CAT_COL[p.categorie] || 'var(--encre-2)';
 
-  document.title = p.nom + ' — Atlas de l\'exposome';
-  document.getElementById('fil').textContent = `Dossier ${i + 1}/${PAGES.length}`;
+  /* La barre du haut ne porte plus de fil d'Ariane depuis qu'elle accueille
+     les cinq onglets communs à toutes les pages. */
+  document.title = p.nom + ' — Veille sanitaire participative';
 
   const prec = PAGES[i - 1];
   const suiv = PAGES[i + 1];

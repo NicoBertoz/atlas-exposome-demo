@@ -1,13 +1,25 @@
 /* ------------------------------------------------------------------ *
- *  app.js — état partagé, interface, orchestration des 3 moteurs.
+ *  app.js — état partagé, interface, orchestration du moteur de carte.
  *
- *  Contrat d'un moteur (voir engine-*.js) :
- *    { id, label, note, caps,
- *      init(container, ctx) -> Promise,
- *      render(state), setBasemap(key),
- *      flyTo(lng, lat, zoom), fitZone(props), resize() }
+ *  Refonte du 18/08/2026, après relecture Philippine / Fau / Lila / Nico.
  *
- *  ctx = { onPoint(props), onSignal(props), onZone(props), onReady(id) }
+ *  Ce qui a disparu, et pourquoi :
+ *    - le curseur d'année            « pas essentiel » (Lila), « épurer » (Nico)
+ *    - l'agrégation en hexagones     démonstration technique, pas éditoriale
+ *    - le comparateur de positions exactes  outil d'atelier, pas de site public
+ *    - la liste des agrégats documentés     encombrait le panneau (Lila)
+ *    - le bloc « Deux couches, deux natures »  jargon (Fau), à supprimer (Nico)
+ *    - la barre de lecture flottante  personne ne la voyait (Fau) ; l'audio est
+ *                                     remonté DANS la fiche du cas (Nico)
+ *    - le bouton « fond sombre »      pas de mode sombre (Philippine)
+ *    - la double légende en bas à droite (Nico)
+ *
+ *  Ce qui est arrivé :
+ *    - un filtre maladie en liste déroulante, modèle dansmoneau.fr
+ *    - une visite guidée lieu après lieu, modèle Forensic Architecture
+ *    - un équivalent tableau de la carte, atteignable au clavier, + export CSV
+ *    - une croix pour fermer le panneau
+ *    - des fiches rédigées plutôt que des grilles de rubriques (Lila)
  * ------------------------------------------------------------------ */
 (function () {
   'use strict';
@@ -17,38 +29,32 @@
   const PATHOS = D.meta.pathologies;
   const BY_ID = Object.fromEntries(PATHOS.map(p => [p.id, p]));
   const $ = s => document.querySelector(s);
-  const HOTSPOTS = D.hotspots.features.filter(f => !f.properties.anonyme);
+  const HOTSPOTS = D.hotspots.features;
   const isMobile = () => window.matchMedia('(max-width: 859px)').matches;
+
+  /* Un cas déclaré n'a plus de couleur propre : un seul bleu, pour tous.
+     La pathologie se lit au filtre et dans la fiche, plus à la couleur du
+     point — c'était une clé de lecture de plus pour rien. */
+  const BLEU_CAS = '#1F3ACC';
 
   /* ----------------------------------------------------------- ÉTAT */
   const state = {
     engine: 'deck',
     mode: 'intro',
     pathos: new Set(PATHOS.map(p => p.id)),
-    yearMax: null,
-    zones: true, sig: true, temoins: true, agg: false, exact: false,
+    zones: true, sig: true, temoins: true,
     basemap: 'light',
-    features: D.temoignages.features,   // interne, jamais envoyé tel quel aux moteurs
+    features: D.temoignages.features,
     cellules: [], horsMaille: 0, parCellule: {},
     hotspots: D.hotspots.features,
     signalements: D.signalements.features,
   };
 
   function applyFilters() {
-    state.features = !state.temoins ? [] : D.temoignages.features.filter(f => {
-      const p = f.properties;
-      if (!state.pathos.has(p.patho_id)) return false;
-      if (state.yearMax && p.annee > state.yearMax) return false;
-      return true;
-    });
+    state.features = D.temoignages.features.filter(f => state.pathos.has(f.properties.patho_id));
     /* Les moteurs ne reçoivent que le résultat flouté : aucune position
        individuelle ne quitte cette fonction. */
     const f = S.flouter(state.features);
-    /* SEULE exception à la règle « aucune position individuelle ne sort d'ici » :
-       le comparateur de l'atelier, explicitement activé, signalé par un bandeau
-       rouge, et éteint à chaque rechargement. Retirer la case à cocher retire
-       le canal : rien d'autre ne lit `pointsExacts`. */
-    state.pointsExacts = state.exact ? state.features : [];
     state.cellules = f.cellules;
     state.horsMaille = f.horsMaille;
     state.parCellule = Object.fromEntries(f.cellules.map(c => [c.id, c]));
@@ -62,13 +68,17 @@
     onCell: c => showCellule(c),
     onSignal: p => showSignalement(p),
     onZone: p => { showHotspot(p); engines[state.engine].fitZone(p); },
-    onReady: id => { ready[id] = true; if (id === state.engine) $('#loading').classList.add('off'); },
+    onReady: id => {
+      ready[id] = true;
+      if (id !== state.engine) return;
+      $('#loading').classList.add('off');
+      /* La visite guidée attend que la carte soit prête : lancée sur une
+         minuterie, elle affichait la fiche du premier lieu sans jamais
+         bouger la caméra, faute de moteur pour l'exécuter. */
+      demarrerTour();
+    },
   };
 
-  /* Un seul moteur depuis l'arbitrage : deck.gl posé sur MapLibre.
-     MapLibre porte le fond vectoriel et la caméra, deck.gl les couches de
-     données. La fonction reste pour garder le contrat inchangé si un second
-     moteur revenait un jour. */
   async function switchEngine(id) {
     if (ready[id]) return;
     state.engine = id;
@@ -83,275 +93,273 @@
   function refresh() {
     applyFilters();
     if (ready[state.engine]) engines[state.engine].render(state);
-    const places = state.features.length - state.horsMaille;
-    $('#year-count').textContent = `${places} cas sur ${state.features.length} placés`;
-    $('#c-zones').textContent = HOTSPOTS.length + ' + 1 anonymisée';
-    $('#hs-count').textContent = HOTSPOTS.length;
-    $('#lede-chiffres').innerHTML = `<b>${HOTSPOTS.length} agrégats</b> de maladies rares de l'enfant documentés en France, <b>${state.signalements.length} autres investigations</b> instruites par les autorités, et <b>${D.temoignages.features.length} cas</b> déclarés par des familles.`;
-    $('#c-sig').textContent = state.signalements.length;
-    $('#c-tem').textContent = `${state.cellules.length} secteurs`;
-    $('#k-note').textContent = state.horsMaille
-      ? `${state.horsMaille} cas non placés : leur secteur compte moins de ${S.K_ANONYMAT} déclarations.`
-      : 'Tous les secteurs atteignent le seuil.';
-    $('#exact-warn').hidden = !state.exact;
-    renderFilters();
+    $('#lede-chiffres').innerHTML =
+      `<b>${HOTSPOTS.length} endroits</b> où les autorités ont enquêté sur une concentration de
+       cancers de l'enfant, <b>${state.signalements.length} autres signalements</b> instruits,
+       et <b>${D.temoignages.features.length} cas</b> racontés par des familles.`;
+    renderFiltre();
+    if ($('#tableau-wrap').classList.contains('on')) renderTableau();
   }
 
-  /* --------------------------------------------------------- FILTRES */
-  function renderFilters() {
+  /* -------------------------------------------- FILTRE PAR MALADIE
+     Modèle « polluants » de dansmoneau.fr : un bouton qui dit l'état
+     courant, une liste multi-sélection qui s'ouvre au clic, et « toutes »
+     en tête. Les pathologies peu représentées sont regroupées sous un
+     intitulé « cancers plus rares » — le repli demandé par Lila. Il ne se
+     déclenche qu'au-delà de six entrées : avec trois pathologies de démo,
+     il n'a aucune raison de s'afficher. */
+  const SEUIL_RARE = 6;
+
+  function comptes() {
     const n = {};
     D.temoignages.features.forEach(f => {
-      const p = f.properties;
-      if (state.yearMax && p.annee > state.yearMax) return;
-      n[p.patho_id] = (n[p.patho_id] || 0) + 1;
+      n[f.properties.patho_id] = (n[f.properties.patho_id] || 0) + 1;
     });
-    $('#filters').innerHTML = PATHOS.map(p => `
-      <div class="filter ${state.pathos.has(p.id) ? '' : 'off'}" data-patho="${p.id}">
-        <span class="swatch" style="background:${p.color}"></span>
-        <span class="lbl">${p.label}</span>
-        <span class="n">${n[p.id] || 0}</span>
-      </div>`).join('');
-    $('#legend-patho').innerHTML = PATHOS.map(p =>
-      `<div class="li"><span class="sw" style="background:${p.color}"></span>${p.label}</div>`).join('');
+    return n;
   }
 
-  $('#filters').addEventListener('click', ev => {
+  function renderFiltre() {
+    const n = comptes();
+    const tri = [...PATHOS].sort((a, b) => (n[b.id] || 0) - (n[a.id] || 0));
+    const courants = tri.length > SEUIL_RARE ? tri.slice(0, SEUIL_RARE) : tri;
+    const rares = tri.length > SEUIL_RARE ? tri.slice(SEUIL_RARE) : [];
+    const tout = state.pathos.size === PATHOS.length;
+
+    const ligne = p => `
+      <button class="dd-item ${state.pathos.has(p.id) ? 'on' : ''}" role="option"
+              aria-selected="${state.pathos.has(p.id)}" data-patho="${p.id}">
+        <span class="case" aria-hidden="true">${state.pathos.has(p.id) ? '✓' : ''}</span>
+        <span class="lbl">${p.label}</span>
+        <span class="n">${n[p.id] || 0}</span>
+      </button>`;
+
+    $('#dd-liste').innerHTML = `
+      <button class="dd-item tout ${tout ? 'on' : ''}" role="option" aria-selected="${tout}" data-patho="__all">
+        <span class="case" aria-hidden="true">${tout ? '✓' : ''}</span>
+        <span class="lbl">Toutes les maladies</span>
+        <span class="n">${D.temoignages.features.length}</span>
+      </button>
+      ${courants.map(ligne).join('')}
+      ${rares.length ? `<div class="dd-groupe">Cancers plus rares</div>${rares.map(ligne).join('')}` : ''}`;
+
+    $('#dd-label').innerHTML = tout
+      ? 'Toutes les maladies'
+      : state.pathos.size === 1
+        ? PATHOS.find(p => state.pathos.has(p.id)).label
+        : `${state.pathos.size} maladies <em>sur ${PATHOS.length}</em>`;
+  }
+
+  const dd = $('#dd-maladie');
+  $('#dd-bouton').addEventListener('click', () => {
+    const open = dd.classList.toggle('open');
+    $('#dd-bouton').setAttribute('aria-expanded', open);
+  });
+  $('#dd-liste').addEventListener('click', ev => {
     const el = ev.target.closest('[data-patho]'); if (!el) return;
     const id = el.dataset.patho;
-    state.pathos.has(id) ? state.pathos.delete(id) : state.pathos.add(id);
-    if (!state.pathos.size) state.pathos = new Set(PATHOS.map(p => p.id));
+    if (id === '__all') {
+      state.pathos = new Set(PATHOS.map(p => p.id));
+    } else {
+      state.pathos.has(id) ? state.pathos.delete(id) : state.pathos.add(id);
+      if (!state.pathos.size) state.pathos = new Set(PATHOS.map(p => p.id));
+    }
     refresh();
   });
-
-  $('#year').addEventListener('input', ev => {
-    const v = +ev.target.value;
-    state.yearMax = v <= 2011 ? null : v;
-    $('#year-val').textContent = state.yearMax ? `2012 – ${v}` : '2012 – 2025';
-    refresh();
+  document.addEventListener('click', ev => {
+    if (!dd.contains(ev.target)) { dd.classList.remove('open'); $('#dd-bouton').setAttribute('aria-expanded', false); }
   });
 
-  [['tg-zones', 'zones'], ['tg-sig', 'sig'], ['tg-temoins', 'temoins'], ['tg-agg', 'agg'],
-   ['tg-exact', 'exact']]
-    .forEach(([id, key]) => $('#' + id).addEventListener('change', ev => {
-      state[key] = ev.target.checked;
-      if (key === 'exact') $('#exact-warn').hidden = !state.exact;
-      refresh();
-    }));
-
-  $('#exact-off').addEventListener('click', () => {
-    $('#tg-exact').checked = false;
-    state.exact = false; $('#exact-warn').hidden = true; refresh();
+  /* ------------------------------------------------- ENCART « INFO » */
+  $('#info-tete').addEventListener('click', () => {
+    const open = $('#info-bloc').classList.toggle('open');
+    $('#info-tete').setAttribute('aria-expanded', open);
   });
 
-  $('#btn-basemap').addEventListener('click', () => {
-    state.basemap = state.basemap === 'light' ? 'dark' : 'light';
-    $('#btn-basemap').textContent = state.basemap === 'light' ? 'Fond sombre' : 'Fond clair';
-    Object.keys(ready).forEach(k => ready[k] && engines[k].setBasemap(state.basemap));
-    setTimeout(() => engines[state.engine].render(state), 400);
+  /* ------------------------------------------------------ LÉGENDE */
+  $('#legend-toggle').addEventListener('click', () => {
+    const open = $('#legend').classList.toggle('open');
+    $('#legend-toggle').setAttribute('aria-expanded', open);
   });
+  /* Le repli ne concerne que le mobile : sur grand écran la légende est
+     simplement affichée (voir app.css). Pas d'état initial en JavaScript —
+     le premier rendu ne connaît pas toujours la largeur définitive. */
 
   /* -------------------------------------------- FEUILLE MOBILE (sheet) */
   function openSheet(open) {
     if (!isMobile()) return;
+    document.body.classList.remove('panneau-ferme');
     $('#panel').classList.toggle('open', open);
-    // le conteneur de carte ne bouge pas, mais on laisse le moteur se recaler
     setTimeout(() => ready[state.engine] && engines[state.engine].resize(), 320);
   }
   $('#sheet-grip').addEventListener('click', () => openSheet(!$('#panel').classList.contains('open')));
-  $('#legend-toggle').addEventListener('click', () => $('#legend').classList.toggle('open'));
+
+  /* Croix de fermeture : on dégage la carte, et un onglet la ramène. */
+  $('#panel-close').addEventListener('click', () => {
+    document.body.classList.add('panneau-ferme');
+    $('#panel').classList.remove('open');
+    setTimeout(() => api.marge(), 60);
+  });
+  $('#panel-rouvrir').addEventListener('click', () => {
+    document.body.classList.remove('panneau-ferme');
+    setTimeout(() => api.marge(), 60);
+  });
 
   /* ------------------------------------------------------- LES FICHES */
-  function openDetail() {
+  /* `deplier` vaut faux pendant la visite guidée : au téléphone, déplier la
+     feuille à chaque étape recouvre la carte, et on ne voit jamais le lieu
+     dont on est en train de lire la fiche. Elle reste en aperçu, le pouce
+     la remonte s'il veut lire. */
+  function openDetail(deplier) {
+    document.body.classList.remove('panneau-ferme');
+    document.body.classList.add('fiche-ouverte');
     $('#detail').classList.add('on');
-    $('#intro').style.display = 'none';
+    $('#info-bloc').style.display = 'none';
     $('#panel-scroll').scrollTop = 0;
-    openSheet(true);
+    if (deplier !== false) openSheet(true);
   }
   function closeDetail() {
+    document.body.classList.remove('fiche-ouverte');
     $('#detail').classList.remove('on');
-    $('#intro').style.display = '';
+    $('#info-bloc').style.display = '';
     stopAudio();
   }
 
-  /* Flow du 28/07 : « [[Permettre donner témoignage]] » figure sur la page
-     hotspot ET sur la page cas particulier. Le formulaire doit être atteignable
-     depuis l'endroit qui donne envie de le remplir, pas seulement depuis la
-     barre du haut. */
-  /* Dix des vingt et un agrégats ont une page dédiée (hotspots-pages.js).
-     La fiche de la carte y renvoie, la liste les signale d'une pastille. */
   const PAGES_IDS = new Set((window.NK_PAGES || []).map(p => p.id));
   const aPage = id => PAGES_IDS.has(id);
 
   function blocParticiper(contexte) {
     return `<div class="fiche-cta">
       <p>${contexte}</p>
-      <a class="btn btn-accent" href="participer.html">Ajouter mon cas →</a>
+      <a class="btn btn-accent" href="participer.html">Signaler un cas →</a>
     </div>`;
   }
 
-  /* Connexion hotspot ↔ cas particuliers, demandée dans le flow :
-     « Etablir connexion entre hotspot et cas particulier pour les afficher
-     côté hotspot ». On respecte les filtres en cours. */
   function temoinsDuCluster(id) {
     const out = [];
-    state.cellules.forEach(c => c.temoins.forEach(t => {
-      if (t.hotspot === id) out.push(t);
-    }));
+    state.cellules.forEach(c => c.temoins.forEach(t => { if (t.hotspot === id) out.push(t); }));
     return out.sort((a, b) => a.annee - b.annee);
   }
 
   function listeTemoins(liste) {
-    if (!liste.length) return '<p class="fine">Aucun témoignage reçu pour cette zone, ou aucun qui atteigne le seuil d\'affichage.</p>';
+    if (!liste.length) return '<p class="fine">Aucun cas déclaré ici pour l\'instant.</p>';
     return `<div class="tem-list">${liste.map(t => `
       <button data-tem="${t.id}">
-        <span class="pin" style="background:${t.color}"></span>
+        <span class="pin"></span>
         <span class="nm">${t.patho_label}</span>
         <span class="yr">${t.annee}${t.audio ? ' ♪' : ''}</span>
       </button>`).join('')}</div>`;
   }
 
-  /* Fiche d'une maille : la seule porte d'entrée vers les témoignages.
-     On n'atteint jamais un témoignage par sa position, toujours par son groupe. */
+  /* Fiche d'un secteur de cas déclarés. */
   function showCellule(c) {
-    const det = Object.entries(c.repartition).map(([id, n]) => {
-      const p = BY_ID[id];
-      return `<span class="tag" style="background:${S.hex2rgba(p.color, .14)};color:${p.color}">
-        <span class="swatch" style="background:${p.color}"></span>${n} × ${p.label}</span>`;
-    }).join('');
     $('#detail').innerHTML = `
       <div class="detail-top">
-        <span class="id">SECTEUR AGRÉGÉ · ${c.maille}</span>
+        <span class="id">SECTEUR · ${c.deps.join(', ')}</span>
         <button class="detail-close" data-close aria-label="Fermer">×</button>
       </div>
-      <h3>${c.n} cas déclarés</h3>
-      <div class="sub">${c.deps.join(', ')}</div>
-      <div style="margin-top:8px">${det}</div>
-      <p class="caution" style="border-top:0;padding-top:10px;margin-top:10px">
-        Position approximative, volontairement. Le point affiché est le centre de la maille,
-        pas la position des familles.
-      </p>
-      
+      <h3>${c.n} cas racontés ici</h3>
+      <p class="fiche-texte">Ces cas sont regroupés dans un secteur d'environ ${c.rayon_km * 2} km.
+        Le point dessiné est le centre du secteur, jamais l'endroit où vivent les familles.</p>
       ${listeTemoins(c.temoins)}
       ${blocParticiper('Un cas de plus dans ce secteur ?')}`;
     openDetail();
   }
 
+  /* Fiche d'un cas. Réduite à ce que la relecture a retenu : la maladie
+     précise, le récit, l'année du diagnostic, le parcours d'exposition.
+     Le récit vocal est ici, et nulle part ailleurs. */
   function showTestimony(p) {
-    const c = BY_ID[p.patho_id].color;
-    const cell = state.cellules.find(x => x.temoins.some(t => t.id === p.id));
     $('#detail').innerHTML = `
       <div class="detail-top">
-        <span class="id">TÉMOIGNAGE ${p.id} · reçu le ${p.recu_le}</span>
+        <span class="id">CAS DÉCLARÉ · ${p.dep}</span>
         <button class="detail-close" data-close aria-label="Fermer">×</button>
       </div>
-      <span class="tag" style="background:${S.hex2rgba(c, .14)};color:${c}">
-        <span class="swatch" style="background:${c}"></span>${p.patho_label}</span>
-      <span class="badge fic">donnée fictive</span>
-      <h3>${p.dep}</h3>
+      <h3>${p.patho_label}</h3>
       <div class="sub">${p.sous_type} · diagnostic en ${p.annee}</div>
+      <span class="badge fic">exemple, donnée fictive</span>
       ${audioBlock(p)}
       <blockquote class="quote">${p.temoignage}</blockquote>
-      <dl class="kv">
-        <dt>Âge au dg.</dt><dd>${p.tranche_age}</dd>
-        <dt>Sexe</dt><dd>${p.sexe}</dd>
-        <dt>Exposition</dt><dd>${p.exposition}</dd>
-        <dt>Profession</dt><dd>${p.profession_parent}</dd>
-        <dt>Issue</dt><dd>${p.issue}</dd>
-        <dt>Localisation</dt><dd>${cell ? cell.maille : 'secteur agrégé'}
-          <span class="badge">IRIS collecté, non publié</span></dd>
-        <dt>Cluster</dt><dd>${p.hotspot
-          ? `<a href="#" data-zone="${p.hotspot}">${p.hotspot_nom}</a>` : 'hors zone identifiée'}</dd>
-        <dt>Statut</dt><dd><span class="badge ${p.verifie ? 'ok' : ''}">${
-          p.verifie ? 'vérifié' : 'en attente de revue'}</span></dd>
-      </dl>
-      ${cell ? `<div class="src"><a href="#" data-cell="${cell.id}">← les ${cell.n} témoignages du secteur</a></div>` : ''}
+      <div class="block">
+        <h4>Parcours d'exposition</h4>
+        <p>${p.exposition}${p.profession_parent ? ` · métier d'un parent à l'époque : ${p.profession_parent.toLowerCase()}` : ''}.</p>
+      </div>
       ${blocParticiper('Vous vivez une situation comparable ?')}
       <p class="caution">
-        Témoignage généré pour la démonstration. Ni commune ni adresse ne sont affichées :
-        la collecte descend à l'IRIS, la publication remonte à la maille.
+        Cas généré pour la démonstration. Ni commune ni adresse ne sont affichées.
       </p>`;
     openDetail();
     bindAudio(p);
   }
 
-  function showHotspot(p) {
+  /* Fiche d'un endroit enquêté. Rédigée, pas découpée en rubriques : c'est
+     la demande de Lila, et ça se lit effectivement mieux. Le lien vers le
+     collectif est le seul élément mis en avant. */
+  function showHotspot(p, deplier) {
     const col = S.zoneColor(p);
-    const num = HOTSPOTS.findIndex(f => f.properties.id === p.id) + 1;
+    const enfants = p.n_temoins;
     $('#detail').innerHTML = `
       <div class="detail-top">
-        <span class="id">${p.anonyme ? 'ZONE ANONYMISÉE' : 'AGRÉGAT ' + num + '/' + HOTSPOTS.length} · ${p.periode}</span>
+        <span class="id">${p.periode}</span>
         <button class="detail-close" data-close aria-label="Fermer">×</button>
       </div>
-      <span class="tag" style="background:${S.hex2rgba(col, .14)};color:${col}">
-        <span class="swatch" style="background:${col}"></span>${p.cat_label}</span>
-      <span class="badge ok">donnée publique</span>
+      <span class="tag" style="background:${S.hex2rgba(col, .13)};color:${col}">
+        <span class="swatch" style="background:${col}"></span>${
+          p.categorie === 'A' ? 'Excès de cas confirmé' : 'Excès non confirmé, ou enquête en cours'}</span>
       <h3>${p.nom}</h3>
       <div class="sub">${p.lieu}</div>
-      <div class="stat">
-        <div><span class="n" style="color:${col}">${p.mesure_txt.split(' [')[0]}</span>
-             <span class="l">${p.anonyme ? 'Constat' : 'Mesure officielle'}</span></div>
-        <div><span class="n">${p.n_temoins || '—'}</span><span class="l">Témoignages reçus</span></div>
-      </div>
-      <div class="block"><h4>Pathologies concernées</h4><p>${p.pathologie}</p></div>
-      <div class="block"><h4>Cas recensés</h4><p>${p.cas}</p></div>
-      <div class="block"><h4>Conclusion officielle</h4><p>${p.conclusion}</p></div>
-      <div class="block"><h4>Cause suspectée</h4><p>${p.cause}</p></div>
-      <div class="block"><h4>Où en est le dossier</h4><p>${p.statut}</p></div>
-      <div class="block"><h4>Collectif</h4><p>${p.collectif}</p></div>
-      <div class="block"><h4>Pourquoi ce cluster compte</h4><p>${p.interet}</p></div>
-      ${aPage(p.id) ? `<a class="fiche-dossier" href="hotspot.html?id=${p.id}">
-        <b>Lire le dossier complet</b>
-        <span>Exposition, décompte citoyen, phrase de clôture, acteurs à contacter, frise</span>
-      </a>` : ''}
-      <div class="src"><a href="${p.source}" target="_blank" rel="noopener">Rapport source ↗</a></div>
 
-      <div class="block"><h4>Cas déclarés dans cette zone</h4></div>
+      <p class="fiche-texte">${p.cas} ${p.conclusion}</p>
+      <p class="fiche-texte"><b>Ce qui est soupçonné :</b> ${p.cause}</p>
+      ${p.anonyme ? `<p class="fiche-texte">Le périmètre exact n'a pas été rendu public par
+        les autorités. Celui dessiné ici est indicatif.</p>` : ''}
+
+      ${p.collectif && p.collectif !== 'Aucun identifié' ? `
+        <a class="fiche-collectif" href="${aPage(p.id) ? 'hotspot.html?id=' + p.id : p.source}"
+           ${aPage(p.id) ? '' : 'target="_blank" rel="noopener"'}>
+          <b>${p.collectif}</b>
+          <span>${aPage(p.id) ? 'Le dossier complet et les contacts' : 'Le rapport d\'origine'}</span>
+        </a>` : `
+        <a class="fiche-collectif" href="${p.source}" target="_blank" rel="noopener">
+          <b>Lire le rapport d'origine</b>
+          <span>Aucun collectif identifié sur ce secteur</span>
+        </a>`}
+
+      <div class="block"><h4>Enfants malades recensés ici par des familles</h4>
+        <p>${enfants || 'aucun pour l\'instant'}</p></div>
       ${listeTemoins(temoinsDuCluster(p.id))}
 
       ${blocParticiper('Votre enfant a été diagnostiqué dans ce secteur ?')}
 
       <p class="caution">
-        Association spatiale ou constat d'excès, <b>pas</b> une relation de cause à effet.
-        Un cluster signale une zone où compter davantage, pas une responsabilité établie.
+        Une concentration de cas signale un endroit où il faut compter davantage.
+        Ce n'est pas la preuve d'une cause, ni d'une responsabilité.
       </p>`;
-    openDetail();
+    openDetail(deplier);
   }
 
   function showSignalement(p) {
     $('#detail').innerHTML = `
       <div class="detail-top">
-        <span class="id">SIGNALEMENT INSTRUIT · ${p.periode}</span>
+        <span class="id">SIGNALEMENT · ${p.periode}</span>
         <button class="detail-close" data-close aria-label="Fermer">×</button>
       </div>
-      <span class="tag" style="background:rgba(154,163,175,.14);color:#9AA3AF">
-        <span class="swatch" style="background:#9AA3AF"></span>${p.cat_label}</span>
-      <span class="badge ok">donnée publique</span>
       <h3>${p.nom}</h3>
       <div class="sub">${p.lieu}</div>
-      <div class="block"><h4>Pathologies</h4><p>${p.pathologie}</p></div>
-      <div class="block"><h4>Cas</h4><p>${p.cas}</p></div>
-      <div class="block"><h4>Ce qu'en dit l'instruction</h4><p>${p.conclusion}</p></div>
-      <div class="block"><h4>Cause suspectée</h4><p>${p.cause}</p></div>
-      <div class="src"><a href="${p.source}" target="_blank" rel="noopener">Source ↗</a></div>
+      <p class="fiche-texte">${p.cas} ${p.conclusion}</p>
+      <p class="fiche-texte"><b>Ce qui est soupçonné :</b> ${p.cause}</p>
+      <a class="fiche-collectif" href="${p.source}" target="_blank" rel="noopener">
+        <b>Lire le rapport d'origine</b><span>Source publique</span></a>
       ${blocParticiper('Vous connaissez un cas dans ce secteur ?')}`;
     openDetail();
   }
 
   $('#detail').addEventListener('click', ev => {
     if (ev.target.closest('[data-close]')) return closeDetail();
-    const z = ev.target.closest('[data-zone]');
-    if (z) {
-      ev.preventDefault();
-      const h = state.hotspots.find(f => f.properties.id === z.dataset.zone);
-      return void (showHotspot(h.properties), engines[state.engine].fitZone(h.properties));
-    }
     const t = ev.target.closest('[data-tem]');
     if (t) {
       const cell = state.cellules.find(c => c.temoins.some(x => x.id === t.dataset.tem));
-      return void showTestimony(cell.temoins.find(x => x.id === t.dataset.tem));
+      if (cell) return void showTestimony(cell.temoins.find(x => x.id === t.dataset.tem));
     }
-    const c = ev.target.closest('[data-cell]');
-    if (c) { ev.preventDefault(); const cell = state.parCellule[c.dataset.cell]; if (cell) showCellule(cell); }
   });
 
   /* ------------------------------------------------------------ AUDIO */
@@ -362,9 +370,9 @@
     const dur = f ? fmt(p.duree_audio) : '~1:10';
     return `<div class="audio">
       <div class="audio-head">
-        <button class="play" id="a-play" aria-label="Lire le témoignage">▶</button>
+        <button class="play" id="a-play" aria-label="Écouter ce témoignage">▶</button>
         <div class="audio-meta">
-          <div class="t1">${f ? 'Témoignage audio' : 'Lecture du témoignage'}</div>
+          <div class="t1">Écouter ce témoignage</div>
           <div class="t2"><span id="a-cur">0:00</span> / ${dur}</div>
         </div>
       </div>
@@ -393,8 +401,6 @@
     const done = () => { if (btn) btn.textContent = '▶'; prog(1); if (onEnd) onEnd(); };
 
     if (p.audio) {
-      /* On garde une référence locale : un dernier timeupdate peut arriver
-         après que stopAudio() a remis audioEl à null. */
       const el = new Audio(p.audio);
       audioEl = el;
       el.ontimeupdate = () => {
@@ -425,172 +431,158 @@
   function stopAudio() {
     if (audioEl) {
       const el = audioEl;
-      audioEl = null;                       // avant pause() : coupe les handlers en vol
+      audioEl = null;
       el.pause(); el.ontimeupdate = null; el.onended = null;
     }
     if (speechSynthesis.speaking) { if (utter) utter.onend = null; speechSynthesis.cancel(); }
     const b = $('#a-play'); if (b) b.textContent = '▶';
   }
 
-  /* -------------------------------------------------- RÉCIT / LECTURE
-     Deux parcours guidés qui pilotent la carte :
-       « Récit »       enchaîne les 6 clusters, façon frames.
-       « Témoignages » enchaîne les témoignages audio et les lit.        */
-  let pbOn = false, pbMode = 'recit', pbIdx = -1, pbTimer = null;
+  /* -------------------------------------------------- VISITE GUIDÉE
+     On entre dans la carte par une série de lieux — une flèche fait passer
+     au suivant, et « explorer librement » rend la main. C'est le modèle
+     frames.forensic-architecture.org, demandé par Philippine et Lila.
 
-  /* En mode témoignages on parcourt les mailles, pas les cas : on ne connaît
-     jamais que le centre du secteur. */
-  const queue = () => {
-    if (pbMode === 'recit') return HOTSPOTS;
-    const avecAudio = [];
-    state.cellules.forEach(c => c.temoins.forEach(t => {
-      if (t.audio) avecAudio.push({ cell: c, tem: t });
+     Elle ne se déclenche PAS toute seule : la carte qui dérive de cluster
+     en cluster au repos avait été relevée comme désagréable. */
+  const TOUR = HOTSPOTS
+    .filter(f => aPage(f.properties.id) && !f.properties.anonyme)
+    .slice(0, 6)
+    .map(f => f.properties);
+  let tourIdx = -1, tourActif = true;
+
+  function tourVers(i) {
+    if (!TOUR.length) return;
+    tourIdx = Math.max(0, Math.min(TOUR.length - 1, i));
+    const p = TOUR[tourIdx];
+    $('#tour-pos').textContent = `Lieu ${tourIdx + 1} sur ${TOUR.length}`;
+    $('#tour-nom').textContent = p.nom;
+    $('#tour-prev').disabled = tourIdx === 0;
+    $('#tour-next').disabled = tourIdx === TOUR.length - 1;
+    showHotspot(p, false);
+    if (ready[state.engine]) engines[state.engine].fitZone(p);
+  }
+  /* Démarre la visite si, et seulement si, tout est réuni : on est sur la
+     carte, la visite n'a pas déjà eu lieu, et le moteur répond. Appelée aux
+     deux endroits où l'une de ces conditions peut devenir vraie. */
+  function demarrerTour() {
+    if (state.mode !== 'carte' || !tourActif || tourIdx !== -1) return;
+    if (!ready[state.engine]) return;
+    tourVers(0);
+  }
+  function finTour() {
+    tourActif = false;
+    $('#tour').classList.add('off');
+    closeDetail();
+    if (ready[state.engine]) engines[state.engine].fitFrance();
+  }
+  $('#tour-prev').addEventListener('click', () => tourVers(tourIdx - 1));
+  $('#tour-next').addEventListener('click', () => tourVers(tourIdx + 1));
+  $('#tour-fin').addEventListener('click', finTour);
+
+  /* --------------------------------------- ÉQUIVALENT ACCESSIBLE + CSV
+     Une carte deck.gl est un canvas : ni le clavier ni un lecteur d'écran
+     n'y accèdent. Tout ce qu'elle affiche est donc aussi disponible en
+     tableau — et ce même tableau alimente l'export CSV demandé par Lila. */
+  function lignes() {
+    const l = HOTSPOTS.map(f => {
+      const p = f.properties;
+      return {
+        type: 'Enquête publique',
+        nom: p.nom, lieu: p.lieu, periode: p.periode,
+        statut: p.categorie === 'A' ? 'Excès confirmé' : 'Excès non confirmé ou enquête en cours',
+        maladies: p.pathologie, cas: p.cas, source: p.source, _id: p.id, _k: 'hs',
+      };
+    });
+    state.signalements.forEach(f => {
+      const p = f.properties;
+      l.push({ type: 'Signalement instruit', nom: p.nom, lieu: p.lieu, periode: p.periode,
+               statut: 'Instruit', maladies: p.pathologie, cas: p.cas, source: p.source,
+               _id: p.nom, _k: 'sig' });
+    });
+    state.cellules.forEach(c => {
+      l.push({ type: 'Cas déclarés par des familles', nom: `Secteur ${c.deps.join(' / ')}`,
+               lieu: c.deps.join(', '), periode: '—',
+               statut: `${c.n} cas déclarés`,
+               maladies: Object.keys(c.repartition).map(id => BY_ID[id].label).join(' ; '),
+               cas: `${c.n} cas`, source: '', _id: c.id, _k: 'cell' });
+    });
+    return l;
+  }
+
+  function renderTableau() {
+    const L = lignes();
+    $('#tableau-wrap').innerHTML = `
+      <table class="tbl">
+        <caption>${L.length} lieux — même contenu que la carte.</caption>
+        <thead><tr><th scope="col">Lieu</th><th scope="col">Nature</th><th scope="col">Situation</th></tr></thead>
+        <tbody>${L.map(r => `
+          <tr>
+            <td><button data-go="${r._k}:${r._id}">${r.nom}</button><br>
+                <span style="color:var(--txt-faint);font-size:11px">${r.lieu}</span></td>
+            <td>${r.type}</td>
+            <td>${r.statut}</td>
+          </tr>`).join('')}</tbody>
+      </table>
+      <div class="tbl-actions">
+        <button class="btn" id="btn-csv">Télécharger les données (CSV)</button>
+      </div>`;
+
+    $('#btn-csv').addEventListener('click', () => exportCSV(L));
+    $('#tableau-wrap').querySelectorAll('[data-go]').forEach(b => b.addEventListener('click', () => {
+      const [k, id] = b.dataset.go.split(':');
+      if (k === 'hs') {
+        const h = state.hotspots.find(f => f.properties.id === id);
+        if (h) { showHotspot(h.properties); api.fit(h.properties); }
+      } else if (k === 'sig') {
+        const s = state.signalements.find(f => f.properties.nom === id);
+        if (s) showSignalement(s.properties);
+      } else {
+        const c = state.parCellule[id];
+        if (c) { showCellule(c); api.flyTo(c.centre[0], c.centre[1], 8); }
+      }
     }));
-    if (avecAudio.length) return avecAudio;
-    return state.cellules.flatMap(c => c.temoins.slice(0, 2).map(t => ({ cell: c, tem: t }))).slice(0, 12);
-  };
-
-  function step() {
-    const q = queue();
-    if (!q.length) return stopPlayback();
-    pbIdx = (pbIdx + 1) % q.length;
-
-    if (pbMode === 'recit') {
-      const p = q[pbIdx].properties;
-      $('#pb-now').textContent = `${pbIdx + 1}/${q.length} · ${p.nom}`;
-      engines[state.engine].fitZone(p);
-      showHotspot(p);
-      pbTimer = setTimeout(() => { if (pbOn) step(); }, 8000);
-    } else {
-      const { cell, tem } = q[pbIdx];
-      $('#pb-now').textContent = `${pbIdx + 1}/${q.length} · ${tem.dep}`;
-      engines[state.engine].flyTo(cell.centre[0], cell.centre[1], 8.5);
-      showTestimony(tem);
-      pbTimer = setTimeout(() => {
-        playTestimony(tem, () => { if (pbOn) pbTimer = setTimeout(step, 900); });
-      }, 800);
-    }
   }
 
-  function stopPlayback() {
-    pbOn = false; clearTimeout(pbTimer); stopAudio();
-    $('#pb-toggle').textContent = '▶';
-    $('#pb-now').textContent = 'en pause';
+  function exportCSV(L) {
+    const cols = ['type', 'nom', 'lieu', 'periode', 'statut', 'maladies', 'cas', 'source'];
+    const ech = v => `"${String(v == null ? '' : v).replace(/"/g, '""')}"`;
+    /* Point-virgule et BOM : Excel en français ouvre le fichier tel quel,
+       sinon tout atterrit dans une seule colonne et les accents sautent. */
+    const csv = '﻿' + [cols.join(';')].concat(L.map(r => cols.map(c => ech(r[c])).join(';'))).join('\r\n');
+    const url = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }));
+    const a = document.createElement('a');
+    a.href = url; a.download = 'veille-sanitaire-participative.csv';
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(url), 2000);
   }
 
-  $('#pb-toggle').addEventListener('click', () => {
-    if (pbOn) return stopPlayback();
-    pbOn = true; $('#pb-toggle').textContent = '❚❚'; step();
-  });
-  $('#pb-next').addEventListener('click', () => {
-    clearTimeout(pbTimer); stopAudio();
-    if (pbOn) step(); else { pbOn = true; $('#pb-toggle').textContent = '❚❚'; step(); }
-  });
-  document.querySelectorAll('.pb-mode').forEach(b => b.addEventListener('click', () => {
-    document.querySelectorAll('.pb-mode').forEach(x => x.classList.toggle('on', x === b));
-    pbMode = b.dataset.mode; pbIdx = -1;
-    if (pbOn) { clearTimeout(pbTimer); stopAudio(); step(); }
-  }));
-
-  /* --------------------------------------------------- LISTE CLUSTERS */
-  $('#hs-list').innerHTML = HOTSPOTS.map((f, i) => {
-    const p = f.properties, col = S.zoneColor(p);
-    return `<button data-hs="${p.id}"${aPage(p.id) ? ' class="a-dossier"' : ''}>
-      <span class="num" style="background:${col}">${i + 1}</span>
-      <span class="nm">${p.nom}${aPage(p.id) ? '<em>dossier complet</em>' : ''}</span>
-      <span class="rr">${p.mesure_txt.split(' [')[0]}</span>
-    </button>`;
-  }).join('') + `
-    <button data-hs="anon">
-      <span class="num" style="background:#9AA3AF">?</span>
-      <span class="nm">Secteur anonymisé (49/53/72)</span>
-      <span class="rr">RGPD</span>
-    </button>`;
-  $('#hs-list').addEventListener('click', ev => {
-    const b = ev.target.closest('[data-hs]'); if (!b) return;
-    const h = state.hotspots.find(f => f.properties.id === b.dataset.hs);
-    showHotspot(h.properties);
-    engines[state.engine].fitZone(h.properties);
+  $('#btn-tableau').addEventListener('click', () => {
+    const on = $('#tableau-wrap').classList.toggle('on');
+    $('#btn-tableau').setAttribute('aria-expanded', on);
+    $('#btn-tableau').textContent = on ? 'Masquer la liste des lieux' : 'Afficher la liste des lieux';
+    if (on) renderTableau();
   });
 
-  /* ----------------------------------------------------- MODALES CTA */
-  const MODALS = {
-    questionnaire: `
-      <h3>Signaler un cas</h3>
-      <div class="sub">Maquette du point d'entrée du questionnaire participatif (phase 1 : collecte).</div>
-      <h4>Ce que le bouton déclenche</h4>
-      <ol>
-        <li>Écran d'aiguillage : « un cas de maladie » ou « une pollution près de chez moi ».</li>
-        <li>Formulaire A — cas de santé : pathologie, année de diagnostic, tranche d'âge, sexe,
-            adresse géocodée en code IRIS côté client, exposition suspectée, témoignage libre.</li>
-        <li>Blocs de consentement granulaires, dont la future visualisation géolocalisée agrégée.</li>
-        <li>Anti-abus : honeypot, limite de débit, confirmation par e-mail, revue manuelle des
-            cas atypiques plutôt que rejet automatique.</li>
-      </ol>
-      <h4>La règle d'affichage à ne pas perdre</h4>
-      <p>Collecte fine (IRIS), publication grossière (maille agrégée avec seuil de k-anonymat).
-         Les points individuels de cette démo sont un artefact de démonstration : en production,
-         un cas isolé ne doit jamais être localisable à l'adresse.</p>
-      <h4>Ce que les collectifs ont déjà résolu</h4>
-      <p>Stop aux Cancers de nos Enfants (Sainte-Pazanne) a monté son propre recensement, son
-         authentification et son traitement, et fait analyser 700 pesticides dans l'eau. À
-         Noyelles-Godault, l'invitation institutionnelle a touché 91 % des enfants pour
-         seulement 24 % de participation : la confiance ne se décrète pas.</p>`,
-    deroule: `
-      <h3>Le déroulé, en texte</h3>
-      <div class="sub">Alternative statique au récit cartographique, pour relire sans la carte.</div>
-      <h4>Pourquoi cette porte de sortie</h4>
-      <p>Le récit guidé impose son rythme. Une version texte continue sert trois publics : les
-         lecteurs pressés, les journalistes qui veulent citer, et l'accessibilité (lecteurs
-         d'écran, connexions lentes, navigation au clavier).</p>
-      <h4>Structure</h4>
-      <ol>
-        <li>Le signal : ce que disent les familles.</li>
-        <li>Six clusters, six façons de ne pas conclure.</li>
-        <li>La maille change tout : Pont-de-l'Arche, SIR 6,4 à la commune, 2,3 au canton.</li>
-        <li>Ce qu'on ne mesure pas : Preignac, une enquête bloquée faute de données d'exposition.</li>
-        <li>La donnée verrouillée : un secteur entier anonymisé au titre du RGPD.</li>
-        <li>Participer : donner son cas.</li>
-      </ol>
-      <h4>Sur les données affichées</h4>
-      <p>Clusters et signalements proviennent de rapports publics (Santé publique France,
-         registres, presse) ; chaque fiche porte son lien. Les 100 témoignages individuels sont
-         fictifs et servent uniquement à tester le rendu.</p>`,
-  };
-  document.querySelectorAll('[data-modal]').forEach(b => b.addEventListener('click', () => {
-    $('#modal-box').innerHTML = MODALS[b.dataset.modal] +
-      `<div style="margin-top:22px"><button class="btn" data-mclose>Fermer</button></div>`;
-    $('#modal').classList.add('on');
-  }));
+  /* ----------------------------------------------------- MODALE */
   $('#modal').addEventListener('click', ev => {
     if (ev.target.id === 'modal' || ev.target.closest('[data-mclose]')) $('#modal').classList.remove('on');
   });
   document.addEventListener('keydown', ev => {
-    if (ev.key === 'Escape') { $('#modal').classList.remove('on'); closeDetail(); stopPlayback(); }
+    if (ev.key === 'Escape') { $('#modal').classList.remove('on'); closeDetail(); }
   });
 
-  /* ------------------------------------------------- MODE RÉCIT / EXPLORER
-     Le récit et l'exploration partagent la même carte et le même panneau.
-     Passer de l'un à l'autre ne recharge rien : on masque les réglages,
-     on affiche les chapitres, et le défilement prend la main sur la caméra. */
+  /* --------------------------------------------- DÉROULÉ / CARTE */
   const api = {
-    setLayers(l) {
-      Object.assign(state, l);
-      ['tg-zones', 'tg-sig', 'tg-temoins'].forEach((id, k) => {
-        const key = ['zones', 'sig', 'temoins'][k];
-        $('#' + id).checked = state[key];
-      });
-      refresh();
-    },
-    /* Marge de caméra correspondant au panneau, pour que la France reste
-       centrée dans la partie visible de la carte. */
+    setLayers(l) { Object.assign(state, l); refresh(); },
     marge() {
       if (!ready[state.engine]) return;
       const e = engines[state.engine];
       if (!e.setPadding) return;
       if (state.mode !== 'carte') return e.setPadding({}, 400);
+      const ferme = document.body.classList.contains('panneau-ferme');
       e.setPadding(isMobile() ? { bottom: window.innerHeight * 0.18 }
-                              : { left: $('#panel').offsetWidth }, 650);
+                              : { left: ferme ? 0 : $('#panel').offsetWidth }, 650);
     },
     fit: p => ready[state.engine] && engines[state.engine].fitZone(p),
     fitFrance: () => ready[state.engine] && engines[state.engine].fitFrance(),
@@ -602,35 +594,42 @@
     state.mode = m;
     document.body.classList.toggle('vue-intro', m === 'intro');
     document.body.classList.toggle('vue-carte', m === 'carte');
-    document.querySelectorAll('#mode-switch button')
+    document.querySelectorAll('#nav-onglets [data-mode]')
       .forEach(b => b.classList.toggle('on', b.dataset.mode === m));
 
     if (m === 'intro') {
-      closeDetail(); stopPlayback();
-      $('#tg-exact').checked = false; state.exact = false; $('#exact-warn').hidden = true;
+      closeDetail();
+      document.body.classList.remove('panneau-ferme');
       if (!s1) s1 = NK_SECTION1.monter($('#section1'), () => setMode('carte'));
       else s1.reset();
       api.marge();
-      /* La carte tourne derrière le déroulé, floutée : elle doit être prête
-         au moment où on la révèle, pas se charger à ce moment-là. */
-      api.setLayers({ zones: true, sig: true, temoins: true });
     } else {
-      /* Sortir du déroulé n'impose PAS un recadrage : la carte est déjà là,
-         à la bonne échelle. On lui laisse seulement la marge du panneau, en
-         animant le padding de caméra — recadrer d'un coup, c'est ce qui
-         donnait l'impression d'un saut. */
-      api.setLayers({ zones: true, sig: true, temoins: true });
       api.marge();
+      /* La visite guidée démarre au premier passage sur la carte, et une
+         seule fois : y revenir ensuite ne réimpose pas le parcours. */
+      demarrerTour();
     }
     history.replaceState(null, '', m === 'carte' ? '#carte' : location.pathname);
     setTimeout(() => ready[state.engine] && engines[state.engine].resize(), 340);
   }
-  document.querySelectorAll('#mode-switch button')
+  document.querySelectorAll('#nav-onglets [data-mode]')
     .forEach(b => b.addEventListener('click', () => setMode(b.dataset.mode)));
-  document.addEventListener('click', ev => {
-    const g = ev.target.closest('[data-mode-go]');
-    if (g) setMode(g.dataset.modeGo);
-  });
+
+  /* Retour au déroulé par défilement vers le haut, plutôt qu'un bouton de
+     plus dans le panneau.
+
+     Le geste n'est écouté QUE dans le panneau, jamais au-dessus de la carte :
+     sur la carte, la molette vers le haut zoome, et on renverrait l'utilisateur
+     au déroulé chaque fois qu'il cherche à s'approcher d'un lieu.
+
+     Il faut de plus être en haut du panneau, et pousser franchement. */
+  let remonte = 0;
+  $('#panel').addEventListener('wheel', ev => {
+    if (state.mode !== 'carte' || (tourIdx >= 0 && tourActif)) return;
+    if ($('#panel-scroll').scrollTop > 0) return remonte = 0;
+    if (ev.deltaY < -8) { remonte -= ev.deltaY; if (remonte > 260) { remonte = 0; setMode('intro'); } }
+    else remonte = 0;
+  }, { passive: true });
 
   /* ----------------------------------------------------------- UTILS */
   function fmt(s) {
@@ -645,18 +644,20 @@
     rz = setTimeout(() => ready[state.engine] && engines[state.engine].resize(), 120);
   });
   refresh();
-  /* Le déroulé s'affiche tout de suite : c'est du texte, il n'a aucune raison
-     d'attendre le fond de carte. La carte se charge derrière, floutée.
-     #carte permet de pointer directement sur la section 2 depuis une page concept. */
-  /* ?zone=h1 : retour depuis une page dossier, la carte s'ouvre sur le secteur. */
   const zoneVoulue = new URLSearchParams(location.search).get('zone');
   setMode(location.hash === '#carte' || zoneVoulue ? 'carte' : 'intro');
   switchEngine('deck');
   if (zoneVoulue) {
+    /* Retour depuis une page dossier : on ouvre directement le secteur,
+       la visite guidée n'a pas lieu d'être. */
+    tourActif = false; $('#tour').classList.add('off');
     const z = state.hotspots.find(f => f.properties.id === zoneVoulue);
     if (z) setTimeout(() => {
       showHotspot(z.properties);
       engines[state.engine].fitZone(z.properties);
     }, 600);
   }
+
+  /* Exposé pour la couche de rendu : le bleu unique des cas déclarés. */
+  window.NK_BLEU_CAS = BLEU_CAS;
 })();

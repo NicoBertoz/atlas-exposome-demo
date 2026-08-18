@@ -6,8 +6,8 @@
 .page-article #topbar { position: sticky; }
 
 #article {
-  max-width: 720px; margin: 0 auto;
-  padding: 46px 22px calc(70px + var(--safe-b));
+  max-width: 680px; margin: 0 auto;
+  padding: 54px 22px calc(80px + var(--safe-b));
 }
 
 .art-kicker {
@@ -15,10 +15,41 @@
   color: var(--encre); background: var(--jaune); padding: 3px 8px; margin-bottom: 14px;
 }
 #article h1 {
-  margin: 0 0 16px; font-size: clamp(28px, 5vw, 40px); line-height: 1.14;
+  margin: 0 0 18px; font-size: clamp(28px, 5vw, 42px); line-height: 1.12;
   letter-spacing: -.03em; font-weight: 700;
 }
-.chapo { font-size: 17px; line-height: 1.6; color: var(--txt-dim); margin: 0 0 32px; }
+.chapo { font-size: 17.5px; line-height: 1.7; color: var(--txt-dim); margin: 0 0 40px; }
+
+/* Bandeau « contenu à valider » : ces pages portent des emplacements, pas
+   des textes arrêtés. Autant que ça se voie. */
+.a-relire {
+  border-left: 3px solid var(--jaune); background: var(--blanc-2);
+  padding: 13px 16px; margin: 0 0 38px;
+  font-size: 12.5px; line-height: 1.6; color: var(--txt-dim);
+}
+
+/* Listes d'organisations et lexique : deux colonnes, un filet entre chaque */
+.orgs, .lexique { margin: 0; }
+.orgs > div, .lexique > div {
+  display: grid; grid-template-columns: 210px 1fr; gap: 18px;
+  padding: 16px 0; border-top: 1px solid var(--filet-fin); align-items: baseline;
+}
+.orgs > div:first-child, .lexique > div:first-child { border-top: 1px solid var(--filet); }
+.orgs dt, .lexique dt { font-size: 14.5px; font-weight: 700; }
+.orgs dd, .lexique dd {
+  margin: 0; font-size: 14.5px; line-height: 1.7; color: var(--encre-2);
+}
+.orgs em, .lexique em { font-style: normal; color: var(--txt-faint); }
+
+.liste-ress { list-style: none; padding: 0; margin: 0; }
+.liste-ress li { padding: 14px 0; border-top: 1px solid var(--filet-fin); }
+.liste-ress li:first-child { border-top: 1px solid var(--filet); }
+.liste-ress b { display: block; font-size: 14.5px; margin-bottom: 4px; }
+.liste-ress span { font-size: 14px; color: var(--txt-dim); line-height: 1.65; }
+
+.art-apres {
+  margin-top: 26px; font-size: 14px; line-height: 1.7; color: var(--txt-dim);
+}
 
 /* Le résumé lu dans le déroulé, rappelé en tête de page */
 .art-resume {
@@ -32,29 +63,30 @@
 .art-resume p:last-child { margin-bottom: 0; }
 .art-resume b { color: var(--txt); }
 
-.art-sec { margin-bottom: 34px; }
+/* Sections nettement séparées : la relecture demandait de « resegmenter
+   davantage » pour que le texte se parcoure sans s'y perdre. */
+.art-sec { margin-bottom: 42px; }
 .art-sec h2 {
   font-size: 13px; letter-spacing: .07em; text-transform: uppercase; color: var(--txt-faint);
-  font-weight: 600; margin: 0 0 10px;
+  font-weight: 600; margin: 0 0 14px;
 }
-.art-sec p { font-size: 15.5px; line-height: 1.72; color: var(--encre-2); margin: 0 0 14px; }
+.art-sec p { font-size: 16px; line-height: 1.78; color: var(--encre-2); margin: 0 0 16px; }
 .art-sec p:last-child { margin-bottom: 0; }
 .art-sec b { color: var(--txt); }
 
 .art-sec.encadre {
-  background: rgba(31,58,204,.06); border: 1.5px solid var(--bleu);
-  border-radius: 13px; padding: 20px 22px;
+  background: var(--blanc-2); border: 0; border-left: 3px solid var(--bleu);
+  padding: 20px 22px;
 }
-.art-sec.encadre h2 { color: var(--bleu); }
 .regle {
-  font-weight: 600; color: var(--txt) !important; border-top: 1px solid var(--bleu);
-  padding-top: 12px; margin-top: 4px !important;
+  font-weight: 700; color: var(--txt) !important;
+  border-top: 1px solid var(--filet); padding-top: 14px; margin-top: 6px !important;
 }
 
-.liste-champs { list-style: none; padding: 0; margin: 0 0 16px; }
+.liste-champs { list-style: none; padding: 0; margin: 0 0 18px; }
 .liste-champs li {
-  padding: 12px 0; border-bottom: 1px solid var(--line-soft);
-  display: grid; grid-template-columns: 240px 1fr; gap: 16px; align-items: baseline;
+  padding: 13px 0; border-bottom: 1px solid var(--line-soft);
+  display: grid; grid-template-columns: 210px 1fr; gap: 18px; align-items: baseline;
 }
 .liste-champs li:last-child { border-bottom: 0; }
 .liste-champs b { font-size: 14.5px; }
@@ -93,6 +125,7 @@
 @media (max-width: 640px) {
   #article { padding: 30px 18px calc(50px + var(--safe-b)); }
   .liste-champs li { grid-template-columns: 1fr; gap: 4px; }
+  .orgs > div, .lexique > div { grid-template-columns: 1fr; gap: 5px; }
   .art-nav { grid-template-columns: 1fr; }
   .art-nav a.suiv { text-align: left; }
 }

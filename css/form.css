@@ -1,139 +1,137 @@
 /* ------------------------------------------------------------------ *
  *  Questionnaire participatif — maquette
+ *
  *  Reprend les variables de app.css, n'ajoute que ce qui touche au
  *  formulaire. Une colonne, lisible au pouce comme au clavier.
+ *
+ *  Révision du 18/08/2026 : fond blanc, aucun encadré noir, aucun bord
+ *  arrondi, et la barre de navigation ramenée dans le flux, juste sous
+ *  le contenu de l'étape.
  * ------------------------------------------------------------------ */
 .page-form { overflow: auto; }
 .page-form #topbar { position: sticky; }
 .fake-badge {
   font-family: var(--mono); font-size: 10px; letter-spacing: .05em;
-  color: var(--encre); background: var(--accent); padding: 4px 8px; border-radius: 4px;
+  color: var(--encre); background: var(--jaune); padding: 4px 8px;
   font-weight: 700; white-space: nowrap;
 }
 
 #form-wrap {
-  max-width: 660px; margin: 0 auto;
-  padding: 30px 20px calc(120px + var(--safe-b));
+  max-width: 620px; margin: 0 auto;
+  padding: 34px 20px calc(60px + var(--safe-b));
 }
 
-/* Fil d'étapes */
-#steps { display: flex; gap: 4px; list-style: none; margin: 0 0 30px; padding: 0; flex-wrap: wrap; }
-#steps li {
-  display: flex; align-items: center; gap: 7px; font-size: 11.5px; color: var(--txt-faint);
-  padding: 6px 10px 6px 6px; border-radius: 20px; border: 1px solid transparent;
-}
-#steps li span {
-  width: 19px; height: 19px; border-radius: 50%; display: grid; place-items: center;
-  background: var(--bg-elev); border: 1px solid var(--line);
-  font-family: var(--mono); font-size: 10px; flex: none;
-}
-#steps li.on { color: var(--txt); border-color: var(--line); background: var(--bg-panel); }
-#steps li.on span { background: var(--accent); color: var(--encre); border-color: var(--accent); font-weight: 700; }
-#steps li.done span { background: var(--ok); color: var(--encre); border-color: var(--ok); }
+/* ------------------------------------------------------- PROGRESSION
+   Une barre et une ligne de texte. Les pastilles numérotées débordaient
+   dès la cinquième étape et devenaient illisibles au téléphone. */
+#progress { height: 2px; background: var(--filet-fin); margin-bottom: 10px; }
+#progress-barre { display: block; height: 2px; background: var(--jaune); width: 16.6%; transition: width .25s ease; }
+#progress-txt { font-size: 12px; color: var(--txt-faint); margin: 0 0 30px; }
+#progress-txt b { color: var(--encre); }
 
 .step { display: none; }
-.step.on { display: block; animation: pop .2s ease-out; }
-@keyframes pop { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.step.on { display: block; animation: pop .18s ease-out; }
+@keyframes pop { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: none; } }
 
-h1 { font-size: 25px; letter-spacing: -.025em; margin: 0 0 6px; line-height: 1.2; }
-.intro { color: var(--txt-dim); font-size: 14px; margin: 0 0 24px; line-height: 1.6; }
-.note { font-size: 12px; color: var(--txt-faint); line-height: 1.6; margin-top: 22px;
-        border-top: 1px solid var(--line-soft); padding-top: 14px; }
+h1 { font-size: 26px; letter-spacing: -.025em; margin: 0 0 8px; line-height: 1.2; }
+.intro { color: var(--txt-dim); font-size: 14.5px; margin: 0 0 26px; line-height: 1.65; }
 
 /* Champs */
-.field { display: block; margin-bottom: 22px; }
-.lab { display: block; font-size: 13px; font-weight: 600; margin-bottom: 7px; }
+.field { display: block; margin-bottom: 24px; }
+.lab { display: block; font-size: 13.5px; font-weight: 600; margin-bottom: 8px; }
 .lab em { font-style: normal; font-weight: 400; color: var(--txt-faint); font-size: 11.5px; margin-left: 5px; }
 input[type=text], input[type=number], input[type=email], select, textarea {
-  width: 100%; background: var(--bg-elev); border: 1px solid var(--line);
-  color: var(--txt); border-radius: 9px; padding: 11px 13px;
-  font-family: inherit; font-size: 14px; transition: border-color .12s;
+  width: 100%; background: var(--blanc); border: 1px solid var(--filet);
+  color: var(--encre); padding: 12px 13px;
+  font-family: inherit; font-size: 14.5px; transition: border-color .12s;
 }
-input:focus, select:focus, textarea:focus { outline: 0; border-color: var(--encre); box-shadow: 2px 2px 0 var(--jaune); }
+input:focus, select:focus, textarea:focus { outline: 0; border-color: var(--encre); }
 input::placeholder, textarea::placeholder { color: var(--txt-faint); }
-textarea { resize: vertical; line-height: 1.6; }
-.field small { display: block; font-size: 11.5px; color: var(--txt-faint); margin-top: 6px; line-height: 1.5; }
+textarea { resize: vertical; line-height: 1.65; }
+.field small { display: block; font-size: 12px; color: var(--txt-faint); margin-top: 7px; line-height: 1.55; }
 .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
-.fs { border: 1px solid var(--line-soft); border-radius: 10px; padding: 14px 16px; margin: 0 0 22px; }
-.fs legend { font-size: 13px; font-weight: 600; padding: 0 6px; }
-.fs small { display: block; font-size: 11.5px; color: var(--txt-faint); margin-top: 10px; line-height: 1.5; }
-.radios { display: flex; flex-wrap: wrap; gap: 14px; }
-.radios label { display: flex; align-items: center; gap: 7px; font-size: 13.5px; }
-input[type=radio], input[type=checkbox] { accent-color: var(--accent); width: 17px; height: 17px; flex: none; }
-
-/* Aiguillage */
-.choice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
-.choice {
-  display: block; background: var(--bg-elev); border: 1px solid var(--line);
-  border-radius: 11px; padding: 16px; cursor: pointer; transition: .12s;
-}
-.choice:hover { border-color: var(--txt-faint); }
-.choice:has(input:checked) { border-color: var(--trait); background: rgba(245,212,0,.22); box-shadow: 3px 3px 0 var(--trait); }
-.choice input { margin-bottom: 9px; }
-.choice b { display: block; font-size: 14.5px; margin-bottom: 4px; }
-.choice span { font-size: 12.5px; color: var(--txt-dim); line-height: 1.5; }
-.choice span em { color: var(--txt-faint); font-style: normal; }
-.choice.disabled { opacity: .5; cursor: not-allowed; }
+.fs { border: 0; border-top: 1px solid var(--filet); padding: 16px 0 0; margin: 0 0 24px; }
+.fs legend { font-size: 13.5px; font-weight: 600; padding: 0 8px 0 0; }
+.fs legend .fac { font-style: normal; font-weight: 400; color: var(--txt-faint); font-size: 11.5px; }
+.fs small { display: block; font-size: 12px; color: var(--txt-faint); margin-top: 12px; line-height: 1.55; }
+.radios { display: flex; flex-wrap: wrap; gap: 10px 20px; }
+.radios label { display: flex; align-items: center; gap: 8px; font-size: 14px; }
+input[type=radio], input[type=checkbox] { accent-color: var(--jaune); width: 17px; height: 17px; flex: none; }
+input[type=radio] { border-radius: 50% !important; }
 
 /* Cases à cocher longues */
-.check { display: flex; align-items: flex-start; gap: 11px; font-size: 13.5px; line-height: 1.55; }
+.check { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; line-height: 1.6; }
 .check.big {
-  background: var(--bg-elev); border: 1px solid var(--line-soft); border-radius: 10px;
-  padding: 14px 16px; margin-bottom: 10px; transition: .12s;
+  border-top: 1px solid var(--filet-fin); padding: 16px 0; margin: 0;
 }
-.check.big:has(input:checked) { border-color: var(--trait); background: rgba(245,212,0,.14); }
+.check.big:first-of-type { border-top: 1px solid var(--filet); }
 .check.big span { flex: 1; color: var(--txt-dim); }
-.check.big b { color: var(--txt); }
+.check.big b { color: var(--txt); font-weight: 600; }
 .check.big em { font-style: normal; color: var(--txt-faint); font-size: 12px; }
+.check.big:has(input:checked) { background: rgba(245,212,0,.13); }
+.check.big:last-of-type { border-bottom: 1px solid var(--filet); margin-bottom: 24px; }
 
-/* Encadré RGPD */
+/* Encadré d'explication : un filet à gauche, pas un cadre.
+   Plus de bleu plein cadre, qui lisait comme une alerte. */
 .rgpd {
-  background: rgba(31,58,204,.06); border: 1.5px solid var(--bleu);
-  border-radius: 11px; padding: 15px 17px; margin: 0 0 24px;
+  border-left: 3px solid var(--bleu); background: var(--blanc-2);
+  padding: 16px 18px; margin: 0 0 26px;
 }
-.rgpd.soft { background: var(--papier-2); border-color: var(--trait); }
-.rgpd b { display: block; font-size: 12.5px; margin-bottom: 7px; }
-.rgpd p { font-size: 12.5px; color: var(--txt-dim); line-height: 1.62; margin: 0 0 9px; }
+.rgpd.soft { border-left-color: var(--filet); }
+/* Seul le premier <b> est le titre du bloc. Sans cette restriction, tous les
+   mots mis en gras dans le texte passaient à la ligne. */
+.rgpd > b:first-child { display: block; font-size: 13px; margin-bottom: 8px; }
+.rgpd p b { color: var(--txt); }
+.rgpd p { font-size: 13.5px; color: var(--txt-dim); line-height: 1.7; margin: 0 0 10px; }
 .rgpd p:last-child { margin-bottom: 0; }
-.rgpd .check { margin-top: 12px; font-size: 13px; }
+.rgpd .check { margin-top: 14px; font-size: 13.5px; }
 
 /* Suggestions de commune */
 #suggest { position: relative; }
 #suggest .s {
-  display: block; width: 100%; text-align: left; background: var(--bg-elev);
-  border: 1px solid var(--line); border-top: 0; color: var(--txt);
-  padding: 9px 13px; font-size: 13.5px;
+  display: block; width: 100%; text-align: left; background: var(--blanc);
+  border: 1px solid var(--filet); border-top: 0; color: var(--encre);
+  padding: 10px 13px; font-size: 14px;
 }
-#suggest .s:first-child { border-top: 1px solid var(--line); margin-top: -1px; }
-#suggest .s:hover { background: var(--line-soft); }
-#suggest .s span { color: var(--txt-faint); font-size: 11.5px; margin-left: 6px; }
+#suggest .s:hover { background: var(--blanc-2); }
+#suggest .s span { color: var(--txt-faint); font-size: 12px; margin-left: 6px; }
 .iris-ok { color: var(--vert) !important; }
 
 /* Piège anti-robot : hors écran, pas display:none, que les robots remplissent */
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
-/* Barre de navigation */
+/* --------------------------------------------------------- BOUTONS
+   Dans le flux et côte à côte : « Précédent » doit se voir, et
+   « Continuer » doit être à portée du dernier champ rempli. */
 #nav {
-  position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
   display: flex; align-items: center; gap: 10px;
-  padding: 14px 20px calc(14px + var(--safe-b));
-  background: rgba(244,241,232,.96); backdrop-filter: blur(14px);
-  border-top: 1px solid var(--line);
+  padding-top: 22px; border-top: 1px solid var(--filet);
 }
-#nav .spacer { flex: 1; }
+#nav .btn { padding: 12px 20px; font-size: 14px; }
+.btn-prev { color: var(--encre); border-color: var(--filet); }
+.btn-prev:hover { border-color: var(--encre); background: var(--blanc-2); }
+
+.note-bas {
+  margin-top: 34px; padding-top: 16px; border-top: 1px solid var(--filet-fin);
+  font-size: 12.5px; color: var(--txt-faint); line-height: 1.65;
+}
+.note-bas b { color: var(--txt-dim); }
 
 #done { animation: pop .25s ease-out; }
+/* Le bloc de code partait en une seule ligne interminable et cassait la
+   lecture : on l'autorise à revenir à la ligne proprement. */
 #payload {
-  background: var(--bg-elev); border: 1px solid var(--line); border-radius: 11px;
-  padding: 16px; font-family: var(--mono); font-size: 12px; line-height: 1.65;
-  color: var(--encre-2); overflow-x: auto; margin-bottom: 24px;
+  background: var(--blanc-2); border-left: 3px solid var(--filet);
+  padding: 16px; font-family: var(--mono); font-size: 12px; line-height: 1.7;
+  color: var(--encre-2); margin-bottom: 26px;
+  white-space: pre-wrap; word-break: break-word; overflow-wrap: anywhere;
 }
 
 @media (max-width: 640px) {
-  .row2, .choice-grid { grid-template-columns: 1fr; }
-  #form-wrap { padding: 22px 16px calc(110px + var(--safe-b)); }
+  .row2 { grid-template-columns: 1fr; }
+  #form-wrap { padding: 24px 16px calc(50px + var(--safe-b)); }
   h1 { font-size: 22px; }
-  #steps li { font-size: 10.5px; padding: 5px 8px 5px 5px; }
-  #steps li:not(.on) { color: transparent; width: 30px; overflow: hidden; }
+  #nav { flex-wrap: wrap; }
+  #nav .btn { flex: 1; text-align: center; }
 }

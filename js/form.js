@@ -15,15 +15,16 @@
   const steps = [...document.querySelectorAll('.step')];
   let i = 0;
 
-  /* ------------------------------------------------------- NAVIGATION */
+  /* ------------------------------------------------------- NAVIGATION
+     Le fil d'étapes en pastilles a été remplacé par une barre et une ligne
+     de texte : à six étapes, les pastilles débordaient et n'étaient plus
+     lisibles au téléphone. */
   function show(n) {
     i = Math.max(0, Math.min(steps.length - 1, n));
     steps.forEach(s => s.classList.toggle('on', +s.dataset.step === i));
-    document.querySelectorAll('#steps li').forEach(li => {
-      const k = +li.dataset.step;
-      li.classList.toggle('on', k === i);
-      li.classList.toggle('done', k < i);
-    });
+    $('#p-n').textContent = i + 1;
+    $('#p-titre').textContent = steps[i].dataset.titre || '';
+    $('#progress-barre').style.width = ((i + 1) / steps.length * 100).toFixed(1) + '%';
     $('#prev').hidden = i === 0;
     $('#next').hidden = i === steps.length - 1;
     $('#send').hidden = i !== steps.length - 1;
@@ -89,7 +90,7 @@
           }
         } catch (e) {
           const out = document.getElementById(sortieId);
-          if (out) out.textContent = 'API Adresse injoignable — la saisie reste possible.';
+          if (out) out.textContent = 'Annuaire des communes injoignable — vous pouvez saisir librement.';
         }
       }, 320);
     });
@@ -97,15 +98,13 @@
 
   function retenir(inputId, f, sortieId) {
     const p = f.properties;
-    /* Le vrai code IRIS demande l'adresse complète (endpoint /search + reverse
-       sur le référentiel IRIS). À l'échelle de la maquette on garde le code
-       INSEE de la commune et on nomme les choses honnêtement. */
+    /* Le vrai code de quartier (IRIS) demande l'adresse complète. À l'échelle
+       de la maquette on garde le code INSEE de la commune, et on le dit. */
     IRIS[inputId] = { insee: p.citycode, commune: p.city, contexte: p.context };
     document.getElementById(inputId).value = p.city;
     const out = document.getElementById(sortieId);
     if (out) {
-      out.textContent = `Commune reconnue · code INSEE ${p.citycode} · ${p.context}. `
-        + 'En production, l\'adresse complète donnerait le code IRIS, et elle seule serait effacée.';
+      out.textContent = `Commune reconnue : ${p.city}, ${p.context}.`;
       out.classList.add('iris-ok');
     }
     if (inputId === 'commune') $('#suggest').innerHTML = '';
@@ -135,12 +134,15 @@
 
     const d = new FormData(form);
     const payload = {
-      objet: d.get('objet'),
-      declarant: d.get('qui'),
+      /* Plus de champ `objet` : la déclaration de pollution est sortie du
+         périmètre, le formulaire ne porte plus que des cas de maladie. */
+      declarant: d.get('qui') || null,
       pathologie: d.get('patho') === 'autre' ? d.get('patho_autre') : d.get('patho'),
       annee_diagnostic: Number(d.get('annee')) || null,
       tranche_age: d.get('age'),
-      sexe: d.get('sexe'),
+      /* Rien n'est pré-coché : l'absence de réponse doit rester une absence
+         de réponse, pas une valeur choisie par le formulaire. */
+      sexe: d.get('sexe') || null,
       localisation: {
         residence_insee: IRIS.commune ? IRIS.commune.insee : null,
         grossesse_insee: IRIS.commune2 ? IRIS.commune2.insee : null,
@@ -164,16 +166,10 @@
 
     $('#payload').textContent = JSON.stringify(payload, null, 2);
     form.hidden = true;
-    $('#steps').hidden = true;
-    $('#nav').hidden = true;
+    $('#progress').hidden = true;
+    $('#progress-txt').hidden = true;
+    document.querySelector('.note-bas').hidden = true;
     $('#done').hidden = false;
-    // Le lien Discord n'existe pas encore : on le dit plutôt que d'ouvrir une page morte
-    const lienDiscord = $('[data-discord]');
-    if (lienDiscord) lienDiscord.addEventListener('click', e => {
-      e.preventDefault();
-      e.target.textContent = 'Lien à venir — demandé à Projet NK';
-      e.target.style.opacity = '.6';
-    });
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 

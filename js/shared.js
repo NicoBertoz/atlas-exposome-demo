@@ -6,13 +6,19 @@
 window.NK_SHARED = (function () {
   'use strict';
 
-  const C = { confirme: '#E22D22', enquete: '#EF8410', anonyme: '#8B857A' };
+  const C = { confirme: '#D8281D', enquete: '#E07B0A' };
 
-  /* Un cluster est rouge si l'excès est confirmé (catégorie A du corpus),
-     orange s'il est contesté ou en cours d'instruction (B et C),
-     gris tireté si le périmètre lui-même n'est pas public. */
+  /* Deux couleurs, plus trois. Rouge si l'excès de cas est confirmé
+     (catégorie A du corpus), orange s'il est contesté ou en cours
+     d'instruction (B, C, D).
+
+     Le gris « périmètre non publié » a sauté : la relecture a demandé de
+     réduire la légende, et ce troisième état disait surtout quelque chose
+     sur la publication du rapport, pas sur la situation sanitaire. Le
+     secteur concerné est un excès CONFIRMÉ : il est donc rouge comme les
+     autres, et le fait que son périmètre soit tenu secret est écrit dans
+     sa fiche, là où il se lit vraiment. */
   function zoneColor(p) {
-    if (p.anonyme) return C.anonyme;
     return p.categorie === 'A' ? C.confirme : C.enquete;
   }
 
@@ -35,17 +41,19 @@ window.NK_SHARED = (function () {
     });
   }
 
+  /* Les bulles de survol sont écrites pour être comprises sans bagage :
+     ni « SIR », ni « catégorie A », ni « agrégat spatio-temporel ». Ces
+     termes existent, ils ont une définition, et ils sont expliqués dans le
+     déroulé — mais pas au survol d'une carte. */
   function zoneHTML(p, avecCta) {
     const col = zoneColor(p);
     return `<div class="pop">
       <h4>${p.nom}</h4>
       <div class="m">${p.lieu} · ${p.periode}</div>
-      <div class="row">
-        <div><b style="color:${col}">${p.mesure_txt.split(' [')[0]}</b><span>${p.anonyme ? 'Constat' : 'Mesure'}</span></div>
-        <div><b style="color:${col}">${p.categorie}</b><span>${p.cat_label}</span></div>
-      </div>
+      <div class="m" style="margin-top:7px;color:${col}"><b>${
+        p.categorie === 'A' ? 'Excès de cas confirmé' : 'Excès non confirmé, ou enquête en cours'}</b></div>
       <div class="m">${p.pathologie}</div>
-      ${avecCta ? '<div class="cta">Cliquer pour la fiche complète</div>' : ''}
+      ${avecCta ? '<div class="cta">Cliquer pour en savoir plus</div>' : ''}
     </div>`;
   }
 
@@ -53,9 +61,8 @@ window.NK_SHARED = (function () {
     return `<div class="pop">
       <h4>${p.nom}</h4>
       <div class="m">${p.lieu} · ${p.periode}</div>
-      <div class="m" style="margin-top:6px"><b style="color:#E8EAED">${p.cas}</b></div>
-      <div class="m">${p.pathologie}</div>
-      <div class="cta">Investigation instruite · cliquer pour la fiche</div>
+      <div class="m" style="margin-top:6px">${p.cas}</div>
+      <div class="cta">Signalement instruit · cliquer pour en savoir plus</div>
     </div>`;
   }
 
@@ -90,9 +97,29 @@ window.NK_SHARED = (function () {
   const FRANCE = {
     center: [2.7, 46.6], zoom: 5.55,
     bounds: [[-5.4, 41.2], [9.8, 51.3]],
-    padding: () => (window.innerWidth < 860 ? 16 : 40),
-    // un cluster cadré au plus juste perd son contexte : on laisse respirer
-    zonePadding: () => (window.innerWidth < 860 ? 60 : 170),
+    /* Même précaution que pour zonePadding : au tout premier cadrage, la
+       scène n'a pas toujours sa taille définitive, et une marge plus grande
+       que le canvas fait échouer le cadrage en silence. */
+    padding(el) {
+      const voulu = window.innerWidth < 860 ? 16 : 40;
+      const w = (el && el.clientWidth) || window.innerWidth;
+      const h = (el && el.clientHeight) || window.innerHeight;
+      return Math.max(4, Math.min(voulu, w / 6, h / 6));
+    },
+
+    /* Une zone cadrée au plus juste perd son contexte : on laisse respirer.
+       Mais la marge doit rester compatible avec la taille réelle du canvas —
+       marge du panneau comprise. Sinon MapLibre refuse le cadrage, se
+       contente d'un avertissement en console, et ne bouge pas du tout.
+       C'est ce qui arrivait au démarrage, quand la scène n'a pas encore sa
+       hauteur définitive. */
+    zonePadding(el) {
+      const voulu = window.innerWidth < 860 ? 60 : 170;
+      const w = (el && el.clientWidth) || window.innerWidth;
+      const h = (el && el.clientHeight) || window.innerHeight;
+      // il doit rester au moins un tiers du canvas une fois les marges posées
+      return Math.max(12, Math.min(voulu, w / 6, h / 6));
+    },
 
     /* La carte est une carte DE FRANCE, pas un planisphère sur lequel la France
        se trouve. Dézoomer jusqu'au monde entier écrase les 21 agrégats en une
@@ -249,13 +276,13 @@ window.NK_SHARED = (function () {
     const det = Object.entries(c.repartition)
       .map(([id, n]) => {
         const p = window.NK_DATA.meta.pathologies.find(x => x.id === id);
-        return `<div class="m" style="color:${p.color}">${n} × ${p.label}</div>`;
+        return `<div class="m">${n} × ${p.label}</div>`;
       }).join('');
     return `<div class="pop">
-      <h4>${c.n} cas déclarés</h4>
-      <div class="m">${c.maille} · ${c.deps.slice(0, 2).join(', ')}${c.deps.length > 2 ? '…' : ''}</div>
+      <h4>${c.n} cas racontés ici</h4>
+      <div class="m">${c.deps.slice(0, 2).join(', ')}${c.deps.length > 2 ? '…' : ''}</div>
       <div style="margin:7px 0 0">${det}</div>
-      <div class="cta">Secteur d'environ 25 km · position volontairement approximative</div>
+      <div class="cta">Position volontairement approximative</div>
     </div>`;
   }
 

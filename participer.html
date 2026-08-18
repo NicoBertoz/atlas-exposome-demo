@@ -3,103 +3,92 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#F4F1E8">
+<meta name="theme-color" content="#FFFFFF">
 <!-- Démo de travail, pas encore validée par l'équipe éditoriale. -->
 <meta name="robots" content="noindex, nofollow">
-<title>Avant de commencer — Atlas de l'exposome</title>
-<link rel="stylesheet" href="css/app.css">
-<link rel="stylesheet" href="css/page.css">
+<title>Participer — Veille sanitaire participative</title>
+<link rel="stylesheet" href="css/app.css?v=df8e5481">
+<link rel="stylesheet" href="css/page.css?v=df8e5481">
 </head>
 <body class="page-article">
 
 <header id="topbar">
-  <div class="brand">Atlas<span class="brand-long"> de l'exposome</span>
-    <small>Avant de commencer</small></div>
+  <div class="brand">Veille<span class="brand-long"> sanitaire participative</span></div>
   <div class="spacer"></div>
-  <a class="btn" href="index.html">← La carte</a>
+  <nav id="nav-onglets" aria-label="Navigation principale">
+    <a class="onglet" href="index.html" data-mot="Contexte">Contexte</a>
+    <a class="onglet" href="index.html#carte" data-mot="Carte">Carte</a>
+    <a class="onglet" href="apropos.html" data-mot="À propos">À propos</a>
+    <a class="onglet on" href="participer.html" data-mot="Participer">Participer</a>
+    <a class="onglet" href="ressources.html" data-mot="Ressources">Ressources</a>
+  </nav>
 </header>
 
 <main id="article">
 <article>
-  <span class="art-kicker">Page de transition</span>
-  <h1>Avant de nous confier quoi que ce soit</h1>
+  <!-- Cette page a failli disparaître : deux relectures sur quatre la
+       trouvaient superflue, une la jugeait essentielle. Arbitrage : on la
+       garde, parce que savoir à l'avance ce qui va être demandé est une
+       bonne pratique reconnue et que le public visé arrive méfiant — mais
+       on la coupe de moitié, et chaque bloc tient en trois lignes. -->
+  <h1>Signaler un cas</h1>
   <p class="chapo">Vous êtes sur le point de déclarer une maladie. C'est une donnée sensible.
-    Voici précisément ce qu'on vous demande, ce qu'on en fait, et ce qu'on n'en fait pas.</p>
+    Voici, en une page, ce qu'on vous demande et ce qu'on en fait.</p>
 
   <section class="art-sec">
     <h2>Ce qu'on vous demandera</h2>
     <ul class="liste-champs">
-      <li><b>La pathologie</b><span>Une liste courte : les cancers pédiatriques et les
-        malformations dont le lien avec l'environnement est confirmé ou fortement suspecté.</span></li>
+      <li><b>La maladie</b><span>Dans une liste.</span></li>
       <li><b>L'année du diagnostic</b><span>L'année seule, jamais la date.</span></li>
       <li><b>L'âge au diagnostic</b><span>Une tranche, pas un âge exact.</span></li>
-      <li><b>La commune de résidence</b><span>Et, si elle était différente, la commune de la mère
-        pendant la grossesse : pour une malformation, c'est la fenêtre d'exposition qui compte.</span></li>
-      <li><b>La profession des parents à l'époque</b><span>Facultatif. Sert à construire un
-        indice socio-économique, jamais à identifier quelqu'un.</span></li>
-      <li><b>L'exposition que vous suspectez</b><span>Facultatif. Enregistrée comme une
-        hypothèse de votre part, ce qu'elle est.</span></li>
-      <li><b>Votre témoignage, environ 200 mots</b><span>Facultatif, et c'est souvent lui
+      <li><b>Où vous viviez</b><span>Au moment du diagnostic, et pendant la grossesse
+        si c'était ailleurs.</span></li>
+      <li><b>Ce que vous soupçonnez</b><span>Facultatif.</span></li>
+      <li><b>Votre récit</b><span>Facultatif, une centaine de mots. C'est souvent lui
         qu'on lira.</span></li>
     </ul>
-    <p class="fin-liste">Nous ne demandons <b>ni nom, ni date de naissance, ni pièce médicale</b>.
-      Un e-mail sert uniquement à confirmer, dédoublonner, et vous permettre d'effacer.</p>
+    <p class="fin-liste">Nous ne demandons <b>ni nom, ni date de naissance, ni dossier
+      médical</b>. Comptez cinq à dix minutes.</p>
   </section>
 
-  <section class="art-sec encadre">
+  <section class="art-sec">
     <h2>Ce qui arrive à votre adresse</h2>
-    <p>Elle est envoyée à l'<a href="https://adresse.data.gouv.fr" target="_blank"
-      rel="noopener">API Adresse de l'État</a> <b>depuis votre navigateur</b>, pour en déduire un
-      code IRIS — une maille statistique d'environ 2 000 habitants. Elle ne transite par aucun
-      serveur du projet et n'est jamais écrite en base. Seul le code est conservé.</p>
-    <p>Sur la carte publique, l'IRIS lui-même n'apparaît pas. Les cas sont regroupés par
-      <b>secteurs d'environ 25 km</b>, et un secteur ne s'affiche qu'à partir de <b>trois cas</b>.
-      En dessous du seuil, il est fondu dans un secteur plus large, ou pas affiché du tout.
-      Le point dessiné est le centre du secteur, jamais celui des familles.</p>
-    <p class="regle">Collecter fin, publier grossier. C'est la règle, elle ne bouge pas.</p>
+    <p>Votre adresse sert à une seule chose : retrouver le <b>quartier</b> dans lequel vous
+      viviez. Ce quartier est un découpage officiel de l'INSEE, d'environ 2 000 habitants.</p>
+    <p>C'est ce quartier que nous enregistrons. <b>L'adresse elle-même n'est jamais
+      enregistrée.</b></p>
+    <p>Et sur la carte, on ne montre même pas le quartier : les cas sont regroupés par
+      grandes zones, et une zone n'apparaît qu'à partir de plusieurs cas. Le point dessiné
+      est le centre de la zone, jamais l'endroit où vous vivez.</p>
+    <p class="regle">On demande précis, on publie large.</p>
   </section>
 
   <section class="art-sec">
-    <h2>Vos consentements sont séparés</h2>
-    <p>Un seul est obligatoire : celui d'enregistrer le signalement. Vous pouvez accepter
-      qu'il soit compté sans accepter qu'il apparaisse sur la carte, ou accepter la carte sans
-      publier votre témoignage. Chaque case est indépendante, et révocable.</p>
-  </section>
-
-  <section class="art-sec">
-    <h2>Vous n'êtes pas obligé·e de faire ça seul·e</h2>
-    <p>Beaucoup de familles veulent d'abord parler à d'autres familles. Un espace d'échange est
-      ouvert pour ça : poser des questions, comprendre ce que devient la donnée, ou simplement
-      lire ce que d'autres ont vécu avant de remplir quoi que ce soit.</p>
-    <p class="art-cta-btns">
-      <a class="btn" href="#" data-discord>Rejoindre l'espace d'échange ↗</a>
-    </p>
-    <p class="fine-note">Lien Discord à fournir par Projet NK — la maquette pointe pour l'instant
-      dans le vide.</p>
+    <h2>Vous choisissez ce que vous acceptez</h2>
+    <p>Une seule case est obligatoire : celle qui autorise l'enregistrement. Vous pouvez
+      être compté sans apparaître sur la carte, ou apparaître sans que votre récit soit
+      publié. Chaque case est indépendante, et vous pouvez revenir dessus.</p>
   </section>
 
   <section class="art-sec">
     <h2>Ce que ça ne remplace pas</h2>
-    <p>Ni une démarche médicale, ni un signalement à votre ARS. Ce recensement citoyen ne prouve
+    <p>Ni une démarche médicale, ni un signalement à votre ARS. Ce recensement ne prouve
       rien à lui seul : il indique où regarder, et il oblige à regarder.</p>
   </section>
 
   <section class="art-cta">
     <div class="art-cta-btns">
-      <a class="btn btn-accent" href="questionnaire.html">J'ai compris, commencer →</a>
-      <a class="btn" href="index.html">Revenir à la carte</a>
+      <a class="btn btn-accent" href="questionnaire.html">Commencer →</a>
+      <a class="btn" href="index.html#carte">Revenir à la carte</a>
     </div>
+    <!-- Demandé en relecture : ne pas laisser une famille repartir de cette
+         page sans un endroit où aller. L'espace Discord a été retiré. -->
+    <p class="art-apres">Avant de remplir quoi que ce soit, vous pouvez aussi lire
+      <a href="ressources.html">les ressources pour les familles et les proches</a> :
+      associations, accompagnement, et ce que d'autres collectifs ont déjà obtenu.</p>
   </section>
 </article>
 </main>
 
-<script>
-  // Le lien Discord n'existe pas encore : on le dit plutôt que d'ouvrir une page morte.
-  document.querySelector('[data-discord]').addEventListener('click', e => {
-    e.preventDefault();
-    e.target.textContent = 'Lien à venir — demandé à Projet NK';
-    e.target.style.opacity = '.6';
-  });
-</script>
 </body>
 </html>

@@ -19,11 +19,15 @@ for f in fichiers:
     h.update(f.read_bytes())
 ver = h.hexdigest()[:8]
 
-for page in ['index.html', 'questionnaire.html']:
-    p = RACINE / page
+# Toutes les pages, pas seulement les deux premières : le site en compte
+# désormais sept, et une page oubliée ici sert indéfiniment l'ancien CSS aux
+# visiteurs déjà venus.
+pages = sorted(RACINE.glob('*.html'))
+
+for p in pages:
     s = p.read_text(encoding='utf-8')
-    s = re.sub(r'(href="css/[\w.-]+\.css)(\?v=[0-9a-f]+)?"', r'\1?v=' + ver + '"', s)
-    s = re.sub(r'(src="js/[\w.-]+\.js)(\?v=[0-9a-f]+)?"', r'\1?v=' + ver + '"', s)
+    s = re.sub(r'(href="css/[\w.-]+\.css)(\?v=[\w.-]+)?"', r'\1?v=' + ver + '"', s)
+    s = re.sub(r'(src="js/[\w.-]+\.js)(\?v=[\w.-]+)?"', r'\1?v=' + ver + '"', s)
     p.write_text(s, encoding='utf-8')
 
-print(f'ressources versionnées : {ver}')
+print(f'ressources versionnées : {ver} ({len(pages)} pages)')

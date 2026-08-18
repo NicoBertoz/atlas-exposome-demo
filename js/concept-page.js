@@ -24,8 +24,9 @@
     return;
   }
 
-  document.title = c.titre + ' — Atlas de l\'exposome';
-  document.getElementById('fil').textContent = `Déroulé · point ${i + 1}/${C.length}`;
+  /* La barre du haut ne porte plus de fil d'Ariane depuis qu'elle accueille
+     les cinq onglets communs à toutes les pages. */
+  document.title = c.titre + ' — Veille sanitaire participative';
 
   const precedent = C[i - 1];
   const suivant = C[i + 1];
@@ -51,8 +52,8 @@
 
       <section class="art-cta">
         <h2>Et concrètement, sur la carte</h2>
-        <p>Ce point se lit sur les clusters documentés, les signalements instruits et les
-          témoignages reçus. Si vous êtes concerné·e, votre cas peut y figurer.</p>
+        <p>Ce point se lit sur les endroits enquêtés, les signalements instruits et les cas
+          racontés par des familles. Si vous êtes concerné·e, le vôtre peut y figurer.</p>
         <div class="art-cta-btns">
           <a class="btn btn-accent" href="participer.html">Signaler un cas →</a>
           <a class="btn" href="index.html#carte">Ouvrir la carte</a>

@@ -3,122 +3,97 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#F4F1E8">
+<meta name="theme-color" content="#FFFFFF">
 <!-- Démo de travail, pas encore validée par l'équipe éditoriale : on ne
      veut pas qu'elle remonte dans les moteurs de recherche avec des
      témoignages fictifs. À retirer au moment de la publication réelle. -->
 <meta name="robots" content="noindex, nofollow">
 
-<title>Atlas de l'exposome — cartographie écocitoyenne des maladies rares de l'enfant</title>
+<title>Veille sanitaire participative des cancers pédiatriques</title>
 
 <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
-<link rel="stylesheet" href="css/page.css?v=3fd977e0">
-<link rel="stylesheet" href="css/app.css?v=3fd977e0">
+<link rel="stylesheet" href="css/page.css?v=df8e5481">
+<link rel="stylesheet" href="css/app.css?v=df8e5481">
 </head>
 <body>
 
-<!-- ------------------------------------------------------------- BARRE -->
+<!-- ------------------------------------------------------------- BARRE
+     Les cinq mêmes onglets sur toutes les pages du site. -->
 <header id="topbar">
-  <div class="brand">
-    Atlas<span class="brand-long"> de l'exposome</span>
-    <small>Maladies rares de l'enfant · cartographie écocitoyenne</small>
-  </div>
-
+  <div class="brand">Veille<span class="brand-long"> sanitaire participative</span></div>
   <div class="spacer"></div>
-
-  <div class="mode-switch" id="mode-switch">
-    <button data-mode="intro" class="on">Déroulé</button>
-    <button data-mode="carte">Carte</button>
-  </div>
-
-  <button class="btn btn-ghost hide-sm" id="btn-basemap">Fond sombre</button>
-  <a class="btn btn-accent" href="participer.html"><span class="e-full">Je participe</span><span class="e-short">Participer</span></a>
+  <nav id="nav-onglets" aria-label="Navigation principale">
+    <button class="onglet on" data-mode="intro" data-mot="Contexte">Contexte</button>
+    <button class="onglet" data-mode="carte" data-mot="Carte">Carte</button>
+    <a class="onglet" href="apropos.html" data-mot="À propos">À propos</a>
+    <a class="onglet" href="participer.html" data-mot="Participer">Participer</a>
+    <a class="onglet" href="ressources.html" data-mot="Ressources">Ressources</a>
+  </nav>
 </header>
 
-<!-- ----------------------------------------------------------- PANNEAU -->
 <!-- ------------------------------------ SECTION 1 : LE DÉROULÉ -->
 <main id="section1"></main>
 
 <!-- ------------------------------ SECTION 2 : LA CARTE + FICHES -->
-<aside id="panel" aria-label="Informations">
+<button id="panel-rouvrir">Rouvrir le panneau →</button>
+
+<aside id="panel" aria-label="Informations sur la carte">
   <button id="sheet-grip" aria-label="Ouvrir ou fermer le panneau"><span></span></button>
+  <button id="panel-close" aria-label="Fermer le panneau">×</button>
 
   <div class="panel-scroll" id="panel-scroll">
 
     <section class="sec detail" id="detail"></section>
 
-    <section class="sec explore" id="intro">
-      <h2>Ce que montre cette carte</h2>
-      <p class="lede" id="lede-chiffres"></p>
-      <p class="fine">
-        Les agrégats et les investigations sont des <b>données publiques réelles</b> : rapports
-        de Santé publique France, registres, presse. Chaque fiche porte son lien source.
-        Les cas déclarés sont <b>fictifs</b>, générés pour tester le rendu.
-      </p>
-      <p class="fine">
-        Une <b>surface cernée</b> est un agrégat instruit : elle couvre un territoire connu.
-        Un <b>point flou</b> est un groupe de cas déclarés : il ne couvre rien, sa position est
-        approchée. Cliquez l'un ou l'autre pour sa fiche.
-      </p>
-    </section>
-
-    <section class="sec explore">
-      <h2>Pathologie <span class="h2-sub">cas déclarés</span></h2>
-      <div class="filters" id="filters"></div>
-    </section>
-
-    <section class="sec explore">
-      <h2>Deux couches, deux natures</h2>
-
-      <div class="famille famille-officiel">
-        <div class="fam-tete"><span class="fam-ico ico-hotspot"></span>
-          <b>Instruit par l'État</b></div>
-        <p class="fam-txt">Agrégats spatio-temporels investigués par Santé publique France.
-          Périmètre publié, SIR, rapport source. <b>Une surface cernée</b> : elle couvre un
-          territoire, et on sait lequel.</p>
-        <label class="toggle-row"><input type="checkbox" id="tg-zones" checked>
-          <span>Agrégats documentés <em id="c-zones"></em></span></label>
-        <label class="toggle-row"><input type="checkbox" id="tg-sig" checked>
-          <span>Autres investigations <em id="c-sig"></em></span></label>
+    <!-- « Ce que montre cette carte » : replié derrière une icône
+         d'information, plus affiché par défaut. -->
+    <div class="info-bloc" id="info-bloc">
+      <button class="info-tete" id="info-tete" aria-expanded="false" aria-controls="info-corps">
+        <span class="ico" aria-hidden="true">i</span>
+        <span>Ce que montre cette carte</span>
+        <span class="chev" aria-hidden="true">▾</span>
+      </button>
+      <div class="info-corps" id="info-corps">
+        <p class="lede" id="lede-chiffres"></p>
+        <p class="fine">
+          Les zones colorées viennent d'enquêtes publiques : rapports de Santé publique France,
+          registres, presse. Chaque fiche porte son lien vers le rapport d'origine.
+          Les cas déclarés sont <b>fictifs</b>, générés pour tester l'affichage.
+        </p>
+        <p class="fine">
+          Une <b>zone colorée</b> est un endroit où les autorités ont compté plus de cas
+          qu'attendu et ont ouvert une enquête. Un <b>point bleu</b> est un cas raconté par une
+          famille : sa position est volontairement approximative.
+        </p>
       </div>
-
-      <div class="famille famille-citoyen">
-        <div class="fam-tete"><span class="fam-ico ico-temoin"></span>
-          <b>Cas déclarés par les familles</b></div>
-        <p class="fam-txt">Recensement participatif. <b>Jamais de position exacte</b> : collecté
-          à l'IRIS, publié par secteur d'environ 25 km, à partir de 3 cas. <b>Un point flou</b> :
-          il ne couvre aucun territoire, le halo dit l'incertitude.</p>
-        <label class="toggle-row"><input type="checkbox" id="tg-temoins" checked>
-          <span>Secteurs de cas déclarés <em id="c-tem"></em></span></label>
-        <label class="toggle-row" id="row-agg"><input type="checkbox" id="tg-agg">
-          <span>Agrégation en hexagones <em>2,5D</em></span></label>
-      </div>
-      <p class="fine" id="k-note" style="margin-top:8px"></p>
-
-      <label class="toggle-row danger-row"><input type="checkbox" id="tg-exact">
-        <span>Comparer : positions exactes <em>ce qu'on ne publie pas</em></span></label>
-    </section>
+    </div>
 
     <section class="sec explore">
-      <h2>Année du diagnostic</h2>
-      <div class="year-head">
-        <span class="year-val" id="year-val">2012 – 2025</span>
-        <span class="year-sub" id="year-count"></span>
+      <h2>Filtrer par maladie</h2>
+      <div class="dd" id="dd-maladie">
+        <button class="dd-bouton" id="dd-bouton" aria-expanded="false" aria-haspopup="listbox">
+          <span id="dd-label">Toutes les maladies</span>
+        </button>
+        <div class="dd-liste" id="dd-liste" role="listbox" aria-multiselectable="true"></div>
       </div>
-      <input type="range" id="year" min="2011" max="2025" value="2011" step="1" aria-label="Année maximale">
-      <div class="year-ticks"><span>Tout</span><span>2016</span><span>2021</span><span>2025</span></div>
     </section>
 
+    <!-- Équivalent accessible de la carte : la même information, en tableau,
+         atteignable au clavier et lisible par un lecteur d'écran. -->
     <section class="sec explore">
-      <h2>Les agrégats documentés <span class="h2-sub" id="hs-count"></span></h2>
-      <div class="hs" id="hs-list"></div>
+      <h2>Sans la carte</h2>
+      <p class="fine">La carte n'est pas utilisable au clavier ni au lecteur d'écran.
+        Le même contenu existe en tableau.</p>
+      <button class="btn" id="btn-tableau" aria-expanded="false" aria-controls="tableau-wrap">
+        Afficher la liste des lieux
+      </button>
+      <div id="tableau-wrap"></div>
     </section>
 
   </div>
 
   <div class="panel-foot">
     <a class="btn btn-accent" href="participer.html">Signaler un cas →</a>
-    <button class="btn show-sm" data-mode-go="intro">← Revenir au déroulé</button>
   </div>
 </aside>
 
@@ -129,38 +104,27 @@
 
   <div id="loading">chargement du fond de carte…</div>
 
-  <!-- Bandeau d'alerte du comparateur : impossible d'oublier qu'il est actif -->
-  <div id="exact-warn" hidden>
-    <b>Vue de travail</b> Les positions exactes des cas déclarés sont affichées par-dessus les
-    secteurs. C'est ce que le dispositif s'interdit de publier : à ce niveau de précision, un cas
-    isolé dans une commune rurale est retrouvable.
-    <button id="exact-off">Masquer</button>
-  </div>
-
-  <div class="hud" id="playbar">
-    <button class="play" id="pb-toggle" aria-label="Lancer la lecture">▶</button>
-    <div class="pb-mid">
-      <div class="pb-modes">
-        <button class="pb-mode on" data-mode="recit">Récit</button>
-        <button class="pb-mode" data-mode="temoins">Témoignages</button>
-      </div>
-      <div class="now" id="pb-now">en pause</div>
+  <!-- Visite guidée : on entre dans la carte lieu après lieu, puis la
+       navigation devient libre. -->
+  <div class="hud" id="tour">
+    <button id="tour-prev" aria-label="Lieu précédent">‹</button>
+    <div class="tour-mid">
+      <div class="tour-pos" id="tour-pos"></div>
+      <div class="tour-nom" id="tour-nom"></div>
     </div>
-    <button class="pb-next" id="pb-next" aria-label="Suivant">›</button>
+    <button id="tour-next" aria-label="Lieu suivant">›</button>
+    <button class="tour-fin" id="tour-fin">Explorer librement</button>
   </div>
 
   <div class="hud" id="legend">
-    <button id="legend-toggle" aria-label="Légende">Légende</button>
+    <button id="legend-toggle" aria-expanded="false" aria-controls="legend-body">
+      Légende <span class="chev" aria-hidden="true">▾</span>
+    </button>
     <div id="legend-body">
-      <div class="leg-titre">Surfaces · instruit par l'État</div>
-      <div class="li"><span class="leg-surface confirme"></span> Agrégat, excès confirmé</div>
-      <div class="li"><span class="leg-surface enquete"></span> Excès non retenu, ou enquête en cours</div>
-      <div class="li"><span class="leg-surface anon"></span> Périmètre non publié (RGPD)</div>
-      <div class="li"><span class="sq"></span> Autre investigation instruite</div>
-      <hr>
-      <div class="leg-titre">Points flous · déclaré par les familles</div>
-      <div class="li"><span class="leg-point"></span> Point flou, 3 cas déclarés ou plus</div>
-      <div id="legend-patho"></div>
+      <div class="leg-titre">Légende</div>
+      <div class="li"><span class="leg-surface confirme"></span> Excès de cas confirmé</div>
+      <div class="li"><span class="leg-surface enquete"></span> Excès non confirmé, ou enquête en cours</div>
+      <div class="li"><span class="leg-point"></span> Cas raconté par une famille</div>
     </div>
   </div>
 </div>
@@ -172,13 +136,14 @@
 <script src="https://unpkg.com/deck.gl@9.0.35/dist.min.js"></script>
 <script src="https://unpkg.com/pmtiles@3.2.0/dist/pmtiles.js"></script>
 
-<script src="js/data.js?v=3fd977e0"></script>
-<script src="js/hotspots-pages.js?v=3fd977e0"></script>
-<script src="js/concepts.js?v=3fd977e0"></script>
-<script src="js/section1.js?v=3fd977e0"></script>
-<script src="js/style-nk.js?v=3fd977e0"></script>
-<script src="js/shared.js?v=3fd977e0"></script>
-<script src="js/engine-deck.js?v=3fd977e0"></script>
-<script src="js/app.js?v=3fd977e0"></script>
+<script src="js/data.js?v=df8e5481"></script>
+<script src="js/hotspots-pages.js?v=df8e5481"></script>
+<script src="js/concepts.js?v=df8e5481"></script>
+<script src="js/section1.js?v=df8e5481"></script>
+<script src="js/masque-france.js?v=df8e5481"></script>
+<script src="js/style-nk.js?v=df8e5481"></script>
+<script src="js/shared.js?v=df8e5481"></script>
+<script src="js/engine-deck.js?v=df8e5481"></script>
+<script src="js/app.js?v=df8e5481"></script>
 </body>
 </html>

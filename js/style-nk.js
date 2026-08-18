@@ -39,24 +39,26 @@ window.NK_STYLE = (function () {
       texteFort: '#C6CDD6',
       halo:      'rgba(11,13,16,.92)',
     },
-    /* Papier : le fond de carte doit s'effacer derrière les encres des
-       clusters. Aucun aplat ne dépasse le contraste d'un tramé léger. */
+    /* Révision du 18/08/2026 : « pas de texture au dessin, seulement une
+       couleur simple, type blanc cassé pour la France », « ne pas mettre les
+       démarcations si pas absolument nécessaire ».
+
+       Le fond est donc réduit à trois aplats : la mer en blanc, la terre en
+       blanc cassé, une frontière de pays à peine posée. Plus de forêts, plus
+       de zones urbaines, plus de routes, plus de limites régionales — tout
+       ce qui produisait du bruit sous les données. */
     light: {
-      /* La mer est franchement plus foncée que la terre : sans ce contraste,
-         le contour de la France ne se lit pas, et un fond de carte qu'on ne
-         reconnaît pas comme une carte ne sert à rien en arrière-plan. */
-      fond:      '#CFDCDA',
-      eau:       '#CFDCDA',
-      terre:     '#F7F4EA',
-      vert:      '#ECEBDB',
-      urbain:    '#E6E0CE',
-      frontiere: '#BDB6A1',
-      pays:      '#9C947F',
-      route:     '#E0DAC6',
-      routeMaj:  '#CFC8B0',
-      texte:     '#7A7468',
-      texteFort: '#332F28',
-      halo:      'rgba(247,244,234,.92)',
+      fond:      '#FFFFFF',
+      eau:       '#FFFFFF',
+      terre:     '#F1EDE3',
+      /* Le blanc cassé sur du blanc, c'est 3 % d'écart : le pays existe mais
+         ne se lit pas. Un trait de côte suffit à le faire apparaître, et
+         c'est la seule démarcation qu'on garde — plus de limites régionales,
+         plus de frontières, puisqu'il n'y a plus de voisins à délimiter. */
+      cote:      '#C7C1B2',
+      texte:     '#9A958C',
+      texteFort: '#4A4740',
+      halo:      'rgba(255,255,255,.94)',
     },
   };
 
@@ -72,96 +74,70 @@ window.NK_STYLE = (function () {
       glyphs: 'https://protomaps.github.io/basemaps-assets/fonts/{fontstack}/{range}.pbf',
       sources: {
         nk: { type: 'vector', url: SOURCE, attribution: '&copy; OpenStreetMap, Protomaps' },
+        /* Le masque : le monde, percé à la forme de la France. Voir
+           masque-france.js — c'est lui qui fait qu'on ne voit que le pays. */
+        masque: { type: 'geojson', data: window.NK_MASQUE },
+        contour: { type: 'geojson', data: window.NK_CONTOUR },
       },
       layers: [
         { id: 'fond', type: 'background', paint: { 'background-color': c.fond } },
 
+        /* La terre : UN aplat, uniforme. Plus de forêts, plus de zones
+           urbaines, plus de routes : sous les données, tout ça faisait du
+           bruit et rien d'autre. */
         { id: 'terre', type: 'fill', source: 'nk', 'source-layer': 'earth',
           paint: { 'fill-color': c.terre } },
 
-        { id: 'couvert', type: 'fill', source: 'nk', 'source-layer': 'landcover',
-          filter: ['in', ['get', 'kind'], ['literal', ['forest', 'grassland', 'scrub', 'farmland']]],
-          paint: { 'fill-color': c.vert, 'fill-opacity': 0.55 } },
-
-        { id: 'urbain', type: 'fill', source: 'nk', 'source-layer': 'landuse',
-          filter: ['in', ['get', 'kind'], ['literal', ['urban_area', 'residential', 'industrial']]],
-          paint: { 'fill-color': c.urbain, 'fill-opacity': 0.75 } },
-
+        /* La mer est du même blanc que la page : c'est la frontière du pays
+           qui dessine la France, pas un contraste terre/mer. */
         { id: 'eau', type: 'fill', source: 'nk', 'source-layer': 'water',
           paint: { 'fill-color': c.eau } },
 
-        // Cours d'eau : une ligne, sinon ils disparaissent en dessous du zoom 8
-        { id: 'riviere', type: 'line', source: 'nk', 'source-layer': 'water',
-          filter: ['==', ['geometry-type'], 'LineString'],
+        /* LE MASQUE. Tout ce qui n'est pas la France est recouvert de blanc :
+           plus de pays limitrophes, plus de frontières, plus rien à lire
+           autour du pays. Il est posé AVANT les étiquettes, sinon il les
+           effacerait elles aussi. */
+        { id: 'masque', type: 'fill', source: 'masque',
+          paint: { 'fill-color': c.fond } },
+
+        /* Trait de côte : le contour de la France, dessiné depuis le même
+           fichier que le masque. Sans lui, le pays est un aplat blanc cassé
+           sur du blanc, et il disparaît. C'est la seule démarcation qu'on
+           garde — les limites régionales sont retirées. */
+        { id: 'cote', type: 'line', source: 'contour',
           paint: {
-            'line-color': c.eau,
-            'line-width': ['interpolate', ['linear'], ['zoom'], 5, 0.5, 10, 1.6],
+            'line-color': c.cote,
+            'line-width': ['interpolate', ['linear'], ['zoom'], 4, 1.2, 10, 2],
           } },
 
-        { id: 'route-secondaire', type: 'line', source: 'nk', 'source-layer': 'roads',
-          minzoom: 7,
-          filter: ['in', ['get', 'kind'], ['literal', ['medium_road', 'minor_road']]],
-          paint: {
-            'line-color': c.route,
-            'line-width': ['interpolate', ['linear'], ['zoom'], 7, 0.3, 12, 1.6],
-          } },
-
-        { id: 'route', type: 'line', source: 'nk', 'source-layer': 'roads',
-          filter: ['in', ['get', 'kind'], ['literal', ['highway', 'major_road']]],
-          paint: {
-            'line-color': c.routeMaj,
-            'line-width': ['interpolate', ['linear'], ['zoom'], 5, 0.4, 9, 1.2, 13, 3],
-          } },
-
-        { id: 'limite-region', type: 'line', source: 'nk', 'source-layer': 'boundaries',
-          filter: ['!=', ['get', 'kind'], 'country'],
-          paint: {
-            'line-color': c.frontiere, 'line-dasharray': [2, 2],
-            'line-width': ['interpolate', ['linear'], ['zoom'], 4, 0.4, 10, 1],
-          } },
-
-        { id: 'limite-pays', type: 'line', source: 'nk', 'source-layer': 'boundaries',
-          filter: ['==', ['get', 'kind'], 'country'],
-          paint: {
-            'line-color': c.pays,
-            'line-width': ['interpolate', ['linear'], ['zoom'], 3, 0.6, 10, 1.8],
-          } },
-
-        /* Étiquettes. `min_zoom` est porté par la donnée : on s'en sert pour
-           ne pas afficher un hameau à l'échelle de la France. */
+        /* Étiquettes : les villes seulement à partir du zoom 7, quand on est
+           entré dans un secteur et qu'on a besoin de se repérer. À l'échelle
+           de la France, la carte ne porte aucun texte. */
         { id: 'lieu-ville', type: 'symbol', source: 'nk', 'source-layer': 'places',
-          filter: ['==', ['get', 'kind'], 'locality'],
+          filter: ['==', ['get', 'kind'], 'locality'], minzoom: 7,
           layout: {
             'text-field': NOM,
             'text-font': ['Noto Sans Regular'],
-            'text-size': ['interpolate', ['linear'], ['zoom'], 5, 10, 10, 13],
+            'text-size': ['interpolate', ['linear'], ['zoom'], 7, 10, 10, 13],
             'text-max-width': 8,
           },
-          paint: { 'text-color': c.texteFort, 'text-halo-color': c.halo, 'text-halo-width': 1.5 } },
-
-        { id: 'lieu-region', type: 'symbol', source: 'nk', 'source-layer': 'places',
-          filter: ['in', ['get', 'kind'], ['literal', ['region', 'macroregion']]],
-          maxzoom: 9,
-          layout: {
-            'text-field': NOM,
-            'text-font': ['Noto Sans Medium'],
-            'text-size': ['interpolate', ['linear'], ['zoom'], 4, 10, 8, 12],
-            'text-transform': 'uppercase', 'text-letter-spacing': 0.12,
-            'text-max-width': 7,
-          },
-          paint: { 'text-color': c.texte, 'text-halo-color': c.halo, 'text-halo-width': 1.4 } },
-
-        { id: 'lieu-pays', type: 'symbol', source: 'nk', 'source-layer': 'places',
-          filter: ['==', ['get', 'kind'], 'country'],
-          maxzoom: 7,
-          layout: {
-            'text-field': NOM,
-            'text-font': ['Noto Sans Medium'],
-            'text-size': 12, 'text-transform': 'uppercase', 'text-letter-spacing': 0.16,
-          },
-          paint: { 'text-color': c.texte, 'text-halo-color': c.halo, 'text-halo-width': 1.4 } },
+          paint: { 'text-color': c.texteFort, 'text-halo-color': c.halo, 'text-halo-width': 1.6 } },
       ],
     };
+  }
+
+  /* Repli CARTO : le style vient de chez eux, il ne contient donc pas le
+     masque. On le pose après coup, sinon la démo sans tuiles auto-hébergées
+     afficherait toute l'Europe. */
+  function poserMasque(map) {
+    if (map.getLayer('masque')) return;
+    const c = PALETTES.light;
+    if (!map.getSource('masque')) map.addSource('masque', { type: 'geojson', data: window.NK_MASQUE });
+    if (!map.getSource('contour')) map.addSource('contour', { type: 'geojson', data: window.NK_CONTOUR });
+    map.addLayer({ id: 'masque', type: 'fill', source: 'masque',
+                   paint: { 'fill-color': c.fond } });
+    map.addLayer({ id: 'cote', type: 'line', source: 'contour',
+                   paint: { 'line-color': c.cote, 'line-width': 1.2 } });
   }
 
   /* Le protocole pmtiles:// doit être enregistré une seule fois, avant la
@@ -192,5 +168,5 @@ window.NK_STYLE = (function () {
     return dispo;
   }
 
-  return { style, enregistrerProtocole, disponible, PALETTES };
+  return { style, enregistrerProtocole, disponible, poserMasque, PALETTES };
 })();
