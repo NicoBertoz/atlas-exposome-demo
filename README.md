@@ -516,3 +516,5 @@ décision d'équipe. Ils sont détaillés dans la note de restitution ; en résu
    À tester avant de l'inscrire au socle.
 7. **Vérification des déclarations** : question posée deux fois en relecture, sans réponse
    produit à ce stade.
+
+<!-- verification du droit de poussee du proprietaire -->
