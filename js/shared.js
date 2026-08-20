@@ -159,9 +159,36 @@ window.NK_SHARED = (function () {
       if (dx < dy * k * rapport) dx = dy * k * rapport; else dy = dx / (k * rapport);
       return [[cx - dx, cy - dy], [cx + dx, cy + dy]];
     },
-    /* Les tuiles s'arrêtent au niveau 9 : au-delà, MapLibre étire le z9 et la
-       géométrie s'épaissit. On coupe juste après, assez pour lire une commune. */
-    maxZoom: 10.5,
+    /* ------------------------------------------------------- PLAFOND DE ZOOM
+       « Zoomer trop rend la carte difficile à lire et n'apporte pas grand
+       chose. Rendre possible de zoomer légèrement, mais pas trop : au
+       maximum 50 % de la taille de la France. »
+
+       Le plafond n'est donc pas un niveau de zoom fixe, mais une CONTRAINTE
+       SUR CE QU'ON VOIT : la vue ne doit jamais montrer moins que la moitié
+       de la largeur du pays. Un niveau fixe ne tiendrait pas cette promesse,
+       puisque la même valeur montre deux fois plus de terrain sur un écran
+       deux fois plus large.
+
+       Trois raisons de plafonner, au-delà de la lisibilité :
+         - les secteurs de publication font 25 km ; au-delà d'un certain
+           zoom, on donne à lire une précision qui n'existe pas ;
+         - les tuiles s'arrêtent au niveau 9, et la géométrie s'épaissit
+           quand MapLibre les étire ;
+         - une carte nationale de signaux se lit à l'échelle nationale.
+
+       Le calcul : à un zoom z, un viewport de W pixels couvre
+       360 × W / (512 × 2^z) degrés de longitude. On veut que ce soit
+       toujours ≥ la moitié de la largeur de la France. */
+    maxZoom(el) {
+      const [[o], [e]] = [FRANCE.bounds[0], FRANCE.bounds[1]];
+      const cible = (e - o) * 0.5;                       // ~7,6° : la demi-France
+      const w = (el && el.clientWidth) || window.innerWidth || 1280;
+      const z = Math.log2(360 * w / (512 * cible));
+      /* Bornes de sécurité : jamais au-delà de la finesse des tuiles, et
+         jamais si bas qu'on ne puisse plus rien approcher du tout. */
+      return Math.max(5.2, Math.min(9, z));
+    },
   };
 
   /* À l'échelle de la France, un cluster de 3 km ne se voit pas. On double

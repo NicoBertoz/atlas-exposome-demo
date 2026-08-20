@@ -329,6 +329,7 @@ body.vue-intro #panel { pointer-events: none; }
   body.vue-carte.panneau-ferme #panel { transform: translateX(-101%); }
 }
 body.vue-intro #legend,
+body.vue-intro #drom,
 body.vue-intro #exact-warn,
 body.vue-intro #loading,
 body.vue-intro #panel-rouvrir { display: none; }
@@ -653,6 +654,48 @@ body.en-visite #tour { display: flex; }
 }
 #tour .tour-fin:hover { color: var(--encre); background: var(--blanc-2); }
 
+/* --------------------------------------------- CARTOUCHE OUTRE-MER
+   Les cinq DROM au même facteur d'échelle, à droite de la carte. Il se
+   replie : c'est un rappel permanent, pas un objet à consulter en continu. */
+#drom {
+  right: 16px; top: 16px; width: 216px;
+  background: var(--blanc); border: 1px solid var(--filet);
+}
+.drom-tete {
+  display: flex; align-items: center; gap: 8px; width: 100%; text-align: left;
+  background: none; border: 0; color: var(--encre); font-size: 12.5px; font-weight: 700;
+  padding: 10px 13px;
+}
+.drom-tete:hover { background: var(--blanc-2); }
+.drom-tete .chev { margin-left: auto; color: var(--txt-faint); font-size: 10px; }
+#drom.ferme .drom-tete .chev { transform: rotate(-90deg); }
+.drom-corps { padding: 0 10px 10px; border-top: 1px solid var(--filet-fin); }
+#drom.ferme .drom-corps { display: none; }
+
+.drom-svg { display: block; width: 100%; height: auto; }
+.drom-terre { fill: var(--casse); stroke: #C7C1B2; stroke-width: 1; stroke-linejoin: round; }
+/* Un territoire qui porte des cas déclarés se signale par la couleur des cas. */
+.drom-terre.avec { fill: rgba(46,155,143,.30); stroke: var(--eau); }
+.drom-nom {
+  font-family: var(--font); font-size: 8.5px; fill: var(--encre); text-anchor: middle; font-weight: 700;
+}
+.drom-n { font-family: var(--font); font-size: 7.5px; fill: var(--txt-faint); text-anchor: middle; }
+.drom-echelle line { stroke: var(--txt-faint); stroke-width: 1; }
+.drom-echelle text { font-family: var(--mono); font-size: 7.5px; fill: var(--txt-faint); }
+
+.drom-note { margin: 6px 0 10px; font-size: 11px; line-height: 1.5; color: var(--txt-faint); }
+.drom-plus {
+  width: 100%; background: none; border: 1px solid var(--filet); color: var(--encre);
+  padding: 7px; font-size: 11.5px;
+}
+.drom-plus:hover { border-color: var(--encre); }
+
+/* La version agrandie, dans la modale */
+.drom-grand { margin: 18px 0 22px; }
+.drom-grand .drom-nom { font-size: 11px; }
+.drom-grand .drom-n { font-size: 10px; }
+.drom-grand .drom-echelle text { font-size: 10px; }
+
 /* ---------------------------------------------------------- LÉGENDE
    Réduite à ce qui est réellement dessiné : deux couleurs d'agrégat et le
    point d'un cas déclaré. Repliable, et repliée par défaut sur petit écran. */
@@ -767,6 +810,8 @@ body.en-visite #tour { display: flex; }
   /* La visite guidée prend toute la largeur au bas de la carte ; la légende
      se pose au-dessus d'elle plutôt qu'à côté, où elle la recouvrait. */
   #legend { right: 10px; bottom: calc(var(--sheet-peek) + 56px); min-width: 0; }
+  #drom { right: 10px; top: 10px; width: 148px; }
+  #drom .drom-corps { max-height: 46vh; overflow-y: auto; }
   #legend-toggle {
     display: flex; align-items: center; gap: 8px; width: 100%; text-align: left;
     background: none; border: 0; color: var(--encre); font-size: 12.5px; padding: 10px 13px;

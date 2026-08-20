@@ -98,6 +98,7 @@
        cancers de l'enfant, <b>${state.signalements.length} autres signalements</b> instruits,
        et <b>${D.temoignages.features.length} cas</b> racontés par des familles.`;
     if ($('#tableau-wrap').classList.contains('on')) renderTableau();
+    monterDrom();
   }
 
   /* ---------------------------------------------- FILTRE PAR MALADIE
@@ -110,6 +111,19 @@
      contient toujours toutes les pathologies, applyFilters() sait toujours
      s'en servir, et le gabarit du menu dort dans l'historique Git.
      Le rétablir tient en un bloc HTML et un appel à renderFiltre(). */
+
+  /* ------------------------------------------------ CARTOUCHE OUTRE-MER
+     Les cinq DROM, à droite de la carte, tous au même facteur d'échelle.
+     Ils ne sont pas sur le fond de carte : celui-ci s'arrête à la
+     métropole, et leur donner cinq jeux de tuiles serait disproportionné
+     tant qu'aucun cas n'y est déclaré. Voir drom-panel.js. */
+  function monterDrom() {
+    if (!window.NK_DROM_PANEL || !window.NK_DROM) return;
+    window.NK_DROM_PANEL.monter($('#drom'), state, (compteurs, total) => {
+      $('#modal-box').innerHTML = window.NK_DROM_PANEL.grandHTML(compteurs, total);
+      $('#modal').classList.add('on');
+    });
+  }
 
   /* ------------------------------------------------- ENCART « INFO » */
   $('#info-tete').addEventListener('click', () => {

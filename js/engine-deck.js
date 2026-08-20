@@ -212,7 +212,7 @@ window.NK_ENGINES.deck = (function () {
           attributionControl: { compact: true },
           /* Caméra enfermée sur la France — voir FRANCE.maxBounds dans shared.js */
           maxBounds: S().FRANCE.maxBounds(container),
-          maxZoom: S().FRANCE.maxZoom,
+          maxZoom: S().FRANCE.maxZoom(container),
           /* Sans ça MapLibre répète le planisphère à l'infini vers l'est et
              l'ouest : on verrait des copies fantômes de la France au bord. */
           renderWorldCopies: false,
@@ -292,7 +292,11 @@ window.NK_ENGINES.deck = (function () {
        la France le temps d'un cadrage. */
     resize() {
       if (!map) return;
-      map.setMaxBounds(S().FRANCE.maxBounds(map.getContainer()));
+      const el = map.getContainer();
+      map.setMaxBounds(S().FRANCE.maxBounds(el));
+      /* Le plafond de zoom est exprimé en « moitié de la France visible » :
+         il dépend donc de la largeur du viewport et se recalcule ici. */
+      map.setMaxZoom(S().FRANCE.maxZoom(el));
       map.resize();
     },
 
