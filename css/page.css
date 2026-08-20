@@ -1,0 +1,289 @@
+/* ------------------------------------------------------------------ *
+ *  page.css — les pages de lecture : concepts et page de transition.
+ *  Une colonne, une largeur de ligne confortable, rien d'autre.
+ * ------------------------------------------------------------------ */
+.page-article { overflow: auto; }
+.page-article #topbar { position: sticky; }
+
+#article {
+  max-width: 680px; margin: 0 auto;
+  padding: 54px 22px calc(80px + var(--safe-b));
+}
+
+.art-kicker {
+  display: inline-block; font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--encre); background: var(--jaune); padding: 3px 8px; margin-bottom: 14px;
+}
+#article h1 {
+  margin: 0 0 18px; font-size: clamp(28px, 5vw, 42px); line-height: 1.12;
+  letter-spacing: -.03em; font-weight: 700;
+}
+.chapo { font-size: 17.5px; line-height: 1.7; color: var(--txt-dim); margin: 0 0 40px; }
+
+/* Bandeau « contenu à valider » : ces pages portent des emplacements, pas
+   des textes arrêtés. Autant que ça se voie. */
+.a-relire {
+  border-left: 3px solid var(--jaune); background: var(--blanc-2);
+  padding: 13px 16px; margin: 0 0 38px;
+  font-size: 12.5px; line-height: 1.6; color: var(--txt-dim);
+}
+
+/* Listes d'organisations et lexique : deux colonnes, un filet entre chaque */
+.orgs, .lexique { margin: 0; }
+.orgs > div, .lexique > div {
+  display: grid; grid-template-columns: 210px 1fr; gap: 18px;
+  padding: 16px 0; border-top: 1px solid var(--filet-fin); align-items: baseline;
+}
+.orgs > div:first-child, .lexique > div:first-child { border-top: 1px solid var(--filet); }
+.orgs dt, .lexique dt { font-size: 14.5px; font-weight: 700; }
+.orgs dd, .lexique dd {
+  margin: 0; font-size: 14.5px; line-height: 1.7; color: var(--encre-2);
+}
+.orgs em, .lexique em { font-style: normal; color: var(--txt-faint); }
+
+.liste-ress { list-style: none; padding: 0; margin: 0; }
+.liste-ress li { padding: 14px 0; border-top: 1px solid var(--filet-fin); }
+.liste-ress li:first-child { border-top: 1px solid var(--filet); }
+.liste-ress b { display: block; font-size: 14.5px; margin-bottom: 4px; }
+.liste-ress span { font-size: 14px; color: var(--txt-dim); line-height: 1.65; }
+
+.art-apres {
+  margin-top: 26px; font-size: 14px; line-height: 1.7; color: var(--txt-dim);
+}
+
+/* Le résumé lu dans le déroulé, rappelé en tête de page */
+.art-resume {
+  border-left: 3px solid var(--jaune); padding: 18px 0 6px 20px; margin: 0 0 40px;
+}
+.art-resume-lab {
+  display: block; font-size: 10px; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--txt-faint); margin-bottom: 10px;
+}
+.art-resume p { font-size: 16px; line-height: 1.66; color: var(--encre-2); margin: 0 0 12px; }
+.art-resume p:last-child { margin-bottom: 0; }
+.art-resume b { color: var(--txt); }
+
+/* Sections nettement séparées : la relecture demandait de « resegmenter
+   davantage » pour que le texte se parcoure sans s'y perdre. */
+.art-sec { margin-bottom: 42px; }
+.art-sec h2 {
+  font-size: 13px; letter-spacing: .07em; text-transform: uppercase; color: var(--txt-faint);
+  font-weight: 600; margin: 0 0 14px;
+}
+.art-sec p { font-size: 16px; line-height: 1.78; color: var(--encre-2); margin: 0 0 16px; }
+.art-sec p:last-child { margin-bottom: 0; }
+.art-sec b { color: var(--txt); }
+
+.art-sec.encadre {
+  background: var(--blanc-2); border: 0; border-left: 3px solid var(--bleu);
+  padding: 20px 22px;
+}
+.regle {
+  font-weight: 700; color: var(--txt) !important;
+  border-top: 1px solid var(--filet); padding-top: 14px; margin-top: 6px !important;
+}
+
+.liste-champs { list-style: none; padding: 0; margin: 0 0 18px; }
+.liste-champs li {
+  padding: 13px 0; border-bottom: 1px solid var(--line-soft);
+  display: grid; grid-template-columns: 210px 1fr; gap: 18px; align-items: baseline;
+}
+.liste-champs li:last-child { border-bottom: 0; }
+.liste-champs b { font-size: 14.5px; }
+.liste-champs span { font-size: 13.5px; color: var(--txt-dim); line-height: 1.6; }
+.fin-liste { font-size: 14px !important; color: var(--txt-dim) !important; }
+.fine-note { font-size: 12px !important; color: var(--txt-faint) !important; margin-top: 8px !important; }
+
+.art-sources ul { padding-left: 18px; margin: 0; }
+.art-sources li { font-size: 14px; line-height: 1.6; margin-bottom: 8px; color: var(--txt-dim); }
+
+.art-cta {
+  border-top: 1px solid var(--line); padding-top: 26px; margin-top: 42px;
+}
+.art-cta h2 { font-size: 13px; letter-spacing: .07em; text-transform: uppercase; color: var(--txt-faint); margin: 0 0 10px; }
+.art-cta p { font-size: 15px; line-height: 1.7; color: var(--encre-2); margin: 0 0 18px; }
+.art-cta-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+.art-cta-btns .btn { padding: 11px 18px; font-size: 13.5px; }
+
+.art-nav {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+  margin-top: 42px; padding-top: 22px; border-top: 1px solid var(--line-soft);
+}
+.art-nav a {
+  border: 1px solid var(--line-soft); border-radius: 11px; padding: 14px 16px;
+  font-size: 14px; color: var(--txt); line-height: 1.4; transition: .12s;
+}
+.art-nav a:hover { border-color: var(--txt-faint); }
+.art-nav a.suiv { text-align: right; }
+.art-nav span {
+  display: block; font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--txt-faint); margin-bottom: 6px;
+}
+.liste-concepts { padding-left: 18px; }
+.liste-concepts li { font-size: 15px; margin-bottom: 10px; }
+
+@media (max-width: 640px) {
+  #article { padding: 30px 18px calc(50px + var(--safe-b)); }
+  .liste-champs li { grid-template-columns: 1fr; gap: 4px; }
+  .orgs > div, .lexique > div { grid-template-columns: 1fr; gap: 5px; }
+  .art-nav { grid-template-columns: 1fr; }
+  .art-nav a.suiv { text-align: left; }
+}
+
+/* ================================================================== *
+ *  Pages hotspot — dix dossiers, huit blocs, la même grille partout.
+ *  Le dispositif signature est le bloc 4 : la phrase de clôture.
+ * ================================================================== */
+.page-hotspot #article { max-width: 760px; }
+
+/* --- bloc 0 : carte d'identité ---------------------------------- */
+.hs-id {
+  border: 1.5px solid var(--trait); border-top: 5px solid var(--cat, var(--rouge));
+  padding: 18px 20px 4px; margin: 0 0 34px;
+}
+.hs-id-tete {
+  display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: baseline;
+  padding-bottom: 14px; border-bottom: 1px solid var(--line-soft);
+}
+.hs-cat {
+  font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase;
+  font-weight: 700; color: var(--cat, var(--rouge));
+}
+.hs-lieu { font-size: 12.5px; color: var(--txt-dim); }
+
+.hs-strip {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0; margin: 0; padding: 0;
+}
+.hs-strip > div { padding: 14px 16px 14px 0; }
+.hs-strip dt {
+  font-family: var(--mono); font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--txt-faint); margin-bottom: 5px;
+}
+.hs-strip dd { margin: 0; font-size: 13.5px; line-height: 1.42; color: var(--txt); }
+.hs-strip .hs-mes { font-weight: 700; color: var(--cat, var(--rouge)); }
+.hs-fic {
+  font-size: 9px; letter-spacing: .08em; text-transform: uppercase; margin-left: 6px;
+  background: var(--papier-3); color: var(--txt-faint); padding: 1px 5px;
+}
+.hs-cas {
+  font-size: 14px !important; line-height: 1.62; color: var(--encre-2);
+  border-top: 1px solid var(--line-soft); padding: 13px 0 16px; margin: 0 !important;
+}
+
+/* --- les sept repères ------------------------------------------- */
+.hs-vars { background: var(--papier-2); padding: 20px 22px 8px; margin-bottom: 40px; }
+.hs-vars h2 { color: var(--txt) !important; }
+.hs-vars-intro {
+  font-size: 13.5px !important; color: var(--txt-dim) !important; margin: 0 0 16px !important;
+}
+.hs-vars dl { margin: 0; display: grid; gap: 0; }
+.hs-vars dl > div {
+  display: grid; grid-template-columns: 190px 1fr; gap: 16px;
+  padding: 11px 0; border-top: 1px solid var(--papier-3); align-items: baseline;
+}
+.hs-vars dt {
+  font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--txt-faint);
+}
+.hs-vars dd { margin: 0; font-size: 14px; line-height: 1.5; color: var(--txt); }
+
+/* --- blocs numérotés -------------------------------------------- */
+.hs-bloc h2 { display: flex; align-items: center; gap: 10px; }
+.hs-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 19px; height: 19px; flex: none;
+  background: var(--trait); color: var(--papier);
+  font-family: var(--mono); font-size: 10.5px; font-weight: 700; letter-spacing: 0;
+}
+
+/* --- bloc 4 : la phrase de clôture, le dispositif signature ------ */
+.hs-phrase {
+  border-left: 5px solid var(--rouge); background: var(--papier-2);
+  padding: 20px 24px 22px; margin: 6px 0 40px;
+}
+.hs-phrase.gagnee { border-left-color: var(--vert); }
+.hs-phrase.ouverte { border-left-color: var(--txt-faint); }
+.hs-phrase-lab {
+  display: block; font-size: 10px; letter-spacing: .14em; text-transform: uppercase;
+  font-weight: 700; color: var(--rouge); margin-bottom: 12px;
+}
+.hs-phrase.gagnee .hs-phrase-lab { color: var(--vert); }
+.hs-phrase.ouverte .hs-phrase-lab { color: var(--txt-faint); }
+.hs-phrase blockquote {
+  margin: 0; font-size: 18.5px; line-height: 1.5; color: var(--txt); font-weight: 500;
+  text-wrap: pretty;
+}
+.hs-phrase.ouverte blockquote { font-weight: 400; color: var(--txt-dim); font-size: 16px; }
+.hs-phrase cite {
+  display: block; margin-top: 13px; font-style: normal;
+  font-family: var(--mono); font-size: 11px; line-height: 1.5; color: var(--txt-dim);
+}
+
+/* --- bloc 6 : les acteurs --------------------------------------- */
+.hs-acteurs { display: grid; gap: 0; margin-bottom: 14px; }
+.hs-act { padding: 15px 0; border-top: 1px solid var(--line-soft); }
+.hs-act:first-child { border-top: 1px solid var(--line); }
+.hs-act b { display: block; font-size: 14.5px; margin-bottom: 4px; }
+.hs-act p {
+  font-size: 13.5px !important; line-height: 1.55; color: var(--txt-dim) !important;
+  margin: 0 0 8px !important;
+}
+.hs-act-c {
+  display: flex; flex-wrap: wrap; gap: 6px 16px;
+  font-family: var(--mono); font-size: 11.5px;
+}
+.hs-act-c a { color: var(--bleu); text-decoration: underline; text-underline-offset: 2px; }
+.hs-act-c span { color: var(--txt-dim); }
+.hs-act-c .hs-nf { color: var(--txt-faint); font-style: italic; }
+
+/* --- bloc 7 : la frise ------------------------------------------ */
+.hs-frise { list-style: none; padding: 0 0 0 4px; margin: 0; }
+.hs-frise li {
+  display: grid; grid-template-columns: 62px 1fr; gap: 16px;
+  padding: 12px 0 12px 20px; border-left: 2px solid var(--trait-doux); position: relative;
+}
+.hs-frise li::before {
+  content: ''; position: absolute; left: -6px; top: 18px;
+  width: 10px; height: 10px; background: var(--papier); border: 2px solid var(--trait);
+}
+.hs-frise li:last-child::before { background: var(--jaune); }
+.hs-frise b { font-family: var(--mono); font-size: 13px; color: var(--txt); }
+.hs-frise span { font-size: 14px; line-height: 1.55; color: var(--encre-2); }
+
+/* --- sommaire des dix dossiers ---------------------------------- */
+.hs-index { display: grid; gap: 0; }
+.hs-index a {
+  display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: baseline;
+  padding: 15px 0; border-top: 1px solid var(--line-soft); color: var(--txt);
+}
+.hs-index a:first-child { border-top: 1px solid var(--line); }
+.hs-index a:last-child { border-bottom: 1px solid var(--line-soft); }
+.hs-index a:hover { background: var(--papier-2); }
+.hs-index .hsi-n { font-family: var(--mono); font-size: 12px; color: var(--txt-faint); }
+.hs-index b { display: block; font-size: 15px; line-height: 1.35; }
+.hs-index em {
+  display: block; font-style: normal; font-size: 12.5px; color: var(--txt-dim); margin-top: 3px;
+}
+
+.hs-tous { margin-top: 26px; font-size: 13.5px; }
+.hs-tous a { color: var(--txt-dim); }
+
+@media (max-width: 640px) {
+  .hs-vars dl > div { grid-template-columns: 1fr; gap: 3px; }
+  .hs-frise li { grid-template-columns: 1fr; gap: 2px; }
+  .hs-phrase blockquote { font-size: 16.5px; }
+  .hs-strip > div { padding-right: 10px; }
+}
+
+/* ------------------------------------------------------ LISTE DES BACS
+   Page générée par le workflow de déploiement (voir .github/workflows). */
+.liste-bacs { list-style: none; padding: 0; margin: 0 0 40px; }
+.liste-bacs li {
+  display: flex; align-items: baseline; gap: 14px;
+  padding: 15px 0; border-top: 1px solid var(--filet-fin);
+}
+.liste-bacs li:first-child { border-top: 1px solid var(--filet); }
+.liste-bacs a { font-size: 17px; font-weight: 700; }
+.liste-bacs span { font-family: var(--mono); font-size: 12px; color: var(--txt-faint); }
+.liste-bacs .vide { color: var(--txt-faint); font-size: 14.5px; }
