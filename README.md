@@ -59,6 +59,41 @@ section 6.
 
 ---
 
+## 0 bis. Qui publie quoi, et où
+
+Depuis le 20/08, GitHub Pages ne sert plus la branche `main` mais **`gh-pages`**,
+écrite par le workflow `.github/workflows/deploiement.yml`.
+
+| Branche | Adresse publiée | Qui peut y écrire |
+|---|---|---|
+| `main` | <https://nicobertoz.github.io/atlas-exposome-demo/> | Nicolas seulement |
+| `bac/<prénom>` | `…/bac/<prénom>/` | la personne concernée |
+| — | `…/bac/` (index des bacs) | régénéré automatiquement |
+
+**`main` est protégée** par une règle de dépôt : pull request obligatoire, relecture
+du propriétaire du code (`.github/CODEOWNERS`), suppression et réécriture d'historique
+interdites. Le propriétaire du dépôt peut passer outre ; personne d'autre.
+
+**Les bacs à sable** sont des copies complètes du site, une par personne, déployées
+automatiquement à chaque enregistrement. Le mode d'emploi, écrit pour être suivi sans
+rien connaître à Git, est dans [BAC-A-SABLE.md](BAC-A-SABLE.md).
+
+**Les tuiles ne sont pas dupliquées.** `tiles/france.pmtiles` pèse 82 Mo : le recopier
+dans chaque bac ferait grossir l'historique de `gh-pages` de 82 Mo par déploiement.
+Les bacs pointent donc vers le fichier de la racine, via `racineDuSite()` dans
+`js/style-nk.js`. Un bac peut tout changer sauf le fichier de tuiles lui-même.
+
+Publier depuis la ligne de commande n'a pas changé :
+
+```bash
+cd demo-cartes && ./deploy.sh pages
+```
+
+Le script vérifie, versionne les ressources, commit et pousse `main` ; c'est ensuite
+l'Action qui publie. Suivre l'avancement avec `gh run watch` ou l'onglet Actions.
+
+---
+
 ## 1. Le moteur : deck.gl + MapLibre GL JS
 
 **Arbitrage rendu.** Trois moteurs ont été comparés sur la même donnée et la même interface :
@@ -516,5 +551,3 @@ décision d'équipe. Ils sont détaillés dans la note de restitution ; en résu
    À tester avant de l'inscrire au socle.
 7. **Vérification des déclarations** : question posée deux fois en relecture, sans réponse
    produit à ce stade.
-
-<!-- verification du droit de poussee du proprietaire -->
