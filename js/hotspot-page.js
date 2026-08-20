@@ -173,7 +173,7 @@
            recensement participatif a le plus de valeur : sans lui, ces situations ne sont
            comptées nulle part.`}</p>
       <div class="art-cta-btns">
-        <a class="btn btn-accent" href="participer.html">Signaler un cas →</a>
+        <a class="btn btn-accent" href="participer.html">Participer à la carte →</a>
         <a class="btn" href="index.html#carte" data-zoom="${p.id}">Voir ce secteur sur la carte</a>
       </div>
       <p class="caution" style="margin-top:20px">

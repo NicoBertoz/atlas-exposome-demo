@@ -1,91 +1,176 @@
 /* ------------------------------------------------------------------ *
  *  section1.js — le déroulé narratif, première section de la page.
  *
- *  Refonte du 18/08/2026. Les quatre relectures convergeaient sur le même
- *  point, avec des mots différents : la grille de blocs numérotés était du
- *  bruit visuel, et on perdait le lecteur. Elle est remplacée par UNE
- *  COLONNE VERTICALE, aérée, sur fond blanc.
+ *  Révision du 18/08, retours V2 de Philippine.
  *
- *  Quatre partis pris, chacun issu d'une remarque :
+ *  Trois changements de fond par rapport à la version précédente :
  *
- *  1. La landing est une page de titre. Un titre, un paragraphe qui annonce
- *     la couleur, et un lien discret vers la carte — pas un bouton de plus.
- *     (Nico : « réduire à tagline + 1-liner » ; Philippine : « page de titre ».)
+ *  1. UNE PAGE DE TITRE COLORÉE, pleine hauteur, référence fluxlaboratory.
+ *     Elle se retire au défilement et laisse la carte apparaître derrière
+ *     le texte — c'est ce qui remplace « l'image abstraite qui devient
+ *     carte », sans illustration à produire.
  *
- *  2. Le fil en sept maillons et les sept blocs sous lui étaient la même
- *     chose dite deux fois. Ils sont fusionnés : un temps = un numéro, un
- *     titre, deux lignes, un lien. (Nico.)
+ *  2. LE VRAI TEXTE, celui de Projet NK (voir recit.js), à la place des
+ *     sept concepts écrits en atelier. Il se lit d'un trait.
  *
- *  3. Chaque temps est gris tant qu'on ne l'a pas atteint, et prend l'encre
- *     au passage. C'est ce qui remplace l'animation d'apparition, qui faisait
- *     sauter la page. (Fau : « grisé puis qui se colore au fil du scroll ».)
+ *  3. LES INCISES. C'était la question posée : « trouver un truc pour lire
+ *     les pop-ups, certains font 150 mots ». Une bulle au survol ne tient
+ *     pas 150 mots, et elle est inutilisable au clavier comme au doigt.
+ *     Chaque mot souligné est donc un BOUTON : au clic, l'incise s'ouvre
+ *     dans la marge sur grand écran, juste sous le paragraphe sur petit
+ *     écran. Une seule à la fois. Le mot reste marqué tant qu'elle est
+ *     ouverte, et Échap referme.
  *
- *  4. Le septième temps prend toute la largeur et remplace l'ancien encadré
- *     « Notre cartographie », qui était transparent et illisible. (Nico, Lila.)
- *
- *  La carte, elle, se compose derrière la lecture : presque invisible et
- *  désaturée au début, nette et colorée à l'arrivée. C'est le « l'image
- *  abstraite se transforme progressivement en carte » de Philippine, obtenu
- *  avec le fond de carte lui-même plutôt qu'avec une illustration à produire.
+ *  La bibliographie suit le texte, repliée : dix-neuf références deroulées
+ *  d'office alourdiraient la fin du déroulé pour rien.
  * ------------------------------------------------------------------ */
 window.NK_SECTION1 = (function () {
   'use strict';
 
-  const C = window.NK_CONCEPTS;
+  const R = window.NK_RECIT;
 
-  /* Le voile tient pendant la lecture du titre, puis la carte se compose sur
-     toute la longueur du déroulé. On lit et on voit la carte se construire. */
-  const DEBUT_LEVEE = 0.18;
-  const FIN_LEVEE = 0.88;
-  const BASCULE = 0.97;   // plein écran, tout à la fin de la course
+  /* La carte se compose pendant la lecture du texte, pas pendant le titre. */
+  const DEBUT_LEVEE = 0.22;
+  const FIN_LEVEE = 0.90;
+  const BASCULE = 0.985;
+
+  /* {{mot|cle}} devient un bouton d'incise, [[3]] un appel de source. */
+  function baliser(p) {
+    return p
+      .replace(/\{\{([^|]+)\|([^}]+)\}\}/g,
+        (m, mot, cle) => `<button class="incise" data-incise="${cle}">${mot}</button>`)
+      .replace(/\[\[(\d+)\]\]/g,
+        (m, n) => `<button class="appel" data-source="${n}" aria-label="Source ${n}">${n}</button>`);
+  }
 
   function monter(root, onCarte) {
     root.innerHTML = `
-      <section class="s1-hero">
-        <h1>Veille sanitaire participative des cancers pédiatriques</h1>
-        <p class="s1-annonce">Ceci est une veille sanitaire participative, en constante
-          évolution. Les cas de cancers pédiatriques et les principales concentrations de cas
-          y sont répertoriés. Les données sont obtenues par un questionnaire construit avec des
-          scientifiques, auquel chaque personne touchée peut répondre.</p>
-        <div class="s1-hero-cta">
-          <button class="lien-action" data-carte data-mot="Accéder à la carte">Accéder à la carte</button>
+      <!-- Page de titre, pleine hauteur, en aplat de couleur -->
+      <section class="s1-titre">
+        <div class="s1-titre-in">
+          <h1>Veille sanitaire participative des cancers pédiatriques</h1>
+          <p class="s1-annonce">Ceci est une veille sanitaire participative en constante
+            évolution. Les cas de cancers pédiatriques et les principaux clusters y sont
+            répertoriés. Chaque personne touchée peut y prendre part en répondant à un
+            questionnaire sur cette plateforme.</p>
+          <div class="s1-titre-cta">
+            <button class="lien-action" data-carte data-mot="Explorer la carte">Explorer la carte</button>
+          </div>
         </div>
-        <span class="s1-descendre">Ou lisez d'abord — sept points, deux minutes ↓</span>
+        <span class="s1-descendre">Ou lisez d'abord ↓</span>
       </section>
 
-      <div class="s1-deroule">
-        ${C.map((c, i) => `
-          <a class="s1-temps" href="concept.html?id=${c.id}" data-i="${i}">
-            <span class="s1-temps-num">${String(i + 1).padStart(2, '0')} · ${c.kicker.split('· ')[1] || c.kicker}</span>
-            <h2>${c.titre}</h2>
-            <p>${c.teaser}</p>
-            <span class="s1-temps-lien" data-mot="Lire ce point">Lire ce point →</span>
-          </a>`).join('')}
+      <div class="s1-lecture">
+        <div class="s1-colonne">
+          <aside class="s1-exergue">
+            <b>${R.EXERGUE.titre}</b>
+            <p>${R.EXERGUE.texte}</p>
+          </aside>
+
+          ${R.TEXTE.map((p, i) => `<p class="s1-para" data-p="${i}">${baliser(p)}</p>`).join('')}
+
+          <div class="s1-fin">
+            <button class="btn btn-accent" data-carte>Explorer la carte →</button>
+          </div>
+
+          <!-- Bibliographie repliée, juste après le texte -->
+          <section class="s1-biblio" id="s1-biblio">
+            <button class="s1-biblio-tete" id="biblio-tete" aria-expanded="false" aria-controls="biblio-corps">
+              <span>Bibliographie</span>
+              <em>${R.SOURCES.length} références</em>
+              <span class="chev" aria-hidden="true">▾</span>
+            </button>
+            <ol class="s1-biblio-corps" id="biblio-corps">
+              ${R.SOURCES.map((s, i) => `<li id="src-${i + 1}">${s}</li>`).join('')}
+            </ol>
+          </section>
+        </div>
+
+        <!-- La marge où s'ouvrent les incises. Vide tant qu'on n'a rien ouvert. -->
+        <aside class="s1-marge" id="s1-marge" aria-live="polite"></aside>
       </div>
-
-      <!-- Le dernier temps, pleine largeur : il annonce la carte et remplace
-           l'ancien encadré « Notre cartographie ». -->
-      <section class="s1-final">
-        <h2>Voilà pourquoi nous faisons cette carte</h2>
-        <p>Ce que l'État a enquêté, et ce que les familles racontent, sur le même fond.
-          Les adresses ne sont jamais publiées : elles sont regroupées par secteurs,
-          et un secteur n'apparaît qu'à partir de plusieurs cas.</p>
-        <button class="btn btn-accent" data-carte>Ouvrir la carte →</button>
-      </section>
 
       <div class="s1-reveal" aria-hidden="true"></div>`;
 
-    /* Raccourci permanent, pour qui ne veut pas défiler du tout. */
-    const pilule = document.createElement('button');
-    pilule.id = 's1-pilule';
-    pilule.textContent = 'Accéder à la carte →';
-    pilule.addEventListener('click', onCarte);
-    root.appendChild(pilule);
-
     root.querySelectorAll('[data-carte]').forEach(b => b.addEventListener('click', onCarte));
 
+    /* ------------------------------------------------------ INCISES */
+    const marge = root.querySelector('#s1-marge');
+    let ouverte = null;
+
+    function fermer() {
+      if (ouverte) ouverte.classList.remove('on');
+      ouverte = null;
+      marge.innerHTML = '';
+      root.querySelectorAll('.incise-inline').forEach(el => el.remove());
+    }
+
+    function ouvrir(bouton) {
+      const cle = bouton.dataset.incise;
+      const n = R.INCISES[cle];
+      if (!n) return;
+      const rouvre = ouverte === bouton;
+      fermer();
+      if (rouvre) return;                       // deuxième clic : on referme
+
+      ouverte = bouton;
+      bouton.classList.add('on');
+
+      const html = `
+        <div class="note">
+          <button class="note-fermer" aria-label="Fermer l'incise">×</button>
+          <b>${n.titre}</b>
+          <div class="note-txt">${n.texte}</div>
+          ${n.manque ? `<p class="note-manque">À écrire : ${n.manque}</p>` : ''}
+          ${n.brouillon ? '<p class="note-etat">Incise encore à l\'état de brouillon.</p>' : ''}
+        </div>`;
+
+      if (window.matchMedia('(min-width: 1100px)').matches) {
+        /* Grand écran : dans la marge, alignée sur le mot. */
+        marge.innerHTML = html;
+        const note = marge.firstElementChild;
+        const haut = bouton.getBoundingClientRect().top - marge.getBoundingClientRect().top;
+        note.style.transform = `translateY(${Math.max(0, haut)}px)`;
+      } else {
+        /* Petit écran : juste sous le paragraphe, dans le flux. */
+        const para = bouton.closest('.s1-para');
+        const bloc = document.createElement('div');
+        bloc.className = 'incise-inline';
+        bloc.innerHTML = html;
+        para.after(bloc);
+      }
+      const fermeture = root.querySelector('.note-fermer');
+      if (fermeture) fermeture.addEventListener('click', fermer);
+    }
+
+    root.addEventListener('click', ev => {
+      const b = ev.target.closest('.incise');
+      if (b) return ouvrir(b);
+      /* Un appel de source déplie la bibliographie et va à la bonne ligne. */
+      const s = ev.target.closest('.appel');
+      if (s) {
+        root.querySelector('#s1-biblio').classList.add('open');
+        root.querySelector('#biblio-tete').setAttribute('aria-expanded', 'true');
+        const li = root.querySelector('#src-' + s.dataset.source);
+        if (li) {
+          li.scrollIntoView({ block: 'center', behavior: 'smooth' });
+          li.classList.add('vise');
+          setTimeout(() => li.classList.remove('vise'), 2200);
+        }
+      }
+    });
+    document.addEventListener('keydown', ev => { if (ev.key === 'Escape') fermer(); });
+
+    /* -------------------------------------------------- BIBLIOGRAPHIE */
+    const tete = root.querySelector('#biblio-tete');
+    tete.addEventListener('click', () => {
+      const on = root.querySelector('#s1-biblio').classList.toggle('open');
+      tete.setAttribute('aria-expanded', on);
+    });
+
+    /* ---------------------------------------------------- DÉFILEMENT */
     const stage = document.getElementById('map-stage');
-    const temps = [...root.querySelectorAll('.s1-temps')];
+    const paras = [...root.querySelectorAll('.s1-para')];
     let bascule = false;
 
     const entre = (v, a, b) => Math.max(0, Math.min(1, (v - a) / (b - a)));
@@ -95,18 +180,25 @@ window.NK_SECTION1 = (function () {
       const t = h > 0 ? Math.min(1, root.scrollTop / h) : 0;
       const l = entre(t, DEBUT_LEVEE, FIN_LEVEE);
 
-      /* La carte se compose : elle sort du blanc, se désatures moins, et se
-         dénette. Trois réglages sur le même curseur — pas un fondu d'opacité
-         seul, qui donne un gris sale plutôt qu'une carte qui apparaît. */
       stage.style.setProperty('--tease', (3 - 3 * l).toFixed(2) + 'px');
       stage.style.setProperty('--sat', (0.1 + 0.9 * l).toFixed(3));
-      stage.style.setProperty('--carte-op', (0.16 + 0.84 * l).toFixed(3));
-      root.style.setProperty('--voile', (1 - 0.34 * l).toFixed(3));
+      stage.style.setProperty('--carte-op', (0.12 + 0.88 * l).toFixed(3));
+      root.style.setProperty('--voile', (1 - 0.3 * l).toFixed(3));
 
-      pilule.classList.toggle('on', root.scrollTop > 200 && l < 0.8);
+      /* Le paragraphe qu'on lit est à pleine encre, les autres s'estompent
+         légèrement. Assez pour guider l'œil, pas assez pour gêner. */
+      const milieu = root.clientHeight * 0.45;
+      paras.forEach(el => {
+        const r = el.getBoundingClientRect();
+        el.classList.toggle('lu', r.top < milieu && r.bottom > 0);
+      });
 
-      const ligne = root.clientHeight * 0.82;
-      temps.forEach(el => el.classList.toggle('vu', el.getBoundingClientRect().top < ligne));
+      /* Une incise ouverte dans la marge suit son mot. */
+      const note = marge.firstElementChild;
+      if (note && ouverte) {
+        const haut = ouverte.getBoundingClientRect().top - marge.getBoundingClientRect().top;
+        note.style.transform = `translateY(${Math.max(0, haut)}px)`;
+      }
 
       if (t >= BASCULE && !bascule) { bascule = true; onCarte(); }
       if (t < BASCULE - 0.05) bascule = false;
@@ -115,7 +207,7 @@ window.NK_SECTION1 = (function () {
     root.addEventListener('scroll', auDefilement, { passive: true });
     window.addEventListener('resize', auDefilement);
     auDefilement();
-    return { auDefilement, reset: () => { bascule = false; root.scrollTop = 0; auDefilement(); } };
+    return { auDefilement, reset: () => { bascule = false; fermer(); root.scrollTop = 0; auDefilement(); } };
   }
 
   return { monter };

@@ -55,7 +55,7 @@
         <p>Ce point se lit sur les endroits enquêtés, les signalements instruits et les cas
           racontés par des familles. Si vous êtes concerné·e, le vôtre peut y figurer.</p>
         <div class="art-cta-btns">
-          <a class="btn btn-accent" href="participer.html">Signaler un cas →</a>
+          <a class="btn btn-accent" href="participer.html">Participer à la carte →</a>
           <a class="btn" href="index.html#carte">Ouvrir la carte</a>
         </div>
       </section>

@@ -43,10 +43,71 @@ window.NK_ENGINES.deck = (function () {
   }
   const hideTip = () => { tip().style.display = 'none'; };
 
-  /* Le bleu unique des cas déclarés. La relecture a demandé « une seule
-     couleur de point, aucune différenciation par pathologie » : le tri se
-     fait au filtre, pas à l'œil. Une couleur de moins à décoder. */
-  const BLEU = [31, 58, 204];
+  /* Deux couleurs sur la carte, pas une de plus (retours V2) :
+       violet      une zone enquêtée
+       vert d'eau  un cas raconté par une famille
+     Elles doivent rester lisibles l'une à côté de l'autre à toutes les
+     échelles, d'où deux teintes franchement éloignées. */
+  const VIOLET = [109, 47, 196];
+  const EAU = [46, 155, 143];
+
+  /* --------------------------------------------------------- LES NUÉES
+     Retours V2 : « à la place de cercles concentriques dégradés, mettre des
+     nuées de points d'une seule et même couleur solide ».
+
+     Un point par cas, donc — mais AUCUN de ces points n'est à la position
+     d'une famille. Le secteur de publication reste la seule information
+     réelle : à l'intérieur, les points sont dispersés par une fonction
+     déterministe, semée par l'identifiant du secteur. Deux conséquences
+     qu'il faut avoir en tête :
+
+       - la nuée ne se déplace pas d'un affichage à l'autre, ce qui évite de
+         laisser croire à un mouvement des cas ;
+       - elle ne dit rien de plus que le nombre, déjà affiché en chiffres.
+         C'est une façon de le montrer, pas une position retrouvée.
+
+     Sans cette précaution, une nuée aléatoire à chaque rendu suggérerait une
+     précision que la donnée n'a pas. */
+  function hacher(cle, graine) {
+    let h = graine >>> 0;
+    for (let k = 0; k < cle.length; k++) {
+      h ^= cle.charCodeAt(k);
+      h = Math.imul(h, 16777619);
+    }
+    /* Finalisation façon murmur3 : sans elle, deux clés voisines — « c:0 »
+       et « c:1 » — donnent des hachés voisins, et la nuée se range en
+       petits paquets au lieu de couvrir le disque. */
+    h ^= h >>> 16; h = Math.imul(h, 2246822507);
+    h ^= h >>> 13; h = Math.imul(h, 3266489909);
+    h ^= h >>> 16;
+    return (h >>> 0) / 4294967296;
+  }
+
+  /* Deux graines distinctes : les deux coordonnées doivent être
+     indépendantes, sinon les points s'alignent sur une diagonale. */
+  function semer(id, i) {
+    const cle = id + ':' + i;
+    return [hacher(cle, 2166136261), hacher(cle, 40503)];
+  }
+
+  /* Disque de rayon r, tirage uniforme en surface (d'où la racine). */
+  function nuee(cellules) {
+    const pts = [];
+    cellules.forEach(c => {
+      const rayon = c.rayon_km * 1000 * 0.72;
+      const lat = c.centre[1];
+      const parDegre = 111320;
+      for (let i = 0; i < c.n; i++) {
+        const [u, v] = semer(c.id, i);
+        const d = rayon * Math.sqrt(u);
+        const a = v * Math.PI * 2;
+        const dy = (d * Math.sin(a)) / parDegre;
+        const dx = (d * Math.cos(a)) / (parDegre * Math.cos(lat * Math.PI / 180));
+        pts.push({ cell: c, position: [c.centre[0] + dx, lat + dy] });
+      }
+    });
+    return pts;
+  }
 
   function layers(state) {
     const L = [];
@@ -71,10 +132,12 @@ window.NK_ENGINES.deck = (function () {
         getPosition: f => f.properties.centre,
         getRadius: rayonZone, radiusMinPixels: 19,
         filled: true, stroked: true,
-        getFillColor: f => [...S().rgb(S().zoneColor(f.properties)), 58],
-        getLineColor: f => [...S().rgb(S().zoneColor(f.properties)), 255],
+        /* « une seule zone colorée comme un bloc avec 50 % d'opacité »,
+           sans dégradé. */
+        getFillColor: [...VIOLET, 128],
+        getLineColor: [...VIOLET, 255],
         lineWidthMinPixels: 2, lineWidthMaxPixels: 3.5,
-        pickable: true, autoHighlight: true, highlightColor: [245, 212, 0, 150],
+        pickable: true, autoHighlight: true, highlightColor: [20, 18, 13, 90],
         onHover: i => i.object ? showTip(S().zoneHTML(i.object.properties, true), i.x, i.y) : hideTip(),
         onClick: i => i.object && ctx.onZone(i.object.properties),
       }));
@@ -94,54 +157,39 @@ window.NK_ENGINES.deck = (function () {
     }
 
     if (state.temoins) {
-      /* UN CAS DÉCLARÉ EST UN POINT, PAS UNE SURFACE.
-         Il ne couvre aucun territoire : on ne sait pas où il est, à 25 km
-         près. On le dessine donc petit, avec un cœur net et un halo qui se
-         dissout — le halo dit l'incertitude de position, il ne prétend pas
-         délimiter quoi que ce soit. Aucun contour, jamais.
+      /* UN CAS DÉCLARÉ EST UN POINT, ET RIEN QU'UN POINT.
+         Plus de halo dégradé : la relecture le lisait comme une tache de
+         densité, et une tache suggère une mesure qu'on n'a pas faite. Une
+         nuée de points pleins, tous de la même taille et de la même couleur,
+         dit exactement ce qu'on sait — combien, et dans quel secteur.
 
          Et surtout : PAS de carte de chaleur. Une heatmap se lit comme une
          densité de maladie, or nous n'avons pas de dénominateur — on ne
-         rapporte rien à la population. Ce serait donner à lire une incidence
-         qu'on n'a pas mesurée. Voir la note d'arbitrage du 12/08. */
-      const HALO = [[1, 10], [0.74, 18], [0.5, 30], [0.3, 48]];
-      HALO.forEach(([k, alpha], idx) =>
-        L.push(new deck.ScatterplotLayer({
-          id: 'cell-' + idx, data: state.cellules,
-          getPosition: c => c.centre,
-          getFillColor: [...BLEU, alpha],
-          getRadius: c => c.rayon_km * 1000 * 0.55 * k,
-          radiusMinPixels: 15 * k, radiusMaxPixels: 34 * k, pickable: false,
-        })));
-      // le cœur : un point franc, petit, qui reste un point à tous les zooms
+         rapporte rien à la population. Voir la note d'arbitrage du 12/08. */
+      const points = nuee(state.cellules);
+
       L.push(new deck.ScatterplotLayer({
-        id: 'cell-coeur', data: state.cellules,
-        getPosition: c => c.centre,
-        getFillColor: [...BLEU, 235],
-        getRadius: c => c.rayon_km * 1000 * 0.07,
-        radiusMinPixels: 3.5, radiusMaxPixels: 6, pickable: false,
+        id: 'nuee', data: points,
+        getPosition: d => d.position,
+        getFillColor: [...EAU, 225],
+        getRadius: 1600, radiusMinPixels: 2.6, radiusMaxPixels: 5.5,
+        stroked: false, pickable: false,
       }));
-      // cible de clic invisible, un peu plus large que le cœur de la tache
+
+      /* La cible de clic reste le SECTEUR, jamais un point de la nuée :
+         cliquer un point isolé laisserait croire qu'il désigne quelqu'un. */
       L.push(new deck.ScatterplotLayer({
         id: 'cells', data: state.cellules,
         getPosition: c => c.centre,
         getFillColor: [0, 0, 0, 0], stroked: false,
-        getRadius: c => c.rayon_km * 1000 * 0.45, radiusMinPixels: 13,
-        pickable: true, autoHighlight: true, highlightColor: [20, 18, 13, 40],
+        getRadius: c => c.rayon_km * 1000 * 0.8, radiusMinPixels: 16,
+        pickable: true, autoHighlight: true, highlightColor: [46, 155, 143, 40],
         onHover: i => i.object ? showTip(S().celluleHTML(i.object), i.x, i.y) : hideTip(),
         onClick: i => {
           if (!i.object) return;
           ctx.onCell(i.object);
           map.flyTo({ center: i.object.centre, zoom: Math.max(map.getZoom(), 8), speed: 0.9 });
         },
-      }));
-      L.push(new deck.TextLayer({
-        id: 'cell-n', data: state.cellules,
-        getPosition: c => c.centre, getText: c => String(c.n),
-        getSize: 10.5, getColor: [20, 18, 13, 210], fontWeight: 700,
-        getPixelOffset: [0, -14],
-        outlineWidth: 3, outlineColor: [255, 255, 255, 235], fontSettings: { sdf: true },
-        pickable: false,
       }));
     }
     return L.concat(dessus);

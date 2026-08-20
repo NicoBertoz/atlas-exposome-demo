@@ -35,11 +35,21 @@
   --filet:     #D8D5CD;
   --filet-fin: #E8E6E0;
 
+  /* Retours V2 : « remplacer le jaune par du bleu, voir ce que ça donne »,
+     et sur la carte « seulement 2 couleurs : cluster violet, cas individuel
+     vert d'eau ». Trois rôles, trois teintes, aucun recouvrement :
+       bleu       l'action — boutons, liens, appels de note
+       violet     une zone enquêtée
+       vert d'eau un cas raconté par une famille
+     Le jaune ne sert plus nulle part : le surlignage au survol est devenu
+     un trait fin noir. */
+  --bleu:      #1B3FD8;
+  --bleu-fonce:#132CA0;
+  --violet:    #6D2FC4;
+  --eau:       #2E9B8F;
   --rouge:     #D8281D;
   --orange:    #E07B0A;
-  --bleu:      #1F3ACC;
   --vert:      #0B8A4E;
-  --jaune:     #F5D400;
 
   /* Alias conservés pour ne pas réécrire chaque règle une par une */
   --papier:    var(--blanc);
@@ -55,14 +65,14 @@
   --txt:       var(--encre);
   --txt-dim:   var(--encre-2);
   --txt-faint: var(--encre-3);
-  --accent:    var(--jaune);
+  --accent:    var(--bleu);
   --danger:    var(--rouge);
   --warn:      var(--orange);
   --ok:        var(--vert);
-  --sur-accent:var(--encre);
+  --sur-accent:#FFFFFF;   /* texte posé sur le bleu */
 
   /* Helvetica en tête, comme demandé pour la version de travail. */
-  --font: "Helvetica Neue", Helvetica, Arial, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font: "Helvetica Neue", Helvetica, Geneva, Arial, -apple-system, BlinkMacSystemFont, sans-serif;
   --mono: ui-monospace, "SF Mono", Menlo, monospace;
   --panel-w: 392px;
   --bar-h: 56px;
@@ -112,13 +122,16 @@ button { font-family: inherit; font-size: inherit; cursor: pointer; }
    participer, ressources. Au survol le mot se surligne et passe en gras,
    c'est le seul effet. Pas de cadre, pas de pastille. */
 #nav-onglets { display: flex; align-items: center; gap: 4px; }
+/* Retours V2 : « remplacer le gros surlignement de stabilo par un trait fin
+   noir ». Le mot passe en gras et se souligne d'un filet d'un pixel — plus
+   d'aplat de couleur derrière le texte. */
 .onglet {
   border: 0; background: none; color: var(--encre);
-  font-size: 13.5px; font-weight: 400; padding: 6px 9px;
-  box-shadow: inset 0 0 0 0 var(--jaune); transition: box-shadow .12s, font-weight 0s;
+  font-size: 13.5px; font-weight: 400; padding: 6px 9px 5px;
+  border-bottom: 1px solid transparent; transition: border-color .12s;
 }
 .onglet:hover, .onglet:focus-visible {
-  font-weight: 700; box-shadow: inset 0 -.85em 0 0 var(--jaune);
+  font-weight: 700; border-bottom-color: var(--encre);
 }
 /* Le gras change la largeur du mot et fait sauter la barre : on réserve la
    place du gras dès le départ avec un doublon invisible. */
@@ -126,7 +139,7 @@ button { font-family: inherit; font-size: inherit; cursor: pointer; }
   content: attr(data-mot); display: block; height: 0; overflow: hidden;
   font-weight: 700; visibility: hidden;
 }
-.onglet.on { font-weight: 700; box-shadow: inset 0 -.85em 0 0 var(--jaune); }
+.onglet.on { font-weight: 700; border-bottom-color: var(--encre); }
 
 .btn {
   background: var(--blanc); border: 1px solid var(--filet); color: var(--encre);
@@ -134,21 +147,19 @@ button { font-family: inherit; font-size: inherit; cursor: pointer; }
   transition: box-shadow .12s, border-color .12s; white-space: nowrap;
 }
 .btn:hover { border-color: var(--encre); }
-.btn-accent { background: var(--jaune); border-color: var(--jaune); font-weight: 700; }
-.btn-accent:hover { border-color: var(--encre); }
+.btn-accent { background: var(--bleu); border-color: var(--bleu); color: #FFF; font-weight: 700; }
+.btn-accent:hover { background: var(--bleu-fonce); border-color: var(--bleu-fonce); }
 .btn-ghost { background: none; border-color: transparent; }
 .btn-ghost:hover { border-color: var(--filet); }
 
 /* Lien d'action discret, sans cadre : « Accéder à la carte ». Demandé
    explicitement pour ne pas empiler un bouton de plus sur la landing. */
 .lien-action {
-  border: 0; background: none; padding: 2px 4px; color: var(--encre);
-  font-size: 15px; font-weight: 400; border-bottom: 1px solid var(--encre);
-  box-shadow: inset 0 0 0 0 var(--jaune); transition: box-shadow .14s;
+  border: 0; background: none; padding: 2px 0 3px; color: inherit;
+  font-size: 17px; font-weight: 400; border-bottom: 1px solid currentColor;
+  transition: border-width .1s;
 }
-.lien-action:hover, .lien-action:focus-visible {
-  font-weight: 700; box-shadow: inset 0 -.8em 0 0 var(--jaune);
-}
+.lien-action:hover, .lien-action:focus-visible { font-weight: 700; }
 .lien-action::after {
   content: attr(data-mot); display: block; height: 0; overflow: hidden;
   font-weight: 700; visibility: hidden;
@@ -230,7 +241,7 @@ button { font-family: inherit; font-size: inherit; cursor: pointer; }
   width: 13px; height: 13px; border: 1px solid var(--txt-faint); flex: none;
   display: grid; place-items: center; font-size: 10px; line-height: 1; color: var(--encre);
 }
-.dd-item.on .case { background: var(--jaune); border-color: var(--jaune); }
+.dd-item.on .case { background: var(--bleu); border-color: var(--bleu); color: #FFF; }
 .dd-item .lbl { flex: 1; }
 .dd-item .n { font-family: var(--mono); font-size: 11px; color: var(--txt-faint); }
 .dd-item.tout { font-weight: 700; border-bottom: 1px solid var(--filet); }
@@ -244,7 +255,7 @@ button { font-family: inherit; font-size: inherit; cursor: pointer; }
   display: flex; align-items: center; gap: 10px; padding: 7px 0;
   font-size: 12.5px; color: var(--txt-dim);
 }
-.toggle-row input { accent-color: var(--jaune); width: 16px; height: 16px; flex: none; }
+.toggle-row input { accent-color: var(--bleu); width: 16px; height: 16px; flex: none; }
 .toggle-row em { font-style: normal; font-family: var(--mono); font-size: 10.5px; color: var(--txt-faint); }
 
 /* --------------------------------------------------- ENCART « INFO »
@@ -318,7 +329,6 @@ body.vue-intro #panel { pointer-events: none; }
   body.vue-carte.panneau-ferme #panel { transform: translateX(-101%); }
 }
 body.vue-intro #legend,
-body.vue-intro #tour,
 body.vue-intro #exact-warn,
 body.vue-intro #loading,
 body.vue-intro #panel-rouvrir { display: none; }
@@ -329,74 +339,130 @@ body.vue-intro .map-canvas {
   transition: opacity .25s linear;
 }
 
-/* ------------------------------------------------------------ HÉRO
-   Réduit à une tagline et une ligne, comme demandé. Plus de compteurs, plus
-   de sous-titre, plus de double appel à l'action. */
-.s1-hero {
-  max-width: 780px; margin: 0 auto; padding: 16vh 28px 12vh;
-  min-height: 74vh; display: flex; flex-direction: column; justify-content: center;
+/* ============================================ LA PAGE DE TITRE
+   Retours V2 : « avoir une page de titre colorée avec une police sympa »,
+   référence fluxlaboratory.com. Elle occupe tout l'écran, en aplat, et se
+   retire au défilement — c'est elle qui joue le rôle de « l'image abstraite
+   qui se transforme progressivement en carte », sans illustration à
+   produire. */
+.s1-titre {
+  min-height: calc(100vh - var(--bar-h));
+  background: var(--bleu); color: #FFF;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 8vh 6vw 6vh; position: relative;
 }
-.s1-hero h1 {
-  margin: 0 0 28px; font-size: clamp(30px, 5.4vw, 54px); line-height: 1.06;
-  letter-spacing: -.035em; font-weight: 700; max-width: 17ch;
+.s1-titre-in { max-width: min(100%, 900px); }
+.s1-titre h1 {
+  margin: 0 0 40px; font-size: clamp(38px, 6.4vw, 82px); line-height: .98;
+  letter-spacing: -.045em; font-weight: 700; max-width: 15ch; text-wrap: balance;
 }
 .s1-annonce {
-  margin: 0 0 38px; font-size: clamp(16px, 2vw, 19px); line-height: 1.72;
-  color: var(--encre-2); max-width: 56ch;
+  margin: 0 0 44px; font-size: clamp(15px, 1.5vw, 19px); line-height: 1.65;
+  max-width: 46ch; color: rgba(255,255,255,.92);
 }
-.s1-hero-cta { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.s1-titre-cta .lien-action { color: #FFF; }
 .s1-descendre {
-  display: block; margin-top: 12vh; font-size: 11.5px; letter-spacing: .16em;
-  text-transform: uppercase; color: var(--txt-faint);
+  position: absolute; left: 6vw; bottom: 5vh;
+  font-size: 11.5px; letter-spacing: .18em; text-transform: uppercase;
+  color: rgba(255,255,255,.62);
 }
 
-/* ------------------------------------------------- LE DÉROULÉ VERTICAL
-   Une seule colonne. Chaque temps du raisonnement porte son numéro, son
-   titre et deux lignes ; le développement est sur sa page. Les temps sont
-   gris tant qu'ils ne sont pas atteints, et prennent l'encre au passage. */
-.s1-deroule { max-width: 780px; margin: 0 auto; padding: 0 28px; }
-.s1-temps {
-  display: block; padding: 46px 0; border-top: 1px solid var(--filet-fin);
-  color: var(--encre); border-bottom: 0;
-  opacity: .3; transition: opacity .5s ease;
+/* ================================================= LE TEXTE ET SES INCISES
+   Deux colonnes sur grand écran : le texte, et la marge où s'ouvrent les
+   incises. Sous 1100px la marge disparaît et les incises se déplient dans
+   le flux, sous le paragraphe. */
+.s1-lecture {
+  max-width: 1240px; margin: 0 auto; padding: 12vh 28px 6vh;
+  display: grid; grid-template-columns: minmax(0, 640px) minmax(0, 1fr);
+  gap: 56px; align-items: start;
 }
-.s1-temps.vu { opacity: 1; }
-.s1-temps:first-child { border-top: 0; }
-.s1-temps-num {
-  display: block; font-family: var(--mono); font-size: 11px; letter-spacing: .14em;
-  color: var(--txt-faint); margin-bottom: 14px;
-}
-.s1-temps h2 {
-  margin: 0 0 14px; font-size: clamp(22px, 3vw, 30px); line-height: 1.18;
-  letter-spacing: -.028em; font-weight: 700; max-width: 20ch;
-}
-.s1-temps p {
-  margin: 0 0 18px; font-size: 16.5px; line-height: 1.78; color: var(--encre-2);
-  max-width: 58ch;
-}
-.s1-temps-lien {
-  font-size: 14px; color: var(--encre); border-bottom: 1px solid var(--filet);
-  padding-bottom: 2px; box-shadow: inset 0 0 0 0 var(--jaune); transition: box-shadow .14s;
-}
-.s1-temps:hover .s1-temps-lien { font-weight: 700; box-shadow: inset 0 -.8em 0 0 var(--jaune); }
+.s1-colonne { min-width: 0; }
 
-/* --------------------------------------------- LA ZONE DE RÉVÉLATION
-   Le dernier temps prend toute la largeur : c'est lui qui annonce la carte,
-   et il remplace l'ancien encadré « Notre cartographie ». */
-.s1-final {
-  margin-top: 8vh; padding: 12vh 28px 16vh; border-top: 1px solid var(--filet);
-  text-align: center;
+.s1-exergue {
+  border-left: 2px solid var(--bleu); padding: 4px 0 4px 20px; margin: 0 0 56px;
 }
-.s1-final h2 {
-  margin: 0 auto 20px; font-size: clamp(26px, 4vw, 40px); line-height: 1.1;
-  letter-spacing: -.03em; max-width: 18ch;
-}
-.s1-final p {
-  margin: 0 auto 34px; font-size: 17px; line-height: 1.75; color: var(--encre-2); max-width: 54ch;
-}
-.s1-reveal { min-height: 90vh; }
+.s1-exergue b { display: block; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 10px; }
+.s1-exergue p { margin: 0; font-size: 14.5px; line-height: 1.75; color: var(--encre-2); }
 
-/* Raccourci flottant : un lien souligné, discret, pas une pastille jaune. */
+.s1-para {
+  margin: 0 0 32px; font-size: clamp(17px, 1.35vw, 20px); line-height: 1.75;
+  color: var(--encre-2); opacity: .55; transition: opacity .4s ease;
+  text-wrap: pretty;
+}
+.s1-para.lu { opacity: 1; }
+.s1-para b { color: var(--encre); font-weight: 700; }
+
+/* Le mot qui appelle une incise : souligné d'un filet, jamais coloré —
+   la couleur est réservée aux objets de la carte. */
+.incise {
+  border: 0; background: none; padding: 0; font: inherit; color: var(--encre);
+  border-bottom: 1px solid var(--encre); line-height: inherit;
+}
+.incise:hover { background: var(--blanc-2); }
+.incise.on { background: var(--bleu); color: #FFF; border-bottom-color: var(--bleu); }
+
+/* L'appel de source : un exposant discret, cliquable. */
+.appel {
+  border: 0; background: none; padding: 0 1px; font: inherit; color: var(--bleu);
+  font-size: .68em; vertical-align: super; line-height: 0;
+}
+.appel:hover { text-decoration: underline; }
+
+/* L'incise elle-même. Jusqu'à 150 mots : c'est un bloc de lecture, pas une
+   bulle. Sur grand écran elle vit dans la marge, à hauteur du mot. */
+.s1-marge { position: relative; min-height: 1px; }
+.note {
+  border-left: 2px solid var(--bleu); background: var(--blanc);
+  padding: 18px 20px 18px 22px; position: relative;
+  transition: transform .25s cubic-bezier(.32,.72,0,1);
+}
+.note b {
+  display: block; font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--bleu); margin-bottom: 12px; padding-right: 24px;
+}
+.note-txt { font-size: 14.5px; line-height: 1.72; color: var(--encre-2); }
+.note-txt a { color: var(--encre); border-bottom: 1px solid var(--filet); }
+.note-txt a:hover { border-bottom-color: var(--encre); }
+.note-fermer {
+  position: absolute; right: 8px; top: 10px;
+  border: 0; background: none; color: var(--txt-faint); font-size: 18px; line-height: 1; padding: 2px 6px;
+}
+.note-fermer:hover { color: var(--encre); }
+/* Ce qui reste à écrire se voit, plutôt que d'être masqué : l'équipe
+   éditoriale doit savoir où elle en est. */
+.note-manque, .note-etat {
+  margin: 14px 0 0; padding-top: 12px; border-top: 1px solid var(--filet-fin);
+  font-size: 12.5px; line-height: 1.6; color: var(--txt-faint);
+}
+.note-etat { font-style: italic; }
+
+.incise-inline { margin: -12px 0 32px; }
+
+/* --------------------------------------------------- BIBLIOGRAPHIE
+   Retours V2 : « mettre la bibliographie juste après sans alourdir, un
+   onglet qu'on peut dérouler ou non ». */
+.s1-fin { margin: 48px 0 64px; }
+.s1-biblio { border-top: 1px solid var(--filet); }
+.s1-biblio-tete {
+  display: flex; align-items: baseline; gap: 12px; width: 100%; text-align: left;
+  background: none; border: 0; padding: 18px 0; color: var(--encre); font-size: 15px; font-weight: 700;
+}
+.s1-biblio-tete em { font-style: normal; font-weight: 400; font-size: 13px; color: var(--txt-faint); }
+.s1-biblio-tete .chev { margin-left: auto; color: var(--txt-faint); font-size: 12px; }
+.s1-biblio.open .s1-biblio-tete .chev { transform: rotate(180deg); }
+.s1-biblio-corps { display: none; margin: 0 0 40px; padding-left: 22px; }
+.s1-biblio.open .s1-biblio-corps { display: block; }
+.s1-biblio-corps li {
+  font-size: 13.5px; line-height: 1.65; color: var(--encre-2); margin-bottom: 14px;
+  padding-left: 4px;
+}
+.s1-biblio-corps li.vise { background: rgba(27,63,216,.09); }
+.s1-biblio-corps a { color: var(--encre); border-bottom: 1px solid var(--filet); }
+.s1-biblio-corps em { color: var(--orange); font-style: italic; }
+
+.s1-reveal { min-height: 80vh; }
+
+/* Raccourci flottant vers la carte */
 #s1-pilule {
   position: fixed; right: 24px; bottom: 24px; z-index: 45;
   background: var(--blanc); color: var(--encre); border: 1px solid var(--encre);
@@ -405,7 +471,21 @@ body.vue-intro .map-canvas {
   transition: opacity .25s ease, transform .25s ease;
 }
 #s1-pilule.on { opacity: 1; transform: none; pointer-events: auto; }
-#s1-pilule:hover { background: var(--jaune); border-color: var(--jaune); font-weight: 700; }
+#s1-pilule:hover { background: var(--bleu); border-color: var(--bleu); color: #FFF; }
+
+@media (max-width: 1099px) {
+  .s1-lecture { grid-template-columns: minmax(0, 1fr); gap: 0; max-width: 720px; }
+  .s1-marge { display: none; }
+  .note { transform: none !important; }
+}
+@media (max-width: 859px) {
+  .s1-titre { padding: 10vh 22px 12vh; }
+  .s1-titre-in { max-width: none; }
+  .s1-lecture { padding: 8vh 22px 4vh; }
+  .s1-descendre { left: 22px; }
+  .s1-fin .btn { width: 100%; text-align: center; }
+  #s1-pilule { right: 14px; left: 14px; bottom: 16px; text-align: center; }
+}
 
 /* Appel au témoignage, en pied de fiche */
 .fiche-cta { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--filet); }
@@ -440,9 +520,10 @@ body.vue-intro .map-canvas {
 .fiche-texte { margin: 16px 0 0; font-size: 14px; line-height: 1.75; color: var(--encre-2); }
 .fiche-texte b { color: var(--encre); }
 .fiche-texte + .fiche-texte { margin-top: 12px; }
+/* Le lien vers le collectif est le seul élément mis en avant de la fiche. */
 .fiche-collectif {
   display: block; margin: 20px 0 0; padding: 14px 16px;
-  background: var(--jaune); color: var(--encre); border: 0;
+  background: var(--bleu); color: #FFF; border: 0;
 }
 .fiche-collectif b { display: block; font-size: 15px; font-weight: 700; margin-bottom: 3px; }
 .fiche-collectif b::after { content: ' →'; }
@@ -473,7 +554,7 @@ body.vue-intro .map-canvas {
 .block p { margin: 0; font-size: 13px; color: var(--encre-2); line-height: 1.65; }
 
 .quote {
-  margin: 16px 0 0; padding: 0 0 0 16px; border-left: 2px solid var(--jaune);
+  margin: 16px 0 0; padding: 0 0 0 16px; border-left: 2px solid var(--bleu);
   font-size: 14.5px; line-height: 1.72; color: var(--encre-2);
 }
 .caution {
@@ -489,7 +570,7 @@ body.vue-intro .map-canvas {
 .audio-head { display: flex; align-items: center; gap: 12px; }
 .play {
   width: 42px; height: 42px; border: 0; flex: none;
-  background: var(--jaune); color: var(--encre); font-size: 14px;
+  background: var(--bleu); color: #FFF; font-size: 14px;
   display: grid; place-items: center;
 }
 .play:hover { background: var(--encre); color: var(--blanc); }
@@ -524,7 +605,7 @@ body.vue-intro .map-canvas {
   padding: 11px 2px; font-size: 13px;
 }
 .tem-list button:hover { background: var(--blanc-2); }
-.tem-list .pin { width: 8px; height: 8px; flex: none; background: var(--bleu); }
+.tem-list .pin { width: 8px; height: 8px; flex: none; background: var(--eau); }
 .tem-list .nm { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .tem-list .yr { font-family: var(--mono); font-size: 11px; color: var(--txt-faint); flex: none; }
 
@@ -538,24 +619,24 @@ body.vue-intro .map-canvas {
 .hud { position: absolute; z-index: 12; }
 
 /* -------------------------------------------- VISITE GUIDÉE DES AGRÉGATS
-   Modèle Forensic Architecture : on entre dans la carte par une série de
-   lieux, une flèche fait passer au suivant, et à la fin la navigation
-   devient libre. Remplace le mouvement automatique « au repos », qui donnait
-   l'impression d'une carte qui dérive toute seule. */
+   Retours V2 : « intégrer intégralement à la navigation, et ne pas mettre
+   l'encadré sur la carte mais sur le côté, en bas de la slide ».
+
+   Les flèches vivent donc dans le panneau, juste au-dessus du pied, et
+   n'apparaissent que pendant la visite. Sur la carte, plus rien ne flotte. */
 #tour {
-  left: 50%; transform: translateX(-50%); bottom: 20px;
-  display: flex; align-items: stretch; background: var(--blanc);
-  border: 1px solid var(--filet); max-width: min(560px, calc(100% - 32px));
+  display: none; align-items: stretch;
+  border-top: 1px solid var(--filet); background: var(--blanc);
 }
-#tour.off { display: none; }
+body.en-visite #tour { display: flex; }
 #tour button {
   background: none; border: 0; color: var(--encre); font-size: 19px;
-  padding: 0 15px; flex: none;
+  padding: 0 16px; flex: none;
 }
-#tour button:hover:not(:disabled) { background: var(--jaune); }
+#tour button:hover:not(:disabled) { background: var(--bleu); color: #FFF; }
 #tour button:disabled { color: var(--filet); cursor: default; }
 #tour .tour-mid {
-  flex: 1; min-width: 0; padding: 10px 6px; text-align: center;
+  flex: 1; min-width: 0; padding: 11px 8px; text-align: center;
   border-left: 1px solid var(--filet-fin); border-right: 1px solid var(--filet-fin);
 }
 #tour .tour-pos {
@@ -579,8 +660,11 @@ body.vue-intro .map-canvas {
    Le repli ne sert qu'au pouce, où la place manque vraiment — d'où un état
    porté par la CSS et non par du JavaScript, qui se trompait de largeur au
    premier rendu. */
+/* Retours V2 : « la légende est trop basse, cache le bouton pour zoomer ».
+   Les contrôles de zoom de MapLibre occupent le coin bas-droit ; la légende
+   se pose au-dessus d'eux plutôt qu'à côté. */
 #legend {
-  right: 16px; bottom: 16px; background: var(--blanc); border: 1px solid var(--filet);
+  right: 16px; bottom: 106px; background: var(--blanc); border: 1px solid var(--filet);
   font-size: 12px; min-width: 208px;
 }
 #legend-toggle { display: none; }
@@ -594,9 +678,8 @@ body.vue-intro .map-canvas {
 #legend .li { display: flex; align-items: center; gap: 9px; padding: 6px 0; }
 #legend .li + .li { border-top: 1px solid var(--filet-fin); }
 #legend .leg-surface { width: 15px; height: 15px; border: 2px solid; flex: none; }
-#legend .leg-surface.confirme { border-color: var(--rouge); background: rgba(216,40,29,.22); }
-#legend .leg-surface.enquete  { border-color: var(--orange); background: rgba(224,123,10,.22); }
-#legend .leg-point { width: 11px; height: 11px; flex: none; background: var(--bleu); margin: 0 2px; }
+#legend .leg-surface.cluster { border-color: var(--violet); background: rgba(109,47,196,.28); }
+#legend .leg-point { width: 11px; height: 11px; flex: none; background: var(--eau); margin: 0 2px; }
 
 /* --------------------------------------------- ÉQUIVALENT ACCESSIBLE
    Une carte deck.gl n'est pas atteignable au clavier ni au lecteur d'écran.
@@ -610,7 +693,7 @@ body.vue-intro .map-canvas {
 .tbl th { font-size: 9.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--txt-faint); font-weight: 600; }
 .tbl tbody tr:hover { background: var(--blanc-2); }
 .tbl td button { background: none; border: 0; padding: 0; text-align: left; color: var(--encre); font-size: 12px; }
-.tbl td button:hover { box-shadow: inset 0 -.8em 0 0 var(--jaune); font-weight: 700; }
+.tbl td button:hover { border-bottom: 1px solid var(--encre); font-weight: 700; }
 .tbl-actions { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
 
 /* -------------------------------------------------------------- MODALE */
@@ -683,8 +766,7 @@ body.vue-intro .map-canvas {
 
   /* La visite guidée prend toute la largeur au bas de la carte ; la légende
      se pose au-dessus d'elle plutôt qu'à côté, où elle la recouvrait. */
-  #tour { bottom: calc(var(--sheet-peek) + 10px); left: 10px; right: 10px; transform: none; max-width: none; }
-  #legend { right: 10px; bottom: calc(var(--sheet-peek) + 62px); min-width: 0; }
+  #legend { right: 10px; bottom: calc(var(--sheet-peek) + 56px); min-width: 0; }
   #legend-toggle {
     display: flex; align-items: center; gap: 8px; width: 100%; text-align: left;
     background: none; border: 0; color: var(--encre); font-size: 12.5px; padding: 10px 13px;

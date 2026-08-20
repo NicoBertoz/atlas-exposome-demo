@@ -97,77 +97,19 @@
       `<b>${HOTSPOTS.length} endroits</b> où les autorités ont enquêté sur une concentration de
        cancers de l'enfant, <b>${state.signalements.length} autres signalements</b> instruits,
        et <b>${D.temoignages.features.length} cas</b> racontés par des familles.`;
-    renderFiltre();
     if ($('#tableau-wrap').classList.contains('on')) renderTableau();
   }
 
-  /* -------------------------------------------- FILTRE PAR MALADIE
-     Modèle « polluants » de dansmoneau.fr : un bouton qui dit l'état
-     courant, une liste multi-sélection qui s'ouvre au clic, et « toutes »
-     en tête. Les pathologies peu représentées sont regroupées sous un
-     intitulé « cancers plus rares » — le repli demandé par Lila. Il ne se
-     déclenche qu'au-delà de six entrées : avec trois pathologies de démo,
-     il n'a aucune raison de s'afficher. */
-  const SEUIL_RARE = 6;
+  /* ---------------------------------------------- FILTRE PAR MALADIE
+     RETIRÉ en V2 : « enlever filtrer par maladie ».
 
-  function comptes() {
-    const n = {};
-    D.temoignages.features.forEach(f => {
-      n[f.properties.patho_id] = (n[f.properties.patho_id] || 0) + 1;
-    });
-    return n;
-  }
-
-  function renderFiltre() {
-    const n = comptes();
-    const tri = [...PATHOS].sort((a, b) => (n[b.id] || 0) - (n[a.id] || 0));
-    const courants = tri.length > SEUIL_RARE ? tri.slice(0, SEUIL_RARE) : tri;
-    const rares = tri.length > SEUIL_RARE ? tri.slice(SEUIL_RARE) : [];
-    const tout = state.pathos.size === PATHOS.length;
-
-    const ligne = p => `
-      <button class="dd-item ${state.pathos.has(p.id) ? 'on' : ''}" role="option"
-              aria-selected="${state.pathos.has(p.id)}" data-patho="${p.id}">
-        <span class="case" aria-hidden="true">${state.pathos.has(p.id) ? '✓' : ''}</span>
-        <span class="lbl">${p.label}</span>
-        <span class="n">${n[p.id] || 0}</span>
-      </button>`;
-
-    $('#dd-liste').innerHTML = `
-      <button class="dd-item tout ${tout ? 'on' : ''}" role="option" aria-selected="${tout}" data-patho="__all">
-        <span class="case" aria-hidden="true">${tout ? '✓' : ''}</span>
-        <span class="lbl">Toutes les maladies</span>
-        <span class="n">${D.temoignages.features.length}</span>
-      </button>
-      ${courants.map(ligne).join('')}
-      ${rares.length ? `<div class="dd-groupe">Cancers plus rares</div>${rares.map(ligne).join('')}` : ''}`;
-
-    $('#dd-label').innerHTML = tout
-      ? 'Toutes les maladies'
-      : state.pathos.size === 1
-        ? PATHOS.find(p => state.pathos.has(p.id)).label
-        : `${state.pathos.size} maladies <em>sur ${PATHOS.length}</em>`;
-  }
-
-  const dd = $('#dd-maladie');
-  $('#dd-bouton').addEventListener('click', () => {
-    const open = dd.classList.toggle('open');
-    $('#dd-bouton').setAttribute('aria-expanded', open);
-  });
-  $('#dd-liste').addEventListener('click', ev => {
-    const el = ev.target.closest('[data-patho]'); if (!el) return;
-    const id = el.dataset.patho;
-    if (id === '__all') {
-      state.pathos = new Set(PATHOS.map(p => p.id));
-    } else {
-      state.pathos.has(id) ? state.pathos.delete(id) : state.pathos.add(id);
-      if (!state.pathos.size) state.pathos = new Set(PATHOS.map(p => p.id));
-    }
-    refresh();
-  });
-  document.addEventListener('click', ev => {
-    if (!dd.contains(ev.target)) { dd.classList.remove('open'); $('#dd-bouton').setAttribute('aria-expanded', false); }
-  });
+     ⚠ Conflit ouvert : Lila et Nico l'avaient tous deux explicitement
+     demandé (« dropdown menu où l'on puisse filtrer par maladie + toutes »,
+     « dropdown maladies exactement sur le modèle polluants de
+     dansmoneau.fr »). Il est donc débranché, pas supprimé : `state.pathos`
+     contient toujours toutes les pathologies, applyFilters() sait toujours
+     s'en servir, et le gabarit du menu dort dans l'historique Git.
+     Le rétablir tient en un bloc HTML et un appel à renderFiltre(). */
 
   /* ------------------------------------------------- ENCART « INFO » */
   $('#info-tete').addEventListener('click', () => {
@@ -219,6 +161,7 @@
   }
   function closeDetail() {
     document.body.classList.remove('fiche-ouverte');
+    document.body.classList.remove('en-visite');
     $('#detail').classList.remove('on');
     $('#info-bloc').style.display = '';
     stopAudio();
@@ -230,7 +173,7 @@
   function blocParticiper(contexte) {
     return `<div class="fiche-cta">
       <p>${contexte}</p>
-      <a class="btn btn-accent" href="participer.html">Signaler un cas →</a>
+      <a class="btn btn-accent" href="participer.html">Participer à la carte →</a>
     </div>`;
   }
 
@@ -455,11 +398,17 @@
     if (!TOUR.length) return;
     tourIdx = Math.max(0, Math.min(TOUR.length - 1, i));
     const p = TOUR[tourIdx];
+    /* Retours V2 : « je vois que ceci apparaît de temps en temps, puis
+       disparaît → intégrer intégralement à la navigation, et ne pas mettre
+       l'encadré sur la carte mais sur le côté, en bas de la slide ».
+       Les flèches vivent donc dans le panneau, sous la fiche, et ne
+       flottent plus au-dessus de la carte. */
+    document.body.classList.add('en-visite');
     $('#tour-pos').textContent = `Lieu ${tourIdx + 1} sur ${TOUR.length}`;
     $('#tour-nom').textContent = p.nom;
     $('#tour-prev').disabled = tourIdx === 0;
     $('#tour-next').disabled = tourIdx === TOUR.length - 1;
-    showHotspot(p, false);
+    showHotspot(p, true);
     if (ready[state.engine]) engines[state.engine].fitZone(p);
   }
   /* Démarre la visite si, et seulement si, tout est réuni : on est sur la
@@ -472,7 +421,7 @@
   }
   function finTour() {
     tourActif = false;
-    $('#tour').classList.add('off');
+    document.body.classList.remove('en-visite');
     closeDetail();
     if (ready[state.engine]) engines[state.engine].fitFrance();
   }
@@ -650,7 +599,7 @@
   if (zoneVoulue) {
     /* Retour depuis une page dossier : on ouvre directement le secteur,
        la visite guidée n'a pas lieu d'être. */
-    tourActif = false; $('#tour').classList.add('off');
+    tourActif = false; document.body.classList.remove('en-visite');
     const z = state.hotspots.find(f => f.properties.id === zoneVoulue);
     if (z) setTimeout(() => {
       showHotspot(z.properties);

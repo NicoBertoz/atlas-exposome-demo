@@ -6,20 +6,21 @@
 window.NK_SHARED = (function () {
   'use strict';
 
-  const C = { confirme: '#D8281D', enquete: '#E07B0A' };
+  const C = { cluster: '#6D2FC4', cas: '#2E9B8F' };
 
-  /* Deux couleurs, plus trois. Rouge si l'excès de cas est confirmé
-     (catégorie A du corpus), orange s'il est contesté ou en cours
-     d'instruction (B, C, D).
+  /* UNE couleur pour toutes les zones enquêtées (retours V2 : « seulement
+     2 couleurs à indiquer : 1 cluster, 2 cas individuel reporté »).
 
-     Le gris « périmètre non publié » a sauté : la relecture a demandé de
-     réduire la légende, et ce troisième état disait surtout quelque chose
-     sur la publication du rapport, pas sur la situation sanitaire. Le
-     secteur concerné est un excès CONFIRMÉ : il est donc rouge comme les
-     autres, et le fait que son périmètre soit tenu secret est écrit dans
-     sa fiche, là où il se lit vraiment. */
-  function zoneColor(p) {
-    return p.categorie === 'A' ? C.confirme : C.enquete;
+     La distinction excès confirmé / non confirmé ne disparaît pas pour
+     autant : elle est écrite en toutes lettres en tête de chaque fiche.
+     Elle n'est simplement plus portée par la couleur, où elle demandait au
+     lecteur de retenir une clé de plus.
+
+     ⚠ Ce point est en conflit ouvert avec la relecture de Lila, qui jugeait
+     cette distinction visuelle utile. Rétablir deux teintes se fait ici, et
+     nulle part ailleurs. */
+  function zoneColor() {
+    return C.cluster;
   }
 
   const nb = v => String(v).replace('.', ',');
