@@ -1,11 +1,16 @@
 #!/usr/bin/env bash
 # ------------------------------------------------------------------------
-#  Mise en ligne de la démo. Le site est 100 % statique : n'importe quel
-#  hébergeur de fichiers fait l'affaire. Trois chemins prêts à l'emploi.
+#  Mise en ligne de la démo. Le site est 100 % statique.
 #
-#    ./deploy.sh pages    GitHub Pages (dépôt NicoBertoz/atlas-exposome-demo)
+#    ./deploy.sh pages    pousse `main` ; l'Action publie sur gh-pages
 #    ./deploy.sh vercel   Vercel, déploiement direct du dossier
 #    ./deploy.sh check    vérifie que rien ne manque avant d'envoyer
+#
+#  Depuis la mise en place des bacs à sable, GitHub Pages ne sert plus
+#  `main` mais la branche `gh-pages`, écrite par le workflow
+#  .github/workflows/deploiement.yml. Ce script ne fait donc plus que
+#  vérifier, versionner les ressources, committer et pousser : c'est
+#  l'Action qui publie, et elle publie aussi les bacs.
 # ------------------------------------------------------------------------
 set -euo pipefail
 cd "$(dirname "$0")"
@@ -38,9 +43,8 @@ case "${1:-check}" in
     gh repo view "$REPO" >/dev/null 2>&1 || \
       gh repo create "$REPO" --public --source=. --remote=origin --push
     git push -q origin main || git push -q --set-upstream origin main
-    gh api -X POST "repos/{owner}/$REPO/pages" \
-      -f "source[branch]=main" -f "source[path]=/" >/dev/null 2>&1 || true
     echo "→ https://$(gh api user -q .login | tr '[:upper:]' '[:lower:]').github.io/$REPO/"
+    echo "  publication en cours : gh run watch  (ou l'onglet Actions)"
     ;;
 
   vercel)

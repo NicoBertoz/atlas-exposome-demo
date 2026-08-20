@@ -1,0 +1,178 @@
+# ------------------------------------------------------------------ #
+#  Déploiement du site et des bacs à sable.
+#
+#  Deux chemins, un seul mécanisme :
+#
+#    main            -> https://nicobertoz.github.io/atlas-exposome-demo/
+#    bac/<prénom>    -> https://nicobertoz.github.io/atlas-exposome-demo/bac/<prénom>/
+#
+#  Tout atterrit dans la branche `gh-pages`, que GitHub Pages sert. Chaque
+#  exécution ne touche QUE son propre dossier : deux personnes qui poussent
+#  en même temps sur deux bacs différents ne s'écrasent pas.
+#
+#  ── Pourquoi les tuiles ne sont pas copiées ──────────────────────────
+#  `tiles/france.pmtiles` pèse 82 Mo. Le recopier dans chaque bac ferait
+#  grossir l'historique de `gh-pages` de 82 Mo à chaque déploiement, et le
+#  dépôt deviendrait inutilisable en quelques semaines. Les bacs pointent
+#  donc vers le fichier de la racine (voir la fonction `racineDuSite()`
+#  dans js/style-nk.js). Conséquence : un bac ne peut pas changer le fond
+#  de carte lui-même, mais il peut tout changer d'autre.
+# ------------------------------------------------------------------ #
+name: Déploiement
+
+on:
+  push:
+    branches:
+      - main
+      - 'bac/**'
+  # Permet de redéployer à la main depuis l'onglet Actions
+  workflow_dispatch:
+
+# Une seule exécution à la fois par branche : deux poussées rapprochées ne
+# se marchent pas dessus. On ne coupe pas celle en cours, sinon un
+# déploiement peut laisser gh-pages à moitié écrit.
+concurrency:
+  group: deploiement-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  publier:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer la branche poussée
+        uses: actions/checkout@v4
+        with:
+          path: source
+          lfs: false
+
+      - name: Calculer la destination
+        id: cible
+        run: |
+          BRANCHE="${GITHUB_REF#refs/heads/}"
+          if [ "$BRANCHE" = "main" ]; then
+            echo "dossier=." >> "$GITHUB_OUTPUT"
+            echo "nom=le site" >> "$GITHUB_OUTPUT"
+            echo "url=/atlas-exposome-demo/" >> "$GITHUB_OUTPUT"
+          else
+            # bac/philippine -> philippine. On n'accepte que des noms simples :
+            # ils deviennent un segment d'URL et un nom de dossier.
+            NOM="${BRANCHE#bac/}"
+            if ! echo "$NOM" | grep -qE '^[a-z0-9][a-z0-9-]{0,30}$'; then
+              echo "::error::Nom de bac invalide : « $NOM ». Utilisez des minuscules, des chiffres et des tirets, par exemple bac/philippine."
+              exit 1
+            fi
+            echo "dossier=bac/$NOM" >> "$GITHUB_OUTPUT"
+            echo "nom=le bac de $NOM" >> "$GITHUB_OUTPUT"
+            echo "url=/atlas-exposome-demo/bac/$NOM/" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Récupérer gh-pages
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: publie
+        continue-on-error: true
+
+      - name: Préparer gh-pages si elle n'existe pas encore
+        run: |
+          if [ ! -d publie/.git ]; then
+            mkdir -p publie && cd publie
+            git init -q -b gh-pages
+            git remote add origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
+          fi
+
+      - name: Recopier le contenu
+        run: |
+          set -eu
+          DEST="publie/${{ steps.cible.outputs.dossier }}"
+          mkdir -p "$DEST"
+
+          # --delete pour qu'un fichier supprimé dans la branche disparaisse
+          # aussi du site. --exclude protège les bacs quand on publie main.
+          EXCLUS=(--exclude '.git' --exclude '.github' --exclude 'scripts/fr.geojson')
+          if [ "${{ steps.cible.outputs.dossier }}" = "." ]; then
+            # main : on ne touche pas au dossier des bacs
+            EXCLUS+=(--exclude 'bac')
+          else
+            # un bac : pas de tuiles, il utilise celles de la racine
+            EXCLUS+=(--exclude 'tiles')
+          fi
+
+          rsync -a --delete "${EXCLUS[@]}" source/ "$DEST/"
+
+          # Un .nojekyll, sinon GitHub Pages ignore les dossiers commençant
+          # par un underscore et fait tourner Jekyll pour rien.
+          touch publie/.nojekyll
+
+      - name: Régénérer l'index des bacs
+        run: |
+          set -eu
+          cd publie
+          python3 - <<'PY'
+          import os, html, datetime, pathlib
+
+          bacs = sorted(p.name for p in pathlib.Path('bac').iterdir()
+                        if p.is_dir()) if os.path.isdir('bac') else []
+
+          lignes = '\n'.join(
+              f'<li><a href="{html.escape(b)}/">{html.escape(b)}</a>'
+              f'<span>bac/{html.escape(b)}</span></li>' for b in bacs
+          ) or '<li class="vide">Aucun bac à sable pour l\'instant.</li>'
+
+          pathlib.Path('bac').mkdir(exist_ok=True)
+          pathlib.Path('bac/index.html').write_text(f"""<!DOCTYPE html>
+          <html lang="fr"><head><meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <meta name="robots" content="noindex, nofollow">
+          <title>Bacs à sable — Veille sanitaire participative</title>
+          <link rel="stylesheet" href="../css/app.css">
+          <link rel="stylesheet" href="../css/page.css">
+          </head><body class="page-article">
+          <header id="topbar">
+            <div class="brand">Veille<span class="brand-long"> sanitaire participative</span></div>
+            <div class="spacer"></div>
+            <nav id="nav-onglets"><a class="onglet" href="../" data-mot="Le site">Le site</a></nav>
+          </header>
+          <main id="article"><article>
+            <h1>Bacs à sable</h1>
+            <p class="chapo">Une copie du site par personne, pour essayer des choses sans
+              toucher au site principal. Chaque bac se déploie tout seul à chaque
+              enregistrement.</p>
+            <ul class="liste-bacs">{lignes}</ul>
+            <section class="art-sec">
+              <h2>En ouvrir un</h2>
+              <p>Voir <a href="https://github.com/NicoBertoz/atlas-exposome-demo/blob/main/BAC-A-SABLE.md">le mode d'emploi</a>,
+                écrit pour être suivi sans rien connaître à Git.</p>
+            </section>
+            <p class="fine-note">Page régénérée automatiquement le {datetime.date.today().isoformat()}.</p>
+          </article></main></body></html>
+          """, encoding='utf-8')
+          print('bacs listés :', bacs or 'aucun')
+          PY
+
+      - name: Publier
+        run: |
+          set -eu
+          cd publie
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Rien n'a changé, pas de publication."
+            exit 0
+          fi
+          git commit -q -m "Publie ${{ steps.cible.outputs.nom }} (${GITHUB_SHA:0:7})"
+          git push -q origin gh-pages
+
+      - name: Récapitulatif
+        run: |
+          {
+            echo "### ${{ steps.cible.outputs.nom }} est en ligne"
+            echo ""
+            echo "<https://nicobertoz.github.io${{ steps.cible.outputs.url }}>"
+            echo ""
+            echo "Comptez une à deux minutes avant que la page se rafraîchisse."
+          } >> "$GITHUB_STEP_SUMMARY"

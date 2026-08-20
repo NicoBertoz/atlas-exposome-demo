@@ -20,8 +20,22 @@ window.NK_STYLE = (function () {
   'use strict';
 
   /* Le protocole pmtiles:// attend une URL absolue : un chemin relatif
-     échoue sans lever d'erreur, la carte reste simplement vide. */
-  const FICHIER = new URL('tiles/france.pmtiles', document.baseURI).href;
+     échoue sans lever d'erreur, la carte reste simplement vide.
+
+     ── Et les bacs à sable ────────────────────────────────────────────
+     Le fichier de tuiles pèse 82 Mo. Il n'est déployé qu'UNE fois, à la
+     racine du site ; les bacs à sable, servis sous /bac/<prénom>/, le
+     réutilisent au lieu d'en garder chacun une copie (voir le workflow
+     .github/workflows/deploiement.yml). On remonte donc à la racine
+     plutôt que de résoudre le chemin depuis la page courante. */
+  function racineDuSite() {
+    const chemin = location.pathname;
+    const bac = chemin.match(/^(.*?)\/bac\/[^/]+\//);
+    if (bac) return location.origin + bac[1] + '/';
+    return new URL('.', document.baseURI).href;
+  }
+
+  const FICHIER = new URL('tiles/france.pmtiles', racineDuSite()).href;
   const SOURCE = 'pmtiles://' + FICHIER;
 
   const PALETTES = {

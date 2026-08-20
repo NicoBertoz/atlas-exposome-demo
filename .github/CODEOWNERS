@@ -1,0 +1,6 @@
+# Toute modification du site principal passe par une relecture de Nicolas.
+# Combiné à la règle de protection de `main`, c'est ce qui garantit que
+# personne ne publie sur le site de l'équipe sans qu'il l'ait vu.
+#
+# Les branches `bac/**` ne sont pas concernées : chacun y fait ce qu'il veut.
+*       @NicoBertoz
