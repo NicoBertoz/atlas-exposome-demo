@@ -69,19 +69,24 @@ jobs:
             echo "url=/atlas-exposome-demo/bac/$NOM/" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Récupérer gh-pages
-        uses: actions/checkout@v4
-        with:
-          ref: gh-pages
-          path: publie
-        continue-on-error: true
-
-      - name: Préparer gh-pages si elle n'existe pas encore
+      # On ne passe pas par actions/checkout ici : quand la branche n'existe
+      # pas encore, il crée quand même un dossier .git avant d'échouer, et on
+      # se retrouve avec un dépôt sur une branche qui n'est pas gh-pages —
+      # le push finit alors sur « src refspec gh-pages does not match any ».
+      # Un clone explicite, avec repli sur une branche neuve, est sans surprise.
+      - name: Récupérer ou créer gh-pages
+        env:
+          DEPOT: https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git
         run: |
-          if [ ! -d publie/.git ]; then
+          set -eu
+          if git clone --quiet --depth 1 --branch gh-pages "$DEPOT" publie 2>/dev/null; then
+            echo "gh-pages récupérée."
+          else
+            echo "gh-pages n'existe pas encore, on la crée."
             mkdir -p publie && cd publie
-            git init -q -b gh-pages
-            git remote add origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
+            git init -q
+            git checkout -q -b gh-pages
+            git remote add origin "$DEPOT"
           fi
 
       - name: Recopier le contenu
@@ -157,6 +162,9 @@ jobs:
         run: |
           set -eu
           cd publie
+          # La branche doit s'appeler gh-pages, quel que soit le chemin suivi
+          # au-dessus (clone existant ou dépôt fraîchement initialisé).
+          git symbolic-ref -q HEAD refs/heads/gh-pages || git checkout -q -B gh-pages
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
