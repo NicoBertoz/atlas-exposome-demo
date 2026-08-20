@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FFFFFF">
+<!-- Démo de travail, pas encore validée par l'équipe éditoriale : on ne
+     veut pas qu'elle remonte dans les moteurs de recherche avec des
+     témoignages fictifs. À retirer au moment de la publication réelle. -->
+<meta name="robots" content="noindex, nofollow">
+
+<title>Veille sanitaire participative des cancers pédiatriques</title>
+
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+<link rel="stylesheet" href="css/page.css?v=b50dced8">
+<link rel="stylesheet" href="css/app.css?v=b50dced8">
+</head>
+<body>
+
+<!-- ------------------------------------------------------------- BARRE
+     Les cinq mêmes onglets sur toutes les pages du site. -->
+<header id="topbar">
+  <div class="brand">Veille<span class="brand-long"> sanitaire participative</span></div>
+  <div class="spacer"></div>
+  <nav id="nav-onglets" aria-label="Navigation principale">
+    <button class="onglet on" data-mode="intro" data-mot="Contexte">Contexte</button>
+    <button class="onglet" data-mode="carte" data-mot="Carte">Carte</button>
+    <a class="onglet" href="apropos.html" data-mot="À propos">À propos</a>
+    <a class="onglet" href="participer.html" data-mot="Participer">Participer</a>
+    <a class="onglet" href="ressources.html" data-mot="Ressources">Ressources</a>
+  </nav>
+</header>
+
+<!-- ------------------------------------ SECTION 1 : LE DÉROULÉ -->
+<main id="section1"></main>
+
+<!-- ------------------------------ SECTION 2 : LA CARTE + FICHES -->
+<button id="panel-rouvrir">Rouvrir le panneau →</button>
+
+<aside id="panel" aria-label="Informations sur la carte">
+  <button id="sheet-grip" aria-label="Ouvrir ou fermer le panneau"><span></span></button>
+  <button id="panel-close" aria-label="Fermer le panneau">×</button>
+
+  <div class="panel-scroll" id="panel-scroll">
+
+    <section class="sec detail" id="detail"></section>
+
+    <!-- « Ce que montre cette carte » : replié derrière une icône
+         d'information, plus affiché par défaut. -->
+    <div class="info-bloc" id="info-bloc">
+      <button class="info-tete" id="info-tete" aria-expanded="false" aria-controls="info-corps">
+        <span class="ico" aria-hidden="true">i</span>
+        <span>Ce que montre cette carte</span>
+        <span class="chev" aria-hidden="true">▾</span>
+      </button>
+      <div class="info-corps" id="info-corps">
+        <p class="lede" id="lede-chiffres"></p>
+        <p class="fine">
+          Les zones colorées viennent d'enquêtes publiques : rapports de Santé publique France,
+          registres, presse. Chaque fiche porte son lien vers le rapport d'origine.
+          Les cas déclarés sont <b>fictifs</b>, générés pour tester l'affichage.
+        </p>
+        <p class="fine">
+          Une <b>zone violette</b> est un endroit où les autorités ont compté plus de cas
+          qu'attendu et ont ouvert une enquête. Chaque <b>point vert</b> est un cas raconté par
+          une famille : sa position à l'intérieur du secteur est volontairement approximative.
+        </p>
+      </div>
+    </div>
+
+    <!-- Équivalent accessible de la carte : la même information, en tableau,
+         atteignable au clavier et lisible par un lecteur d'écran. -->
+    <section class="sec explore">
+      <h2>Sans la carte</h2>
+      <p class="fine">La carte n'est pas utilisable au clavier ni au lecteur d'écran.
+        Le même contenu existe en tableau.</p>
+      <button class="btn" id="btn-tableau" aria-expanded="false" aria-controls="tableau-wrap">
+        Afficher la liste des lieux
+      </button>
+      <div id="tableau-wrap"></div>
+    </section>
+
+  </div>
+
+  <!-- Visite guidée : « intégrer intégralement à la navigation, et ne pas
+       mettre l'encadré sur la carte mais sur le côté, en bas de la slide ».
+       Les flèches sont donc dans le panneau, pas au-dessus de la carte. -->
+  <div id="tour">
+    <button id="tour-prev" aria-label="Lieu précédent">‹</button>
+    <div class="tour-mid">
+      <div class="tour-pos" id="tour-pos"></div>
+      <div class="tour-nom" id="tour-nom"></div>
+    </div>
+    <button id="tour-next" aria-label="Lieu suivant">›</button>
+    <button class="tour-fin" id="tour-fin">Explorer librement</button>
+  </div>
+
+  <div class="panel-foot">
+    <a class="btn btn-accent" href="participer.html">Participer à la carte →</a>
+  </div>
+</aside>
+
+<!-- ------------------------------------------------------------- CARTE -->
+<div id="map-stage">
+  <div id="map-deck" class="map-canvas on"></div>
+  <div id="deck-tip"></div>
+
+  <div id="loading">chargement du fond de carte…</div>
+
+  <!-- Cartouche outre-mer : les cinq DROM au même facteur d'échelle. -->
+  <aside class="hud" id="drom" aria-label="Outre-mer"></aside>
+
+  <div class="hud" id="legend">
+    <button id="legend-toggle" aria-expanded="false" aria-controls="legend-body">
+      Légende <span class="chev" aria-hidden="true">▾</span>
+    </button>
+    <div id="legend-body">
+      <div class="leg-titre">Légende</div>
+      <div class="li"><span class="leg-surface cluster"></span> Cluster enquêté</div>
+      <div class="li"><span class="leg-point"></span> Cas raconté par une famille</div>
+    </div>
+  </div>
+</div>
+
+<!-- ------------------------------------------------------------ MODALE -->
+<div id="modal" role="dialog" aria-modal="true"><div class="modal-box" id="modal-box"></div></div>
+
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<script src="https://unpkg.com/deck.gl@9.0.35/dist.min.js"></script>
+<script src="https://unpkg.com/pmtiles@3.2.0/dist/pmtiles.js"></script>
+
+<script src="js/data.js?v=b50dced8"></script>
+<script src="js/hotspots-pages.js?v=b50dced8"></script>
+<script src="js/recit.js?v=b50dced8"></script>
+<script src="js/section1.js?v=b50dced8"></script>
+<script src="js/masque-france.js?v=b50dced8"></script>
+<script src="js/drom.js?v=b50dced8"></script>
+<script src="js/drom-panel.js?v=b50dced8"></script>
+<script src="js/style-nk.js?v=b50dced8"></script>
+<script src="js/shared.js?v=b50dced8"></script>
+<script src="js/engine-deck.js?v=b50dced8"></script>
+<script src="js/app.js?v=b50dced8"></script>
+</body>
+</html>

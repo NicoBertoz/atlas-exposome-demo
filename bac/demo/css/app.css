@@ -1,0 +1,843 @@
+/* ------------------------------------------------------------------ *
+ *  Démo carto — Projet NK / Atlas de l'exposome
+ *
+ *  Révision du 18/08/2026, après relecture Philippine / Fau / Lila / Nico.
+ *
+ *  Ce que la relecture a tranché, et qui gouverne tout ce fichier :
+ *    - fond BLANC, aucun motif, aucun grain ;
+ *    - AUCUN encadré noir : des filets gris très fins, ou rien ;
+ *    - AUCUN bord arrondi, nulle part ;
+ *    - Helvetica (version de travail, en attendant la charte NK de septembre) ;
+ *    - onglets et boutons : le texte se surligne et devient gras au survol ;
+ *    - pas de mode sombre.
+ *
+ *  Trois encres seulement, désormais :
+ *    rouge    agrégat dont l'excès est confirmé
+ *    orange   agrégat contesté, ou enquête en cours
+ *    bleu     un cas déclaré par une famille — UNE seule couleur, plus de
+ *             différenciation par pathologie (le tri se fait au filtre)
+ *  Le jaune reste le surligneur : réservé à ce sur quoi la main doit aller.
+ *
+ *  Layout : deux points de rupture.
+ *    ≥ 860px  panneau latéral fixe à gauche, carte à droite
+ *    < 860px  carte plein écran + panneau en feuille glissante
+ * ------------------------------------------------------------------ */
+:root {
+  --blanc:     #FFFFFF;
+  --blanc-2:   #F7F6F3;   /* aplat de survol, à peine posé */
+  --casse:     #F2EFE7;   /* le blanc cassé de la France sur la carte */
+  --encre:     #14120D;
+  --encre-2:   #4A4740;
+  --encre-3:   #7C776E;
+
+  /* Les filets. Il n'y a plus de « trait d'encre » : une seule graisse,
+     très fine, et une nuance plus claire pour les séparations internes. */
+  --filet:     #D8D5CD;
+  --filet-fin: #E8E6E0;
+
+  /* Retours V2 : « remplacer le jaune par du bleu, voir ce que ça donne »,
+     et sur la carte « seulement 2 couleurs : cluster violet, cas individuel
+     vert d'eau ». Trois rôles, trois teintes, aucun recouvrement :
+       bleu       l'action — boutons, liens, appels de note
+       violet     une zone enquêtée
+       vert d'eau un cas raconté par une famille
+     Le jaune ne sert plus nulle part : le surlignage au survol est devenu
+     un trait fin noir. */
+  --bleu:      #C2185B;   /* bac de démonstration : le bleu passe en framboise */
+  --bleu-fonce:#132CA0;
+  --violet:    #6D2FC4;
+  --eau:       #2E9B8F;
+  --rouge:     #D8281D;
+  --orange:    #E07B0A;
+  --vert:      #0B8A4E;
+
+  /* Alias conservés pour ne pas réécrire chaque règle une par une */
+  --papier:    var(--blanc);
+  --papier-2:  var(--blanc-2);
+  --papier-3:  var(--filet-fin);
+  --trait:     var(--filet);
+  --trait-doux:var(--filet-fin);
+  --bg:        var(--blanc);
+  --bg-panel:  var(--blanc);
+  --bg-elev:   var(--blanc);
+  --line:      var(--filet);
+  --line-soft: var(--filet-fin);
+  --txt:       var(--encre);
+  --txt-dim:   var(--encre-2);
+  --txt-faint: var(--encre-3);
+  --accent:    var(--bleu);
+  --danger:    var(--rouge);
+  --warn:      var(--orange);
+  --ok:        var(--vert);
+  --sur-accent:#FFFFFF;   /* texte posé sur le bleu */
+
+  /* Helvetica en tête, comme demandé pour la version de travail. */
+  --font: "Helvetica Neue", Helvetica, Geneva, Arial, -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, monospace;
+  --panel-w: 392px;
+  --bar-h: 56px;
+  --sheet-peek: 108px;
+  --safe-b: env(safe-area-inset-bottom, 0px);
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; overscroll-behavior: none; }
+body {
+  background: var(--bg); color: var(--txt);
+  font-family: var(--font); font-size: 14px; line-height: 1.5;
+  overflow: hidden; -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+}
+a { color: var(--encre); text-decoration: none; border-bottom: 1px solid var(--filet); }
+a:hover { border-bottom-color: var(--encre); }
+button { font-family: inherit; font-size: inherit; cursor: pointer; }
+.show-sm { display: none; }
+
+/* Rien n'est arrondi. Une seule règle, plutôt que de traquer chaque radius. */
+*, *::before, *::after { border-radius: 0 !important; }
+
+/* `hidden` ne pèse rien face au moindre `display:` d'une classe. On lui rend
+   la priorité, sinon les champs conditionnels du questionnaire s'affichent. */
+[hidden] { display: none !important; }
+
+/* Le focus clavier doit rester visible partout : c'est la seule bordure
+   franche qu'on s'autorise, et elle ne concerne que la navigation au clavier. */
+:focus-visible { outline: 2px solid var(--bleu); outline-offset: 2px; }
+
+/* ---------------------------------------------------------------- BARRE */
+#topbar {
+  position: fixed; inset: 0 0 auto 0; height: var(--bar-h); z-index: 60;
+  display: flex; align-items: center; gap: 18px; padding: 0 20px;
+  background: var(--blanc); border-bottom: 1px solid var(--filet);
+}
+.brand { font-weight: 700; letter-spacing: -.02em; white-space: nowrap; font-size: 15px; }
+.brand small {
+  display: block; font-weight: 400; font-size: 9.5px; letter-spacing: .07em;
+  text-transform: uppercase; color: var(--txt-faint);
+}
+.spacer { flex: 1; }
+
+/* -------------------------------------------------------- ONGLETS
+   Les cinq mêmes onglets sur toutes les pages : contexte, carte, à propos,
+   participer, ressources. Au survol le mot se surligne et passe en gras,
+   c'est le seul effet. Pas de cadre, pas de pastille. */
+#nav-onglets { display: flex; align-items: center; gap: 4px; }
+/* Retours V2 : « remplacer le gros surlignement de stabilo par un trait fin
+   noir ». Le mot passe en gras et se souligne d'un filet d'un pixel — plus
+   d'aplat de couleur derrière le texte. */
+.onglet {
+  border: 0; background: none; color: var(--encre);
+  font-size: 13.5px; font-weight: 400; padding: 6px 9px 5px;
+  border-bottom: 1px solid transparent; transition: border-color .12s;
+}
+.onglet:hover, .onglet:focus-visible {
+  font-weight: 700; border-bottom-color: var(--encre);
+}
+/* Le gras change la largeur du mot et fait sauter la barre : on réserve la
+   place du gras dès le départ avec un doublon invisible. */
+.onglet::after {
+  content: attr(data-mot); display: block; height: 0; overflow: hidden;
+  font-weight: 700; visibility: hidden;
+}
+.onglet.on { font-weight: 700; border-bottom-color: var(--encre); }
+
+.btn {
+  background: var(--blanc); border: 1px solid var(--filet); color: var(--encre);
+  padding: 9px 14px; font-size: 13px; font-weight: 500;
+  transition: box-shadow .12s, border-color .12s; white-space: nowrap;
+}
+.btn:hover { border-color: var(--encre); }
+.btn-accent { background: var(--bleu); border-color: var(--bleu); color: #FFF; font-weight: 700; }
+.btn-accent:hover { background: var(--bleu-fonce); border-color: var(--bleu-fonce); }
+.btn-ghost { background: none; border-color: transparent; }
+.btn-ghost:hover { border-color: var(--filet); }
+
+/* Lien d'action discret, sans cadre : « Accéder à la carte ». Demandé
+   explicitement pour ne pas empiler un bouton de plus sur la landing. */
+.lien-action {
+  border: 0; background: none; padding: 2px 0 3px; color: inherit;
+  font-size: 17px; font-weight: 400; border-bottom: 1px solid currentColor;
+  transition: border-width .1s;
+}
+.lien-action:hover, .lien-action:focus-visible { font-weight: 700; }
+.lien-action::after {
+  content: attr(data-mot); display: block; height: 0; overflow: hidden;
+  font-weight: 700; visibility: hidden;
+}
+
+/* ---------------------------------------------------------------- CARTE */
+#map-stage { position: fixed; inset: var(--bar-h) 0 0 var(--panel-w); }
+.map-canvas { position: absolute; inset: 0; display: none; }
+.map-canvas.on { display: block; }
+.maplibregl-ctrl-attrib {
+  background: rgba(255,255,255,.88) !important; color: var(--txt-faint) !important;
+  font-size: 10px !important;
+}
+.maplibregl-ctrl-attrib a { color: var(--txt-dim) !important; }
+.maplibregl-ctrl-group {
+  background: var(--blanc) !important; border: 1px solid var(--filet) !important;
+  box-shadow: none !important;
+}
+.maplibregl-ctrl-group button + button { border-top-color: var(--filet) !important; }
+
+#loading {
+  position: absolute; inset: 0; display: grid; place-items: center;
+  background: var(--blanc); z-index: 15; font-size: 12px; color: var(--txt-faint);
+}
+#loading.off { display: none; }
+
+/* ------------------------------------------------------------ PANNEAU G */
+#panel {
+  position: fixed; inset: var(--bar-h) auto 0 0; width: var(--panel-w); z-index: 50;
+  background: var(--blanc); border-right: 1px solid var(--filet);
+  display: flex; flex-direction: column;
+}
+#sheet-grip { display: none; }
+.panel-scroll { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+.panel-scroll::-webkit-scrollbar { width: 8px; }
+.panel-scroll::-webkit-scrollbar-thumb { background: var(--filet); }
+
+.sec { padding: 18px 20px; border-bottom: 1px solid var(--filet-fin); }
+.sec h2 {
+  margin: 0 0 12px; font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--txt-faint); font-weight: 600;
+}
+.h2-sub { text-transform: none; letter-spacing: 0; opacity: .7; font-weight: 400; }
+.lede { margin: 0 0 10px; font-size: 13px; color: var(--txt-dim); line-height: 1.6; }
+.lede b { color: var(--txt); }
+.fine { margin: 0 0 8px; font-size: 11.5px; color: var(--txt-faint); line-height: 1.55; }
+.fine b { color: var(--txt-dim); }
+
+/* -------------------------------------------------- FILTRE PAR MALADIE
+   Modèle « polluants » de dansmoneau.fr : un champ fermé qui dit ce qui est
+   sélectionné, une liste qui s'ouvre au clic, une case « toutes » en tête.
+   Remplace la liste de couleurs, qui encombrait le panneau pour rien. */
+.dd { position: relative; }
+.dd-bouton {
+  width: 100%; text-align: left; background: var(--blanc);
+  border: 1px solid var(--filet); color: var(--encre);
+  padding: 11px 34px 11px 13px; font-size: 13.5px; position: relative;
+}
+.dd-bouton:hover { border-color: var(--encre); }
+.dd-bouton::after {
+  content: '▾'; position: absolute; right: 13px; top: 50%; transform: translateY(-50%);
+  color: var(--txt-faint); font-size: 11px;
+}
+.dd.open .dd-bouton::after { content: '▴'; }
+.dd-bouton em { font-style: normal; color: var(--txt-faint); font-size: 11.5px; }
+.dd-liste {
+  display: none; border: 1px solid var(--filet); border-top: 0;
+  max-height: 264px; overflow-y: auto; background: var(--blanc);
+}
+.dd.open .dd-liste { display: block; }
+.dd-item {
+  display: flex; align-items: center; gap: 10px; width: 100%; text-align: left;
+  background: none; border: 0; border-top: 1px solid var(--filet-fin);
+  padding: 9px 13px; font-size: 13px; color: var(--encre);
+}
+.dd-item:first-child { border-top: 0; }
+.dd-item:hover { background: var(--blanc-2); }
+.dd-item .case {
+  width: 13px; height: 13px; border: 1px solid var(--txt-faint); flex: none;
+  display: grid; place-items: center; font-size: 10px; line-height: 1; color: var(--encre);
+}
+.dd-item.on .case { background: var(--bleu); border-color: var(--bleu); color: #FFF; }
+.dd-item .lbl { flex: 1; }
+.dd-item .n { font-family: var(--mono); font-size: 11px; color: var(--txt-faint); }
+.dd-item.tout { font-weight: 700; border-bottom: 1px solid var(--filet); }
+/* Les cancers rares tiennent sous un seul repli, comme demandé. */
+.dd-groupe {
+  font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--txt-faint); padding: 10px 13px 4px; border-top: 1px solid var(--filet-fin);
+}
+
+.toggle-row {
+  display: flex; align-items: center; gap: 10px; padding: 7px 0;
+  font-size: 12.5px; color: var(--txt-dim);
+}
+.toggle-row input { accent-color: var(--bleu); width: 16px; height: 16px; flex: none; }
+.toggle-row em { font-style: normal; font-family: var(--mono); font-size: 10.5px; color: var(--txt-faint); }
+
+/* --------------------------------------------------- ENCART « INFO »
+   « Ce que montre cette carte » ne s'affiche plus par défaut : il est replié
+   derrière une icône d'information. Il reste à un clic, il n'occupe plus le
+   panneau à l'arrivée. */
+.info-bloc { border-bottom: 1px solid var(--filet-fin); }
+/* La marge à droite laisse la place à la croix de fermeture du panneau,
+   qui occupe le même coin quand aucune fiche n'est ouverte. */
+.info-tete {
+  display: flex; align-items: center; gap: 10px; width: 100%; text-align: left;
+  background: none; border: 0; padding: 14px 48px 14px 20px;
+  color: var(--encre); font-size: 13px;
+}
+.info-tete:hover { background: var(--blanc-2); }
+.info-tete .ico {
+  width: 19px; height: 19px; flex: none; border: 1px solid var(--encre);
+  display: grid; place-items: center; font-size: 11px; font-weight: 700;
+}
+.info-tete .chev { margin-left: auto; color: var(--txt-faint); font-size: 11px; }
+.info-corps { display: none; padding: 0 20px 16px; }
+.info-bloc.open .info-corps { display: block; }
+.info-bloc.open .info-tete .chev { transform: rotate(180deg); }
+
+.panel-foot {
+  padding: 14px 20px calc(14px + var(--safe-b)); border-top: 1px solid var(--filet);
+  display: flex; flex-direction: column; gap: 8px; background: var(--blanc);
+}
+.panel-foot .btn { width: 100%; text-align: center; display: block; }
+
+/* Croix de fermeture du panneau — demandée pour pouvoir dégager la carte.
+   Quand une fiche est ouverte, c'est SA croix qui occupe ce coin : celle du
+   panneau s'efface, sinon deux × se superposent au même pixel. */
+#panel-close {
+  position: absolute; right: 8px; top: 8px; z-index: 3;
+  background: none; border: 0; color: var(--txt-faint);
+  font-size: 20px; line-height: 1; padding: 4px 7px;
+}
+#panel-close:hover { color: var(--encre); background: var(--blanc-2); }
+body.fiche-ouverte #panel-close { display: none; }
+body.panneau-ferme #panel { transform: translateX(-101%); }
+body.panneau-ferme #panel-rouvrir { display: block; }
+#panel-rouvrir {
+  display: none; position: fixed; left: 0; top: calc(var(--bar-h) + 14px); z-index: 51;
+  background: var(--jaune); border: 1px solid var(--filet); border-left: 0;
+  padding: 10px 14px; font-size: 12.5px; font-weight: 700;
+}
+
+/* ------------------------------------------------------- MODE / RÉCIT */
+.mode-switch { display: flex; gap: 2px; flex: none; }
+
+/* ============================================ SECTION 1 : LE DÉROULÉ
+   Une colonne verticale, aérée, sur fond blanc. Le lecteur descend, et la
+   carte se compose derrière lui à mesure. */
+#section1 {
+  position: fixed; inset: var(--bar-h) 0 0 0; z-index: 40;
+  overflow-y: auto; -webkit-overflow-scrolling: touch;
+  background: rgba(255, 255, 255, var(--voile, 1));
+  transition: background .2s linear, opacity .5s ease, transform .5s ease;
+}
+body.vue-carte #section1 {
+  opacity: 0; transform: translateY(-5vh); pointer-events: none; overflow: hidden;
+}
+
+#map-stage { left: 0; }
+body.vue-intro #panel { pointer-events: none; }
+
+@media (min-width: 860px) {
+  #panel { transform: translateX(-101%); transition: transform .5s cubic-bezier(.32,.72,0,1); }
+  body.vue-carte #panel { transform: none; }
+  body.vue-carte.panneau-ferme #panel { transform: translateX(-101%); }
+}
+body.vue-intro #legend,
+body.vue-intro #drom,
+body.vue-intro #exact-warn,
+body.vue-intro #loading,
+body.vue-intro #panel-rouvrir { display: none; }
+body.vue-intro .map-canvas {
+  filter: blur(var(--tease, 3px)) saturate(var(--sat, .1));
+  opacity: var(--carte-op, .18);
+  pointer-events: none;
+  transition: opacity .25s linear;
+}
+
+/* ============================================ LA PAGE DE TITRE
+   Retours V2 : « avoir une page de titre colorée avec une police sympa »,
+   référence fluxlaboratory.com. Elle occupe tout l'écran, en aplat, et se
+   retire au défilement — c'est elle qui joue le rôle de « l'image abstraite
+   qui se transforme progressivement en carte », sans illustration à
+   produire. */
+.s1-titre {
+  min-height: calc(100vh - var(--bar-h));
+  background: var(--bleu); color: #FFF;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 8vh 6vw 6vh; position: relative;
+}
+.s1-titre-in { max-width: min(100%, 900px); }
+.s1-titre h1 {
+  margin: 0 0 40px; font-size: clamp(38px, 6.4vw, 82px); line-height: .98;
+  letter-spacing: -.045em; font-weight: 700; max-width: 15ch; text-wrap: balance;
+}
+.s1-annonce {
+  margin: 0 0 44px; font-size: clamp(15px, 1.5vw, 19px); line-height: 1.65;
+  max-width: 46ch; color: rgba(255,255,255,.92);
+}
+.s1-titre-cta .lien-action { color: #FFF; }
+.s1-descendre {
+  position: absolute; left: 6vw; bottom: 5vh;
+  font-size: 11.5px; letter-spacing: .18em; text-transform: uppercase;
+  color: rgba(255,255,255,.62);
+}
+
+/* ================================================= LE TEXTE ET SES INCISES
+   Deux colonnes sur grand écran : le texte, et la marge où s'ouvrent les
+   incises. Sous 1100px la marge disparaît et les incises se déplient dans
+   le flux, sous le paragraphe. */
+.s1-lecture {
+  max-width: 1240px; margin: 0 auto; padding: 12vh 28px 6vh;
+  display: grid; grid-template-columns: minmax(0, 640px) minmax(0, 1fr);
+  gap: 56px; align-items: start;
+}
+.s1-colonne { min-width: 0; }
+
+.s1-exergue {
+  border-left: 2px solid var(--bleu); padding: 4px 0 4px 20px; margin: 0 0 56px;
+}
+.s1-exergue b { display: block; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 10px; }
+.s1-exergue p { margin: 0; font-size: 14.5px; line-height: 1.75; color: var(--encre-2); }
+
+.s1-para {
+  margin: 0 0 32px; font-size: clamp(17px, 1.35vw, 20px); line-height: 1.75;
+  color: var(--encre-2); opacity: .55; transition: opacity .4s ease;
+  text-wrap: pretty;
+}
+.s1-para.lu { opacity: 1; }
+.s1-para b { color: var(--encre); font-weight: 700; }
+
+/* Le mot qui appelle une incise : souligné d'un filet, jamais coloré —
+   la couleur est réservée aux objets de la carte. */
+.incise {
+  border: 0; background: none; padding: 0; font: inherit; color: var(--encre);
+  border-bottom: 1px solid var(--encre); line-height: inherit;
+}
+.incise:hover { background: var(--blanc-2); }
+.incise.on { background: var(--bleu); color: #FFF; border-bottom-color: var(--bleu); }
+
+/* L'appel de source : un exposant discret, cliquable. */
+.appel {
+  border: 0; background: none; padding: 0 1px; font: inherit; color: var(--bleu);
+  font-size: .68em; vertical-align: super; line-height: 0;
+}
+.appel:hover { text-decoration: underline; }
+
+/* L'incise elle-même. Jusqu'à 150 mots : c'est un bloc de lecture, pas une
+   bulle. Sur grand écran elle vit dans la marge, à hauteur du mot. */
+.s1-marge { position: relative; min-height: 1px; }
+.note {
+  border-left: 2px solid var(--bleu); background: var(--blanc);
+  padding: 18px 20px 18px 22px; position: relative;
+  transition: transform .25s cubic-bezier(.32,.72,0,1);
+}
+.note b {
+  display: block; font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--bleu); margin-bottom: 12px; padding-right: 24px;
+}
+.note-txt { font-size: 14.5px; line-height: 1.72; color: var(--encre-2); }
+.note-txt a { color: var(--encre); border-bottom: 1px solid var(--filet); }
+.note-txt a:hover { border-bottom-color: var(--encre); }
+.note-fermer {
+  position: absolute; right: 8px; top: 10px;
+  border: 0; background: none; color: var(--txt-faint); font-size: 18px; line-height: 1; padding: 2px 6px;
+}
+.note-fermer:hover { color: var(--encre); }
+/* Ce qui reste à écrire se voit, plutôt que d'être masqué : l'équipe
+   éditoriale doit savoir où elle en est. */
+.note-manque, .note-etat {
+  margin: 14px 0 0; padding-top: 12px; border-top: 1px solid var(--filet-fin);
+  font-size: 12.5px; line-height: 1.6; color: var(--txt-faint);
+}
+.note-etat { font-style: italic; }
+
+.incise-inline { margin: -12px 0 32px; }
+
+/* --------------------------------------------------- BIBLIOGRAPHIE
+   Retours V2 : « mettre la bibliographie juste après sans alourdir, un
+   onglet qu'on peut dérouler ou non ». */
+.s1-fin { margin: 48px 0 64px; }
+.s1-biblio { border-top: 1px solid var(--filet); }
+.s1-biblio-tete {
+  display: flex; align-items: baseline; gap: 12px; width: 100%; text-align: left;
+  background: none; border: 0; padding: 18px 0; color: var(--encre); font-size: 15px; font-weight: 700;
+}
+.s1-biblio-tete em { font-style: normal; font-weight: 400; font-size: 13px; color: var(--txt-faint); }
+.s1-biblio-tete .chev { margin-left: auto; color: var(--txt-faint); font-size: 12px; }
+.s1-biblio.open .s1-biblio-tete .chev { transform: rotate(180deg); }
+.s1-biblio-corps { display: none; margin: 0 0 40px; padding-left: 22px; }
+.s1-biblio.open .s1-biblio-corps { display: block; }
+.s1-biblio-corps li {
+  font-size: 13.5px; line-height: 1.65; color: var(--encre-2); margin-bottom: 14px;
+  padding-left: 4px;
+}
+.s1-biblio-corps li.vise { background: rgba(27,63,216,.09); }
+.s1-biblio-corps a { color: var(--encre); border-bottom: 1px solid var(--filet); }
+.s1-biblio-corps em { color: var(--orange); font-style: italic; }
+
+.s1-reveal { min-height: 80vh; }
+
+/* Raccourci flottant vers la carte */
+#s1-pilule {
+  position: fixed; right: 24px; bottom: 24px; z-index: 45;
+  background: var(--blanc); color: var(--encre); border: 1px solid var(--encre);
+  padding: 11px 18px; font-size: 13px; font-weight: 500;
+  opacity: 0; transform: translateY(10px); pointer-events: none;
+  transition: opacity .25s ease, transform .25s ease;
+}
+#s1-pilule.on { opacity: 1; transform: none; pointer-events: auto; }
+#s1-pilule:hover { background: var(--bleu); border-color: var(--bleu); color: #FFF; }
+
+@media (max-width: 1099px) {
+  .s1-lecture { grid-template-columns: minmax(0, 1fr); gap: 0; max-width: 720px; }
+  .s1-marge { display: none; }
+  .note { transform: none !important; }
+}
+@media (max-width: 859px) {
+  .s1-titre { padding: 10vh 22px 12vh; }
+  .s1-titre-in { max-width: none; }
+  .s1-lecture { padding: 8vh 22px 4vh; }
+  .s1-descendre { left: 22px; }
+  .s1-fin .btn { width: 100%; text-align: center; }
+  #s1-pilule { right: 14px; left: 14px; bottom: 16px; text-align: center; }
+}
+
+/* Appel au témoignage, en pied de fiche */
+.fiche-cta { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--filet); }
+.fiche-cta p { margin: 0 0 10px; font-size: 12.5px; color: var(--txt-dim); line-height: 1.5; }
+.fiche-cta .btn { display: block; width: 100%; text-align: center; }
+
+@media (max-width: 859px) {
+  .s1-hero { padding: 12vh 20px 8vh; min-height: 68vh; }
+  .s1-deroule { padding: 0 20px; }
+  .s1-temps { padding: 34px 0; }
+  .s1-final { padding: 8vh 20px 10vh; }
+  .s1-hero-cta .btn { width: 100%; text-align: center; }
+  #s1-pilule { right: 14px; left: 14px; bottom: 16px; text-align: center; }
+}
+
+/* -------------------------------------------------------------- FICHES */
+#detail { display: none; }
+#detail.on { display: block; }
+.detail-top { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 4px; }
+.detail-top .id {
+  font-family: var(--mono); font-size: 10px; color: var(--txt-faint); letter-spacing: .04em;
+}
+.detail-close {
+  margin-left: auto; background: none; border: 0; color: var(--txt-faint);
+  font-size: 20px; line-height: 1; padding: 0 2px;
+}
+.detail-close:hover { color: var(--txt); }
+#detail h3 { margin: 8px 0 3px; font-size: 20px; letter-spacing: -.02em; line-height: 1.2; }
+#detail .sub { color: var(--txt-dim); font-size: 12.5px; }
+
+/* Fiche d'agrégat : un texte rédigé, pas une grille de rubriques. */
+.fiche-texte { margin: 16px 0 0; font-size: 14px; line-height: 1.75; color: var(--encre-2); }
+.fiche-texte b { color: var(--encre); }
+.fiche-texte + .fiche-texte { margin-top: 12px; }
+/* Le lien vers le collectif est le seul élément mis en avant de la fiche. */
+.fiche-collectif {
+  display: block; margin: 20px 0 0; padding: 14px 16px;
+  background: var(--bleu); color: #FFF; border: 0;
+}
+.fiche-collectif b { display: block; font-size: 15px; font-weight: 700; margin-bottom: 3px; }
+.fiche-collectif b::after { content: ' →'; }
+.fiche-collectif span { font-size: 12px; line-height: 1.45; }
+.fiche-collectif:hover { background: var(--encre); color: var(--blanc); }
+
+.tag {
+  display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600;
+  padding: 4px 9px; margin: 10px 6px 2px 0;
+}
+.tag .swatch { width: 7px; height: 7px; }
+.badge {
+  display: inline-block; font-size: 10px; font-family: var(--mono); letter-spacing: .03em;
+  padding: 2px 6px; border: 1px solid var(--filet); color: var(--txt-faint);
+}
+.badge.ok { color: var(--ok); border-color: var(--vert); }
+.badge.fic { color: var(--warn); border-color: var(--orange); }
+
+.kv { display: grid; grid-template-columns: 104px 1fr; gap: 8px 10px; margin-top: 16px; font-size: 12.5px; }
+.kv dt { color: var(--txt-faint); }
+.kv dd { margin: 0; }
+
+.block { margin-top: 14px; }
+.block h4 {
+  margin: 0 0 4px; font-size: 10px; letter-spacing: .09em; text-transform: uppercase;
+  color: var(--txt-faint); font-weight: 600;
+}
+.block p { margin: 0; font-size: 13px; color: var(--encre-2); line-height: 1.65; }
+
+.quote {
+  margin: 16px 0 0; padding: 0 0 0 16px; border-left: 2px solid var(--bleu);
+  font-size: 14.5px; line-height: 1.72; color: var(--encre-2);
+}
+.caution {
+  margin: 16px 0 0; font-size: 11px; color: var(--txt-faint); line-height: 1.5;
+  border-top: 1px solid var(--filet-fin); padding-top: 10px;
+}
+.src { margin-top: 14px; font-size: 12px; display: flex; flex-direction: column; gap: 5px; }
+
+/* Lecteur audio : remonté DANS la fiche du cas, et rendu visible.
+   La barre de lecture flottante a disparu — c'était le bon endroit pour un
+   récit vocal, et personne ne la voyait. */
+.audio { margin-top: 18px; padding: 14px 0 0; border-top: 1px solid var(--filet); }
+.audio-head { display: flex; align-items: center; gap: 12px; }
+.play {
+  width: 42px; height: 42px; border: 0; flex: none;
+  background: var(--bleu); color: #FFF; font-size: 14px;
+  display: grid; place-items: center;
+}
+.play:hover { background: var(--encre); color: var(--blanc); }
+.audio-meta { flex: 1; min-width: 0; }
+.audio-meta .t1 { font-size: 13.5px; font-weight: 700; }
+.audio-meta .t2 { font-size: 11px; color: var(--txt-faint); font-family: var(--mono); }
+.wave { display: flex; align-items: flex-end; gap: 2px; height: 26px; margin-top: 12px; }
+.wave i { flex: 1; background: var(--filet); transition: background .1s; }
+.wave i.played { background: var(--encre); }
+.tts-note { margin-top: 9px; font-size: 10.5px; color: var(--txt-faint); line-height: 1.45; }
+
+/* -------------------------------------------------------------- POPUPS */
+.maplibregl-popup-content {
+  background: var(--blanc) !important; color: var(--encre) !important;
+  border: 1px solid var(--filet); padding: 12px 14px !important;
+  box-shadow: none !important; font-family: var(--font);
+}
+.maplibregl-popup-tip { border-top-color: var(--blanc) !important; border-bottom-color: var(--blanc) !important; }
+.pop { max-width: 270px; }
+.pop h4 { margin: 0 0 3px; font-size: 13.5px; line-height: 1.3; }
+.pop .m { font-size: 11.5px; color: var(--txt-dim); line-height: 1.45; }
+.pop .row { display: flex; gap: 14px; margin: 9px 0 7px; }
+.pop .row b { font-family: var(--mono); font-size: 14px; display: block; line-height: 1.2; }
+.pop .row span { font-size: 9px; color: var(--txt-faint); text-transform: uppercase; letter-spacing: .05em; }
+.pop .cta { margin-top: 7px; font-size: 10.5px; color: var(--txt-faint); }
+
+/* Liste des cas d'un secteur */
+.tem-list { display: flex; flex-direction: column; gap: 0; }
+.tem-list button {
+  display: flex; align-items: center; gap: 10px; width: 100%; text-align: left;
+  background: none; border: 0; border-top: 1px solid var(--filet-fin); color: var(--encre);
+  padding: 11px 2px; font-size: 13px;
+}
+.tem-list button:hover { background: var(--blanc-2); }
+.tem-list .pin { width: 8px; height: 8px; flex: none; background: var(--eau); }
+.tem-list .nm { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tem-list .yr { font-family: var(--mono); font-size: 11px; color: var(--txt-faint); flex: none; }
+
+#deck-tip {
+  position: absolute; z-index: 20; pointer-events: none; display: none;
+  background: var(--blanc); border: 1px solid var(--filet); padding: 11px 13px;
+  box-shadow: none;
+}
+
+/* ------------------------------------------------------------ HUD CARTE */
+.hud { position: absolute; z-index: 12; }
+
+/* -------------------------------------------- VISITE GUIDÉE DES AGRÉGATS
+   Retours V2 : « intégrer intégralement à la navigation, et ne pas mettre
+   l'encadré sur la carte mais sur le côté, en bas de la slide ».
+
+   Les flèches vivent donc dans le panneau, juste au-dessus du pied, et
+   n'apparaissent que pendant la visite. Sur la carte, plus rien ne flotte. */
+#tour {
+  display: none; align-items: stretch;
+  border-top: 1px solid var(--filet); background: var(--blanc);
+}
+body.en-visite #tour { display: flex; }
+#tour button {
+  background: none; border: 0; color: var(--encre); font-size: 19px;
+  padding: 0 16px; flex: none;
+}
+#tour button:hover:not(:disabled) { background: var(--bleu); color: #FFF; }
+#tour button:disabled { color: var(--filet); cursor: default; }
+#tour .tour-mid {
+  flex: 1; min-width: 0; padding: 11px 8px; text-align: center;
+  border-left: 1px solid var(--filet-fin); border-right: 1px solid var(--filet-fin);
+}
+#tour .tour-pos {
+  font-family: var(--mono); font-size: 9.5px; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--txt-faint);
+}
+#tour .tour-nom {
+  font-size: 13.5px; font-weight: 700; white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis;
+}
+#tour .tour-fin {
+  border: 0; background: none; font-size: 11.5px; color: var(--txt-faint);
+  padding: 0 14px; flex: none;
+}
+#tour .tour-fin:hover { color: var(--encre); background: var(--blanc-2); }
+
+/* --------------------------------------------- CARTOUCHE OUTRE-MER
+   Les cinq DROM au même facteur d'échelle, à droite de la carte. Il se
+   replie : c'est un rappel permanent, pas un objet à consulter en continu. */
+#drom {
+  right: 16px; top: 16px; width: 216px;
+  background: var(--blanc); border: 1px solid var(--filet);
+}
+.drom-tete {
+  display: flex; align-items: center; gap: 8px; width: 100%; text-align: left;
+  background: none; border: 0; color: var(--encre); font-size: 12.5px; font-weight: 700;
+  padding: 10px 13px;
+}
+.drom-tete:hover { background: var(--blanc-2); }
+.drom-tete .chev { margin-left: auto; color: var(--txt-faint); font-size: 10px; }
+#drom.ferme .drom-tete .chev { transform: rotate(-90deg); }
+.drom-corps { padding: 0 10px 10px; border-top: 1px solid var(--filet-fin); }
+#drom.ferme .drom-corps { display: none; }
+
+.drom-svg { display: block; width: 100%; height: auto; }
+.drom-terre { fill: var(--casse); stroke: #C7C1B2; stroke-width: 1; stroke-linejoin: round; }
+/* Un territoire qui porte des cas déclarés se signale par la couleur des cas. */
+.drom-terre.avec { fill: rgba(46,155,143,.30); stroke: var(--eau); }
+.drom-nom {
+  font-family: var(--font); font-size: 8.5px; fill: var(--encre); text-anchor: middle; font-weight: 700;
+}
+.drom-n { font-family: var(--font); font-size: 7.5px; fill: var(--txt-faint); text-anchor: middle; }
+.drom-echelle line { stroke: var(--txt-faint); stroke-width: 1; }
+.drom-echelle text { font-family: var(--mono); font-size: 7.5px; fill: var(--txt-faint); }
+
+.drom-note { margin: 6px 0 10px; font-size: 11px; line-height: 1.5; color: var(--txt-faint); }
+.drom-plus {
+  width: 100%; background: none; border: 1px solid var(--filet); color: var(--encre);
+  padding: 7px; font-size: 11.5px;
+}
+.drom-plus:hover { border-color: var(--encre); }
+
+/* La version agrandie, dans la modale */
+.drom-grand { margin: 18px 0 22px; }
+.drom-grand .drom-nom { font-size: 11px; }
+.drom-grand .drom-n { font-size: 10px; }
+.drom-grand .drom-echelle text { font-size: 10px; }
+
+/* ---------------------------------------------------------- LÉGENDE
+   Réduite à ce qui est réellement dessiné : deux couleurs d'agrégat et le
+   point d'un cas déclaré. Repliable, et repliée par défaut sur petit écran. */
+/* Trois lignes : sur grand écran elle est simplement affichée, sans bouton.
+   Le repli ne sert qu'au pouce, où la place manque vraiment — d'où un état
+   porté par la CSS et non par du JavaScript, qui se trompait de largeur au
+   premier rendu. */
+/* Retours V2 : « la légende est trop basse, cache le bouton pour zoomer ».
+   Les contrôles de zoom de MapLibre occupent le coin bas-droit ; la légende
+   se pose au-dessus d'eux plutôt qu'à côté. */
+#legend {
+  right: 16px; bottom: 106px; background: var(--blanc); border: 1px solid var(--filet);
+  font-size: 12px; min-width: 208px;
+}
+#legend-toggle { display: none; }
+#legend-toggle .chev { margin-left: auto; color: var(--txt-faint); font-size: 10px; }
+#legend.open #legend-toggle .chev { transform: rotate(180deg); }
+#legend-body { display: block; padding: 10px 13px 11px; }
+.leg-titre {
+  font-size: 9.5px; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--txt-faint); margin-bottom: 4px;
+}
+#legend .li { display: flex; align-items: center; gap: 9px; padding: 6px 0; }
+#legend .li + .li { border-top: 1px solid var(--filet-fin); }
+#legend .leg-surface { width: 15px; height: 15px; border: 2px solid; flex: none; }
+#legend .leg-surface.cluster { border-color: var(--violet); background: rgba(109,47,196,.28); }
+#legend .leg-point { width: 11px; height: 11px; flex: none; background: var(--eau); margin: 0 2px; }
+
+/* --------------------------------------------- ÉQUIVALENT ACCESSIBLE
+   Une carte deck.gl n'est pas atteignable au clavier ni au lecteur d'écran.
+   Tout ce qu'elle montre existe donc aussi en tableau, à un clic, dans le
+   panneau — et le tableau est la source de l'export CSV. */
+#tableau-wrap { display: none; }
+#tableau-wrap.on { display: block; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 12px; }
+.tbl caption { text-align: left; font-size: 11.5px; color: var(--txt-faint); padding-bottom: 8px; }
+.tbl th, .tbl td { text-align: left; padding: 7px 8px 7px 0; border-bottom: 1px solid var(--filet-fin); }
+.tbl th { font-size: 9.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--txt-faint); font-weight: 600; }
+.tbl tbody tr:hover { background: var(--blanc-2); }
+.tbl td button { background: none; border: 0; padding: 0; text-align: left; color: var(--encre); font-size: 12px; }
+.tbl td button:hover { border-bottom: 1px solid var(--encre); font-weight: 700; }
+.tbl-actions { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+
+/* -------------------------------------------------------------- MODALE */
+#modal {
+  position: fixed; inset: 0; z-index: 90; display: none; place-items: center;
+  background: rgba(20,18,13,.45); padding: 16px;
+}
+#modal.on { display: grid; }
+.modal-box {
+  width: min(690px, 100%); max-height: 84vh; overflow-y: auto;
+  background: var(--blanc); border: 1px solid var(--filet);
+  padding: 28px 32px calc(28px + var(--safe-b));
+}
+.modal-box h3 { margin: 0 0 4px; font-size: 21px; letter-spacing: -.02em; }
+.modal-box .sub { color: var(--txt-dim); font-size: 13px; margin-bottom: 18px; }
+.modal-box h4 { margin: 20px 0 6px; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--txt-faint); }
+.modal-box p, .modal-box li { font-size: 14px; color: var(--encre-2); line-height: 1.7; }
+.modal-box ol, .modal-box ul { padding-left: 18px; }
+
+/* ================================================================ MOBILE */
+@media (max-width: 859px) {
+  :root { --bar-h: 50px; }
+  .hide-sm { display: none; }
+  .show-sm { display: block; }
+  .e-full { display: none; }
+  .e-short { display: inline; }
+  .brand small { display: none; }
+  .brand { font-size: 13.5px; }
+
+  /* Cinq onglets ne tiennent pas sur 375 px. Ils défilent horizontalement
+     plutôt que de passer à la ligne — un onglet coupé en deux lignes casse
+     la barre entière. */
+  #topbar { gap: 10px; padding: 0 12px; }
+  #nav-onglets {
+    gap: 0; flex: 1; min-width: 0; justify-content: flex-start;
+    overflow-x: auto; white-space: nowrap; scrollbar-width: none;
+  }
+  #nav-onglets::-webkit-scrollbar { display: none; }
+  .onglet { padding: 6px 7px; font-size: 12.5px; flex: none; }
+  #topbar .spacer { display: none; }
+
+  #map-stage { inset: var(--bar-h) 0 0 0; }
+
+  #panel {
+    inset: auto 0 0 0; width: 100%; z-index: 55;
+    height: 76vh; max-height: 76vh;
+    border-right: 0; border-top: 1px solid var(--filet);
+    transform: translateY(calc(76vh - var(--sheet-peek)));
+    transition: transform .28s cubic-bezier(.32,.72,0,1);
+  }
+  #panel.open { transform: translateY(0); }
+  body.panneau-ferme #panel { transform: translateY(calc(76vh - 4px)); }
+  /* Pendant le déroulé, la feuille ne doit pas dépasser sous le texte :
+     sur grand écran c'est le glissement latéral qui s'en charge. */
+  body.vue-intro #panel { transform: translateY(100%); }
+
+  #sheet-grip {
+    display: block; width: 100%; height: 26px; background: none; border: 0;
+    padding: 0; flex: none; position: relative;
+  }
+  #sheet-grip span {
+    position: absolute; left: 50%; top: 11px; transform: translateX(-50%);
+    width: 38px; height: 3px; background: var(--filet);
+  }
+  #panel.open #sheet-grip span { background: var(--txt-faint); }
+  #panel-close { top: 4px; }
+
+  .panel-foot { padding: 10px 16px calc(10px + var(--safe-b)); }
+  .sec { padding: 15px 16px; }
+
+  /* La visite guidée prend toute la largeur au bas de la carte ; la légende
+     se pose au-dessus d'elle plutôt qu'à côté, où elle la recouvrait. */
+  #legend { right: 10px; bottom: calc(var(--sheet-peek) + 56px); min-width: 0; }
+  #drom { right: 10px; top: 10px; width: 148px; }
+  #drom .drom-corps { max-height: 46vh; overflow-y: auto; }
+  #legend-toggle {
+    display: flex; align-items: center; gap: 8px; width: 100%; text-align: left;
+    background: none; border: 0; color: var(--encre); font-size: 12.5px; padding: 10px 13px;
+  }
+  #legend-body { display: none; border-top: 1px solid var(--filet-fin); padding-top: 8px; }
+  #legend.open #legend-body { display: block; }
+  #legend .leg-titre { display: none; }
+  .maplibregl-ctrl-bottom-right { bottom: calc(var(--sheet-peek) + 4px) !important; }
+  .kv { grid-template-columns: 92px 1fr; }
+  .modal-box { padding: 22px 20px calc(22px + var(--safe-b)); }
+}
+
+@media (max-width: 560px) {
+  /* Sur téléphone, les cinq onglets passent avant la marque : le titre du
+     site est de toute façon en H1 juste en dessous. */
+  .brand { display: none; }
+  #nav-onglets { justify-content: space-between; }
+  .onglet { padding: 6px 4px; font-size: 11.5px; }
+  .btn { padding: 8px 11px; font-size: 12px; }
+  #tour .tour-nom { font-size: 12.5px; }
+  #tour .tour-fin { padding: 0 10px; font-size: 11px; }
+}
+
+/* Pointeur grossier : cibles plus généreuses */
+@media (pointer: coarse) {
+  .dd-item { padding: 12px 13px; }
+  .toggle-row { padding: 9px 0; }
+  .tem-list button { padding: 13px 2px; }
+}
